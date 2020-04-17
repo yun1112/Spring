@@ -1,4 +1,4 @@
-package chap3;
+package example;
 
 public class assignment4 {
 

@@ -1,6 +1,6 @@
 package Array;
 
-public class changeArr {
+public class changeArr {// 0 1 2/ 1 2 0
 
 	public static void main(String[] args) {
 		int arr[][]=new int [10][10];
@@ -26,10 +26,12 @@ public class changeArr {
 		int tmp2[];
 		//tmp=arr[arr.length-1];
 		tmp2=arr[0];
-		for (int i = 1; i < arr.length-1; i++) {//0 1 2~ N-1 -> N-1 0 1 2~ N-2
-			arr[i]=arr[i%(arr.length-1)];
+		for (int i = 0; i < arr.length-1; i++) {//0 1 2~ N-1 -> N-1 0 1 2~ N-2
 			arr[i]=arr[i+1];
+//			if(i==arr.length-1)
+//				arr[i]=tmp2;
 		}
+	arr[arr.length-1]=tmp2;
 		//arr[0]=tmp;
 		//arr[arr.length-1]=tmp2;
 		

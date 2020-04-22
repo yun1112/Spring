@@ -1,4 +1,4 @@
-package project1;
+package membership;
 
 /*
 
@@ -14,10 +14,7 @@ Project : ver 0.30
 */
 import java.util.Scanner;
 
-import project1.pro1.PhoneInfor;
-
 public class pro3 {
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int num;
@@ -59,7 +56,7 @@ public class pro3 {
 			case 2:
 				System.out.println("검색할 이름 입력");
 				str = sc.next();
-				
+
 				for (int i = 0; i < index; i++) {
 					info[i].searchInfo(str);
 				}
@@ -69,7 +66,7 @@ public class pro3 {
 				str = sc.next();
 
 				for (int i = 0; i < index; i++) {
-					info[i].deleteInfo(info,str);
+					info[i].deleteInfo(info, str);
 					index--;
 //					info[i]=null;
 				}
@@ -94,7 +91,7 @@ public class pro3 {
 
 		}
 
-		PhoneInfor(String n, String p) {//생년월일 제외 초기화 생성자 메서드
+		PhoneInfor(String n, String p) {// 생년월일 제외 초기화 생성자 메서드
 			name = n;
 			phoneNumber = p;
 		}
@@ -138,15 +135,15 @@ public class pro3 {
 
 			PhoneInfor tmp;
 			tmp = p[0];
-			for (int i = 0; i < p.length; i++) {//해당 참조변수가 있던 자리부터 한칸씩 당김
+			for (int i = 0; i < p.length; i++) {// 해당 참조변수가 있던 자리부터 한칸씩 당김
 				if (this.name.equals(str) == true) {
 					for (int j = i; j < p.length - 1; j++) {
 						p[i] = p[i + 1];
 					}
 				}
 			}
-			p[p.length - 1] = null;//마지막 참조변수 제거
-			
+			p[p.length - 1] = null;// 마지막 참조변수 제거
+
 		}
 
 	}

@@ -1,4 +1,4 @@
-package project1;
+package membership;
 /*
  회원정보(아이디, 이름, 이메일)*5
  배열에 저장하고,

@@ -1,4 +1,4 @@
-package membership;
+package prac;
 
 //회원 정보를 저장하기 위한 클래스 생성
 public class Member {// 객체에 있는 데이터 확인하기 위해 toString()메서드 오버라이딩함

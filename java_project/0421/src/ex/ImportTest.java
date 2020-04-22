@@ -7,6 +7,7 @@ public class ImportTest {
 
 	public static void main(String[] args) {
 		//java.util.Date
+		//cf) java.util.Calendar
 		//날짜와 시간 정보를 하나로 표현
 		Date today=new Date();//현재 시간
 		System.out.println(today);//today.toString() 호출

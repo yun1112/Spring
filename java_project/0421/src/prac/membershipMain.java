@@ -1,4 +1,4 @@
-package membership;
+package prac;
 
 public class membershipMain {
 

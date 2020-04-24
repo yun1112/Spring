@@ -8,13 +8,22 @@ public class PhoneBookMain {
 		PhoneBookManager manager = new PhoneBookManager();
 		Scanner sc = new Scanner(System.in);
 		int check;
-
+		int type;
 		while (true) {
+			Menu.printChoice();
+			//타입 선택하는 메서드 호출
+			manager.typeChoice();
+			sc.nextLine();
 			Menu.printMenu();
+			System.out.println("수행하고자 하는 업무 선택");
 			check = sc.nextInt();
+			
+			//type=1이면 PhoneUnivInfor 인스턴스 생성
+			
+//			type=manager.typeChoice();
 			switch (check) {
 			case 1:
-				manager.createInstance();
+				manager.createInstance(); 
 				break;
 			case 2:
 				manager.searchInfor();

@@ -220,8 +220,9 @@ public class PhoneBookManager {
 		//메서드 순서만 바꾸면 됨
 //		Menu.printMenu();
 		type=sc.nextInt();//타입 인식 됨
+		Menu.printMenu();
 		switch (type) {
-		case 1:// type=1 대학 선택했을 경우 하위 클래스 PhoneUnivInfor pUniv생성
+		case 1: case 2: case 3:// type=1 대학 선택했을 경우 하위 클래스 PhoneUnivInfor pUniv생성
 			pBooks[cnt] = createInstance();// 상위 클래스 타입 인스턴스 생성
 //			pUniv = (PhoneUnivInfor) pBooks[cnt];// 명시적 형변환
 //			System.out.println("새로 생성한 객체:"+pBooks[cnt+1]);//새로 생성한 객체 확인->계속 null뜸
@@ -229,15 +230,11 @@ public class PhoneBookManager {
 			System.out.println("새로 생성한 객체:"+pBooks[cnt-1]);//새로 생성한 객체 확인->계속 null뜸
 			break;
 
-		case 2:// PhoneCompaanyInfor, PhoneAcademyInfor
-			
-			break;
-		case 3:
-			break;
+		
 		}
 		
 		System.out.println(pBooks[cnt-1]+"선택했습니다(1단계)");
-		Menu.printMenu();
+		
 	}
 
 //	void addInstance() {}

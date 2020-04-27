@@ -105,13 +105,13 @@ public class PhoneBookManager {
 	void showAllInfo() {
 		//for 반복문
 		//for each 반복문
-		for(PhoneInfo info: books) {
-			info.showAllInfo();
-		}
-		
-//		for (int i = 0; i < numOfInfo; i++) {
-//			books[i].showAllInfo();
-//
+//		for(PhoneInfo p: books) {//데이터 삭제 후 인덱스값 그대로 남아 있기 때문에 오류 발생하기 때문에 for-each문 사용 불가
+//			p.showAllInfo();
 //		}
+		System.out.println("전체 정보를 출력합니다----------------------");
+		for (int i = 0; i < numOfInfo; i++) {
+			books[i].showAllInfo();
+
+		}
 	}
 }

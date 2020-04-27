@@ -183,8 +183,5 @@ public class PhoneBookManager {
 		default:
 			return;
 		}
-		for (int i = 0; i < cnt; i++) {
-			info[i].showAllInfo();
-		}
 	}
 }

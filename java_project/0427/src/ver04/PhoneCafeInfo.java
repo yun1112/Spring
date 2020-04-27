@@ -13,7 +13,7 @@ String nickName;
 
 	@Override
 	void showAllInfo() {
-		super.showBasicInfo();
+		super.showAllInfo();
 		System.out.println("동호회 이름:"+this.cafeName);
 		System.out.println("닉네임:"+this.nickName);
 	}

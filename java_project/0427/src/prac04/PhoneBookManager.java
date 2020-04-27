@@ -87,16 +87,17 @@ public class PhoneBookManager {
 		String addr = sc.nextLine();
 		System.out.println("메일:");
 		String email = sc.nextLine();
+		PhoneInfo p = null;
 		switch (type) {
 		case 1:
-			info[cnt] = new PhoneInfo(name, phoneNumber, addr, email);
+			p = new PhoneInfo(name, phoneNumber, addr, email);
 			break;
 		case 2:
 			System.out.println("전공:");
 			String major = sc.nextLine();
 			System.out.println("학점:");
 			String grade = sc.nextLine();
-			info[cnt] = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
+			p = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
 			break;
 		case 3:
 			System.out.println("회사:");
@@ -105,14 +106,14 @@ public class PhoneBookManager {
 			String dept = sc.nextLine();
 			System.out.println("직책:");
 			String job = sc.nextLine();
-			info[cnt] = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
+			p = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 			break;
 		case 4:
 			System.out.println("동호회 이름:");
 			String cafeName = sc.nextLine();
 			System.out.println("닉네임:");
 			String nickName = sc.nextLine();
-			info[cnt] = new PhoneCafeInfo(name, phoneNumber, addr, email, cafeName, nickName);
+			p= new PhoneCafeInfo(name, phoneNumber, addr, email, cafeName, nickName);
 			break;
 		case 5:
 			return;
@@ -120,7 +121,8 @@ public class PhoneBookManager {
 			break;
 		}
 
-		System.out.println("[" + info[cnt].name + "정보를 등록했습니다]");
+		System.out.println("[" +p.name + "정보를 등록했습니다]");
+		info[cnt]=p;
 		addData(info[cnt]);
 	}
 
@@ -145,7 +147,7 @@ public class PhoneBookManager {
 				}
 			}
 		}
-		info[cnt - 1] = null;
+//		info[cnt - 1] = null;
 
 		cnt--;
 	}
@@ -155,28 +157,28 @@ public class PhoneBookManager {
 	}
 
 	void showAllData() {
-		switch(type) {
+		switch (type) {
 		case 1:
 			for (int i = 0; i < cnt; i++) {
-				if(info[i] instanceof PhoneInfo)
+				if (info[i] instanceof PhoneInfo)
 					info[i].showAllInfo();
 			}
 			break;
 		case 2:
 			for (int i = 0; i < cnt; i++) {
-				if(info[i] instanceof PhoneUnivInfo )
+				if (info[i] instanceof PhoneUnivInfo)
 					info[i].showAllInfo();
 			}
 			break;
 		case 3:
 			for (int i = 0; i < cnt; i++) {
-				if(info[i] instanceof PhoneCompanyInfo )
+				if (info[i] instanceof PhoneCompanyInfo)
 					info[i].showAllInfo();
 			}
 			break;
 		case 4:
 			for (int i = 0; i < cnt; i++) {
-				if(info[i] instanceof PhoneCafeInfo )
+				if (info[i] instanceof PhoneCafeInfo)
 					info[i].showAllInfo();
 			}
 			break;

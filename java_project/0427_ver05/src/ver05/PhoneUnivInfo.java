@@ -1,6 +1,6 @@
 package ver05;
 
-public class PhoneUnivInfo extends PhoneInfo implements PhoneInfoImpl {
+public class PhoneUnivInfo extends PhoneInfo{
 	String major;
 	String grade;
 
@@ -17,10 +17,15 @@ public class PhoneUnivInfo extends PhoneInfo implements PhoneInfoImpl {
 	}
 
 	@Override
-	public void showAllInfo() {
-		super.showAllInfo();
+	public void showBasicInfo() {
+		super.showBasicInfo();
 		System.out.println("전공:" + this.major);
 		System.out.println("학년:" + this.grade);
+	}
+
+	@Override
+	public void showAllInfo() {
+		super.showBasicInfo();
 	}
 
 }

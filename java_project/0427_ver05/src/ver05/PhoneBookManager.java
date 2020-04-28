@@ -33,7 +33,7 @@ public class PhoneBookManager {// 싱글톤 패턴
 		String name = kb.nextLine();
 		for (int i = 0; i < numOfInfo; i++) {
 			if (books[i].checkName(name))
-				books[i].showAllInfo();
+				books[i].showBasicInfo();
 		}
 	}
 
@@ -43,7 +43,7 @@ public class PhoneBookManager {// 싱글톤 패턴
 
 		if (index < 0) {
 			System.out.println("[수정하고자 하는 이름의 정보가 없습니다]");
-			System.out.println("------------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------");
 			return;
 		} else {
 			System.out.println("[수정 데이터 입력을 시작합니다]");
@@ -58,15 +58,7 @@ public class PhoneBookManager {// 싱글톤 패턴
 
 			PhoneInfo info = null;
 
-			if (books[index] instanceof PhoneInfo) {
-				info = new PhoneInfo(editName, phoneNumber, addr, email);
-			} else if (books[index] instanceof PhoneUnivInfo) {
-				System.out.println("[전공을 입력해주세요]");
-				String major = kb.nextLine();
-				System.out.println("[학점을 입력해주세요]");
-				String grade = kb.nextLine();
-				info = new PhoneUnivInfo(editName, phoneNumber, addr, email, major, grade);
-			} else if (books[index] instanceof PhoneCompanyInfo) {
+			if (books[index] instanceof PhoneCompanyInfo) {
 				System.out.println("[회사를 입력해주세요]");
 				String company = kb.nextLine();
 				System.out.println("[부서를 입력해주세요]");
@@ -82,7 +74,7 @@ public class PhoneBookManager {// 싱글톤 패턴
 				info = new PhoneClubInfo(editName, phoneNumber, addr, email, cafeName, nickName);
 			}
 			books[index] = info;
-			System.out.println("------------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------");
 		}
 
 	}
@@ -93,7 +85,7 @@ public class PhoneBookManager {// 싱글톤 패턴
 		int index = searchIndex(name);
 		if (index < 0) {
 			System.out.println("[삭제하고자 하는 이름의 정보가 없습니다]");
-			System.out.println("------------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------");
 		} else {
 			for (int i = index; i < numOfInfo - 1; i++) {
 				if (i == index) {
@@ -111,13 +103,13 @@ public class PhoneBookManager {// 싱글톤 패턴
 	}
 
 	void createInfo() {
-		System.out.println("1.일반 2.대학 3.회사 4.동호회");
+		System.out.println("1.대학 2.회사 3.동호회");
 		System.out.println("[입력하고자 하는 번호를 입력해주세요]");
-		System.out.println("------------------------------------------");
+		System.out.println("------------------------------------------------------------------------------------");
 //	int select=sc.nextInt();
 //	sc.nextLine();
 		int select = Integer.parseInt(kb.nextLine());// 공백 문제 해결
-
+		System.out.println("select:"+select);
 		// 기본 정보 수집:이름,전화번호,주소,이메일
 		System.out.println("[이름을 입력해주세요]");
 		String name = kb.nextLine();
@@ -129,23 +121,19 @@ public class PhoneBookManager {// 싱글톤 패턴
 		String email = kb.nextLine();
 
 		PhoneInfo info = null;
-		if (!(select > 0 && select < 5)) {
+		if ((select > 0 && select < 4)) {
 			switch (select) {
 			case 1:
-				info = new PhoneInfo(name, phoneNumber, addr, email);
-				System.out.println("------------------------------------------");
-				break;
-
-			case 2:
 				System.out.println("[전공을 입력해주세요]");
 				String major = kb.nextLine();
 				System.out.println("[학점을 입력해주세요]");
 				String grade = kb.nextLine();
 				info = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
-				System.out.println("------------------------------------------");
+				System.out.println(
+						"------------------------------------------------------------------------------------");
 				break;
 
-			case 3:
+			case 2:
 				System.out.println("[회사를 입력해주세요]");
 				String company = kb.nextLine();
 				System.out.println("[부서를 입력해주세요]");
@@ -153,26 +141,30 @@ public class PhoneBookManager {// 싱글톤 패턴
 				System.out.println("[직책을 입려해주세요]");
 				String job = kb.nextLine();
 				info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
-				System.out.println("------------------------------------------");
+				System.out.println(
+						"------------------------------------------------------------------------------------");
 				break;
 
-			case 4:
+			case 3:
 				System.out.println("[동호회 이름을 입력해주세요]");
 				String cafeName = kb.nextLine();
 				System.out.println("[닉네임을 입력해주세요]");
 				String nickName = kb.nextLine();
 				info = new PhoneClubInfo(name, phoneNumber, addr, email, cafeName, nickName);
-				System.out.println("------------------------------------------");
+				System.out.println(
+						"------------------------------------------------------------------------------------");
 				break;
 
 			default:
 				System.out.println("[정상적인 선택이 아닙니다]\n[메뉴를 다시 선택해주세요]");
-				System.out.println("------------------------------------------");
+				System.out.println(
+						"------------------------------------------------------------------------------------");
 				return;
 			}
 		}
 
-		addInfo(new PhoneInfo(name, phoneNumber, addr, email));
+//		addInfo(new PhoneInfo(name, phoneNumber, addr, email));
+		addInfo(info);
 	}
 
 	int searchIndex(String name) {
@@ -192,11 +184,11 @@ public class PhoneBookManager {// 싱글톤 패턴
 		int index = searchIndex(name);
 		if (index < 0) {
 			System.out.println("[검색하신 이름의 정보가 없습니다]");
-			System.out.println("------------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------");
 		} else {
-			System.out.println("-------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------");
 			books[index].showBasicInfo();
-			System.out.println("-------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------");
 		}
 	}
 
@@ -206,10 +198,10 @@ public class PhoneBookManager {// 싱글톤 패턴
 //		for(PhoneInfo p: books) {//데이터 삭제 후 인덱스값 그대로 남아 있기 때문에 오류 발생하기 때문에 for-each문 사용 불가
 //			p.showAllInfo();
 //		}
-		System.out.println("------------------------------------------");
+		System.out.println("------------------------------------------------------------------------------------");
 		System.out.println("[전체 정보를 출력합니다]");
 		for (int i = 0; i < numOfInfo; i++) {
-			books[i].showAllInfo();
+			books[i].showBasicInfo();
 
 		}
 	}

@@ -1,5 +1,11 @@
 package inheritance;
-
+/*
+수정 일자: 20/04/28
+싱글톤 처리
+1. 생성자에 접근제어 지시자: private->인스턴스 생성 금지
+2. 공동으로 사용할 인스턴스 생성: static private(참조값 외부에서 변경 금지)
+3. 참조변수 반환 메서드: static public
+*/
 import java.util.Scanner;
 
 public class FriendInfoHandler {
@@ -9,12 +15,20 @@ public class FriendInfoHandler {
 	// 친구정보 상세 정보 출력
 	// Friend(String name, String phoneNumber,String addr){
 
+	static private  FriendInfoHandler handler=new FriendInfoHandler(100);//2. 공동으로 사용할 인스턴스 생성
+	
+	//3. 참조변수 반환 메서드
+	static public FriendInfoHandler getinstance() {
+		return handler;
+	}
+	
+	
 	private Friend[] myFriends;// Friend타입 배열 선언
 	private int numOfFriends;// 저장된 친구의 정보 개수
 	Scanner sc = new Scanner(System.in);
 
 	// 초기화: 저장 공간(사이즈)의 크기를 받아서 배열 생성
-	FriendInfoHandler(int num) {
+	private FriendInfoHandler(int num) {//1. 생성자에 접근 제어 지시자 private 지정
 		myFriends = new Friend[num];
 		numOfFriends = 0;
 	}

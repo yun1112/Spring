@@ -12,6 +12,7 @@ public class UnivFriend extends Friend {
 	}
 
 	@Override
+	public
 	void showData() {
 		showBasicInfo();
 		System.out.println("전공:"+this.major);

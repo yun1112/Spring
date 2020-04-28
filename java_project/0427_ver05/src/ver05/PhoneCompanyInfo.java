@@ -1,6 +1,6 @@
 package ver05;
 
-public class PhoneCompanyInfo extends PhoneInfo implements PhoneInfoImpl{
+public class PhoneCompanyInfo extends PhoneInfo implements PhoneInfoImpl {
 	String company;
 	String dept;
 	String job;
@@ -14,11 +14,16 @@ public class PhoneCompanyInfo extends PhoneInfo implements PhoneInfoImpl{
 	}
 
 	@Override
+	public void showBasicInfo() {
+		super.showBasicInfo();
+		System.out.println("회사:" + this.company);
+		System.out.println("부서:" + this.dept);
+		System.out.println("직무:" + this.job);
+	}
+
+	@Override
 	public void showAllInfo() {
-		super.showAllInfo();
-		System.out.println("회사:"+this.company);
-		System.out.println("부서:"+this.dept);
-		System.out.println("직무:"+this.job);
+		super.showBasicInfo();
 	}
 
 }

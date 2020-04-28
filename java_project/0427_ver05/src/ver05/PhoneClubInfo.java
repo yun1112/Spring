@@ -11,9 +11,14 @@ public class PhoneClubInfo extends PhoneInfo implements PhoneInfoImpl {
 	}
 
 	@Override
-	public void showAllInfo() {
-		super.showAllInfo();
+	public void showBasicInfo() {
+		super.showBasicInfo();
 		System.out.println("동호회 이름:" + this.cafeName);
 		System.out.println("닉네임:" + this.nickName);
+	}
+
+	@Override
+	public void showAllInfo() {
+		super.showBasicInfo();
 	}
 }

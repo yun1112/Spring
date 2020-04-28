@@ -1,7 +1,7 @@
 package ver05;
 //3.PhoneInfor 클래스에 interface 추가->추상 클래스화
 
-public class PhoneInfo implements PhoneInfoImpl{
+public abstract  class PhoneInfo implements PhoneInfoImpl{
 	private String name;
 	private String phoneNumber;
 	private String addr;
@@ -21,9 +21,9 @@ public class PhoneInfo implements PhoneInfoImpl{
 		System.out.println("메일:" + this.email);
 	}
 
-	public void showAllInfo() {
-		showBasicInfo();
-	}
+//	public void showAllInfo() {
+//		showBasicInfo();
+//	}
 
 	boolean checkName(String name) {
 		boolean check = false;

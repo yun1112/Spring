@@ -42,6 +42,8 @@ public class FriendInfoHandler {
 	// 2. 사용자에게 데이터를 받아서 사용자 요청에 맞는 인스턴스를 생성
 	// HighFriend//UnivFreind
 	void addFriend(int choice) {
+		//입력하지 않았을 때 재입력을 위한 예외처리 해야 함
+		//StringIsEmpty or str.length로 입력 여부 확인
 		// 기본정보 받기
 		System.out.println("이름을 입력해주세요");
 		sc.nextLine();//버퍼에 저장되어있는 엔터 받음

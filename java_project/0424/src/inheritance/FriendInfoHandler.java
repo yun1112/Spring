@@ -43,7 +43,10 @@ public class FriendInfoHandler {
 	// HighFriend//UnivFreind
 
 	// throws로 메서드 호출한 쪽에 에러 처리 넘김
-	void addFriend(int choice) {
+//	void addFriend(int choice) throws Exception{
+	//throw 예외문으로 바꾸고
+//	메서드 호출한 부분에서 예외처리하도록 코드 변경
+	void addFriend(int choice)  {
 		// 입력하지 않았을 때 재입력을 위한 예외처리 해야 함
 		// String IsEmpty() or str.length로 입력 여부 확인
 

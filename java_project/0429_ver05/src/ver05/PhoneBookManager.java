@@ -136,16 +136,48 @@ public class PhoneBookManager {
 			break;
 		}
 		// 기본 정보 수집:이름,전화번호,주소,이메일
-		System.out.println("이름을 입력해주세요");
-		String name = kb.nextLine();
-		System.out.println("전화번호를 입력해주세요");
-		String phoneNumber = kb.nextLine();
-		System.out.println("주소를 입력해주세요");
-		String addr = kb.nextLine();
-		System.out.println("이메일을 입력해주세요");
-		String email = kb.nextLine();
-
+		// 사용자의 데이터 입력 시 공백 입력할 경우 사용자 예외 처리
 		PhoneInfo info = null;
+		String name = null, phoneNumber = null, addr = null, email = null;
+		while (true) {
+			System.out.println("이름을 입력해주세요");
+			name = kb.nextLine();
+			System.out.println("전화번호를 입력해주세요");
+			phoneNumber = kb.nextLine();
+			System.out.println("주소를 입력해주세요");
+			addr = kb.nextLine();
+			System.out.println("이메일을 입력해주세요");
+			email = kb.nextLine();
+
+			try {
+				// 예외
+				if (name.trim().isEmpty() || phoneNumber.trim().isEmpty() || addr.trim().isEmpty()
+						|| email.trim().isEmpty()) {
+					StringEmptyException e = new StringEmptyException();
+					throw e;
+				}
+			} catch (StringEmptyException e) {
+				System.out.println("기본정보는 공백없이 모두 입력해주셔야 합니다");
+				System.out.println("다시 입력해주세요");
+				continue;
+			} catch (Exception e) {
+				System.out.println("기본정보는 공백없이 모두 입력해주셔야 합니다");
+				System.out.println("다시 입력해주세요");
+				continue;
+			}
+			break;
+		}
+//			if(name.isEmpty()||phoneNumber.isEmpty()|| addr.isEmpty()||email.isEmpty()) {
+//				StringEmptyException e=new StringEmptyException();
+//				throw e;
+//				try {
+//					
+//				}catch(StringEmptyException e) {
+//					continue;
+//				}catch(Exception e) {
+//					continue;
+//				}
+//			}
 
 //		if (select > 0 && select < 4) {
 		switch (select) {
@@ -164,6 +196,7 @@ public class PhoneBookManager {
 			String dept = kb.nextLine();
 			System.out.println("직책을 입려해주세요");
 			String job = kb.nextLine();
+			// 예외
 			info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 			break;
 
@@ -172,15 +205,13 @@ public class PhoneBookManager {
 			String cafeName = kb.nextLine();
 			System.out.println("닉네임을 입력해주세요");
 			String nickName = kb.nextLine();
+			// 예외
 			info = new PhoneCafeInfo(name, phoneNumber, addr, email, cafeName, nickName);
 			break;
-
 		}
-//		}
-
 		addInfo(info);
-
 	}
+//		}
 
 	int searchIndex(String name) {
 		int searchIndex = -1;// 해당 인덱스를 찾지 못했을 경우 기본값

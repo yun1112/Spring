@@ -46,35 +46,54 @@ public class PhoneBookManager {// 싱글톤 패턴
 			System.out.println("------------------------------------------------------------------------------------");
 			return;
 		} else {
-			System.out.println("[수정 데이터 입력을 시작합니다]");
-			System.out.println("[이름은 " + editName + "입니다]");
+
+			while (true) {
+				System.out.println("[수정 데이터 입력을 시작합니다]");
+				System.out.println("[이름은 " + editName + "입니다]");
 //			String name = kb.nextLine();//이름은 바꾸면 안됨
-			System.out.println("[전화번호를 입력해주세요]");
-			String phoneNumber = kb.nextLine();
-			System.out.println("[주소를 입력해주세요]");
-			String addr = kb.nextLine();
-			System.out.println("[이메일을 입력해주세요]");
-			String email = kb.nextLine();
+				System.out.println("[전화번호를 입력해주세요]");
+				String phoneNumber = kb.nextLine();
+				System.out.println("[주소를 입력해주세요]");
+				String addr = kb.nextLine();
+				System.out.println("[이메일을 입력해주세요]");
+				String email = kb.nextLine();
 
-			PhoneInfo info = null;
+				try {
+					if (phoneNumber.trim().isEmpty() || addr.trim().isEmpty() || email.trim().isEmpty()) {
+						UserException e = new UserException("예외 발생");
+						throw e;
+					}
+				} catch (UserException e) {
+					System.out.println("정보를 입력하지 않았습니다\n다시 입력해주세요");
+					continue;
+				} catch (Exception e) {
+					System.out.println("정보를 입력하지 않았습니다\n다시 입력해주세요");
+					continue;
+				} finally {
+					kb.hasNextLine();
+				}
+				PhoneInfo info = null;
 
-			if (books[index] instanceof PhoneCompanyInfo) {
-				System.out.println("[회사를 입력해주세요]");
-				String company = kb.nextLine();
-				System.out.println("[부서를 입력해주세요]");
-				String dept = kb.nextLine();
-				System.out.println("[직책을 입력해주세요]");
-				String job = kb.nextLine();
-				info = new PhoneCompanyInfo(editName, phoneNumber, addr, email, company, dept, job);
-			} else if (books[index] instanceof PhoneClubInfo) {
-				System.out.println("[동호회 이름을 입력해주세요]");
-				String cafeName = kb.nextLine();
-				System.out.println("[닉네임을 입력해주세요]");
-				String nickName = kb.nextLine();
-				info = new PhoneClubInfo(editName, phoneNumber, addr, email, cafeName, nickName);
+				if (books[index] instanceof PhoneCompanyInfo) {
+					System.out.println("[회사를 입력해주세요]");
+					String company = kb.nextLine();
+					System.out.println("[부서를 입력해주세요]");
+					String dept = kb.nextLine();
+					System.out.println("[직책을 입력해주세요]");
+					String job = kb.nextLine();
+					info = new PhoneCompanyInfo(editName, phoneNumber, addr, email, company, dept, job);
+				} else if (books[index] instanceof PhoneClubInfo) {
+					System.out.println("[동호회 이름을 입력해주세요]");
+					String cafeName = kb.nextLine();
+					System.out.println("[닉네임을 입력해주세요]");
+					String nickName = kb.nextLine();
+					info = new PhoneClubInfo(editName, phoneNumber, addr, email, cafeName, nickName);
+				}
+				books[index] = info;
+				System.out.println(
+						"------------------------------------------------------------------------------------");
+				break;
 			}
-			books[index] = info;
-			System.out.println("------------------------------------------------------------------------------------");
 		}
 
 	}
@@ -103,27 +122,67 @@ public class PhoneBookManager {// 싱글톤 패턴
 	}
 
 	void createInfo() {
-		System.out.println("1.대학 2.회사 3.동호회");
-		System.out.println("[입력하고자 하는 번호를 입력해주세요]");
-		System.out.println("------------------------------------------------------------------------------------");
 //	int select=sc.nextInt();
 //	sc.nextLine();
-		int select = Integer.parseInt(kb.nextLine());// 공백 문제 해결
-		System.out.println("select:"+select);
-		// 기본 정보 수집:이름,전화번호,주소,이메일
-		System.out.println("[이름을 입력해주세요]");
-		String name = kb.nextLine();
-		System.out.println("[전화번호를 입력해주세요]");
-		String phoneNumber = kb.nextLine();
-		System.out.println("[주소를 입력해주세요]");
-		String addr = kb.nextLine();
-		System.out.println("[이메일을 입력해주세요]");
-		String email = kb.nextLine();
+		int select = 0;
+		while (true) {
+			System.out.println("1.대학 2.회사 3.동호회");
+			System.out.println("[입력하고자 하는 번호를 입력해주세요]");
+			System.out.println("------------------------------------------------------------------------------------");
 
-		PhoneInfo info = null;
-		if ((select > 0 && select < 4)) {
+			try {
+				select = Integer.parseInt(kb.nextLine());// 공백 문제 해결
+				if (!(select >= Choice.UNIV && select <= Choice.CAFE)) {
+					UserException e = new UserException("입력 문제 발생");
+					throw e;
+				}
+	
+
+			} catch (NumberFormatException e) {
+				System.out.println("[올바른 번호를 입력해주세요]");
+				continue;
+			} catch (UserException e) {
+				System.out.println("[올바른 번호를 입력해주세요]");
+				continue;
+			} catch (Exception e) {
+				System.out.println("[올바른 번호를 입력해주세요]");
+				continue;
+			} finally {
+//				kb.hasNextLine();
+			}
+			break;
+		}
+
+		while (true) {
+			// 기본 정보 수집:이름,전화번호,주소,이메일
+			System.out.println("[이름을 입력해주세요]");
+			String name = kb.nextLine();
+			System.out.println("[전화번호를 입력해주세요]");
+			String phoneNumber = kb.nextLine();
+			System.out.println("[주소를 입력해주세요]");
+			String addr = kb.nextLine();
+			System.out.println("[이메일을 입력해주세요]");
+			String email = kb.nextLine();
+			// 공백 입력시 사용자 예외처리
+//		System.out.println("select:" + select);
+			try {
+				if (name.trim().isEmpty() || phoneNumber.trim().isEmpty() || addr.trim().isEmpty()
+						|| email.trim().isEmpty()) {
+					EmptyException e = new EmptyException("오류 발생");
+					throw e;
+				}
+			} catch (EmptyException e) {
+				System.out.println("정보를 입력하지 않았습니다.\n다시 입력하세요");
+				continue;
+			} catch (Exception e) {
+				System.out.println("정보를 입력하지 않았습니다.\n다시 입력하세요");
+				continue;
+			} finally {
+//				kb.hasNextLine();
+			}
+			PhoneInfo info = null;
 			switch (select) {
-			case 1:
+			case Choice.UNIV:
 				System.out.println("[전공을 입력해주세요]");
 				String major = kb.nextLine();
 				System.out.println("[학점을 입력해주세요]");
@@ -133,7 +192,7 @@ public class PhoneBookManager {// 싱글톤 패턴
 						"------------------------------------------------------------------------------------");
 				break;
 
-			case 2:
+			case Choice.COMPANY:
 				System.out.println("[회사를 입력해주세요]");
 				String company = kb.nextLine();
 				System.out.println("[부서를 입력해주세요]");
@@ -145,7 +204,7 @@ public class PhoneBookManager {// 싱글톤 패턴
 						"------------------------------------------------------------------------------------");
 				break;
 
-			case 3:
+			case Choice.CAFE:
 				System.out.println("[동호회 이름을 입력해주세요]");
 				String cafeName = kb.nextLine();
 				System.out.println("[닉네임을 입력해주세요]");
@@ -161,10 +220,13 @@ public class PhoneBookManager {// 싱글톤 패턴
 						"------------------------------------------------------------------------------------");
 				return;
 			}
+			addInfo(info);
+			break;
 		}
 
+		// 입력범위에 따른 예외 처리
+
 //		addInfo(new PhoneInfo(name, phoneNumber, addr, email));
-		addInfo(info);
 	}
 
 	int searchIndex(String name) {

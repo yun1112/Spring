@@ -75,12 +75,26 @@ public class PhoneBookManager {// 싱글톤 패턴
 				PhoneInfo info = null;
 
 				if (books[index] instanceof PhoneCompanyInfo) {
-					System.out.println("[회사를 입력해주세요]");
-					String company = kb.nextLine();
-					System.out.println("[부서를 입력해주세요]");
-					String dept = kb.nextLine();
-					System.out.println("[직책을 입력해주세요]");
-					String job = kb.nextLine();
+						System.out.println("[회사를 입력해주세요]");
+						String company = kb.nextLine();
+						System.out.println("[부서를 입력해주세요]");
+						String dept = kb.nextLine();
+						System.out.println("[직책을 입력해주세요]");
+						String job = kb.nextLine();
+						try {
+							if (company.trim().isEmpty() || dept.trim().isEmpty() || job.trim().isEmpty()) {
+								UserException e = new UserException("예외 발생");
+								throw e;
+							}
+						} catch (UserException e) {
+							System.out.println("정보를 입력하지 않았습니다\n다시 입력해주세요");
+							continue;
+						} catch (Exception e) {
+							System.out.println("정보를 입력하지 않았습니다\n다시 입력해주세요");
+							continue;
+						} finally {
+							kb.hasNextLine();
+						}
 					info = new PhoneCompanyInfo(editName, phoneNumber, addr, email, company, dept, job);
 				} else if (books[index] instanceof PhoneClubInfo) {
 					System.out.println("[동호회 이름을 입력해주세요]");
@@ -136,7 +150,6 @@ public class PhoneBookManager {// 싱글톤 패턴
 					UserException e = new UserException("입력 문제 발생");
 					throw e;
 				}
-	
 
 			} catch (NumberFormatException e) {
 				System.out.println("[올바른 번호를 입력해주세요]");

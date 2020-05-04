@@ -1,9 +1,11 @@
 package ver05;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 /*
- 수정 일자:20/04/29
- 수정 내용: 싱글톤 패턴 처리
+ 기존에 배열로 선언되었던 books를 ArrayList로 재정의
+ 
  */
 import java.util.Scanner;
 
@@ -17,21 +19,21 @@ public class PhoneBookManager {
 		return manager;
 	}
 
-	static PhoneInfo[] books;
+	 ArrayList<PhoneInfo> books;
+	Iterator<PhoneInfo> iter;
 	Scanner kb;
-	int numOfInfo;// int numOfInfo 배열에 저장된 요소의 개수
 
 	private PhoneBookManager(int N) {
-		books = new PhoneInfo[N];
+		books =new ArrayList<>();
+		iter=books.iterator();
 		kb = new Scanner(System.in);
-		numOfInfo = 0;
 	}
 
 	void searchInfo() {
 		String name = kb.nextLine();
-		for (int i = 0; i < numOfInfo; i++) {
-			if (books[i].checkName(name))
-				books[i].showAllInfo();
+		for (int i = 0; i < books.size(); i++) {
+			if (books.get(i).checkName(name))
+				books.get(i).showAllInfo();
 		}
 	}
 
@@ -56,13 +58,13 @@ public class PhoneBookManager {
 
 			PhoneInfo info = null;
 
-			if (books[index] instanceof PhoneUnivInfo) {
+			if (books.get(index) instanceof PhoneUnivInfo) {
 				System.out.println("전공을 입력해주세요");
 				String major = kb.nextLine();
 				System.out.println("학점을 입력해주세요");
 				String grade = kb.nextLine();
 				info = new PhoneUnivInfo(editName, phoneNumber, addr, email, major, grade);
-			} else if (books[index] instanceof PhoneCompanyInfo) {
+			} else if (books.get(index) instanceof PhoneCompanyInfo) {
 				System.out.println("회사를 입력해주세요");
 				String company = kb.nextLine();
 				System.out.println("부서를 입력해주세요");
@@ -70,7 +72,7 @@ public class PhoneBookManager {
 				System.out.println("직책을 입력해주세요");
 				String job = kb.nextLine();
 				info = new PhoneCompanyInfo(editName, phoneNumber, addr, email, company, dept, job);
-			} else if (books[index] instanceof PhoneCafeInfo) {
+			} else if (books.get(index)instanceof PhoneCafeInfo) {
 				System.out.println("동호회 이름을 입력해주세요");
 				String cafeName = kb.nextLine();
 				System.out.println("닉네임을 입력해주세요");
@@ -78,7 +80,10 @@ public class PhoneBookManager {
 				info = new PhoneCafeInfo(editName, phoneNumber, addr, email, cafeName, nickName);
 			}
 
-			books[index] = info;
+			books.set(index, info);
+			
+			//추가
+			iter=books.iterator();
 		}
 
 	}
@@ -90,25 +95,14 @@ public class PhoneBookManager {
 		if (index < 0) {
 			System.out.println("삭제하고자 하는 이름의 정보가 없습니다");
 		} else {
-			for (int i = index; i < numOfInfo - 1; i++) {
-				if (i == index) {
-					books[i] = books[i + 1];
-				}
+			books.remove(index);
+			iter=books.iterator();//추가
 			}
 		}
-//			books[numOfInfo - 1] = null;
 
-		numOfInfo--;
-	}
-
-	void addInfo(PhoneInfo p) {
-		books[numOfInfo++] = p;
-	}
 
 	void createInfo() {
 
-//	int select=sc.nextInt();
-//	sc.nextLine();
 		int select = 0;
 		// while문으로 반복처리
 		while (true) {
@@ -167,19 +161,7 @@ public class PhoneBookManager {
 			}
 			break;
 		}
-//			if(name.isEmpty()||phoneNumber.isEmpty()|| addr.isEmpty()||email.isEmpty()) {
-//				StringEmptyException e=new StringEmptyException();
-//				throw e;
-//				try {
-//					
-//				}catch(StringEmptyException e) {
-//					continue;
-//				}catch(Exception e) {
-//					continue;
-//				}
-//			}
 
-//		if (select > 0 && select < 4) {
 		switch (select) {
 		case MenuNum.UNIV:
 			System.out.println("전공을 입력해주세요");
@@ -209,14 +191,14 @@ public class PhoneBookManager {
 			info = new PhoneCafeInfo(name, phoneNumber, addr, email, cafeName, nickName);
 			break;
 		}
-		addInfo(info);
+		books.add(info);
+		iter=books.iterator();//추가
 	}
-//		}
 
 	int searchIndex(String name) {
 		int searchIndex = -1;// 해당 인덱스를 찾지 못했을 경우 기본값
-		for (int i = 0; i < numOfInfo; i++) {
-			if (books[i].checkName(name)) {
+		for (int i = 0; i < books.size(); i++) {
+			if (books.get(i).checkName(name)) {
 				searchIndex = i;
 				break;
 			}
@@ -232,21 +214,19 @@ public class PhoneBookManager {
 			System.out.println("검색하신 이름의 정보가 없습니다");
 		else {
 			System.out.println("-------------------------------------");
-			books[index].showBasicInfo();
+			books.get(index).showBasicInfo();
 			System.out.println("-------------------------------------");
 		}
 	}
 
 	void showAllInfo() {
-		// for 반복문
-		// for each 반복문
-//		for(PhoneInfo p: books) {//데이터 삭제 후 인덱스값 그대로 남아 있기 때문에 오류 발생하기 때문에 for-each문 사용 불가
-//			p.showAllInfo();
-//		}
-		System.out.println("전체 정보를 출력합니다----------------------");
-		for (int i = 0; i < numOfInfo; i++) {
-			books[i].showAllInfo();
 
+		System.out.println("전체 정보를 출력합니다----------------------");
+
+		while(iter.hasNext()) {
+			iter.next().showAllInfo();
 		}
+		
+		
 	}
 }

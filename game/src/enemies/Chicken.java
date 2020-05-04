@@ -7,6 +7,8 @@ import game.Monster;
 public class Chicken extends Monster {//should be resistant to physical attacks!
 
     public Chicken() {
+//    	super.setEvasion(evasion);
+    	
         super.setName("닭");
         super.setBaseHealth(200);
 //        super.setBaseMana(10);
@@ -18,7 +20,7 @@ public class Chicken extends Monster {//should be resistant to physical attacks!
         
         super.setGoldWorth(30);
         super.setExpWorth(25);
-        super.setWeakness(2); //See Monster class for list of types
+        super.setWeakness(1); //See Monster class for list of types
         super.setEscapable(true);
         
 //        Item slimeE = new SlimeExtract();
@@ -31,6 +33,25 @@ public class Chicken extends Monster {//should be resistant to physical attacks!
         
         super.initCurrentStats();
     }
+    public void showData() {
+    	super.showData();
+    	System.out.println("닭 선택");
+    }
+	@Override
+	public String toString() {
+		return "Chicken [getEvasion()=" + getEvasion() + ", getGoldWorth()=" + getGoldWorth() + ", getExpWorth()="
+				+ getExpWorth() + ", getWeakness()=" + getWeakness() + ", isEscapable()=" + isEscapable()
+				+ ", toString()=" + super.toString() + ", getName()=" + getName() + ", getCurrentHealth()="
+				+ getCurrentHealth() + ", getBaseHealth()=" + getBaseHealth() + ", getMaxHealth()=" + getMaxHealth()
+				+ ", getCurrentMana()=" + getCurrentMana() + ", getBaseMana()=" + getBaseMana() + ", getMaxMana()="
+				+ getMaxMana() + ", getCurrentStrength()=" + getCurrentStrength() + ", getBaseStrength()="
+				+ getBaseStrength() + ", getCurrentMagic()=" + getCurrentMagic() + ", getBaseMagic()=" + getBaseMagic()
+				+ ", getCurrentAgility()=" + getCurrentAgility() + ", getBaseAgility()=" + getBaseAgility()
+				+ ", getCurrentDefense()=" + getCurrentDefense() + ", getBaseDefense()=" + getBaseDefense()
+				+ ", getCurrentMagicDefense()=" + getCurrentMagicDefense() + ", getBaseMagicDefense()="
+				+ getBaseMagicDefense() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+	}
+    
     
     /*public int slash() {
         return (int)(super.getBaseStrength() * 0.5) + 10;

@@ -80,7 +80,8 @@ select ename, job from emp;
 select deptno from emp;
 select distinct deptno from emp;
 
-select distinct deptno,job from emp;
+select deptno,job from emp order by deptno;
+select distinct deptno,job from emp order by deptno;
 
 
 

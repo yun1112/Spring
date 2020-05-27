@@ -469,8 +469,24 @@ where custid in(select custid from orders
 where bookid in(select bookid from book where publisher='대한미디어'));
 select name from customer where custid in(select custid from orders);
 select bookname from book where price=(select max(price) from book);
---------------------------------------------
+-------------------------------------------------------------------------------------예제
+--인라인 뷰: from 절에서 사용되는 서브쿼리, 뷰처럼 결과가 동적으로 생성된 테이블로 사용
+--두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객 이름@@@@@
+select name from (select name,publisher from customer, orders, book
+where customer.custid=orders.custid and orders.bookid=book.bookid
+group by name,publisher)
+group by name--이름으로 그룹지음->중복 제거
+having count(publisher)>1;
 
+select name,count(publisher) from (
+select name, publisher from customer, orders, book 
+where customer.custid=orders.custid and orders.bookid=book.bookid
+group by name,publisher)--중복 1차 제거(이름,출판사)
+group by name--중복 2차 제거(이름)
+having count(publisher)>1;--출판사 수>1(이미 중복 제거됨->카운트만 하면 됨)
+
+
+-------------------------------------------------------------------------------------예제
 select * from emp;
 select * from dept;
 --------------------------------------------문제 5번
@@ -548,7 +564,33 @@ select orderid,custid,bookid,saleprice,orderdate,bookid from orders where orderi
 select * from orders where orderid in(select orderid from orders,book where orders.bookid=book.bookid and price-saleprice=(select max(price-saleprice) from orders,book where orders.bookid=book.bookid));
 
 --(13) 도서의판매액평균보다자신의구매액평균이더높은고객의이름@+@@@@
-select name from customer c where custid in(select custid from orders o , book b where o.bookid=b.bookid group by custid having avg(price)>(select avg(price) from orders o, book b where o.bookid=b.bookid));
+select name from customer c 
+where custid in(select custid from orders o , book b 
+where o.bookid=b.bookid 
+group by custid 
+having avg(price)>(select avg(price) from orders o, book b 
+where o.bookid=b.bookid));
+
+select * from customer c, orders o, book b
+where c.custid=o.custid and b.bookid=o.bookid
+;
+
+
+select name from customer c where custid in(select custid from orders o, book b
+where o.bookid=b.bookid
+group by custid
+having avg(price)>(select avg(price) from orders o, book b
+where o.bookid=b.bookid));
+
+----테이블 3개 JOIN-1
+--select * from phoneinfo_basic pb, phoneInfo_univ pu, phoneInfo_com pc
+--where pb.idx=pu.fr_ref (+) and pb.idx=pc.fr_ref(+);
+--
+----테이블 3개 JOIN-2(left out join 이용)
+--select * from phoneInfo_basic pb
+--left outer join phoneInfo_univ pu on pb.idx=pu.fr_ref
+--left outer join phoneInfo_univ pc on pb.idx=pc.fr_ref
+--;
 
 select * from book;
 select * from customer;
@@ -562,9 +604,44 @@ select name from customer where custid in(select custid from orders where bookid
 
 select name from (select name,publisher from customer,orders,book where customer.custid=orders.custid and orders.bookid=book.bookid group by name, publisher) group by name having count(publisher)>1;
 
-
 select publisher from book where bookid in(select bookid from orders);
 select count(*) from book where bookid in(select bookid from orders);
+
+-------------------------------------------------예제
+--도서 총 개수
+select count(*) cnt from book;
+--출판사 총 개수
+select count(distinct publisher) cnt from book;
+--모든 고객 이름, 주소
+select name,address from customer;
+--2014/07/04~2014/07/07 주문받은 도서의 주문번호
+select orderid, orderdate from orders where orderdate between to_date('2014/07/04','yyyy-mm-dd') and to_date('2014/07/07','yyyy-mm-dd');
+select orderid, orderdate from orders where orderdate between '2014-07-04' and '2014-07-07';
+--2014/07/04~2014/07/07 주문받은 도서를 제외한 도서의 주문번호
+select orderid from orders where orderid not in(select orderid from orders where orderdate between to_date('2014-07-04','yyyy-mm-dd') and to_date('2014-07-07','yyyy/mm/dd'));
+--성이 김씨인 고객의 이름, 주소
+select name,address from customer where name like '김%';
+--성이 김씨이고 이름이 아로 끝나는 고객의 이름, 주소
+select name,address from customer where name like '김%아';
+--주문하지 않은 고객의 이름(부속질의)
+select name from customer where custid not in(select custid from orders);
+select name from customer c where not exists(select custid from orders o where o.custid=c.custid);
+--주문 금액의 총액과 주문의 평균금액
+select sum(saleprice),avg(saleprice) from orders;
+--고객의 이름, 고객별 구매액 합과 평균금액
+select name,sum(price),avg(price) from customer c,orders o,book b where c.custid=o.custid and b.bookid=o.bookid group by name;
+--고객 이름, 고객이 구매한 도서 목록
+select name,bookname from customer c, orders o, book b where c.custid=o.custid and b.bookid=o.bookid;
+--도서의 가격(book테이블)과 판매가격(orders테이블)의 차이가 가장 많은 주문
+select * from orders where orderid in(select orderid from orders,book where orders.bookid=book.bookid and price-saleprice=(select max(price-saleprice) from orders,book where orders.bookid=book.bookid));
+
+select * from orders where orderid in(select orderid from orders,book where orders.bookid=book.bookid
+and price-saleprice=(select max(price-saleprice) from orders,book where orders.bookid=book.bookid));
+
+--도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
+select name from customer where custid in(select custid from orders);
+
+
 ------------------------------------------------실습1
 create table phoneInfo_basic(
 idx NUMBER(6),
@@ -575,8 +652,11 @@ fr_address VARCHAR2(20),
 fr_regdate DATE DEFAULT sysdate,--default sysdate
 PRIMARY KEY(idx)
 );
-
-
+drop table phoneInfo_basic;
+drop table phoneInfo_com;
+drop table phoneInfo_uiv;
+rollback;
+desc phoneInfo_basic;
 create table phoneInfo_com(
 idx NUMBER(6),
 fr_c_company VARCHAR2(20) DEFAULT 'N',
@@ -584,6 +664,7 @@ fr_ref NUMBER(6),
 PRIMARY KEY(idx),
 FOREIGN KEY(fr_ref) REFERENCES phoneInfo_basic(idx)
 );
+drop table phoneInfo_com;
 
 create table phoneInfo_univ(
 idx NUMBER(6),
@@ -647,11 +728,17 @@ drop table phoneInfo_basic;
 drop table phoneInfo_com;
 drop table phoneInfo_univ;
 ------------------------------------------------실습
+delete phoneInfo_basic;
 --phoneInfo_basic
 --전체 친구 목록 출력: 테이블 3개 JOIN
 insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(1,'가나다','010-1212-1212','gnd@h.com','서울',sysdate);
 insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(2,'김김','010-2222-1212','kk@h.com','제주',sysdate);
+insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(3,'이황','010-1231-1111','lh@h.com','안동',sysdate);
+insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(4,'강','010-2222-2222','k@h.com','춘천',sysdate);
+rollback;
+drop table phoenInfo_basic;
 
+desc phoneInfo_basic
 --테이블 3개 JOIN-1
 select * from phoneinfo_basic pb, phoneInfo_univ pu, phoneInfo_com pc
 where pb.idx=pu.fr_ref (+) and pb.idx=pc.fr_ref(+);
@@ -664,45 +751,291 @@ left outer join phoneInfo_univ pc on pb.idx=pc.fr_ref
 
 --phoneInfo_univ
 insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(1,'컴퓨터공학',1,1);--1,가나다~(기본정보)
+insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(2,'체육교육',3,3);
 select * from phoneInfo_basic where idx in(select fr_ref from phoneInfo_univ);
 
+desc phoneInfo_com;
 --phoneInfo_com
 insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(1,'엔씨소프트',2);
+insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(2,'넥슨',4);
 select * from phoneInfo_basic where idx in(select fr_ref from phoneInfo_com);
 
-select * from book;
-select * from orders;
-select * from customer;
--------------------------------------------------예제
---도서 총 개수
-select count(*) cnt from book;
---출판사 총 개수
-select count(distinct publisher) cnt from book;
---모든 고객 이름, 주소
-select name,address from customer;
---2014/07/04~2014/07/07 주문받은 도서의 주문번호
-select orderid, orderdate from orders where orderdate between to_date('2014/07/04','yyyy-mm-dd') and to_date('2014/07/07','yyyy-mm-dd');
-select orderid, orderdate from orders where orderdate between '2014-07-04' and '2014-07-07';
---2014/07/04~2014/07/07 주문받은 도서를 제외한 도서의 주문번호
-select orderid from orders where orderid not in(select orderid from orders where orderdate between to_date('2014-07-04','yyyy-mm-dd') and to_date('2014-07-07','yyyy/mm/dd'));
---성이 김씨인 고객의 이름, 주소
-select name,address from customer where name like '김%';
---성이 김씨이고 이름이 아로 끝나는 고객의 이름, 주소
-select name,address from customer where name like '김%아';
---주문하지 않은 고객의 이름(부속질의)
-select name from customer where custid not in(select custid from orders);
-select name from customer c where not exists(select custid from orders o where o.custid=c.custid);
---주문 금액의 총액과 주문의 평균금액
-select sum(saleprice),avg(saleprice) from orders;
---고객의 이름, 고객별 구매액 합과 평균금액
-select name,sum(price),avg(price) from customer c,orders o,book b where c.custid=o.custid and b.bookid=o.bookid group by name;
---고객 이름, 고객이 구매한 도서 목록
-select name,bookname from customer c, orders o, book b where c.custid=o.custid and b.bookid=o.bookid;
---도서의 가격(book테이블)과 판매가격(orders테이블)의 차이가 가장 많은 주문
-select * from orders where orderid in(select orderid from orders,book where orders.bookid=book.bookid and price-saleprice=(select max(price-saleprice) from orders,book where orders.bookid=book.bookid));
+-------------------------------------------------------------------05/27
+--1.회사친구의 정보 변경
+update phoneInfo_com set fr_c_company='삼성' where idx=2;
+update phoneInfo_com set fr_c_company='애플' where fr_ref=(select idx from phoneInfo_basic where fr_name='김김');
 
-select * from orders where orderid in(select orderid from orders,book where orders.bookid=book.bookid
-and price-saleprice=(select max(price-saleprice) from orders,book where orders.bookid=book.bookid));
+select * from phoneInfo_com;
+--2.학교 친구 정보 변경
+update phoneInfo_univ set fr_u_major='유아교육',fr_u_year=2 where idx=2;
+update phoneInfo_univ set fr_u_major='수학교육' where fr_ref=(select idx from phoneInfo_basic where fr_address='서울');
 
---도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
-select name from customer where custid in(select custid from orders);
+--1. 회사 친구 정보를 삭제
+delete from phoneInfo_com where idx=1;
+rollback;
+delete from phoneInfo_com where fr_ref=2;
+delete from phoneInfo_basic where idx=2;
+--2. 학교 친구 정보를 삭제
+delete from phoneInfo_univ where fr_u_major='유아교육';
+delete from phoneInfo_basic;
+
+delete from phoneInfo_univ where fr_ref=1;
+delete from phoneInfo_basic where idx=1;
+
+select * from phoneInfo_basic;
+select * from phoneInfo_univ;
+select * from phoneInfo_com;
+
+select idx from phoneInfo_basic where fr_address='서울';
+
+--서브쿼리를 이용해서 여러 테이블에 한번에 데이터 삽입
+--테스트 테이블 emp_hir : empno, ename, hiredate
+--테스트 테이블 emp_mgr: empno, ename, mgr
+
+--다른 테이블의 구조만 가져와서 복사함
+create table emp_hir
+as
+select empno,ename,hiredate from emp where 1<0;--조건이 faulse이므로 데이터는 복사하지 않고, 구조만 복사해옴
+
+create table emp_mgr
+as
+select empno,ename,mgr from emp where 1<0;
+
+desc emp_hir
+desc emp_mgr
+
+--두 개 테이블에 emp 테이블의 데이터를 기반으로 삽입
+insert all
+into emp_hir values(empno,ename,hiredate)--into emp_hir(속성1,속성2,...) values(값1,값2,...)
+into emp_mgr values(empno,ename,mgr)
+select empno,ename,hiredate,mgr
+from emp
+;
+
+select * from emp_hir;
+select * from emp_mgr;
+
+select * from emp_hir eh, emp_mgr em
+where eh.empno=em.empno;
+
+--조건 when~then
+
+-- INSERT ALL 명령문에 WHEN 절을 추가해서 조건을 제시하여 조건에
+--맞는 행만 추출하여 테이블에 추가합니다.
+-- EMP_HIR02 테이블에는 1982 년 01 월01 일 이후에 입사한 사원들의
+--번호, 사원 명, 입사일을 추가합니다.
+-- EMP_SAL 테이블에는 급여가 2000 이상인 사원들의 번호, 사원 명, 급여를
+--추가합니다. 
+
+create table emp_hir02
+as
+select empno,ename,hiredate from emp where 1<0;
+
+create table emp_sal
+as
+select empno,ename,sal from emp where 1<0;
+
+desc emp_hir02
+desc emp_sal
+
+insert all
+when hiredate>'1982/01/01' then
+into emp_hir02 values(empno,ename,hiredate)
+when sal>=2000 then
+into emp_sal values(empno,ename,sal)
+select empno,ename,hiredate,sal from emp
+;
+
+delete from emp_hir02;
+delete emp_sal;
+
+select * from emp_hir02;
+select * from emp_sal;
+
+drop table emp01;
+create table emp01
+as
+select * from emp;
+
+desc emp01
+select * from emp01;
+
+--컬럼의 데이터 변경(수정)
+--update 테이블명 set 컬럼명1=값,컬럼명2=값,... where 행을 찾는 조건식
+--where 절이 없는 경우 테이블의 모든 행이 영향을 받는다
+-- 1. 모든 사원의 부서번호를 30번으로 수정합시다.
+update emp01 set deptno=30;
+
+-- 2. 이번엔 모든 사원의 급여를 10% 인상시키는 UPDATE 문을 보겠습니다.
+update emp01 set sal=sal*1.1;
+
+-- 3. 모든 사원의 입사일을 오늘로 수정하려면 다음과 같이 합니다.
+update emp01 set hiredate=sysdate;
+
+drop table emp01;
+create table emp01 as select * from emp;
+select * from emp01;
+rollback;
+--1. 부서번호가 10번인 사원의 부서번호를 30번으로 수정합시다.
+update emp01 set deptno=30 where deptno=10;
+--2. 급여가 3000 이상인 사원만 급여를 10% 인상합시다. 
+update emp01 set sal=sal*1.1 where sal>=3000;
+--3. 1987년에 입사한 사원의 입사일이 오늘로 수정합시다. 사원의
+--입사일을 오늘로 수정한 후에 테이블 내용을 살펴봅시다.
+update emp01 set hiredate=sysdate where substr(hiredate,1,2)='87';
+--substr(hiredate,1,2): 입사일 문자열로 첫번째 문자부터 2개 추출
+update emp01 set hiredate=sysdate where hiredate between '1987/01/01' and '1987/12/31';
+
+--테이블에서 하나의 칼럼이 아닌 복수 개 칼럼의 값을 변경하려면
+--기존 SET절에 콤마를 추가하고 칼럼=값을 추가 기술하면 됩니다.
+
+--1. SCOTT 사원의 부서번호는 20번으로, 직급은 MANAGER로 한꺼번에 수정하도록 합시다.
+update emp01 set deptno=20,job='MANAGER' where ename='SCOTT';
+select * from emp01;
+--2. SCOTT 사원의 입사일자는 오늘로, 급여를 50 으로 커미션을 4000 으로 수정합시다.
+update emp01 set hiredate=sysdate,sal=50,comm=4000 where ename='SCOTT';
+
+--서브 쿼리를 이용한 데이터 수정하기
+--1. 20번 부서의 지역명을 40번 부서의 지역명으로 변경하기 위해서 서브 쿼리문을 사용해 봅시다. 
+update dept01 set loc=(select loc from dept01 where deptno=40) where deptno=20;
+select loc from dept01 where deptno=40;
+desc dept01
+create table dept01 as select * from dept;
+select * from dept01;
+drop table dept01;
+rollback;
+
+-- 서브 쿼리를 이용한 두개 이상의 칼럼에 대한 값 변경
+--1. 부서 번호가 20번인 부서의 이름과 지역은 RESEARCH와
+--DALLAS입니다. 다음은 부서번호가 20인 부서의 부서명과 지역명을 부서
+--번호가 40번인 부서와 동일하게 변경하기 위한 UPDATE 명령문입니다.
+update dept01 set (dname,loc)=(select dname,loc from dept01 where deptno=40) where deptno=20;
+
+delete from dept01 where deptno=30;
+rollback;
+
+--사원 테이블에서 부서명이 SALES인 사원을 모두 삭제해봅시다
+delete from emp01 where deptno=(select deptno from dept01 where dname='SALES');
+select * from emp01;
+rollback;
+
+---------------------------------------------------------------------DML 예제
+--insert
+create table dept02 as select * from dept where 1<0;
+desc dept02
+select * from dept02;
+insert into dept02(deptno,dname,loc) values (10,'ACCOUNTING','NEW YORK');
+commit;--정삭적으로 작업 완료, 물리적으로 저장
+savepoint p1;
+insert into dept02 values(20,'RESEARCH','DALLAS');
+rollback;--마지막으로 물리적으로 저장된 시점으로 되돌림
+rollback to p1;
+delete dept02;
+delete from dept02 where deptno=10;
+
+create table dept03 as select * from dept where 1<0;--테이블 구조만 복사
+drop table dept03;
+desc dept03
+insert into dept03 select * from dept;--데이터 전체 복사
+insert into dept03 values(1,'SALES','SEOUL');
+select * from dept03;
+rollback;
+--insert all
+--1. 다중 테이블에 다중행 입력, 서브쿼리의 결과를 조건 없이 여러 테이블에 입력
+create table emp_hir2 as select * from emp_hir;
+create table emp_mgr2 as select * from emp_mgr;
+desc emp_hir2;
+desc emp_mgr2;
+
+insert all
+into emp_hir2 values(empno,ename,hiredate)
+into emp_mgr2 values(empno,ename,mgr)
+select empno,ename,hiredate,mgr from emp
+where deptno=20;
+
+select * from emp_hir2;
+select * from emp_mgr;
+
+--2. 조건(when)으로 다중 테이블에 다중행 입력
+create table emp_hir3 as select empno,ename,hiredate from emp where 1<0;
+desc emp_hir3;
+select * from emp_hir3;
+create table emp_sal2 as select empno,ename,sal from emp where 1<0; 
+desc emp_sal2;
+select * from emp_sal2;
+
+insert all
+when hiredate>'1982/01/01' then
+into emp_hir3 values(empno,ename,hiredate)
+when sal>=2000 then
+into emp_sal2 values(empno,ename,sal)
+select empno,ename,hiredate,sal
+from emp;
+
+--merge
+--merge into emp_hir3 using emp_sal2 on(emp_hir3.empno=emp_sal2.empno)
+--when matched then update~
+alter table emp_hir33
+rename to emp_hir3;
+desc emp_hir3;
+
+--truncate 데이터베이스 저장공간 삭제, 데이터 전체삭제 자동 commit되어 rollback으로 데이터 복구할 수 없음
+create table ex_emp(
+empno number(4),
+ename varchar2(10),
+job varchar2(20),
+mgr number(4),
+hiredate date,
+sal number(7,2),--
+comm number(7,2),
+deptno number(2)
+);
+
+desc ex_emp;
+select * from ex_emp;
+drop table ex_emp;
+insert into ex_emp values(7369,'SMITH','CLERK',7839,'80/12/17',800,'',20);
+insert into ex_emp values(7499,'ALLEN','SALESMAN',7369,'87/12/20',1600,300,30);
+insert into ex_emp values(7839,'KING','PRESIDENT','','',5000,'','');
+
+update ex_emp set sal=sal*1.1;
+rollback;
+
+update ex_emp set hiredate=sysdate where ename='KING';
+delete from ex_emp where comm is null;
+
+--2. Mybook 테이블을 생성하고 null에 관한 다음 SQL문에 답하시오.
+--또한 질의의 결과를 보면서 null에 대한 개념도 정리해보시오.
+--각 행의 bookid와 price를 보여준다. 만약 price가 null 이면 0으로 대체하여 표시한다.
+create table Mybook(
+bookid number(10),
+price number(10),
+primary key(bookid)
+);
+drop table Mybook;
+create table Mybook as select * from book;
+desc Mybook;
+select bookid,nvl(price,0) from Mybook;
+
+--고객번호와 그 고객의 주소를 보인다. 
+--Orders 테이블에는 고객의 주소에 관한 속성이 없으니 
+--스칼라 부속질의를 통해서 이를 Customer 테이블에서 가져왔다.
+create table Mycustomer as select * from customer;
+desc mycustomer;
+select custid,address from mycustomer;
+select custid,(select address from customer cs where cs.custid=od.custid) "address", sum(saleprice)"total"
+from orders od
+group by od.custid;
+
+--인라인 뷰를 써서 Orders 테이블에서 고객번호와 고객의 구입평균을 가져온 후
+--이를 Customer테이블과 조인해 고객의 이름과 고객의 구입평균을 검색했다.
+select name, s from (select custid,avg(saleprice) s from orders group by custid) od, customer cs
+where cs.custid=od.custid;
+
+select name, avg from(select custid,avg(saleprice) avg from orders group by custid) od, customer cs
+where cs.custid=od.custid;
+
+--고객번호가 3이하인 고객의 구입총액을 검색했다. 부속질의가 WHERE문에 있는 중첩질의를 사용했다. 
+select sum(saleprice) from orders od where exists(select * from customer cs where custid<=3 and cs.custid=od.custid);
+
+

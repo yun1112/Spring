@@ -66,7 +66,52 @@ select * from customer;
 select sum(saleprice) from orders where custid in(select custid from customer where name='박지성');
 
 --박지성이 구매한 도서의 수
-select bookid from orders where custid in(select custid from customer where name='박지성');
+select count(bookid)cnt from orders where custid in(select custid from customer where name='박지성');
+desc orders;
+
+create table orders2 as select * from orders;
+select * from orders2;
+insert into orders2 values(11,1,1,6000,sysdate);--중복값 제거하기 위한 데이터 추가
+--중복되는 칼럼값이 있을 때 한번만 나타내도로 하는 키워드 distinct
+select count(distinct bookid) from orders2 where custid=(select custid from customer where name='박지성');
+--서브쿼리의 결과가 여러 건일 때(다중행), =, <=, >=, !=연산자 바로 사용 못함
+--다중행 연산자 사용해야 함 in, any, some, all >=, <=, >, <
+
+--박지성이 구매한 도서의 출판사 수
+--(1)
+select count(distinct publisher)cnt from book where bookid in(select bookid from orders where custid in(select custid from customer where name='박지성'));
+--(2)
+select count(distinct publisher)cnt from book,orders where book.bookid=orders.bookid and custid=(select custid from customer where name='박지성');
+--박지성이 구매한 도서의 이름, 가격, 정가와 판매가격의 차이 
+select bookname,price,abs(price-saleprice)diff from book,orders where book.bookid=orders.bookid and custid=(select custid from customer where name='박지성');
+--박지성이 구매하지 않은 도서의 이름
+select bookname from book where bookid in(select bookid from orders where custid in(select custid from customer where name<>'박지성'));
+--union: 검색한 결과 합침
+--minus: 검색한 결과에서 뺌
+select bookname from book minus select bookname from book where bookid in(select bookid from orders where custid in(select custid from customer where name='박지성'));
+
+--2014년 7월 4일 ~ 7월 7일 사이에 주문받은 도서를 제외한 도서의 주문번호
+--(1)
+select orderid from orders minus select orderid from orders where orderdate between '14/07/04' and '14/07/07';
+--(2)
+select orderid from orders where orderdate not between '14/07/04' and '14/07/07';
+
+--박지성 고객의 2014년도의 주문 총금액의 평균금액을 출력
+select sum(saleprice)sum,avg(saleprice)avg from orders where custid in(select custid from customer where name='박지성')and substr(orderdate,1,2)='14';
+select sum(saleprice)sum,avg(saleprice)avg from orders where custid in(select custid from customer where name='박지성')and to_char(orderdate,'yyyy')=2014;
+
+--(1-1)고객의 이름과 고객별 구매액
+select name,sum(saleprice)sum from customer, orders where customer.custid=orders.custid group by name;
+--(1-2)구매내역이 없는사람은 0으로 출력(구매액이 높은순) @@
+select name,nvl(sum(saleprice),0)sum from customer left join orders on customer.custid=orders.custid group by name order by sum desc;
+
+--검색한 레코드 중에 상위 몇개만 추출해야할 경우가 있다.(ex TOP10, TOP3)
+--오라클에서 검색한 행의 행번호를 붙여주는 속성이 있다.
+--rownum ==> 행번호 붙일때 사용하는 명령어 !!!!!!! 매우 유용하게 쓰임!!!!!!!
+
+
+
+
 
 
 

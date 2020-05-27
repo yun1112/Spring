@@ -44,16 +44,17 @@ FOREIGN KEY(fr_ref) REFERENCES phoneInfo_basic(idx) on delete set null
 --@set null 참조를 하고 있는 자식테이블의 모든 행의 외래키 컬럼 값을 null로 변경
 --set default 참조를 하고 있는 자식테이블의 모든 행의 외래키 컬럼의 값을 기본값으로 변경
 
+drop table phoneInfo_basic;
+drop table phoneInfo_com;
 drop table phoneInfo_univ;
-
 ------------------------------------------------실습
 delete phoneInfo_basic;
 --phoneInfo_basic
 --전체 친구 목록 출력: 테이블 3개 JOIN
-insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(1,'가나다','010-1212-1212','gnd@h.com','서울',sysdate);
-insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(2,'김김','010-2222-1212','kk@h.com','제주',sysdate);
-insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(3,'이황','010-1231-1111','lh@h.com','안동',sysdate);
-insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(4,'강','010-2222-2222','k@h.com','춘천',sysdate);
+insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq,'가나다','010-1212-1212','gnd@h.com','서울',sysdate);
+insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq.nextval,'김김','010-2222-1212','kk@h.com','제주',sysdate);
+insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq.nextval,'이황','010-1231-1111','lh@h.com','안동',sysdate);
+insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq.nextval,'강','010-2222-2222','k@h.com','춘천',sysdate);
 rollback;
 drop table phoenInfo_basic;
 
@@ -69,14 +70,14 @@ left outer join phoneInfo_univ pc on pb.idx=pc.fr_ref
 ;
 
 --phoneInfo_univ
-insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(1,'컴퓨터공학',1,1);--1,가나다~(기본정보)
-insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(2,'체육교육',3,3);
+insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(pb_com_idx_seq,'컴퓨터공학',1,pb_basic_idx_seq.currval);--1,가나다~(기본정보)
+insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(pb_com_idx_seq.nextval,'체육교육',3,pb_basic_idx_seq.nextval);
 select * from phoneInfo_basic where idx in(select fr_ref from phoneInfo_univ);
 
 desc phoneInfo_com;
 --phoneInfo_com
-insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(1,'엔씨소프트',2);
-insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(2,'넥슨',4);
+insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(pb_basic_idx_seq.nextval,'엔씨소프트',2);
+insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(pb_com_idx_seq.nextval,'넥슨',pb_basic_idx_seq.currval);
 select * from phoneInfo_basic where idx in(select fr_ref from phoneInfo_com);
 
 -------------------------------------------------------------------05/27
@@ -106,24 +107,69 @@ delete from phoneInfo_basic where idx=1;
 
 delete from phoneInfo_univ where fr_ref=3;
 delete from phoneInfo_basic where idx=3;
-
+------------------------------------------------------------------------
 select * from phoneInfo_basic;
 select * from phoneInfo_univ;
 select * from phoneInfo_com;
 
 select idx from phoneInfo_basic where fr_address='서울';
 
+------------------------------------------------------------------------
+--view 생성
+------------------------------------------------------------------------
+--조인
+select * from phoneinfo_basic pb, phoneInfo_univ pu, phoneInfo_com pc
+where pb.idx=pu.fr_ref (+) and pb.idx=pc.fr_ref(+);
+
+select * from pb_all_view pb, pb_uiv_view pu, pb_com_view pc
+where pb.idx=pu.fr_ref (+) and pb.idx=pc.fr_ref(+);
+
+--뷰 생성 pb_all_view
+--select
+create or replace view pb_all_view as select idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate
+from phoneinfo_basic;
+select * from pb_all_view;
+
+create or replace view pb_all_view (name,phonenumber,email,address,major,grade,company)--(별칭)
+as select pb.fr_name,pb.fr_phonenumber,pb.fr_email,pb.fr_address,pu.fr_u_major,pu.fr_u_year,pc.fr_c_company
+from phoneinfo_basic pb, phoneInfo_univ pu, phoneInfo_com pc
+where pb.idx=pu.fr_ref (+) and pb.idx=pc.fr_ref(+);
+select * from pb_all_view;
+select * from pb_all_view where name='김김';
+
+drop view pb_all_view;
+--pb_uiv_view
+--select * from phoneinfo_univ where idx in(select fr_ref from phoneInfo_univ);
+create or replace view pb_univ_view (name,phonenumber,email,address,major,grade)
+as select pb.fr_name,pb.fr_phonenumber,pb.fr_email,pb.fr_address,pu.fr_u_major,pu.fr_u_year
+from phoneinfo_basic pb, phoneInfo_univ pu;
+select * from pb_univ_view;
+
+--create or replace view pb_uiv_view as select idx,fr_u_major,fr_u_year,fr_ref
+--from phoneinfo_univ;
+--select * from pb_uiv_view;
+
+--pb_com_view
+--select * from phoneInfo_com where idx in(select fr_ref from phoneInfo_com);
+create or replace view pb_com_view (name,phonenumber,email,address,company)as select pb.fr_name,pb.fr_phonenumber,pb.fr_email,pb.fr_address,pc.fr_c_company
+from phoneinfo_basic pb, phoneInfo_com pc;
+select * from pb_com_view;
 
 
+------------------------------------------------------------------------------------05/27 시퀀스추가
+--시퀀스 생성
+------------------------------------------------------------------------------------
+--1.basic 테이블 sequence
+create sequence pb_basic_idx_seq
+start with 1;
+
+drop sequence pb_basic_idx_seq;
+--2.com 테이블 sequence
+create sequence pb_com_idx_seq
+start with 1;
+--3.univ 테이블 sequence
+create sequence pb_univ_idx_seq
+start with 1;
 
 
-
-
-
-
-
-
-
-
-
-
+--시퀀스 수정

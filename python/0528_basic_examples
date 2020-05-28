@@ -1,0 +1,32 @@
+#직각삼각형 출력
+print('직각삼각형 그리기\n')
+d=float(input('변의 길이: '))
+for i in range(int(d)+1):
+    print('* '*i)
+area=float((d**2)/2)
+print('넓이: %s'%area)
+
+#while문
+num=1
+while num<=100:
+    print(num)
+    num=num+1
+print('---------------------------')
+for i in range(100):
+    print(i+1)
+
+print('---------------------------')
+#for문
+for x in family:
+    print('%s %s' % (x,len(x)))
+
+print('---------------------------')
+range(2,7)
+print(list(range(2,7)))
+a=list(range(2,7))
+for i in a:
+    print(i)
+print('---------------------------')
+for i in range(4,8):
+    print(i)
+print('---------------------------')

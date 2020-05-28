@@ -1,0 +1,63 @@
+#함수
+family=['mother','father','gentleman','sexy lady']
+def print_list(a):
+    for i in a:
+        print(i)
+
+print_list(family)
+print('---------------------------')
+def countdown(n):
+    if n==0:
+        print("end")
+    else:
+        print(n)
+        countdown(n-1)
+
+countdown(10)
+print('---------------------------')
+# ex) 구구단
+for i in range(1,10):
+    print('---------------------------')
+    print('%d단'%i)
+    for j in range(2,10):
+        print(i*j)
+
+print('---------------------------')
+i=1
+while i<=9:
+    print(2,'*',i,'=',2*i)
+    i=i+1
+print('---------------------------')
+
+def multi(a):
+    i=1
+    while i<=9:
+        print(a,'*',i,'=',2*i)
+        i=i+1
+print('---------------------------')
+print('함수 이용')
+multi(9)
+print('---------------------------')
+#전역변수
+def e_is_10():
+    global e
+    e=10
+    print('e값은',e,'입니다')
+e_is_10()
+print('---------------------------')
+#반환문(return)
+def function(x):
+    a=3
+    b=5
+    y=a*x+b
+    return y
+c=function(10)
+print(c)
+print('---------------------------')
+def function2(x):
+    a=3
+    b=5
+    y=a*x+b
+    print(y)
+d=function2(10)
+print('---------------------------')

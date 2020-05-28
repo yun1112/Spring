@@ -1,0 +1,35 @@
+#리스트
+family=['mother','father','gentleman','sexy lady']
+a=len(family)
+print(a,family[2])
+
+#리스트 저장값 삭제
+family.remove('gentleman')
+print(family[2])
+
+#list
+#리스트 안에는 어떠한 자료형도 포함시킬 수 있음
+a=[1,2,['life','is']]
+empty=list() #비어 있는 리스트
+
+#리스트의 인덱싱과 슬라이싱
+#리스트의 인덱싱
+a=range(1,4)
+for i in a:
+    print(i)
+a=[1,2,3,['a','b','c']]
+print('enter any letter')
+res=input()
+print(res)
+print('enter an index of the list you want to check')
+index=int(input())
+print(a[index])
+
+#리스트 a=[1,2,3,['a','b','c']]에 포함된
+#['a','b','c']리스트에서 'a'값을 인덱싱을 사용해 추출
+print(a[-1][0])
+
+#삼중 리스트에서 인덱싱하기
+a=[1,2,['a','b',['life','is']]]
+print(a[2][2][0])
+print('---------------------------')

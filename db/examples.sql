@@ -108,13 +108,58 @@ select name,nvl(sum(saleprice),0)sum from customer left join orders on customer.
 --검색한 레코드 중에 상위 몇개만 추출해야할 경우가 있다.(ex TOP10, TOP3)
 --오라클에서 검색한 행의 행번호를 붙여주는 속성이 있다.
 --rownum ==> 행번호 붙일때 사용하는 명령어 !!!!!!! 매우 유용하게 쓰임!!!!!!!
+--select rownum,name from customer left join orders on customer.custid=orders.custid where rownum<5;
+select name from orders o,customer c where o.custid=c.custid group by name;
+select * from orders;
+--위의 질의문에서 구매액이 가장 높은 3명의 정보를 출력
+select rownum,name, sum from (select name,nvl(sum(saleprice),0) sum from customer left join orders on customer.custid=orders.custid group by name order by sum desc) where rownum<=3;
+--고객의 이름과 고객이 구매한 도서 목록
+select distinct c.name, b.bookname from book b, orders o, customer c where b.bookid=o.bookid and c.custid=o.custid order by name;
+--도서의 가격(Book 테이블)과 판매가격(Orders 테이블)의 차이가 가장 많은 주문
+--최대 가격 차이
+select max(price-saleprice) from orders,book where orders.bookid=book.bookid;
+--(답)
+select * from orders,book where orders.bookid=book.bookid and abs(price-saleprice)=(select max(price-saleprice) from orders,book where orders.bookid=book.bookid);
+--도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
+--1. 고객의 구매액 평균 A
+select name,avg(saleprice) from customer c, orders o where c.custid=o.custid group by name;
+--2. 도서의 판매액 평균 B
+select avg(saleprice) from orders;
+--(답) A 중에 A의 avg가 B보다 더 큰 것
+--select name from (A) where B.avg>(A);
+--(답)@@
+select name from (select name,avg(saleprice) from customer c, orders o where c.custid=o.custid group by name);
 
+select name,avg(saleprice) from (select avg(saleprice) from customer c, orders o where c.custid=o.custid group by name)
+where avg(saleprice)>(select avg(price) from book);
 
+--박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
+--1. 박지성이 구매한 도서의 출판사 A
+select publisher from book b,orders o, customer c where b.bookid=o.bookid and c.custid=o.custid and c.name='박지성';
+--2. A와 같은 출판사에서 도서를 구매한 고객의 이름
+--(1) join 이용
+select name from customer c, book b, orders o where c.custid=o.custid and b.bookid=o.custid and b.publisher in(select publisher from book b,orders o, customer c where b.bookid=o.bookid and c.custid=o.custid and c.name='박지성') and c.name<>'박지성' group by name;
+--(2) 부속질의 이용
+--1. 박지성의 cusitd
+select custid from customer where name='박지성';
+--2. 박지성이 구매한 도서의 출판사
+select distinct publisher from book where bookid in(select bookid from orders where custid in(select custid from customer where name='박지성'));
+--3. 박지성과 같은 출판사에서 구매한 고객의 이름
+select name from customer c, orders o, book b where c.custid=o.custid and b.bookid=o.bookid and b.publisher in(select distinct publisher from book where bookid in(select bookid from orders where custid in(select custid from customer where name='박지성'))) and name<>'박지성';
 
+--두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
+--1. 출판사명,고객 이름 A
+select count(distinct publisher)cnt,name from book b, orders o, customer c where c.custid=o.custid and b.bookid=o.bookid group by name;
+--2. A 중 cnt>=2
+select name from (select count(distinct publisher)cnt,name from book b, orders o, customer c where c.custid=o.custid and b.bookid=o.bookid group by name)cnt where cnt>=2;
 
-
-
-
-
-
-
+-- 전체 고객의 30% 이상이 구매한 도서
+--1. 전체 고객이 구매한 도서
+select distinct bookname from book b, orders o, customer c where c.custid=o.custid and b.bookid=o.bookid;
+-- 전체 고객 수 
+select count(*) from customer;
+-- 전체 고객의 30% 수 B
+select count(*)*0.3 from customer;
+-- 도서별 판매건수
+select bookname, count(saleprice)cnt from book b, orders o where b.bookid=o.bookid group by bookname;
+select * from orders;

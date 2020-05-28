@@ -9,10 +9,12 @@ fr_address VARCHAR2(20),
 fr_regdate DATE DEFAULT sysdate,--default sysdate
 PRIMARY KEY(idx)
 );
+
 drop table phoneInfo_basic;
 drop table phoneInfo_com;
 drop table phoneInfo_uiv;
 rollback;
+
 desc phoneInfo_basic;
 create table phoneInfo_com(
 idx NUMBER(6),
@@ -51,14 +53,15 @@ drop table phoneInfo_univ;
 delete phoneInfo_basic;
 --phoneInfo_basic
 --전체 친구 목록 출력: 테이블 3개 JOIN
-insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq,'가나다','010-1212-1212','gnd@h.com','서울',sysdate);
+insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(1,'가나다','010-1212-1212','gnd@h.com','서울',sysdate);
 insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq.nextval,'김김','010-2222-1212','kk@h.com','제주',sysdate);
 insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq.nextval,'이황','010-1231-1111','lh@h.com','안동',sysdate);
 insert into phoneInfo_basic(idx,fr_name,fr_phonenumber,fr_email,fr_address,fr_regdate) values(pb_basic_idx_seq.nextval,'강','010-2222-2222','k@h.com','춘천',sysdate);
 rollback;
-drop table phoenInfo_basic;
-
+drop table phoneInfo_basic;
+delete from phoneINfo_basic;
 desc phoneInfo_basic
+drop sequence pb_basic_idx_seq;
 --테이블 3개 JOIN-1
 select * from phoneinfo_basic pb, phoneInfo_univ pu, phoneInfo_com pc
 where pb.idx=pu.fr_ref (+) and pb.idx=pc.fr_ref(+);
@@ -70,13 +73,13 @@ left outer join phoneInfo_univ pc on pb.idx=pc.fr_ref
 ;
 
 --phoneInfo_univ
-insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(pb_com_idx_seq,'컴퓨터공학',1,pb_basic_idx_seq.currval);--1,가나다~(기본정보)
-insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(pb_com_idx_seq.nextval,'체육교육',3,pb_basic_idx_seq.nextval);
+insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(1,'컴퓨터공학',1,1);--1,가나다~(기본정보)
+insert into phoneInfo_univ(idx,fr_u_major,fr_u_year,fr_ref) values(pb_univ_idx_seq.nextval,'체육교육',3,pb_basic_idx_seq.currval);
 select * from phoneInfo_basic where idx in(select fr_ref from phoneInfo_univ);
-
+delete from phoneInfo_univ;
 desc phoneInfo_com;
 --phoneInfo_com
-insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(pb_basic_idx_seq.nextval,'엔씨소프트',2);
+insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(1,'엔씨소프트',2);
 insert into phoneInfo_com(idx,fr_c_company,fr_ref) values(pb_com_idx_seq.nextval,'넥슨',pb_basic_idx_seq.currval);
 select * from phoneInfo_basic where idx in(select fr_ref from phoneInfo_com);
 
@@ -161,15 +164,18 @@ select * from pb_com_view;
 ------------------------------------------------------------------------------------
 --1.basic 테이블 sequence
 create sequence pb_basic_idx_seq
-start with 1;
+start with 1 minvalue 0;
 
 drop sequence pb_basic_idx_seq;
 --2.com 테이블 sequence
 create sequence pb_com_idx_seq
-start with 1;
+start with 1 minvalue 0;
 --3.univ 테이블 sequence
 create sequence pb_univ_idx_seq
-start with 1;
+start with 1 minvalue 0;
 
+drop sequence pb_basic_idx_seq;
+drop sequence pb_com_idx_seq;
+drop sequence pb_univ_idx_seq;
 
---시퀀스 수정
+--시퀀스 수정(완료)

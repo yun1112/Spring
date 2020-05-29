@@ -27,3 +27,24 @@ select rownum,empno,ename,hiredate from emp_hir_view where rownum<=5;--상위 5�
 select rownum,empno,ename,hiredate from emp order by hiredate;--입력된 순서로 rownum 정해짐
 
 
+
+
+create table MEMBER(
+idx NUMBER(5) primary key,
+id varchar2(50),
+name varchar2(20) not null,
+password varchar2(20) not null,
+pic_id varchar2(20),
+sign_date varchar(20) default sysdate
+);
+
+create index name_idx on MEMBER(name);
+
+create view member_view as select id, name, pic_id from MEMBER;
+
+
+
+
+
+
+

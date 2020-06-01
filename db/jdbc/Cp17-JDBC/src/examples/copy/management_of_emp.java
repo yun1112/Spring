@@ -94,7 +94,7 @@ public class management_of_emp {
 					
 //					sql = "update emp set ename='"+ename+"' and job='"+job+"'"
 //							+ " where empno="+empno;
-					sql = "update emp set ename=?, sal=? job=?"
+					sql = "update emp set ename=?, sal=?, job=?"
 							+ " where empno=?";
 					
 					System.out.println("sql:"+sql);
@@ -103,7 +103,7 @@ public class management_of_emp {
 					pstmt.setString(1, ename);
 					pstmt.setString(2, sal);
 					pstmt.setString(3, job);
-					pstmt.setInt(3, empno);
+					pstmt.setInt(4, empno);
 					// 변수 데이터 설정
 //				pstmt.setInt(1, 10);
 					rs = pstmt.executeQuery();
@@ -132,7 +132,7 @@ public class management_of_emp {
 //				pstmt.setInt(1, 10);
 					rs = pstmt.executeQuery();
 					System.out.println("사원 리스트");
-					System.out.println("====================================");
+					System.out.println("==================================");
 					// ResultSet->결과 참조
 					while (rs.next()) {
 						System.out.print(rs.getInt("empno") + "\t");
@@ -140,7 +140,7 @@ public class management_of_emp {
 						System.out.print(rs.getString("sal") + "\t");
 						System.out.print(rs.getString("job") + "\n");
 					}
-					System.out.println("====================================");
+					System.out.println("==================================");
 					break;
 				case 5:// 검색(이름)
 					sc.nextLine();
@@ -152,7 +152,7 @@ public class management_of_emp {
 //				pstmt.setInt(1, 10);
 					rs = pstmt.executeQuery();
 					System.out.println("사원 리스트");
-					System.out.println("====================================");
+					System.out.println("==================================");
 					// ResultSet->결과 참조
 					while (rs.next()) {
 						System.out.print(rs.getInt("empno") + "\t");
@@ -160,7 +160,7 @@ public class management_of_emp {
 						System.out.print(rs.getString("sal") + "\n");
 						System.out.print(rs.getString("job") + "\n");
 					}
-					System.out.println("====================================");
+					System.out.println("==================================");
 					break;
 				case 7:
 					System.exit(0);

@@ -123,14 +123,14 @@ public class management_of_dept {
 //				pstmt.setInt(1, 10);
 					rs = pstmt.executeQuery();
 					System.out.println("부서 리스트");
-					System.out.println("====================================");
+					System.out.println("==================================");
 					// ResultSet->결과 참조
 					while (rs.next()) {
 						System.out.print(rs.getInt("deptno") + "\t");
 						System.out.print(rs.getString("dname") + "\t");
 						System.out.print(rs.getString("loc") + "\n");
 					}
-					System.out.println("====================================");
+					System.out.println("==================================");
 					break;
 				case 5:// 검색(이름)
 					sc.nextLine();
@@ -142,14 +142,14 @@ public class management_of_dept {
 //				pstmt.setInt(1, 10);
 					rs = pstmt.executeQuery();
 					System.out.println("부서 리스트");
-					System.out.println("====================================");
+					System.out.println("==================================");
 					// ResultSet->결과 참조
 					while (rs.next()) {
 						System.out.print(rs.getInt("deptno") + "\t");
 						System.out.print(rs.getString("dname") + "\t");
 						System.out.print(rs.getString("loc") + "\n");
 					}
-					System.out.println("====================================");
+					System.out.println("==================================");
 					break;
 				case 7:
 					System.exit(0);

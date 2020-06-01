@@ -22,8 +22,8 @@ import java.util.Scanner;
 public class management_of_main {
 
 	public static void main(String[] args) {
-		management_of_emp e = new management_of_emp();
-		management_of_dept d = new management_of_dept();
+		management_of_emp_simpler_ver e = new management_of_emp_simpler_ver();
+		management_of_dept_simpler_ver d = new management_of_dept_simpler_ver();
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {

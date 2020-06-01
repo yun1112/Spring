@@ -97,8 +97,6 @@ public class management_of_emp {
 					sql = "update emp set ename=?, sal=?, job=?"
 							+ " where empno=?";
 					
-					System.out.println("sql:"+sql);
-
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, ename);
 					pstmt.setString(2, sal);

@@ -89,8 +89,6 @@ public class management_of_dept {
 
 					sql = "update dept set dname=?, loc=?" + " where deptno=?";
 
-					System.out.println("sql:" + sql);
-
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, dname);
 					pstmt.setString(2, loc);

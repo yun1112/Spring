@@ -237,7 +237,6 @@ public class management_of_dept_simpler_ver {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
-			sc.nextLine();
 			System.out.println("부서명 입력>>");
 			String dname = sc.nextLine();
 			String sql = "select * from dept where dname='" + dname + "'";

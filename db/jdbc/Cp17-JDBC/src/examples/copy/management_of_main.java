@@ -2,23 +2,7 @@ package examples.copy;
 
 import java.util.Scanner;
 
-/*
-사원관리프로그램
-기능
-	1.입력
-	2.수정(이름,부서,급여)
-	3.삭제(사원번호pk기준)
-	4.리스트(전체)
-	5.검색(이름기준)
-	
-부서관리프로그램
-기능
-	1.입력
-	2.수정(부서이름,위치)
-	3.삭제(부서번호pk기준)
-	4.리스트(전체)
-	5.검색(부서이름 or 지역기준)
-*/
+
 public class management_of_main {
 
 	public static void main(String[] args) {

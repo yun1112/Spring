@@ -137,10 +137,12 @@ public class management_of_emp_simpler_with_exception {
 	static void search(PreparedStatement pstmt, Connection conn) throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
-		sc.nextLine();
 		System.out.println("이름 입력>>");
 		String ename = sc.nextLine();
 		String sql = "select * from emp where ename='" + ename + "'";
+//		String sql="select * from emp where ename like '%'||?||'";
+		//Oracle
+		//select * from emp where ename like '%'||?||'%'
 		pstmt = conn.prepareStatement(sql);// 메서드는 prepare~
 		// 변수 데이터 설정
 //		pstmt.setInt(1, 10);
@@ -153,6 +155,7 @@ public class management_of_emp_simpler_with_exception {
 			System.out.print(rs.getString("ename") + "\t");
 			System.out.print(rs.getString("sal") + "\t");
 			System.out.print(rs.getString("job") + "\n");
+//			System.out.print(rs.getString("hiredate").substring(0,10)+"\t");
 		}
 		System.out.println("==================================");
 

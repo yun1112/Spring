@@ -155,7 +155,7 @@ public class management_of_emp {
 					while (rs.next()) {
 						System.out.print(rs.getInt("empno") + "\t");
 						System.out.print(rs.getString("ename") + "\t");
-						System.out.print(rs.getString("sal") + "\n");
+						System.out.print(rs.getString("sal") + "\t");
 						System.out.print(rs.getString("job") + "\n");
 					}
 					System.out.println("==================================");

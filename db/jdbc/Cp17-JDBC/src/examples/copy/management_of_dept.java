@@ -47,11 +47,13 @@ public class management_of_dept {
 			conn = DriverManager.getConnection(url, user, pw);
 			System.out.println("데이터베이스에 접속했습니다");
 
-
 			while (true) {
 				System.out.println("----------------------------------");
-				System.out.println("1.입력 2.수정 3.삭제 4.리스트 5.검색 6.종료");
+				System.out.println("1.입력 2.수정 3.삭제 4.리스트 5.검색\n6.선택창으로 돌아가기 7. 종료");
+				System.out.println("----------------------------------");
 				int n = sc.nextInt();
+				if (n == 6)
+					break;
 				switch (n) {
 				case 1:// 입력
 					System.out.println("부서번호  입력>>");
@@ -149,7 +151,7 @@ public class management_of_dept {
 					}
 					System.out.println("====================================");
 					break;
-				case 6:
+				case 7:
 					System.exit(0);
 					conn.close();
 				}

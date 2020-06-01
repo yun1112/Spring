@@ -39,94 +39,52 @@ public class management_of_emp_simpler_with_exception {
 		}
 	}
 
-	static void insert(PreparedStatement pstmt, Connection conn) {
+	static void insert(PreparedStatement pstmt, Connection conn) throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
-		try {
-			System.out.println("사원번호  입력>>");
-			int empno = sc.nextInt();
-			sc.nextLine();
-			System.out.println("사원 이름 입력>>");
-			String ename = sc.nextLine();
-			System.out.println("급여 입력>>");
-			String sal = sc.nextLine();
-			System.out.println("직급 입력>>");
-			String job = sc.nextLine();
-			String sql = "insert into emp (empno, ename,sal,job)" + " values(?,?,?,?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, empno);
-			pstmt.setString(2, ename);
-			pstmt.setString(3, sal);
-			pstmt.setString(4, job);
+		System.out.println("사원번호  입력>>");
+		int empno = sc.nextInt();
+		sc.nextLine();
+		System.out.println("사원 이름 입력>>");
+		String ename = sc.nextLine();
+		System.out.println("급여 입력>>");
+		String sal = sc.nextLine();
+		System.out.println("직급 입력>>");
+		String job = sc.nextLine();
+		String sql = "insert into emp (empno, ename,sal,job)" + " values(?,?,?,?)";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, empno);
+		pstmt.setString(2, ename);
+		pstmt.setString(3, sal);
+		pstmt.setString(4, job);
 
-			int resultCnt = pstmt.executeUpdate();
-			if (resultCnt > 0) {
-				System.out.println("정상적으로 입력되었습니다");
-				System.out.println(resultCnt + "행이 입력되었습니다");
-			} else {
-				System.out.println("입력이 되지 않았습니다\n확인 후 재시도해주세요");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			// 4.데이터베이스 연결 종료
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-
+		int resultCnt = pstmt.executeUpdate();
+		if (resultCnt > 0) {
+			System.out.println("정상적으로 입력되었습니다");
+			System.out.println(resultCnt + "행이 입력되었습니다");
+		} else {
+			System.out.println("입력이 되지 않았습니다\n확인 후 재시도해주세요");
 		}
 	}
 
-	static void delete(PreparedStatement pstmt, Connection conn) {
+	static void delete(PreparedStatement pstmt, Connection conn) throws SQLException {
 		Scanner sc = new Scanner(System.in);
-		try {
-			System.out.println("사원번호  입력>>");
-			int empno = sc.nextInt();
-			sc.nextLine();
+		System.out.println("사원번호  입력>>");
+		int empno = sc.nextInt();
+		sc.nextLine();
 
-			String sql = "delete from emp where empno='" + empno + "'";
-			pstmt = conn.prepareStatement(sql);
+		String sql = "delete from emp where empno='" + empno + "'";
+		pstmt = conn.prepareStatement(sql);
 
-			int resultCnt = pstmt.executeUpdate();
-			if (resultCnt > 0) {
-				System.out.println("정상적으로 삭제되었습니다");
-			} else {
-				System.out.println("삭제가 되지 않았습니다\n확인 후 재시도해주세요");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			// 4.데이터베이스 연결 종료
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-
+		int resultCnt = pstmt.executeUpdate();
+		if (resultCnt > 0) {
+			System.out.println("정상적으로 삭제되었습니다");
+		} else {
+			System.out.println("삭제가 되지 않았습니다\n확인 후 재시도해주세요");
 		}
 	}
 
-	static void modify(PreparedStatement pstmt, Connection conn) {
+	static void modify(PreparedStatement pstmt, Connection conn) throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		System.out.println("수정할 직원의 사원번호  입력>>");
@@ -155,90 +113,49 @@ public class management_of_emp_simpler_with_exception {
 
 	}
 
-	static void print(PreparedStatement pstmt, Connection conn) {
+	static void print(PreparedStatement pstmt, Connection conn) throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
-		try {
-			String sql = "select * from emp";
-			pstmt = conn.prepareStatement(sql);// 메서드는 prepare~
-			// 변수 데이터 설정
+		String sql = "select * from emp";
+		pstmt = conn.prepareStatement(sql);// 메서드는 prepare~
+		// 변수 데이터 설정
 //		pstmt.setInt(1, 10);
-			rs = pstmt.executeQuery();
-			System.out.println("사원 리스트");
-			System.out.println("==================================");
-			// ResultSet->결과 참조
-			while (rs.next()) {
-				System.out.print(rs.getInt("empno") + "\t");
-				System.out.print(rs.getString("ename") + "\t");
-				System.out.print(rs.getString("sal") + "\t");
-				System.out.print(rs.getString("job") + "\n");
-			}
-			System.out.println("==================================");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			// 4.데이터베이스 연결 종료
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-
+		rs = pstmt.executeQuery();
+		System.out.println("사원 리스트");
+		System.out.println("==================================");
+		// ResultSet->결과 참조
+		while (rs.next()) {
+			System.out.print(rs.getInt("empno") + "\t");
+			System.out.print(rs.getString("ename") + "\t");
+			System.out.print(rs.getString("sal") + "\t");
+			System.out.print(rs.getString("job") + "\n");
 		}
+		System.out.println("==================================");
+
 	}
 
-	static void search(PreparedStatement pstmt, Connection conn) {
+	static void search(PreparedStatement pstmt, Connection conn) throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
-		try {
-			sc.nextLine();
-			System.out.println("이름 입력>>");
-			String ename = sc.nextLine();
-			String sql = "select * from emp where ename='" + ename + "'";
-			pstmt = conn.prepareStatement(sql);// 메서드는 prepare~
-			// 변수 데이터 설정
+		sc.nextLine();
+		System.out.println("이름 입력>>");
+		String ename = sc.nextLine();
+		String sql = "select * from emp where ename='" + ename + "'";
+		pstmt = conn.prepareStatement(sql);// 메서드는 prepare~
+		// 변수 데이터 설정
 //		pstmt.setInt(1, 10);
-			rs = pstmt.executeQuery();
-			System.out.println("사원 리스트");
-			System.out.println("==================================");
-			// ResultSet->결과 참조
-			while (rs.next()) {
-				System.out.print(rs.getInt("empno") + "\t");
-				System.out.print(rs.getString("ename") + "\t");
-				System.out.print(rs.getString("sal") + "\t");
-				System.out.print(rs.getString("job") + "\n");
-			}
-			System.out.println("==================================");
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			// 4.데이터베이스 연결 종료
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-
+		rs = pstmt.executeQuery();
+		System.out.println("사원 리스트");
+		System.out.println("==================================");
+		// ResultSet->결과 참조
+		while (rs.next()) {
+			System.out.print(rs.getInt("empno") + "\t");
+			System.out.print(rs.getString("ename") + "\t");
+			System.out.print(rs.getString("sal") + "\t");
+			System.out.print(rs.getString("job") + "\n");
 		}
+		System.out.println("==================================");
+
 	}
 
 	static void try_catch(PreparedStatement pstmt, Connection conn) throws SQLException {

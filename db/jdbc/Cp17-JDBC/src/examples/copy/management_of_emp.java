@@ -48,12 +48,8 @@ public class management_of_emp {
 			conn = DriverManager.getConnection(url, user, pw);
 			System.out.println("데이터베이스에 접속했습니다");
 
-//			1.입력
-//			2.수정(이름,부서,급여)
-//			3.삭제(사원번호pk기준)
-//			4.리스트(전체)
-//			5.검색(이름기준)
 			while (true) {
+				System.out.println("----------------------------------");
 				System.out.println("1.입력 2.수정 3.삭제 4.리스트 5.검색 6.종료");
 				int n = sc.nextInt();
 				switch (n) {

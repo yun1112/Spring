@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -48,12 +47,9 @@ public class management_of_dept {
 			conn = DriverManager.getConnection(url, user, pw);
 			System.out.println("데이터베이스에 접속했습니다");
 
-//			1.입력
-//			2.수정(부서이름,위치)
-//			3.삭제(부서번호pk기준)
-//			4.리스트(전체)
-//			5.검색(부서이름 or 지역기준)
+
 			while (true) {
+				System.out.println("----------------------------------");
 				System.out.println("1.입력 2.수정 3.삭제 4.리스트 5.검색 6.종료");
 				int n = sc.nextInt();
 				switch (n) {
@@ -88,11 +84,10 @@ public class management_of_dept {
 					dname = sc.nextLine();
 					System.out.println("위치 입력>>");
 					loc = sc.nextLine();
-					
-					sql = "update dept set dname=?, loc=?"
-							+ " where deptno=?";
-					
-					System.out.println("sql:"+sql);
+
+					sql = "update dept set dname=?, loc=?" + " where deptno=?";
+
+					System.out.println("sql:" + sql);
 
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, dname);
@@ -158,7 +153,7 @@ public class management_of_dept {
 					System.exit(0);
 					conn.close();
 				}
-				
+
 			}
 
 			// 4. close

@@ -1,8 +1,7 @@
-package examples.copy;
+package updated_version;
 
 import java.util.Scanner;
 
-import updated_version.DEPTManager;
 
 public class management_of_main {
 
@@ -10,7 +9,6 @@ public class management_of_main {
 		management_of_emp_simpler_ver e = new management_of_emp_simpler_ver();
 		management_of_dept_simpler_ver d = new management_of_dept_simpler_ver();
 		Scanner sc = new Scanner(System.in);
-		DEPTManager deptManager = new DEPTManager();
 
 		while (true) {
 			System.out.println("----------------------------------");
@@ -21,7 +19,6 @@ public class management_of_main {
 			switch (choice) {
 			case 1:
 				e.main(args);
-//				deptManager.deptManager();
 				break;
 			case 2:
 				d.main(args);

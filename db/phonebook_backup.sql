@@ -1,21 +1,13 @@
 
 ------------------------------------------------실습1
---create table phoneInfo_basic(
---idx NUMBER(6),
---fr_name VARCHAR2(20) NOT NULL,
---fr_phonenumber VARCHAR2(20) NOT NULL,
---fr_email VARCHAR2(20),
---fr_address VARCHAR2(20),
---fr_regdate DATE DEFAULT sysdate,--default sysdate
---PRIMARY KEY(idx)
---);
 create table phoneInfo_basic(
-idx number(6),
-basic_name varchar2(20) not null,
-phonenumber varchar2(20) not null,
-addr varchar2(50),
-email varchar2(50),
-primary key(idx)
+idx NUMBER(6),
+fr_name VARCHAR2(20) NOT NULL,
+fr_phonenumber VARCHAR2(20) NOT NULL,
+fr_email VARCHAR2(20),
+fr_address VARCHAR2(20),
+fr_regdate DATE DEFAULT sysdate,--default sysdate
+PRIMARY KEY(idx)
 );
 
 drop table phoneInfo_basic;
@@ -24,77 +16,26 @@ drop table phoneInfo_uiv;
 rollback;
 
 desc phoneInfo_basic;
---create table phoneInfo_com(
---idx NUMBER(6),
---fr_c_company VARCHAR2(20) DEFAULT 'N',
---fr_ref NUMBER(6),
---PRIMARY KEY(idx),
---FOREIGN KEY(fr_ref) REFERENCES phoneInfo_basic(idx) on delete cascade
---);
-
 create table phoneInfo_com(
-idx number(6),
-employee_name varchar2(10) default 'n',
-phonenumber varchar2(20),
-address varchar2(50),
-email varchar2(50),
-com_name varchar2(20) default 'n',
-dept varchar2(20),
-job varchar2(20),
-ref_idx number(6),
-primary key(idx),
-foreign key(ref_idx) references phoneInfo_basic(idx) on delete cascade
+idx NUMBER(6),
+fr_c_company VARCHAR2(20) DEFAULT 'N',
+fr_ref NUMBER(6),
+PRIMARY KEY(idx),
+FOREIGN KEY(fr_ref) REFERENCES phoneInfo_basic(idx) on delete cascade
 );
-
 drop table phoneInfo_basic;
 drop table phoneInfo_com;
 drop table phoneInfo_univ;
 desc phoneInfo_univ;
-
 create table phoneInfo_univ(
-idx number(6),
-student_name varchar2(20),
-phonenumber varchar2(20),
-addr varchar2(50),
-email varchar2(50),
-major varchar2(20) default 'n',
-grade varchar2(5) default 1,
-ref_idx number(6),
-primary key(idx),
-foreign key(ref_idx) references phoneInfo_basic(idx) on delete set null,
---constratint cons check(grade>0 and grade<5),
-constraint cons check (grade between 1 and 4)
+idx NUMBER(6),
+fr_u_major VARCHAR2(20) DEFAULT 'N',
+fr_u_year NUMBER(1) DEFAULT 1,
+CONSTRAINT c CHECK(fr_u_year>0 and fr_u_year<5),
+fr_ref NUMBER(7),
+PRIMARY KEY(idx),
+FOREIGN KEY(fr_ref) REFERENCES phoneInfo_basic(idx) on delete set null
 );
-
-create table phoneInfo_club(
-idx number(6),
-member_name varchar2(20),
-member_nickname varchar2(20),
-club_name varchar2(20),
-phonenumber varchar2(20),
-addr varchar2(50),
-email varchar2(50),
-ref_idx number(6),
-primary key(idx),
-foreign key(ref_idx) references phoneInfo_basic(idx) on delete set null
-);
-desc phoneInfo_univ;
-desc phoneInfo_basic;
-insert into phoneInfo_univ(idx,student_name,phonenumber,addr,email,major,grade,ref_idx) 
-values(1,'가나다','010-1212-1212','서울','gnd@h.com','화학',2,1);
-insert into phoneInfo_basic(idx,basic_name,phonenumber,addr,email) 
-values(1,'김김','010-1212-1111','제주','aa@a.com');
-drop table phoneInfo_univ;
-select * from phoneInfo_univ;
---create table phoneInfo_univ(
---idx NUMBER(6),
---fr_u_major VARCHAR2(20) DEFAULT 'N',
---fr_u_year NUMBER(1) DEFAULT 1,
---CONSTRAINT c CHECK(fr_u_year>0 and fr_u_year<5),
---fr_ref NUMBER(7),
---PRIMARY KEY(idx),
---FOREIGN KEY(fr_ref) REFERENCES phoneInfo_basic(idx) on delete set null
---);
 --외래키 설정시 부모의 행이 삭제될 때 설정
 --REFERENCES phoneInfo_basic(idx) on delete 설정 옵션
 --on 이벤트가 발생했을 때

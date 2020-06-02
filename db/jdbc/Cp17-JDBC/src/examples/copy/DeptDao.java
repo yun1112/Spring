@@ -1,70 +1,22 @@
 package examples.copy;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class management_of_dept_simpler_ver {
+public class DeptDao {
+	// DAO=Data Access Object
+	// 데이터베이스 처리하는 클래스
 
-	public static void main(String[] args) {
-		Connection conn = null;
-		Statement stmt = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Scanner sc = new Scanner(System.in);
-		String sql = "";
-		// 1. DB드라이버 로드
-
-		while (true) {
-			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-				System.out.println("Oracle 드라이버 로드 성공");
-
-				String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-				String user = "scott";
-				String pw = "tiger";
-
-				// 2. 데이터베이스에 접속
-				conn = DriverManager.getConnection(url, user, pw);
-				System.out.println("데이터베이스에 접속했습니다");
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			System.out.println("----------------------------------");
-			System.out.println("1.입력 2.수정 3.삭제 4.리스트 5.검색\n6.선택창으로 돌아가기 7. 종료");
-			System.out.println("----------------------------------");
-			int n = sc.nextInt();
-			if (n == 6)
-				break;
-			switch (n) {
-			case 1:// 입력
-				insert(pstmt, conn);
-				break;
-			case 2:// 수정(부서이름,위치)
-				modify(pstmt, conn);
-				break;
-			case 3:// 삭제(사원번호)
-				delete(pstmt, conn);
-				break;
-			case 4:// 리스트
-				print(pstmt, conn);
-				break;
-			case 5:// 검색(이름)
-				search(pstmt, conn);
-				break;
-			case 7:
-				System.exit(0);
-			}
-		}
-	}
-
-	static void insert(PreparedStatement pstmt, Connection conn) {
+	// MVC->Model,View,Controller
+	// model->Service(데이터를 내부적으로 분리하는 목적으로 사용하는 클래스), Dao(데이터베이스 처리 목적)
+	// 데이터베이스
+	public void insert(PreparedStatement pstmt, Connection conn) {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
@@ -110,7 +62,7 @@ public class management_of_dept_simpler_ver {
 		}
 	}
 
-	static void delete(PreparedStatement pstmt, Connection conn) {
+	public void delete(PreparedStatement pstmt, Connection conn) {
 		Scanner sc = new Scanner(System.in);
 		try {
 
@@ -149,7 +101,7 @@ public class management_of_dept_simpler_ver {
 		}
 	}
 
-	static void modify(PreparedStatement pstmt, Connection conn) {
+	public void modify(PreparedStatement pstmt, Connection conn) {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
@@ -193,7 +145,7 @@ public class management_of_dept_simpler_ver {
 		}
 	}
 
-	static void print(PreparedStatement pstmt, Connection conn) {
+	public void print(PreparedStatement pstmt, Connection conn) {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
@@ -233,9 +185,10 @@ public class management_of_dept_simpler_ver {
 		}
 	}
 
-	static void search(PreparedStatement pstmt, Connection conn) {
+	public void search(PreparedStatement pstmt, Connection conn) {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
+		List<Dept> deptList = new ArrayList<>();
 		try {
 			sc.nextLine();
 			System.out.println("부서명 입력>>");
@@ -245,12 +198,15 @@ public class management_of_dept_simpler_ver {
 			rs = pstmt.executeQuery();
 			System.out.println("부서 리스트");
 			System.out.println("====================================");
-			// ResultSet->결과 참조
+//			 ResultSet->결과 참조
 			while (rs.next()) {
-				System.out.print(rs.getInt("deptno") + "\t");
-				System.out.print(rs.getString("dname") + "\t");
-				System.out.print(rs.getString("loc") + "\n");
+				Dept dept = new Dept(rs.getInt("deptno"), rs.getString("dname"), rs.getString("loc"));
+				deptList.add(dept);
 			}
+//				System.out.print(rs.getInt("deptno") + "\t");
+//				System.out.print(rs.getString("dname") + "\t");
+//				System.out.print(rs.getString("loc") + "\n");
+//			}
 			System.out.println("====================================");
 
 		} catch (SQLException e) {
@@ -273,5 +229,33 @@ public class management_of_dept_simpler_ver {
 			}
 
 		}
+	}
+
+	public static List<Dept> deptList() {
+		// VO: Value Object
+		// DTO:Data Transfer Object
+
+		// JDBC사용 객체
+		Statement stmt = null;
+//		Connection conn;
+		ConnectionProvider cp=new ConnectionProvider();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// Dao클래스 추가
+		List<Dept> deptList = new ArrayList<>();
+
+		// 공백 입력에 대한 예외처리가 있어야 하나 이번 버전에서는 모두 잘 입력된 것으로 가정
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");//driver는 처음 시작할 때 한 번만 호출
+			System.out.println("Oracle 드라이버 로드 성공");
+			cp.getConnection();
+			//Connection pool 여러 Connection객체를 가지고 있다가 필요한 쪽에 제공(처리 시간 단축)
+			//Transaction 처리(한 Transaction이 끝날 때까지 기다렸다가 다른 Transaction 처리)
+			//Connection하나 static으로 두고 쓰면 안됨(동시접속시 문제 발생)
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return deptList;
 	}
 }

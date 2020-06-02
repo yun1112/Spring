@@ -1,4 +1,4 @@
-package examples.copy;
+package updated_version;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class management_of_emp_simpler_ver {
+public class management_of_dept_simpler_ver {
 
 	public static void main(String[] args) {
 		Connection conn = null;
@@ -21,7 +21,7 @@ public class management_of_emp_simpler_ver {
 
 		while (true) {
 			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");//driver는 처음 시작할 때 한 번만 호출
+				Class.forName("oracle.jdbc.driver.OracleDriver");
 				System.out.println("Oracle 드라이버 로드 성공");
 
 				String url = "jdbc:oracle:thin:@localhost:1521:orcl";
@@ -68,21 +68,18 @@ public class management_of_emp_simpler_ver {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
-			System.out.println("사원번호  입력>>");
-			int empno = sc.nextInt();
+			System.out.println("부서번호  입력>>");
+			int deptno = sc.nextInt();
 			sc.nextLine();
-			System.out.println("사원 이름 입력>>");
-			String ename = sc.nextLine();
-			System.out.println("급여 입력>>");
-			String sal = sc.nextLine();
-			System.out.println("직급 입력>>");
-			String job = sc.nextLine();
-			String sql = "insert into emp (empno, ename,sal,job)" + " values(?,?,?,?)";
+			System.out.println("부서명 입력>>");
+			String dname = sc.nextLine();
+			System.out.println("위치 입력>>");
+			String loc = sc.nextLine();
+			String sql = "insert into dept (deptno,dname,loc)" + " values(?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, empno);
-			pstmt.setString(2, ename);
-			pstmt.setString(3, sal);
-			pstmt.setString(4, job);
+			pstmt.setInt(1, deptno);
+			pstmt.setString(2, dname);
+			pstmt.setString(3, loc);
 
 			int resultCnt = pstmt.executeUpdate();
 			if (resultCnt > 0) {
@@ -116,11 +113,12 @@ public class management_of_emp_simpler_ver {
 	static void delete(PreparedStatement pstmt, Connection conn) {
 		Scanner sc = new Scanner(System.in);
 		try {
-			System.out.println("사원번호  입력>>");
-			int empno = sc.nextInt();
+
+			System.out.println("부서번호  입력>>");
+			int deptno = sc.nextInt();
 			sc.nextLine();
 
-			String sql = "delete from emp where empno='" + empno + "'";
+			String sql = "delete from dept where deptno='" + deptno + "'";
 			pstmt = conn.prepareStatement(sql);
 
 			int resultCnt = pstmt.executeUpdate();
@@ -155,28 +153,23 @@ public class management_of_emp_simpler_ver {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
-			System.out.println("수정할 직원의 사원번호  입력>>");
-			int empno = sc.nextInt();
+			System.out.println("수정할 부서의 부서번호  입력>>");
+			int deptno = sc.nextInt();
 			sc.nextLine();
 
-			System.out.println("사원 이름 입력>>");
-			String ename = sc.nextLine();
-			System.out.println("급여 입력>>");
-			String sal = sc.nextLine();
-			System.out.println("직급 입력>>");
-			String job = sc.nextLine();
+			System.out.println("부서 이름 입력>>");
+			String dname = sc.nextLine();
+			System.out.println("위치 입력>>");
+			String loc = sc.nextLine();
 
-//			sql = "update emp set ename='"+ename+"' and job='"+job+"'"
-//					+ " where empno="+empno;
-			String sql = "update emp set ename=?, sal=?, job=?" + " where empno=?";
+			String sql = "update dept set dname=?, loc=?" + " where deptno=?";
+
+			System.out.println("sql:" + sql);
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, ename);
-			pstmt.setString(2, sal);
-			pstmt.setString(3, job);
-			pstmt.setInt(4, empno);
-			// 변수 데이터 설정
-//		pstmt.setInt(1, 10);
+			pstmt.setString(1, dname);
+			pstmt.setString(2, loc);
+			pstmt.setInt(3, deptno);
 			rs = pstmt.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -204,21 +197,20 @@ public class management_of_emp_simpler_ver {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
-			String sql = "select * from emp";
+			String sql = "select * from dept";
 			pstmt = conn.prepareStatement(sql);// 메서드는 prepare~
 			// 변수 데이터 설정
 //		pstmt.setInt(1, 10);
 			rs = pstmt.executeQuery();
-			System.out.println("사원 리스트");
-			System.out.println("==================================");
+			System.out.println("부서 리스트");
+			System.out.println("====================================");
 			// ResultSet->결과 참조
 			while (rs.next()) {
-				System.out.print(rs.getInt("empno") + "\t");
-				System.out.print(rs.getString("ename") + "\t");
-				System.out.print(rs.getString("sal") + "\t");
-				System.out.print(rs.getString("job") + "\n");
+				System.out.print(rs.getInt("deptno") + "\t");
+				System.out.print(rs.getString("dname") + "\t");
+				System.out.print(rs.getString("loc") + "\n");
 			}
-			System.out.println("==================================");
+			System.out.println("====================================");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -245,24 +237,21 @@ public class management_of_emp_simpler_ver {
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		try {
-			System.out.println("이름 입력>>");
-			String ename = sc.nextLine();
-			String sql = "select * from emp where ename='" + ename + "'";
+			sc.nextLine();
+			System.out.println("부서명 입력>>");
+			String dname = sc.nextLine();
+			String sql = "select * from dept where dname='" + dname + "'";
 			pstmt = conn.prepareStatement(sql);// 메서드는 prepare~
-			// 변수 데이터 설정
-//		pstmt.setInt(1, 10);
 			rs = pstmt.executeQuery();
-			System.out.println("사원 리스트");
-			System.out.println("==================================");
+			System.out.println("부서 리스트");
+			System.out.println("====================================");
 			// ResultSet->결과 참조
-			//if(rs.next()//한 번만 처리할 때 if문 사용
 			while (rs.next()) {
-				System.out.print(rs.getInt("empno") + "\t");
-				System.out.print(rs.getString("ename") + "\t");
-				System.out.print(rs.getString("sal") + "\t");
-				System.out.print(rs.getString("job") + "\n");
+				System.out.print(rs.getInt("deptno") + "\t");
+				System.out.print(rs.getString("dname") + "\t");
+				System.out.print(rs.getString("loc") + "\n");
 			}
-			System.out.println("==================================");
+			System.out.println("====================================");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

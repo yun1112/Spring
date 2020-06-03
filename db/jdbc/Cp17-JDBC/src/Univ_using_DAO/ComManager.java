@@ -31,19 +31,19 @@ public class ComManager {
 			deptList();
 			break;
 		case 2:
-			System.out.println("부서 정보를 입력합니다.");
+			System.out.println("사원 정보를 입력합니다.");
 			deptInsert(); // 사용자의 입력데이터 dept 객체에 담아서 dao insert 메서드로 전달
 			break;
 		case 3:
-			System.out.println("부서 정보를 검색합니다.");
+			System.out.println("사원 정보를 검색합니다.");
 			deptSearch(); // 사용자가 입력한 이름을 dao search 전달
 			break;
 		case 4:
-			System.out.println("부서 정보를 삭제합니다.");
+			System.out.println("사원 정보를 삭제합니다.");
 			deptDelete(); // 이름 또는 부서번호 dao delete 전달
 			break;
 		case 5:
-			System.out.println("부서 정보를 수정합니다.");
+			System.out.println("사원 정보를 수정합니다.");
 			deptEdit(); // 1. 수정ㅎ고자 하는 데이터 유무 확인 -> 2.사용자로부터 데이터 받아서 전달
 			break;
 
@@ -86,7 +86,7 @@ public class ComManager {
 				System.out.println("사원 번호 : " + dept2.getIdx());
 				System.out.println("부서 번호는 수정되지 않습니다.");
 
-				System.out.println("사원 이름" + dept2.getEmployee_name() + "  ) : ");
+				System.out.println("사원 이름 (" + dept2.getEmployee_name() + "  ) : ");
 				String employee_name = ManageMain.sc.nextLine();
 
 				System.out.println("전화번호 ( " + dept2.getPhonenumber() + "  ) : ");
@@ -95,19 +95,18 @@ public class ComManager {
 				String address = ManageMain.sc.nextLine();
 				System.out.println("이메일 ( " + dept2.getEmail() + "  ) : ");
 				String email = ManageMain.sc.nextLine();
-				System.out.println("전공 ( " + dept2.getCom_name() + "  ) : ");
+				System.out.println("회사명 ( " + dept2.getCom_name() + "  ) : ");
 				String com_name = ManageMain.sc.nextLine();
-				System.out.println("학년 ( " + dept2.getDept() + "  ) : ");
+				System.out.println("부서 ( " + dept2.getDept() + "  ) : ");
 				String dept = ManageMain.sc.nextLine();
-				System.out.println("학년 ( " + dept2.getJob() + "  ) : ");
+				System.out.println("직급 ( " + dept2.getJob() + "  ) : ");
 				String job = ManageMain.sc.nextLine();
+
 
 				// 공백 입력에 대한 예외처리가 있어야 하나 이번 버전에서는 모두 잘 입력된것으로 처리합니다.
 
 				Com com = new Com(dept2.getIdx(), 
-						employee_name,
-						phonenumber,
-						address,email,com_name,dept,job
+						employee_name,phonenumber,address,email,com_name,dept,job
 						);
 
 				int resultCnt = dao.comEdit(com, conn);
@@ -150,14 +149,14 @@ public class ComManager {
 	public void deptInsert() {
 
 		// 사용자 입력정보 변수
-		System.out.println("직원 정보를 입력해주세요.");
+		System.out.println("사원 정보를 입력해주세요.");
 
-		System.out.println("직원번호 : ");
+		System.out.println("사원번호 : ");
 		int idx = ManageMain.sc.nextInt();
-		System.out.println("직원이름 : ");
+		System.out.println("사원이름 : ");
 		ManageMain.sc.nextLine();
 		String employee_name = ManageMain.sc.nextLine();
-		System.out.println("전하번호: ");
+		System.out.println("전화번호: ");
 		String phonenumber = ManageMain.sc.nextLine();
 		System.out.println("주소 : ");
 		String address = ManageMain.sc.nextLine();
@@ -167,15 +166,15 @@ public class ComManager {
 		String com_name = ManageMain.sc.nextLine();
 		System.out.println("부서 : ");
 		String dept = ManageMain.sc.nextLine();
-		System.out.println("직급: ");
+		System.out.println("직급 : ");
 		String job = ManageMain.sc.nextLine();
 
 		// 공백 입력에 대한 예외처리가 있어야 하나 이번 버전에서는 모두 잘 입력된것으로 처리합니다.
 
-		Com com = new Com(
-				idx,employee_name,phonenumber,
-				address,email,com_name,dept,job
+		Com com = new Com(idx,
+				employee_name,phonenumber,address,email,com_name,dept,job
 				);
+
 
 		int resultCnt = dao.deptInsert(com);
 
@@ -192,7 +191,7 @@ public class ComManager {
 
 		// 사용자 입력정보 변수
 
-		System.out.println("삭제하고자 하는 부서이름 : ");
+		System.out.println("삭제하고자 하는 회원이름 : ");
 		ManageMain.sc.nextLine();
 		String searchName = ManageMain.sc.nextLine();
 
@@ -214,7 +213,7 @@ public class ComManager {
 
 		// 사용자 입력정보 변수
 
-		System.out.println("검색하고자 하는 부서이름 : ");
+		System.out.println("검색하고자 하는 회원이름 : ");
 		ManageMain.sc.nextLine();
 		String searchName = ManageMain.sc.nextLine();
 

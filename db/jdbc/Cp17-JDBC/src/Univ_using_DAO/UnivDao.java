@@ -42,14 +42,32 @@ public class UnivDao {
 			// 유일조건이 아니라면 여러개의 행에 수정 처리가 이루어집니다.
 			// 현재 버전에서는 유일한 값으로 생각하고 처리합니다.
 
-			String sql = "update phoneInfo_univ  set  student_name=?, addr=? " + " where idx=?";
+//			String sql = "update phoneInfo_univ  "
+//					+ "set  student_name=?, "
+//					+ "phonenumber=?, "
+//					+ "addr=?, "
+//					+ "email=?, "
+//					+ "major=?, "
+//					+ "grade=?, "+ " where idx=?";
+			
+			String sql = "update phoneInfo_univ  set  student_name=?,"
+					+ " phonenumber=?, " 
+					+ " addr=?, " 
+					+ " email=?, " 
+					+ " major=?, " 
+					+ " grade=? " 
+					+ " where idx=?";
 
-			pstmt = conn.prepareStatement(sql);
+
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, univ.getStudent_name());
-			pstmt.setString(2, univ.getAddr());
-			pstmt.setInt(3, univ.getIdx());//일단 정보 두개만 변경@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			pstmt.setString(2, univ.getPhonenumber());
+			pstmt.setString(3, univ.getAddr());
+			pstmt.setString(4, univ.getEmail());
+			pstmt.setString(5, univ.getMajor());
+			pstmt.setString(6, univ.getGrade());
+			pstmt.setInt(7, univ.getIdx());//일단 정보 두개만 변경@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 			resultCnt = pstmt.executeUpdate();
 

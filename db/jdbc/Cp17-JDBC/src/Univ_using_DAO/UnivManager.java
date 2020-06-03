@@ -18,7 +18,7 @@ public class UnivManager {
 
 	public void univManager() {
 
-		System.out.println("DEPT Manager Menu");
+		System.out.println("Univ Manager Menu");
 		System.out.println("=========================================");
 		System.out.println("1. List  2. Insert  3. Search  4. Delete  5. Edit  ");
 		System.out.println("=========================================");
@@ -27,23 +27,23 @@ public class UnivManager {
 
 		switch (select) {
 		case 1:
-			System.out.println("전체 리스트 출력");
+			System.out.println("전체 학생  리스트 출력");
 			deptList();
 			break;
 		case 2:
-			System.out.println("부서 정보를 입력합니다.");
+			System.out.println("학생 정보를 입력합니다.");
 			deptInsert(); // 사용자의 입력데이터 dept 객체에 담아서 dao insert 메서드로 전달
 			break;
 		case 3:
-			System.out.println("부서 정보를 검색합니다.");
+			System.out.println("학생 정보를 검색합니다.");
 			deptSearch(); // 사용자가 입력한 이름을 dao search 전달
 			break;
 		case 4:
-			System.out.println("부서 정보를 삭제합니다.");
+			System.out.println("학생 정보를 삭제합니다.");
 			deptDelete(); // 이름 또는 부서번호 dao delete 전달
 			break;
 		case 5:
-			System.out.println("부서 정보를 수정합니다.");
+			System.out.println("학생 정보를 수정합니다.");
 			deptEdit(); // 1. 수정ㅎ고자 하는 데이터 유무 확인 -> 2.사용자로부터 데이터 받아서 전달
 			break;
 
@@ -86,18 +86,17 @@ public class UnivManager {
 				System.out.println("학생 번호 : " + dept.getIdx());
 				System.out.println("부서 번호는 수정되지 않습니다.");
 
-				System.out.println("학생 이름" + dept.getStudent_name() + "  ) : ");
+				System.out.println("학생 이름 (" + dept.getStudent_name() + "  ) : ");
 				String student_name = ManageMain.sc.nextLine();
-
 				System.out.println("전화번호 ( " + dept.getAddr() + "  ) : ");
 				String phonenumber = ManageMain.sc.nextLine();
 				System.out.println("주소 ( " + dept.getAddr() + "  ) : ");
 				String addr = ManageMain.sc.nextLine();
-				System.out.println("이메일 ( " + dept.getAddr() + "  ) : ");
+				System.out.println("이메일 ( " + dept.getEmail() + "  ) : ");
 				String email = ManageMain.sc.nextLine();
-				System.out.println("전공 ( " + dept.getAddr() + "  ) : ");
+				System.out.println("전공 ( " + dept.getMajor() + "  ) : ");
 				String major = ManageMain.sc.nextLine();
-				System.out.println("학년 ( " + dept.getAddr() + "  ) : ");
+				System.out.println("학년 ( " + dept.getGrade() + "  ) : ");
 				String grade = ManageMain.sc.nextLine();
 
 				// 공백 입력에 대한 예외처리가 있어야 하나 이번 버전에서는 모두 잘 입력된것으로 처리합니다.

@@ -22,7 +22,8 @@ public class ManageMain {
 		System.out.println("데이터베이스 드라이버 로드 완료...!!");
 
 		UnivManager univManager = new UnivManager();
-
+		ComManager comManager=new ComManager();
+		ClubManager clubManager=new ClubManager();
 		while (true) {
 			System.out.println("Select Menu");
 			System.out.println("----------------------------------");
@@ -37,9 +38,10 @@ public class ManageMain {
 				// empManager();
 				break;
 			case 2:
-				univManager.univManager();
+				comManager.comManager();
 				break;
 			case 3:
+				clubManager.clubManager();
 				break;
 			default:
 				System.out.println("올바른 입력이 아닙니다\n다시 입력해주세요");

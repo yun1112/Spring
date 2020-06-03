@@ -42,14 +42,25 @@ public class ComDao {
 			// 유일조건이 아니라면 여러개의 행에 수정 처리가 이루어집니다.
 			// 현재 버전에서는 유일한 값으로 생각하고 처리합니다.
 
-			String sql = "update phoneInfo_com  set  employee_name=?, addr=? " + " where idx=?";
+			String sql = "update phoneInfo_com  set  employee_name=?,"
+					+ " phonenumber=?, " 
+					+ " address=?, " 
+					+ " email=?, " 
+					+ " com_name=?, " 
+					+ " dept=?, " 
+					+ " job=? " 
+					+ " where idx=?";
 
-			pstmt = conn.prepareStatement(sql);
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, com.getEmployee_name());
-			pstmt.setString(2, com.getAddress());
-			pstmt.setInt(3, com.getIdx());// 일단 정보 두개만 변경@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			pstmt.setString(2, com.getPhonenumber());
+			pstmt.setString(3, com.getAddress());
+			pstmt.setString(4, com.getEmail());
+			pstmt.setString(5, com.getCom_name());
+			pstmt.setString(6, com.getDept());
+			pstmt.setString(7, com.getJob());
+			pstmt.setInt(8, com.getIdx());// 일단 정보 두개만 변경@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 			resultCnt = pstmt.executeUpdate();
 
@@ -159,7 +170,7 @@ public class ComDao {
 
 	}
 
-	public List<Com> deptSearch(String student_name) {
+	public List<Com> deptSearch(String employee_name) {
 
 		// JDBC 사용 객체
 		Connection conn = null;
@@ -191,13 +202,18 @@ public class ComDao {
 			// String sql = "select * from dept where dname=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, student_name);
+			pstmt.setString(1, employee_name);
 //			pstmt.setString(2, student_name);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				list.add(new Com(rs.getInt("idx"), rs.getString("employee_name"), rs.getString("phonenumber"),
-						rs.getString("address"), rs.getString("email"), rs.getString("com_name"), rs.getString("dept"),
+				list.add(new Com(rs.getInt("idx"),
+						rs.getString("employee_name"),
+						rs.getString("phonenumber"),
+						rs.getString("address"), 
+						rs.getString("email"),
+						rs.getString("com_name"),
+						rs.getString("dept"),
 						rs.getString("job")));
 			}
 
@@ -243,7 +259,7 @@ public class ComDao {
 
 	}
 
-	public int deptInsert(Com com) {
+	public int deptInsert(Com Com) {
 
 		// JDBC 사용 객체
 		Connection conn = null;
@@ -263,17 +279,17 @@ public class ComDao {
 
 			String sql = "insert into phoneInfo_com "
 					+ " (idx,employee_name,phonenumber,address,email,com_name,dept,job) "
-					+ "  values (?, ?, ?,?, ?, ?,?,?)";
+					+ "  values (?, ?, ?,?, ?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, com.getIdx());
-			pstmt.setString(2, com.getEmployee_name());
-			pstmt.setString(3, com.getPhonenumber());
-			pstmt.setString(4, com.getAddress());
-			pstmt.setString(5, com.getEmail());
-			pstmt.setString(6, com.getCom_name());
-			pstmt.setString(7, com.getDept());
-			pstmt.setString(8, com.getJob());
+			pstmt.setInt(1, Com.getIdx());
+			pstmt.setString(2, Com.getEmployee_name());
+			pstmt.setString(3, Com.getPhonenumber());
+			pstmt.setString(4, Com.getAddress());
+			pstmt.setString(5, Com.getEmail());
+			pstmt.setString(6, Com.getCom_name());
+			pstmt.setString(7, Com.getDept());
+			pstmt.setString(8, Com.getJob());
 
 			resultCnt = pstmt.executeUpdate();
 
@@ -403,7 +419,7 @@ public class ComDao {
 
 	}
 
-	public int deptSearchCount(String searchName, Connection conn) {
+	public int deptSearchCount(String employee_name, Connection conn) {
 
 		// Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -416,7 +432,7 @@ public class ComDao {
 			String sql = "select count(*) from phoneInfo_com where employee_name=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, searchName);
+			pstmt.setString(1, employee_name);
 
 			rs = pstmt.executeQuery();
 
@@ -452,7 +468,7 @@ public class ComDao {
 
 			if (rs.next()) {
 				dept = new Com(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getString(7), rs.getString(8));
+						rs.getString(6), rs.getString(7),rs.getString(8));
 			}
 
 		} catch (SQLException e) {

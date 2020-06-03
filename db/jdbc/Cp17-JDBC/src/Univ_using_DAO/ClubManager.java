@@ -16,9 +16,9 @@ public class ClubManager {
 	// DEPT MANAGER
 	/////////////////////////////////////////////////////////////////
 
-	public void comManager() {
+	public void clubManager() {
 
-		System.out.println("DEPT Manager Menu");
+		System.out.println("Club Manager Menu");
 		System.out.println("=========================================");
 		System.out.println("1. List  2. Insert  3. Search  4. Delete  5. Edit  ");
 		System.out.println("=========================================");
@@ -64,7 +64,7 @@ public class ClubManager {
 
 			// 사용자 입력정보 변수
 
-			System.out.println("수정하고자 하는 부서 이름 : ");
+			System.out.println("수정하고자 하는 회원 이름 : ");
 			ManageMain.sc.nextLine();
 			String searchName = ManageMain.sc.nextLine();
 
@@ -86,9 +86,8 @@ public class ClubManager {
 				System.out.println("회원 번호 : " + dept2.getIdx());
 				System.out.println("부서 번호는 수정되지 않습니다.");
 
-				System.out.println("회원 이름" + dept2.getMember_name() + "  ) : ");
+				System.out.println("회원 이름 (" + dept2.getMember_name() + "  ) : ");
 				String member_name = ManageMain.sc.nextLine();
-
 				System.out.println("닉네임 ( " + dept2.getMember_nickname() + "  ) : ");
 				String member_nickname = ManageMain.sc.nextLine();
 				System.out.println("동호회명 ( " + dept2.getClub_name() + "  ) : ");
@@ -188,7 +187,7 @@ public class ClubManager {
 
 		// 사용자 입력정보 변수
 
-		System.out.println("삭제하고자 하는 부서이름 : ");
+		System.out.println("삭제하고자 하는 회원 이름 : ");
 		ManageMain.sc.nextLine();
 		String searchName = ManageMain.sc.nextLine();
 
@@ -210,7 +209,7 @@ public class ClubManager {
 
 		// 사용자 입력정보 변수
 
-		System.out.println("검색하고자 하는 부서이름 : ");
+		System.out.println("검색하고자 하는 회원이름 : ");
 		ManageMain.sc.nextLine();
 		String searchName = ManageMain.sc.nextLine();
 

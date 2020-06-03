@@ -42,14 +42,23 @@ public class ClubDao {
 			// 유일조건이 아니라면 여러개의 행에 수정 처리가 이루어집니다.
 			// 현재 버전에서는 유일한 값으로 생각하고 처리합니다.
 
-			String sql = "update phoneInfo_club  set  member_name=?, addr=? " + " where idx=?";
+			String sql = "update phoneInfo_club  set  member_name=?,"
+					+ " member_nickname=? ," 
+					+ " club_name=? ," 
+					+ " phonenumber=? ," 
+					+ " addr=? ," 
+					+ " email=? " 
+					+ " where idx=?";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, club.getMember_name());
-			pstmt.setString(2, club.getAddr());
-			pstmt.setInt(3, club.getIdx());// 일단 정보 두개만 변경@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			pstmt.setString(2, club.getMember_nickname());
+			pstmt.setString(3, club.getClub_name());
+			pstmt.setString(4, club.getPhonenumber());
+			pstmt.setString(5, club.getAddr());
+			pstmt.setString(6, club.getEmail());
+			pstmt.setInt(7, club.getIdx());// 일단 정보 두개만 변경@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 			resultCnt = pstmt.executeUpdate();
 
@@ -446,7 +455,7 @@ public class ClubDao {
 		try {
 			// conn = ConnectionProvider.getConnection();
 
-			String sql = "select * from phoneInfo_com where employee_name=?";
+			String sql = "select * from phoneInfo_club where member_name=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);

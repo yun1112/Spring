@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>폼태그: input</title>
+    <meta charset="utf-8">
+    <link>
+    <style></style>
+    <!-- <script src="pic2.jpg"></script>-->
+</head>
+
+<body>
+    <form action="" method="get">
+    <!--    <form action="html_tag_form1.html" method="get"></form>-->
+    매니저
+    <select name="mgr">
+        <option value="7788">SCOTT</option>
+        <option value="7839">KING</option>
+    </select><br>
+    선택하세요 <select name="year">
+        <option value="20">2020</option>
+        <option value="19">2019</option>
+        <option value="18">2018</option>
+        <option value="17">2017</option>
+        <option value="16">2016</option>
+        <option value="15">2015</option>
+    </select>년
+    <select name="month">
+        <option>12</option>
+        <option>11</option>
+        <option>10</option>
+        <option>9</option>
+        <option>8</option>
+        <option>7</option>
+        <option>6</option>
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+    </select>월
+    <select select="day">
+        <option>30</option>
+        <option>25</option>
+        <option>20</option>
+        <option>15</option>
+        <option>10</option>
+        <option>5</option>
+        <option>1</option>
+    </select>일
+    <br>
+    <br><input type="text" name="nic" value="cool">
+
+
+    <input type="checkbox" name="like" value="dog">강아지
+    <input type="checkbox" name="like">고양이<br>
+
+    <!--
+   <input type="checkbox" name="like" value="dog">
+   <input type="checkbox" name="like" value="dog">
+   <input type="checkbox" name="like" value="dog">
+   <input type="checkbox" name="like" value="dog">
+-->
+
+    <!--  checkbox: 각 항목들 간의 중복 허용(멀티체크)-->
+    <input type="radio" name="menu" value="menu01">짜장면
+    <input type="radio" name="menu" value="menu02">짬뽕
+    <input type="radio" name="menu" value="menu03">탕수육
+    <input type="radio" name="menu" value="menu04">팔보채
+    <input type="radio" name="menu" value="menu05">깐풍기
+    <input type="radio" name="menu" value="menu06">라조육
+    <br><br>
+    <!--    <input type="text" name="userName" value="scott">-->
+    <button>button-new</button>
+    <input type="button" value="확인하기">
+    <input type="hidden" name="idx" value="2">
+    <input type="submit">
+    <input type="submit" value="보내기">
+
+    <input type="reset">
+</form>
+    <!--  name="menu": 같은 name값으로 설정된 항목들을 배타적으로 선택하도록 설정(싱글체크)
+      value: 데이터 받아서 처리 할 수 있도록 함
+  
+  #input type
+  "button": 그냥 버튼 역할만 함(action 처리 수행하지 않음)
+  "submit": 페이지 이동(action에 적힌 url로)+버튼
+  cf) button: action처리 함(input type="submit"과 동일한 역할)
+  
+  "reset": 사용자가 입력하기 전 상태로 되돌림
+  -->
+
+    <script src=""></script>
+</body></html>
+
+
+<!--
+script: 보통 body 맨 밑에 씀
+
+
+link:외부에 있는 파일 가져옴, 주로 CSS파일
+
+
+-->

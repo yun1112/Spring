@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>practice</title>
+    <style>
+        input {
+            height: 30px;
+            margin: 10px 0;
+        }
+
+        /*        input[type]{border:1px solid blue;}*/
+        input[type=text] {
+            background-color: aqua;
+        }
+
+        input[type=password] {
+            background-color: aquamarine;
+        }
+
+        img[src$=jpg] {
+            border: 3px solid red;
+        }
+
+        img[src$=png] {
+            border: 3px solid green;
+        }
+
+        #header h1,
+        #header h2 {
+            color: red;
+        }
+
+        form input {
+            width: 100%;
+        }
+
+        #header>h1 {
+            background-color: aquamarine;
+        }
+
+        table>tbody>tr>td {
+            color: red;
+        }
+
+        h3+h4 {
+            color: blue;
+        }
+
+        h3~h4.aa {
+            background-color: antiquewhite;
+        }
+
+        h3 {
+            background-color: aqua;
+        }
+
+        h3:hover {
+            color: red;
+            font-size: 32px;
+        }
+
+        h3:active {
+            color: blue;
+            font-style: italic;
+        }
+
+        #myform input {
+            background-color: white;
+        }
+
+        #myform input:disabled {
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <h>Lorem ipsum dolor sit amet
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h>
+
+    <p>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.</p>
+    <p>
+        Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.</p>
+    <hr>
+    <ul id="navigation">
+        <li><a href="html_css_att01.html">home</a></li>
+        <li><a href="#1">company</a></li>
+        <li>service</li>
+        <li>product</li>
+        <li>notice</li>
+        <li>contactus</li>
+        <li>eng</li>
+    </ul>
+    <hr>
+    <form id="myform" action="" method="get">
+        <div>약관보기
+            <input type="checkbox" id="viewmenu">
+            <div>
+                <h4>이용약관</h4>
+                <p>문제가 생기면 바로 강퇴됩니다</p>
+            </div>
+        </div>
+        <div>약관동의<input type="checkbox" checked></div>
+        <div>마케팅동의<input type="checkbox" checked></div>
+        <div><input type="text"></div>
+        <div><input type="text" disabled></div>/*disabled*/
+        <div><input type="text" readonly></div>/*readonly*/
+        <div><input type="number" required></div>/*required*/
+        <input type="submit">
+    </form>
+    <hr>
+    <h4 class="aa">header-4</h4>
+    <h3>header-3</h3>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+    <hr>
+    <!--
+    <table boder="">
+        <tr></tr>
+    </table>
+-->
+</body></html>

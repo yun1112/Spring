@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>css attribute</title>
+</head>
+<meta charset="utf-8">
+<!--<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Roboto:wght@100&display=swap" rel="stylesheet">-->
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300&display=swap" rel="stylesheet">
+<style>
+    /*CSS에서 사용하는 단위:px,%,em
+    px: 절대단위
+    %: 비율
+    em: 배수
+    ex)16px=1em=100%(기본)
+    32px=2em=200%
+    */
+    tr:nth-child(2)>td:nth-child(1) {
+        font-size: 16px;
+        /*        background-color: #AAAAAA;*/
+        color: red;
+        font-weight: bold;
+    }
+
+    tr:nth-child(3)>td:nth-child(1) {
+        font-size: 24px;
+        /*        background-color: #000000;*/
+        color: blue;
+        font-weight: bold;
+    }
+
+    tr:nth-child(4)>td:nth-child(1) {
+        font-size: 32px;
+        /*        background-color: #111111;*/
+        color: green;
+        font-weight: bold;
+    }
+
+    tr:nth-child(2)>td:nth-child(2) {
+        font-size: 1em;
+        /*        background-color: rgba(200,0,255,0.5);*/
+        color: #FF0000;
+        font-weight: bold;
+    }
+
+    tr:nth-child(3)>td:nth-child(2) {
+        font-size: 1.5em;
+        /*        color: #FF0000;*/
+        color: #0000FF;
+        font-weight: bold;
+    }
+
+    tr:nth-child(4)>td:nth-child(2) {
+        font-size: 2em;
+        color: #00FF00;
+        font-weight: bold;
+    }
+
+    tr:nth-child(2)>td:nth-child(3) {
+        font-size: 100%;
+        color: rgb(255, 0, 0);
+        font-weight: bold;
+    }
+
+    tr:nth-child(3)>td:nth-child(3) {
+        font-size: 150%;
+        color: rgb(0, 0, 255);
+        font-weight: bold;
+    }
+
+    tr:nth-child(4)>td:nth-child(3) {
+        font-size: 200%;
+        color: rgb(0, 255, 0);
+        font-weight: bold;
+    }
+
+    #header>th {
+        background-color: cornflowerblue;
+    }
+
+    table>tbody>tr>td:nth-child(2n) {
+        font-style: italic;
+    }
+
+    p::first-letter {
+        font-size: 3em;
+    }
+
+    p::selection {
+        /*        background-image: url('pic.jpg');*/
+        background-color: aquamarine;
+        color: yellow;
+    }
+
+    a:link {
+        color: aqua;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    a:active {
+        color: yellow;
+    }
+
+    a:visited {
+        color: red;
+    }
+
+    /*    색상단위
+    rgb
+    rgba(red,green,blue,alpha)
+        ->alpha: 투명도(0.0~1.0)
+    #000000: HEX코드 단위, 32bit true color
+    */
+
+    body {
+        background-image: url('pic2.jpg');
+        /*        background-size:contain;*/
+        background-size: 50%;
+        /*        background-repeat:repeat-y;*/
+        /*        background-repeat:no-repeat;*/
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    #nav {
+        overflow: hidden;
+    }
+
+    #nav>li {
+        list-style: none;
+        float: left;
+        padding: 5px 15px;
+    }
+
+    #nav>li:nth-child(2n+1) {
+        background-color: cornflowerblue;
+    }
+
+    #nav>li:nth-child(2n) {
+        background-color: aquamarine;
+    }
+
+    #nav>li:first-child {
+        border-radius: 10px 0 0 10px;
+    }
+
+    #nav>li:last-child {
+        border-radius: 0 10px 10px 0;
+    }
+
+    #nav>li:active {
+        background-color: yellow;
+
+    }
+
+    /*
+    #nav>li:disabled{
+        background-color:crimson;
+    }
+*/
+
+    p::first-line {
+        color: blueviolet;
+        font-weight: bold;
+    }
+
+    p::selection {
+        background-color: black;
+        color: yellow;
+    }
+
+
+    hr {
+        border-top: thin solid #AAAAAA;
+        /*        border:0;*/
+    }
+
+    /*    #AAAAAA: grey*/
+    div {
+        color: cornflowerblue;
+        width: 200px;
+        height: 200px;
+        border: 1px solid gray;
+    }
+
+    #box1 {
+        /*        background-color: cornflowerblue;*/
+        background-image: url(pic.jpg);
+        /*        border-width: :thick;*/
+        border-width: 5px;
+        border-style: dashed;
+        border-color: darkorchid;
+        padding: 10px;
+        margin: 10px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    #box1>b {
+        font-size: 50px;
+    }
+
+    #box1>b:hover {
+        font-size: 70px;
+        color: crimson;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    #box1>b:active {
+        color: yellow;
+    }
+
+    #p2 {
+        /*        padding:50px;*/
+        /*        margin-bottom:50px;*/
+    }
+
+    #box2+#p2 {
+        display: none;
+    }
+
+    #box2:checked+#p2 {
+        display: block;
+    }
+
+    #box2 {
+        /*        background-color: mediumpurple;*/
+        background-image: url(pic3.jpg);
+        border-width: thick;
+        border-style: groove;
+        border-radius: 50%;
+    }
+
+    /*padding 네방향 줬을 때ㅡ:width+2*(margin+border+padding)*/
+    #chk+select {
+        display: none;
+    }
+
+    #chk:checked+select {
+        display: block;
+    }
+
+    #chk2+#p1 {
+        display: none;
+    }
+
+    #chk2:checked+#p1 {
+        display: block;
+    }
+
+    img {
+        width: 200px;
+        border-radius: 50px;
+    }
+
+    span {
+        /*        border-style: none;*/
+        border: 1px solid red;
+        color: red;
+    }
+
+    #box {
+        border: 1px solid blue;
+        display: inline;
+    }
+
+    #sp {
+        display: block;
+    }
+
+    #bg {
+        height: 200px;
+        width: 400px;
+        /*
+        height:375px;
+        width:800px;
+*/
+        background-image: url(pic3.jpg);
+        background-size: 100%;
+        font-size: 25px;
+        color: darkseagreen;
+        font-family: cursive;
+        /*        font-weight:bold;*/
+
+
+    }
+
+    /*@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Roboto:wght@100&display=swap');*/
+    .font_kor {
+        font-family: '궁서체', '돋움', '돋움체';
+        /*        font-family: 'Roboto',sans-serif;
+        sans-serif: 고딕체(saved in system)
+        */
+
+        text-align: center;
+        /*        line-height:300px;*/
+    }
+
+    .font_web {
+        font-family: 'Gaegu', cursive;
+        /*        font-family: 'Roboto', sans-serif;*/
+        text-align: center;
+        /*        font-size:30px;*/
+    }
+
+    .font_penscript {
+        font-family: 'Encode Sans', sans-serif;
+        text-align: center;
+    }
+
+    /*    font-family 1,2,3 순위*/
+    /*    web font: style sheet에 등록 후 사용
+    text-align: 수평 방향 정렬
+    */
+</style>
+<div id="bg" class="font_penscript">Star Wars
+    <!--    <h1>Star Wars</h1>스타워즈-->
+</div>
+<hr>
+<!--class와 id이름은 동일하더라도 그 기능이 다르기 때문에 서로 구분됨-->
+
+<body>
+    <span id="sp">dummy</span>
+    <div id="box">
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    </div>
+    <span>dummy</span>
+    <hr>
+    <div class="box1" id="box1"><b>TEXT</b></div>
+    <div class="box2" id="box2"></div>
+    <hr>
+    <!--    <b id="p2">SENTENCE</b>-->
+    <table border="1">
+        <tr id="header">
+            <th><a href="#2111">px</a></th>
+            <th>em</th>
+            <th>%</th>
+        </tr>
+        <tr>
+            <td>HTML5-16px</td>
+            <td>HTML5-1em</td>
+            <td>HTML5-100%</td>
+        </tr>
+        <tr>
+            <td>HTML5-24px</td>
+            <td>HTML5-1.5em</td>
+            <td>HTML5-150%</td>
+        </tr>
+        <tr>
+            <td>HTML5-32px</td>
+            <td>HTML5-2em</td>
+            <td>HTML5-200%</td>
+        </tr>
+    </table>
+    <hr>
+    <ul id="nav">
+        <li><a href="#1">a</a></li>
+        <li><a href="#1">a</a></li>
+        <li><a href="#1">a</a></li>
+        <li><a href="#1">a</a></li>
+        <li><a href="#1">a</a></li>
+        <li><a href="#1">a</a></li>
+        <li><a href="#1">a</a></li>
+    </ul>
+    <hr>
+    <!--    <input id="chk" type="checkbox" checked>-->
+    <input id="chk" type="checkbox">
+    <select>
+        <option>a</option>
+        <option>a</option>
+        <option>a</option>
+        <option>a</option>
+        <option>a</option>
+        <option>a</option>
+    </select>
+    <hr>
+    <input id="chk2" type="checkbox">
+    <div id="p1">
+
+        <h3>Lorem ipsum dolor sit amet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <p>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.</p>
+        <p>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.<br>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.</p>
+    </div>
+    <!--
+    <h3 id="p1">Lorem ipsum dolor sit amet</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+    <p>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.</p>
+    <p>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.<br>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.</p>
+-->
+</body></html>

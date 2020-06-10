@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>layout</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*            background-image: url("bg.png");*
+            background-repeat: repeat;
+            background-size: 80px;
+/*            background-color:rgba(255,255,255,0.5);*/
+            /*            opacity:0.3!important;filter:alpha(opacity=30);*/
+            background-color: #F0F8FF;
+        }
+
+        img[$png] {
+            opacity: 50%;
+            background-image: url(bg.png);
+        }
+
+        /*
+        div.border {
+            border: 1px solid cornflowerblue;
+        }
+*/
+
+        #header {
+            /*            표현 영역의 사이즈 설정*/
+            width: 798px;
+            height: 60px;
+            /*            배경색*/
+            /*            영역의 수평방향의 중앙 위치*/
+            margin: 0 auto;
+            /*            텍스트의 정렬:수평/수직 중앙*/
+            text-align: left;
+            line-height: 30px;
+            /*            텍스트 설정*/
+            font-size: 1em;
+            color: black;
+            font-weight: bold;
+
+            position: relative;
+            color: cornflowerblue;
+        }
+
+        #header.sub {
+            color: black;
+        }
+
+        #nav {
+            /*            표현 영역의 사이즈 설정*/
+            width: 798px;
+            height: 30px;
+            /*            배경색*/
+            /*            영역의 수평방향의 중앙 위치*/
+            margin: 0 auto;
+            /*            텍스트의 정렬:수평/수직 중앙*/
+            text-align: center;
+            line-height: 32px;
+            /*            텍스트 설정*/
+            font-size: 1em;
+            color: black;
+            font-weight: bold;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+
+            position: relative;
+        }
+
+        #aside {
+            /*            표현 영역의 사이즈 설정*/
+            width: 198px;
+            height: 800px;
+            /*            배경색*/
+            /*            영역의 수평방향의 중앙 위치*/
+            /*            margin: 0 auto;*/
+            /*            텍스트의 정렬:수평/수직 중앙*/
+            text-align: left;
+            line-height: px;
+            /*            텍스트 설정*/
+            font-size: 1em;
+            color: black;
+            font-weight: bold;
+            /*            수평방향정렬*/
+            float: right;
+            border-right: 1px solid grey;
+        }
+
+
+
+        #footer {
+            /*            표현 영역의 사이즈 설정*/
+            width: 798px;
+            height: 100px;
+            /*            배경색*/
+            /*            영역의 수평방향의 중앙 위치*/
+            margin: 0 auto;
+            /*            텍스트의 정렬:수평/수직 중앙*/
+            text-align: center;
+            line-height: 50px;
+            /*            텍스트 설정*/
+            font-size: 1em;
+            color: black;
+            font-weight: bold;
+            /*            float속성 해제*/
+            clear: both;
+            border-top: 1px solid grey;
+        }
+
+        #wrap {
+            margin: 0 auto;
+            /*            표현 영역의 사이즈*/
+            width: 800px;
+            overflow: hidden;
+            /*            overflow:hideen: float속성의 범위를 현재 있는 영역으로 한정함*/
+        }
+
+        .search {
+            position: absolute;
+            right: 50px;
+/*            border-radius: 20%;*/
+
+        }
+
+        .search>input[tpye=button] {
+            border: 1px solid;
+        }
+
+        #header.search {
+            text-align: right;
+        }
+
+
+
+        img {
+            width: 430;
+            height: 280;
+        }
+
+        #num1 {
+            float: left;
+        }
+
+        .c1 {
+            width: 50%;
+            height: 80%;
+            position: absolute;
+            border: 5px solid red;
+        }
+
+        #content.c1 {
+            position: relative;
+        }
+
+
+
+
+
+        img {
+            width: 50%;
+            float: left;
+            padding: 10px;
+        }
+
+        h3 {
+            padding: 15px;
+        }
+
+        div {
+            overflow: hidden;
+            font-family: 'Yeon Sung', cursive;
+            font-size: 1em;
+        }
+
+        p:hover {
+            color: cornflowerblue;
+            font-size: 120%;
+        }
+
+        p:active {
+            color: mediumpurple;
+
+        }
+
+        .font_style {
+            font-family: 'Yeon Sung', cursive;
+        }
+
+        p.one {
+            clear: both;
+        }
+
+        h1 {
+            text-shadow: 5px 5px 5px cornflowerblue;
+        }
+
+        .div2 {
+            width: 200px;
+            height: 100px;
+            border: 1px solid;
+            position: relative;
+
+        }
+
+
+
+
+
+
+        #content {
+            /*            표현 영역의 사이즈 설정*/
+            width: 598px;
+            height: 800px;
+            /*            margin: 0 auto;*/
+            text-align: center;
+            line-height: 320px;
+            /*            텍스트 설정*/
+            font-size: 1em;
+            color: black;
+            font-weight: bold;
+            float: none;
+            position: relative;
+            overflow: auto;
+            /*            overflow: hidden;*/
+        }
+
+        #pic1 {
+            width: 430px;
+            height: 280px;
+            position: absolute;
+            border: 1px solid blue;
+            left: 10px;
+            top: 10px;
+        }
+
+
+
+        #article {
+            /*            position: absolute;*/
+            width: 50%;
+            border: 1px solid black;
+            position: absolute;
+        }
+
+        #nav {
+            overflow: hidden;
+        }
+
+        #nav>li {
+            list-style: none;
+            float: left;
+            padding: 1px 1px;
+        }
+
+        #category {
+            font-size: 2em;
+            color: cornflowerblue;
+        }
+
+        #a>li {
+            font-size: 0.5em;
+            margin: 0 8px;
+            color: black;
+        }
+
+        #sub_content1 {
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            line-height: 450px;
+            position: absolute;
+
+        }
+
+        #sub_content2 {
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            top: 170px;
+        }
+
+        #sub_content3 {
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            line-height: 550px;
+            position: absolute;
+            top: 700px;
+            border-top: 1px solid grey;
+        }
+
+        #sub_content4 {
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            top: 900px;
+        }
+
+        #sub_header>div {
+            font-size: 1em;
+            margin: 0 0px;
+            color: black;
+        }
+
+        #menu {
+            width: 400px;
+            position: relative;
+            left: 10px;
+            float: left;
+        }
+
+
+
+        #sub1 {
+            left: 10px;
+            float: left;
+            position: absolute;
+        }
+
+        #sub2 {
+            left: 100px;
+            float: left;
+            position: absolute;
+        }
+
+        #whole_area {
+            background-image: url(bg.png);
+            opacity: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="whole_area"></div>
+    <div id="header" class="border">
+        <div id="sub_header">
+            <h2>HTML5 Example Preview</h2>
+            <div id="sub">AIA아카데미</div>
+        </div>
+    </div>
+    <div id="nav" class="border">
+        <div id="menu">
+            <div id="sub1">HTML5</div>
+            <div id="sub2">CSS3</div>
+            <div id="sub3">JavaScript</div>
+        </div>
+        <div class="search">
+            <input type="text">
+            <input type="button" value="검색">
+        </div>
+    </div>
+    <div id="wrap">
+        <div id="aside" class="border">
+            <div id="category">
+                <h4>카테고리</h4>
+                <ul id="a">
+                    <li>데이터</li>
+                    <li>데이터</li>
+                    <li>데이터</li>
+                    <li>데이터</li>
+                    <li>데이터</li>
+                    <li>데이터</li>
+                </ul>
+            </div>
+            <br>
+            <div id="category">
+                <h4>최근 글</h4>
+                <ul id="a">
+                    <li>데이터</li>
+                    <li>데이터</li>
+                    <li>데이터</li>
+                    <li>데이터</li>
+                    <li>데이터</li>
+                </ul>
+            </div>
+        </div>
+        <div id="content" class="border">
+            <div id="sub_content1"><img src="pic2.jpg"></div>
+            <!--
+                <h2>과학기술</h2>
+                <h1>스타워즈 광선검 구현해줄 ‘메타물질’ 개발</h1><br>
+                - KAIST 신종화 교수팀, 광학적 특성 높인 신물질 개발<br>
+                기사입력 2020-06-09 15:23<br>
+-->
+            <div id="sub_content2">
+                [헤럴드경제=구본혁 기자] 국내 연구진이 동물 뼈의 생체역학적 원리를 모사해 광학적 비선형성이 기존 물질보다 수십억 배 큰 메타물질을 개발했다. 한국과학기술원(KAIST) 신소재공학과 신종화 교수 연구팀은 벽돌을 엇갈려 담을 쌓는 것과 같이 나노 금속판을 3차원 공간에서 엇갈리게 배열하면 물질의 광학적 비선형성이 매우 크게 증대될 수 있음을 확인했다고 9일 밝혔다.
+
+                <p>비선형성이란 입력값과 출력값이 비례관계에 있지 않은 성질이다. 광학에서 큰 비선형성을 확보할 경우, 빛의 속도로 동작하는 인공 신경망이나 초고속 통신용 광 스위치 등의 광소자를 구현할 수 있다.</p>
+
+                <p>영화 스타워즈의 광선 검처럼 잘 제어된 빛을 만드는 것이나 빛만으로 구동되는 광컴퓨터를 만드는 것은 비선형성을 이용할 때 가능한데, 아직 실현되지 않고 있는 이유는 강한 비선형성을 가진 소재가 없기 때문이다. 자연 물질의 작은 비선형성으로도 초고속 광소자, 3차원 광식각 공정, 초고분해능 현미경 등의 기술들이 구현될 수 있지만, 이들은 크고 비싼 고출력 레이저를 사용하거나, 큰 장비 혹은 소자가 필요하다는 공통적인 한계를 지니고 있다.</p>
+
+                <p>연구팀은 물질의 근본적인 전기적 특성인 유전분극(물체가 전기를 띠는 현상)을 매우 크게 조절하는 방법을 고안했다. 나노 금속판이 3차원에서 엇갈려 배열돼있으면 국소분극이 공간을 촘촘하게 채우면서, 마치 시냇물이 모여서 강이 되듯, 전체적으로 매우 큰 분극을 만들게 된다는 점에 착안했다. 빛의 세기가 아닌 분극의 크기를 조절해 큰 비선형성 및 비선형 효과를 얻는 방법은 이번 연구에서 처음 제시한 개념이다.</p>
+
+                <p>연구팀은 이번에 고안한 메타물질이 시간이 짧은 광신호에 대해서도 큰 비선형 효과를 얻을 수 있음을 통해 기존보다 효율적이면서도 더 빠른 광소자 구현이 가능함을 확인했다. 이 연구에서 활용된 소자는 비슷한 신호 시간을 가지는 기존 소자보다는 에너지 효율이 약 8배나 뛰어나고 비슷한 에너지 효율을 가지는 기존 소자보다도 신호 시간은 약 10배 정도 짧다. 즉 신호의 시간과 소요되는 에너지의 곱으로 표현되는 성능 기준으로 보면, 이 소자는 현재까지 개발된 광소자 중 가장 우수한 성능을 보였다.</p>
+
+
+                <p>이 원리는 유체역학에서의 물질전달률, 열역학에서의 열전도율 등의 증대에도 적용될 수 있을 것으로 기대된다.</p>
+
+                <p>신종화 교수는 “이번 연구성과는 센 물질, 즉 광대역에서 매우 큰 유전분극 증대율을 보이는 물질을 최초로 발견하고 증명한 연구라는 점에서 의미가 크다ˮ며 "기계학습을 위한 초고속 인공 신경망 등 다양한 광 응용 소자의 구현을 위해 후속 연구를 진행하고 있다ˮ고 말했다.</p>
+
+                <p>이번 연구성과는 국제학술지 ‘커뮤니케이션즈 피직스’ 5월 8일자 온라인판에 게재됐다.</p>
+            </div>
+
+            <div id="sub_content3"><img src="pic.jpg"></div>
+            <!--
+                <h2>과학기술</h2>
+                <h1>스타워즈 광선검 구현해줄 ‘메타물질’ 개발</h1><br>
+                - KAIST 신종화 교수팀, 광학적 특성 높인 신물질 개발<br>
+                기사입력 2020-06-09 15:23<br>
+-->
+            <div id="sub_content4">
+                [헤럴드경제=구본혁 기자] 국내 연구진이 동물 뼈의 생체역학적 원리를 모사해 광학적 비선형성이 기존 물질보다 수십억 배 큰 메타물질을 개발했다. 한국과학기술원(KAIST) 신소재공학과 신종화 교수 연구팀은 벽돌을 엇갈려 담을 쌓는 것과 같이 나노 금속판을 3차원 공간에서 엇갈리게 배열하면 물질의 광학적 비선형성이 매우 크게 증대될 수 있음을 확인했다고 9일 밝혔다.
+
+                <p>비선형성이란 입력값과 출력값이 비례관계에 있지 않은 성질이다. 광학에서 큰 비선형성을 확보할 경우, 빛의 속도로 동작하는 인공 신경망이나 초고속 통신용 광 스위치 등의 광소자를 구현할 수 있다.</p>
+
+                <p>영화 스타워즈의 광선 검처럼 잘 제어된 빛을 만드는 것이나 빛만으로 구동되는 광컴퓨터를 만드는 것은 비선형성을 이용할 때 가능한데, 아직 실현되지 않고 있는 이유는 강한 비선형성을 가진 소재가 없기 때문이다. 자연 물질의 작은 비선형성으로도 초고속 광소자, 3차원 광식각 공정, 초고분해능 현미경 등의 기술들이 구현될 수 있지만, 이들은 크고 비싼 고출력 레이저를 사용하거나, 큰 장비 혹은 소자가 필요하다는 공통적인 한계를 지니고 있다.</p>
+
+                <p>연구팀은 물질의 근본적인 전기적 특성인 유전분극(물체가 전기를 띠는 현상)을 매우 크게 조절하는 방법을 고안했다. 나노 금속판이 3차원에서 엇갈려 배열돼있으면 국소분극이 공간을 촘촘하게 채우면서, 마치 시냇물이 모여서 강이 되듯, 전체적으로 매우 큰 분극을 만들게 된다는 점에 착안했다. 빛의 세기가 아닌 분극의 크기를 조절해 큰 비선형성 및 비선형 효과를 얻는 방법은 이번 연구에서 처음 제시한 개념이다.</p>
+
+                <p>연구팀은 이번에 고안한 메타물질이 시간이 짧은 광신호에 대해서도 큰 비선형 효과를 얻을 수 있음을 통해 기존보다 효율적이면서도 더 빠른 광소자 구현이 가능함을 확인했다. 이 연구에서 활용된 소자는 비슷한 신호 시간을 가지는 기존 소자보다는 에너지 효율이 약 8배나 뛰어나고 비슷한 에너지 효율을 가지는 기존 소자보다도 신호 시간은 약 10배 정도 짧다. 즉 신호의 시간과 소요되는 에너지의 곱으로 표현되는 성능 기준으로 보면, 이 소자는 현재까지 개발된 광소자 중 가장 우수한 성능을 보였다.</p>
+
+
+                <p>이 원리는 유체역학에서의 물질전달률, 열역학에서의 열전도율 등의 증대에도 적용될 수 있을 것으로 기대된다.</p>
+
+                <p>신종화 교수는 “이번 연구성과는 센 물질, 즉 광대역에서 매우 큰 유전분극 증대율을 보이는 물질을 최초로 발견하고 증명한 연구라는 점에서 의미가 크다ˮ며 "기계학습을 위한 초고속 인공 신경망 등 다양한 광 응용 소자의 구현을 위해 후속 연구를 진행하고 있다ˮ고 말했다.</p>
+
+                <p>이번 연구성과는 국제학술지 ‘커뮤니케이션즈 피직스’ 5월 8일자 온라인판에 게재됐다.</p>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="border">Created By YunGyeong</div>
+</body>

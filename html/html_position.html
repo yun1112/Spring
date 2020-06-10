@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>절대좌표 위치 지정</title>
+</head>
+<meta charset="utf-8">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        font-size: 1.5em;
+        text-align: center;
+        line-height: 100px;
+        /*        위치속성*/
+        position: absolute;
+    }
+
+    .red {
+        background-color: red;
+        z-index: 1;
+        /*
+        left: 10px;
+        top: 50px;
+*/
+    }
+
+    .green {
+        background-color: green;
+        z-index: 2;
+        left: 50px;
+        top: 50px;
+        /*
+        right: 60px;
+        top: 100px;
+*/
+    }
+
+    .blue {
+        z-index: 3;
+        background-color: blue;
+        left: 100px;
+        top: 100px;
+        /*
+        right: 10px;
+        bottom: 10px;
+*/
+    }
+
+    /*position:absolute 좌측 상단(0,0)부터 시작, 좌표계를 이용해서 지정한 px만큼 이동
+    cf) position:fixed
+    
+    z-index: 도형의 순서
+    
+    */
+    #wrap{
+        width:50%;
+        height:100px;
+        border:3px solid;
+        position:relative;
+        overflow:auto;
+    }
+/*    position:realative 기준잡음
+        특정 범위 벗어나는 부분 처리
+    
+    overflow:scroll 상하좌우 스크롤 생김
+    overflow:auto 필요한 영역 내에서만 스크롤 생김
+    */
+</style>
+
+<body>
+   <h1>title: 블록 안에 절대 좌표로 블록을 위치합니다</h1>
+ <div id="wrap">
+    <div class="box red">red</div>
+    <div class="box green">green</div>
+    <div class="box blue">blue</div></div>
+    <h1>페이지 하단입니다</h1>
+</body></html>
+
+
+<!--특정 div기준 위치 지정-->
+
+
+
+
+
+
+

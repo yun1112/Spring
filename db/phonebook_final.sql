@@ -53,7 +53,8 @@ drop table phoneInfo_univ;
 desc phoneInfo_univ;
 desc phoneInfo_com;
 select * from phoneInfo_com;
-insert into phoneInfo_com values(1,'김','111-1111','집','a@a.com','apple','marketing','ceo',2);
+insert into phoneInfo_com values(1,'김','111-1111','집','a@a.com','apple','marketing','ceo',1);
+
 create table phoneInfo_univ(
 idx number(6),
 student_name varchar2(20),

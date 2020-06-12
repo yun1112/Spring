@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript: function 함수</title>
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet"> -->
+        <script>
+            /*
+       window.onload=function(){
+            alert('page load');
+        }//바디태그에 있는 B요소들이 브라우저에 출력하는 시점이 함수 호출하는 시점
+
+
+
+        매개변수: 숫자 두개
+        데이터처리: 두 수의 덧셈 연산 후
+        return: 결과 반환
+
+        function func_add1(num1,num2){
+            var result=num1+num2;
+            return result;
+        }
+        var func_add2=function(n1,n2){//익명함수
+            return n1+n2;
+        };
+        alert(func_add1(10,20));
+        alert(func_add2(100,200));
+         */
+            //  -------------------------------------------------------console
+            function Person(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+            const me = new Person('John', 'Smith');
+            console.table(me);
+
+            var str = "this is a temporary sentence";
+            console.log("check the sentence you wrote:", str);
+            console.info('information');
+            console.warn('warn');
+            console.error('error');
+            console.log('%c%s', 'color:green;background:yellow;font-size:24px', 'function of sum');
+            // -------------------------------------------------------console
+
+            /*
+        가변 매개변수:arguments 배열 이용
+        arguments객체(배열): 함수 호출할 때 입력한 인자 담겨져 있음
+        arguments는 사실 배열은 아니고 arguments객체의 인스턴스
+
+        #arguments.length != 함수.length
+        arguments.length: 함수로 전달된 실제 인자의 수
+        함수.length: 함수에 정의된 인자의 수
+        */
+            function sumAll() { //가변매개변수 선택적으로 사용
+                //argunments객체는 가변매개변수에 전달되는 값들을 배열로 저장하고 있는 변수
+                var sum = 0;
+
+                for (var i = 0; i < arguments.length; i++) {
+                    sum += arguments[i];
+                    document.write('arguments[' + i + ']: ' + arguments[i] + '<br/>');
+                    console.log('sum:', sum);
+                }
+                return sum;
+            }
+            var result = sumAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            alert(result);
+
+
+            console.log('%c%s', 'color:green;background:yellow;font-size:16px', 'length of function & length of arguments');
+
+            document.write('<hr>result:' + result);
+
+            function zero() {
+                console.log('zero.length', zero.length, 'arguments.length', arguments.length);
+            }
+            function one(a) {
+                console.log('one.length', one.length, 'arguments.length', arguments.length);
+            }
+            function two(a, b) {
+                console.log('two.length', two.length, 'arguments.length', arguments.length);
+            }
+            zero();
+            one(1, 2);
+            two(1);
+
+            /*
+            콜백함수: 매개변수로 전달된 함수
+            정의하는 함수 내부에서 실행할 목적으로 구성함
+            비동기식 처리: 특정 코드의 연산 끝날 때까지 코드 실행 멈추지 않고 다음 코드 먼저 실행
+            (실행 횟수, 간격)
+
+            */
+            console.log('%c%s', 'color:green;background:yellow;font-size:24px', 'callback function');
+
+           document.write('<hr>');
+            function callTenTimes(callback) {
+                if (typeof(callback) == 'function') {
+                    for (var i = 0; i < 10; i++) {
+                        callback();
+                        document.write('callback'+(i+1)+'<br>');
+                    }
+                }
+            }
+            var cnt=0;
+            var handler = function () {
+                console.log('handler function'+(++cnt));
+            };
+            callTenTimes(handler);
+            document.write('<hr>');
+            /*
+            <script> 태그 먼저 호출하는 것이 일반적임
+            window.onload: 메서드 오버라이딩(재정의)
+            해당 함수 내의 코드 스크립트가
+            * 웹브라우저 내의 모든 요소가 준비된 후에 실행이되도록 함
+
+            익명함수: 런타임시 실행, 글로벌 영역에 등록x,익명함수 만들기 전에 함수 호출
+            * 하면 오류 발생됨
+            선언적 함수:글로벌 영역에 먼저 등록, 런타임 전에 이미 등록o
+        */
+
+        /* 
+        #JavaScript 내장함수
+        alert(),prompt(),confirm()
+        setTimeout(callback,ms)// 밀리초단위로 처리ㅡ ms이후에 callback함수 한 번 실행
+        setInterval(callback,ms)// ms간격으로 callback 실행을 반복함
+        */
+
+        console.log('%c%s', 'color:green;background:yellow;font-size:24px', 'timer function');
+        var count=10;
+        var intervalID=setInterval(function(){
+            // '<table border="1"><tr><td><h1>'+new Date()+'</h1></td></tr></table>'
+            // document.body.innerHTML='<h1>'+new Date()+'</h1>';
+            console.log((count--)+'초 남음');
+            document.body.innerHTML='<table border="1"><tr><td><h1>'+new Date()+
+                '</h1></td></tr></table><hr><style>table{font-size:12px;color:cyan;background-color:cornflowerblue;}</style>';
+            //이전 HTML스크립트 태그 모두 초기화되고 body태그만 브라우저에 출력됨
+        },1000);//1초마다 함수 호출해서 body에 HTML태그 넣어줌
+        setTimeout(function(){
+            clearInterval(intervalID);
+        },10*1000);//10초 후 함수 실행 중지
+
+        if(count<=1)
+            console.log('%c%s', 'color:green;background:yellow;font-size:24px', 'js code');
+        var jsCode='';
+        jsCode+='var number=100;';
+        jsCode+='alert(number);';
+
+        eval(jsCode);
+
+        /* 
+        숫자 함수
+        Number()
+        parseInt: 정수로 변환
+        parseFloat: 실수로 변환
+        */
+       var won='1000원';
+       var dollar='1.5$';
+
+       console.log('Number(): '+Number(won)+', '+Number(dollar));
+        </script>
+    </head>
+    <body></body>
+</html>

@@ -455,7 +455,7 @@ public class ClubDao {
 		try {
 			// conn = ConnectionProvider.getConnection();
 
-			String sql = "select * from phoneInfo_com where employee_name=?";
+			String sql = "select * from phoneInfo_club where member_name=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);

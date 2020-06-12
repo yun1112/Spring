@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=c, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            /*
+                #숫자 함수
+                    Number()
+                    parseInt: 정수로 변환
+                    parseFloat: 실수로 변환
+            */
+            console.log(
+                '%c%s',
+                'color:beige;background:cornflowerblue;font-size:24px',
+                'transfering string to number'
+            );
+            var won = '1000원';
+            var dollar = '1.5$';
+            console.log('Number(): ' + Number(won) + ', ' + Number(dollar));
+            console.log('parseInt(): ' + parseInt(won) + ', ' + parseInt(dollar));
+            console.log('parseFloat(): ' + parseFloat(won) + ', ' + parseFloat(dollar));
+            
+            document.title='title';
+
+            var div=document.createElement('div');//메모리에 div 생성
+            var text=document.createTextNode('text');
+            var fragment=document.createDocumentFragment(); //가짜 document 생성
+            // div.appendChild(text);//div에 text 추가
+            document.getElementById('div').appendChild(text);
+            fragment.appendChild(div);//fragment(가짜 document)에 div 추가
+            document.body.appendChild(fragment);// 실제 document에 fragment 추가
+        </script>
+    </head>
+    <body></body>
+</html>

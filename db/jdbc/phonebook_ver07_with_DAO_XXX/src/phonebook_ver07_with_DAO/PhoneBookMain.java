@@ -84,7 +84,7 @@ public class PhoneBookMain {
 				break;
 			case Choice.SHOW:
 //				manager.showAllInfo();
-				manager.phonebookList();
+//				manager.phonebookList();
 				break;
 			case Choice.EXIT:
 				System.out.println("프로그램을 종료합니다");

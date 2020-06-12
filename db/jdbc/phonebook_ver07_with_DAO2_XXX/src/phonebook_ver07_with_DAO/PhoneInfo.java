@@ -4,21 +4,21 @@ package phonebook_ver07_with_DAO;
  * 
  * */
 
-public abstract  class PhoneInfo{
+public abstract  class PhoneInfo implements PhoneInfoImpl{
 	private int idx;
 	private String name;
 	private String phoneNumber;
 	private String addr;
 	private String email;
 
-	PhoneInfo(int idx, String name, String phoneNumber, String addr, String email) {
+	public PhoneInfo(int idx, String name, String phoneNumber, String addr, String email) {
 		this.idx=idx;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.addr = addr;
 		this.email = email;
 	}
-	
+
 	public void showBasicInfo() {
 		System.out.println("인덱스번호:" + this.idx);
 		System.out.println("이름:" + this.name);
@@ -27,9 +27,6 @@ public abstract  class PhoneInfo{
 		System.out.println("메일:" + this.email);
 	}
 
-	public void showAllInfo() {
-		showBasicInfo();
-	}
 //	public void showAllInfo() {
 //		showBasicInfo();
 //	}

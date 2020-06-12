@@ -1,6 +1,6 @@
 package phonebook_ver07_with_DAO;
 
-public class PhoneCompanyInfo extends PhoneInfo{
+public class PhoneCompanyInfo extends PhoneInfo implements PhoneInfoImpl {
 	String company;
 	String dept;
 	String job;

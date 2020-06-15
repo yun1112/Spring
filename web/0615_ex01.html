@@ -170,6 +170,15 @@
                 information.push(temporary);
                 console.log(information);
 
+                localStorage.setItem("id",h1s[1].value);
+                localStorage.setItem("pwd",h1s[2].value);
+                localStorage.setItem("name",h1s[3].value);
+                // console.log('localStorage:'+localStorage);
+                var id=localStorage.getItem("id");
+                var pwd=localStorage.getItem("pwd");
+                var name=localStorage.getItem("name");
+                // alert(pwd);
+
                 
 
                 //그냥 받은 정보를 한번에 출력(x)->등록버튼 한 번 누를 때마다 한 줄씩 출력

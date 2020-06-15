@@ -8,6 +8,7 @@
         href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
         rel="stylesheet">
         <style>
+            /* 창 조절 못하게 해야됨 */
            
             .button {
                 background-color: cornflowerblue;
@@ -102,6 +103,13 @@
                 console.log('id: '+h1s[0].value);
                 console.log('password: '+h1s[1].value);
                 console.log('name: '+h1s[2].value);
+
+                localStorage.setItem("id",id);
+                localStorage.setItem('pwd',pwd);
+                localStorage.setItem('name',name);
+                console.log('localStorage:'+localStorage);
+                var load=localStorage.getItem("id");
+                alert(load);
 
                 //아이디 비밀번호 맞는 정보 찾아서 수정->데이터 변경 조건식 필요
                 //기본 브라우저 창에서 받았던 정보와 팝업창에 입력한 정보 비교

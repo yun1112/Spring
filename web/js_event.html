@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Event</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
+            rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Yeon Sung', cursive;
+                font-size: 1.2em;
+                color: cornflowerblue;
+                text-align:center;
+            }
+            h1 {
+                border: 2px solid mediumpurple;
+            }
+            h1:hover{
+                font-size:2em;
+            }
+            h1:active{
+                background-color:mediumvioletred;
+            }
+            hr{
+                border:2px solid mediumpurple;
+            }
+            input[type=submit]{
+                margin:10px;
+                background-color:mediumvioletred;
+                color:azure;
+                border:none;
+            }
+            form{
+                padding:5px;
+                margin:10px;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                var header1 = document.getElementById("header1");
+                header1.onclick = function (e) {// event객체 e
+                    var event=e||window.event;
+
+                    console.log(event);
+                    // alert(this.innerText);
+
+                
+                    // console.log(document.getElementById('header1').style.backgroundColor);
+                    if(document.getElementById('header1').style.backgroundColor='cyan'){
+                        this.style.backgroundColor='red';
+                        this.style.color='cyan';
+                    }
+                    else if(document.getElementById('header1').style.backgroundColor='red'){
+                        this.style.backgroundColor='cyan';
+                        this.style.color='red';
+                    }
+                    
+                    setTimeout(function(){header1.onclick()},3000);
+
+                };
+
+                var myForm=document.getElementById('my-form');
+                myForm.onsubmit=function(){//유효성 검사 가능해짐
+                    var uid=document.getElementById('uid');
+                    var upwd=document.getElementById('upwd');
+                    console.log(uid.value);//사용자가 입력한 데이터 가져옴
+                    console.log(upwd.value);//사용자가 입력한 데이터 가져옴
+           
+                    
+                    //공백여부 확인하는 유효성검사
+                    if(uid.value==null||uid.value.length<1){//사용자가 입력 안 한 경우
+                        alert('아이디 정보를 입력하세요');
+                        return false;
+                    }
+                    if(upwd.value==null||upwd.value.length<1){//사용자가 입력 안 한 경우
+                        alert('비밀번호 정보를 입력하세요');
+                        return false;
+                    }
+                }
+            };
+            function show(d){
+                alert(d);
+            }
+        </script>
+    </head>
+    <body>
+
+        <form action="http://www.naver.com" id="my-form">
+            <label>아이디</label>
+            <input type="text" name="uid" id="uid">
+            <input type="submit" value="naver">
+            <label>비밀번호</label>
+            <input type="password" name="upwd" id="upwd">
+            <input type="submit" value="naver">
+        </form>
+        <hr>
+        <h1 id="header1">HEADER1</h1><!-- 실제로는 div영역이 전부 클릭 영역 -->
+        <h1 id="header2" onclick="show('String')" style="background-color:aquamarine;">HEADER2</h1><!-- 실제로는 div영역이 전부 클릭 영역 -->
+    </body>
+</html>

@@ -16,6 +16,7 @@
     margin: 5px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    border-radius: 10%;
 }
 
 .button2 {
@@ -32,50 +33,87 @@
     border: none;
 }
 
+.titles{
+    font-size:2em;
+    margin:50px 50px;
+    padding:10px 0px;
+    color:rgb(170, 200, 255);
+    top:100px;
+    /* color:cornflowerblue; */
+}
 hr{
-    border:1px solid grey;
-    width:50%
+    border:1px solid cornflowerblue;
+    width:100%
 }
 #content{
-    width: 70%;
-    margin:25px 50px;
+    width: 80%;
+    margin:25px 100px;
     padding:20px 50px;
     position: relative;
     /* border: 1px solid cornflowerblue; */
-}
+    background-color: rgba(122, 162, 236, 0.781);
+    /* background-image: url(../images/pic2.jpg); */
+    border-radius: 10%;
 
+}
+#list,#tb{
+    margin:-30px 30px;
+}
+#tb{
+    margin:-50px 70px;
+}
 h1{
-    margin:20px 30px;
+    margin:20px 100px;
 }
 #regForm{
         /* text-align: center; */
-        width: 90%;
+        width: 100%;
         /* border: none; */
         /* border:1px solid grey; */
         border-collapse: collapse;
-        font-size: 1.1em;
+        font-size: 1.2em;
+        /* background-color: sandybrown; */
+        background-color: mediumslateblue;
+        border-radius: 0% 0% 10%10%;
+
         /* 테이블 테두리 한줄(테두리선 겹쳐서 표현) */
     }
-  
 /* #listarea{ */
-    table{
+table{
     /* border: 1px solid black; */
-    width:50%
+    width:55%;
+    margin:50px;
+    }
+    /* #tb>tr,#tb>td{
+        background-color: royalblue;
+    } */
+#reg{
+    width:30%;
+    /* background-color: red; */
+    background-color: mediumslateblue;
+    border-radius: 10%;
 }
 
 body{
     /* position: relative; */
+    background-color: rgb(131, 110, 252);
+    /* background-image: url("../images/.png"); */
+    background-size:100px;  
 }
 #edit{
     text-align: center;
     position: absolute;
+    float:right;
     width:180px;
     /* height:100px; */
-    right:150px;
-    top:10px;
-    margin:-50px 100px;
+    right:30px;
+    /* left:350px; */
+    top:80px;
+    margin:-50px 500px;
     /* float:right; */
     background-color: cornflowerblue;
+    border-radius: 10%;
+
     /* background-image: url("https://thumbnail.10x10.co.kr/webimage/image/basic600/262/B002626948.jpg?cmd=t"); */
 
 }
@@ -84,11 +122,25 @@ body{
     /* text-align: center; */
     margin:0 20px;
 }
+#mainTitle{
+    margin:0 100px;
+    font-size:5em;
+    font-weight:bold;
+    color:rgb(170, 200, 255);
+    /* text-shadow: -1px 0 gold, 0 1px #f00, 1px 0 #f00, 0 -1px #f00; */
+}
 
 input{
     float:right;
 }
-#listtable{
-    background-color: cornflowerblue;
-    
+
+
+td{
+    padding:3px 0px;
 }
+/* #x{
+    background-color: red;
+    color:red;
+    
+} */
+

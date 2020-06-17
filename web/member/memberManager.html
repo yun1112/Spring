@@ -14,26 +14,30 @@
 
 <body>
     <header>
-        <h1>회원관리 프로그램</h1>
+        <p id="mainTitle">회원관리 프로그램</p>
     </header>
     <div id="content">
         <div id="reg">
-            <h2 class="title">회원 저장</h2>
+            <p class="title titles">회원 저장</p>
             <form id="regForm">
                 <table id="tb">
-                    <tr>
+                    <tr id="td1">
                         <td>
                             <label>아이디</label>
                             <input type="text" id="uid" placeholder="아이디" required>
                         </td>
-                        <td>
+                    </tr>
+                    <tr>
+                        <td id="td2">
                             <label>비밀번호</label>
                             <input type="password" id="pw" placeholder="비밀번호" required>
-                        </td>
-                        <td>
+                        </td></tr>
+                        <tr>
+                            <td id="td3">
                             <label>이름</label>
                             <input type="text" id="uname" placeholder="이름" required>
                         </td>
+                    </tr>
                         <td>
                             <input class="button button2" type="submit" value="저장">
                         </td>
@@ -43,9 +47,9 @@
             </form>
         </div>
         
-        <hr>
+        <!-- <hr> -->
         <div id="edit">
-            <h2 class="title">회원 수정</h2>
+            <p class="title">회원 수정</p>
             <form id="editForm">
                 <!-- <input type="text" id="idx"> -->
                 <input type="hidden" id="idx" required>
@@ -69,16 +73,16 @@
                         </td>
                     <tr>
                         <td>
-                            <input type="submit" value="수정">
+                            <input type="submit" value="수정" >
                         </td>
                     </tr>
                 </table>
 
             </form>
         </div>
-        <hr>
+        <!-- <hr> -->
         <div class="listarea">
-            <h2 class="title">회원 리스트</h2>
+            <h2 class="title titles titles2">회원 리스트</h2>
             <div id="list">
                 
             </div>

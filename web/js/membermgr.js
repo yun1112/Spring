@@ -48,35 +48,36 @@ function createMember() {
     return false;
 
 }
-
 // 회원 리스트 출력 기능
 function displayTable() {
 
     var listHtml = '';
-    listHtml += '<table  class="listtable" style="border:1px solid grey">';
-    listHtml += '   <tr>';
-    listHtml += '       <th>index</th>';
-    listHtml += '       <th>ID(이메일)</th>';
-    listHtml += '       <th>비밀번호</th>';
-    listHtml += '       <th>이름</th>';
-    listHtml += '       <th>관리</th>';
+    listHtml += '<table  class="listtable" style="border-collapse:collapse;background-color:cornflowerblue; border:1px solid grey">';
+    listHtml += '   <tr style="background-color: mediumslateblue; border:1px solid grey">';
+    listHtml += '       <th style=" border:1px solid grey">index</th>';
+    listHtml += '       <th style="border:1px solid grey">ID(이메일)</th>';
+    listHtml += '       <th style="border:1px solid grey">비밀번호</th>';
+    listHtml += '       <th style="cyan;border:1px solid grey">이름</th>';
+    listHtml += '       <th style=" cyan;border:1px solid grey">관리</th>';
     listHtml += '   </tr>';
 
     // 배열의 요소를 반복문으로 테그 생성
     for (let i = 0; i < members.length; i++) {
-        listHtml += '   <tr>';
-        listHtml += '       <td>' + i + '</td>';
-        listHtml += '       <td>' + members[i].id + '</td>';
-        listHtml += '       <td>' + members[i].pw + '</td>';
-        listHtml += '       <td>' + members[i].name + '</td>';
-        listHtml += '       <td> <a href="javascript:editSet('+i+')">수정</a> | <a href="javascript:deleteMember('+i+')">삭제</a> </td>';
+        listHtml += '   <tr style="border:1px solid grey;text-align:center;">';
+        listHtml += '       <td style="border:1px solid grey">' + i + '</td>';
+        listHtml += '       <td style="border:1px solid grey">' + members[i].id + '</td>';
+        listHtml += '       <td style="border:1px solid grey">' + members[i].pw + '</td>';
+        listHtml += '       <td style="border:1px solid grey">' + members[i].name + '</td>';
+        listHtml += '       <td style="border:1px solid grey"> <a style="text-decoration:none;background-color:mediumslateblue" id "x" href="javascript:editSet('+i+')">수정</a> | <a style="text-decoration:none;background-color:mediumslateblue" href="javascript:deleteMember('+i+')">삭제</a> </td>';
         listHtml += '   </tr>';
     }
 
     listHtml += '</table>';
-
+    
     var listTable = document.getElementById('list');
+    
     listTable.innerHTML = listHtml;
+    var temp=document.getElementById('listTable');
 
 }
 
@@ -116,7 +117,7 @@ function editMember() {
     setStorage();
 
 
-    alert("수정되었습니다.\n수정폼 화면을 숨깁니다.");
+    alert("회원 정보가 정상적으로 수정되었습니다.");
     // 수정 폼 영역 출력
     document.getElementById('edit').style.display='none';
 
@@ -130,6 +131,7 @@ function deleteMember(idx){
 
     if(confirm('삭제하시겠습니까?')){
         members.splice(idx,1);
+        alert("회원 정보가 정상적으로 삭제되었습니다.");
         // 화면 갱신
         displayTable();
         // 동기화

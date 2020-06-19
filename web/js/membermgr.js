@@ -1,14 +1,17 @@
-// 회원 정보를 저장할 배열 생성
+//모든 멤버들의 정보를 담을 배열
 var members = [];
 
-// 회원 데이터를 객체화 시킬 생성자 함수
-function Member(mid, mname, mpw) {
-    this.id = mid;
-    this.name = mname;
-    this.pw = mpw;
+//객체 초기화 생성자 함수
+function Member(id, name, pw) {
+    this.id = id;
+    this.name = name;
+    this.pw = pw;
 }
 
-// 공통 함수 : 메서드 정의
+/* prototype: 자바의 클래스와 유사한 개념
+prototype이라는 빈 객체 안에 들어있는 값을 다른 객체에서 공유해서 사용할 수 있음
+*/
+//-------------------prototype.toString사용 이유?
 Member.prototype.toString = function () {
     var makeHtml = '';
     makeHtml += '<td>';
@@ -24,15 +27,70 @@ Member.prototype.toString = function () {
 }
 
 
-// 데이터 저장함수
 function addMember(member) {
     members.push(member);
     console.log(members);
     displayTable();
 }
 
-// 회원 데이터 저장 
+//회원 정보를 매개변수로 받아와서 배열에 저장하는 함수
 function createMember() {
+        // var temporary=new Array();
+    // var id=document.querySelector('#id');/* String형식으로 정보 입력받음 */
+    // var pwd=document.querySelector('#pwd');/* String형식으로 정보 입력받음 */
+    // var name=document.querySelector('#name');/* String형식으로 정보 입력받음 */
+
+    // var h1s=document.querySelectorAll('input');
+    // console.log(h1s);
+    // console.log(h1s[0].value);
+    // console.log('id: '+information.id);
+    // console.log('password: '+information.value);
+    // console.log('name: '+information.value);
+
+    // showList();//회원 목록 리스트
+    // document.body.appendChild(id);
+    // var infor='';
+    //Text Node 생성
+    /* infor += document.createTextNode(h1s[1].value);
+    infor += document.createTextNode(h1s[2].value);
+    infor += document.createTextNode(h1s[3].value);
+    infor+=document.createTextNode(++idx); */
+    // <h1>안녕하세요</h1>
+    // table_td.appendChild(infor); //<tr></tr>에 <td></td>추가
+    
+
+    // document.getElementById('result_id').setAttribute('a',h1s[1].value);
+    // document.getElementById('result_id').innerHTML=h1s[1].value;
+    // document.getElementById('result_pwd').innerHTML=h1s[2].value;
+    // document.getElementById('result_name').innerHTML=h1s[3].value;
+    // document.getElementById('idx').innerHTML=++index;
+
+    // temporary.push(h1s[1].value);
+    // temporary.push(h1s[2].value);
+    // temporary.push(h1s[3].value);
+    // information.push(temporary);
+    // console.log(information);
+
+    // localStorage.setItem("id",h1s[1].value);
+    // localStorage.setItem("pwd",h1s[2].value);
+    // localStorage.setItem("name",h1s[3].value);
+    // console.log('localStorage:'+localStorage);
+    // var id=localStorage.getItem("id");
+    // var pwd=localStorage.getItem("pwd");
+    // var name=localStorage.getItem("name");
+    // alert(pwd);
+
+    
+
+    //그냥 받은 정보를 한번에 출력(x)->등록버튼 한 번 누를 때마다 한 줄씩 출력
+
+    //입력받은 정보를 이차원 배열 형식으로 저장해야됨
+
+    //입력값 유효성 검사 해야됨
+
+    /* body 두번째 테이블에 입력받은 정보들 appendChild로 추가*/
+    
+    // document.body.getElementById("result_id");
     // 사용자 입력 데이터 받기, document로 케스팅 후 value 속성 사용
     var id = document.getElementById('uid').value;
     var name = document.getElementById('uname').value;
@@ -41,7 +99,17 @@ function createMember() {
     addMember(new Member(id, name, pw));
     // 동기화
     setStorage();
+    /* var id=document.querySelector('#id');//String형식으로 정보 입력받음
+    var pwd=document.querySelector('#pwd');//String형식으로 정보 입력받음
+    var name=document.querySelector('#name');//String형식으로 정보 입력받음
 
+    // var h1s=document.querySelectorAll('input');
+    // console.log(h1s);
+    // console.log(h1s[0].value);
+    console.log('id: '+information.id);
+    console.log('password: '+information.value);
+    console.log('name: '+information.value); 
+    */
     this.reset();
 
     // form 테그의 action 실행이 되지 않도록 반드시 return false
@@ -141,9 +209,9 @@ function deleteMember(idx){
 
 
 
-// localStorage 에 데이터 저장/수정 시에 업데이트
+//localStorage에 회원정보를 담은 객체 저장하는 함수
 function setStorage(){
-    // 데이터의 갱신 : 추가, 수정, 삭제
+    //문자열 형식으로 데이터 저장/관리
     localStorage.setItem('members', JSON.stringify(members));
 }
 
@@ -202,3 +270,23 @@ function showHide(){
         document.getElementById("showHide").style.display ='none';
     }
 }
+
+/*   window.onload = function () {
+    //Tag Element 생성
+    var h1 = document.createElement('h1'); //<h1></h1>태그 생성
+    //Text Node 생성
+    var text = document.createTextNode('안녕하세요');
+    // <h1>안녕하세요</h1>
+    h1.appendChild(text); //<h1></h1>에 text추가
+    document.body.appendChild(h1); //body에 <h1>안녕하세요</h1> 추가
+
+    var img = document.createElement('img');
+     img.src = "https://thumbnail.10x10.co.kr/webimage/image/basic600/262/B002626948.jpg?cmd=t" +
+            "humb&w=500&h=500&fit=true&ws=false";
+            img.alt='해당 이미지가 존재하지 않습니다'; 
+            img.width=200;//javascript em/%단위 없음, px단위만 존재함
+            img.height=100;
+            img.setAttribute('src','https://thumbnail.10x10.co.kr/webimage/image/basic600/262/B002626948.jpg?cmd=t');
+            img.setAttribute('data-role','test-Image');
+            document.body.appendChild(img);
+}; */

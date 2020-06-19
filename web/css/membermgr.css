@@ -37,8 +37,10 @@
     font-size:2em;
     margin:50px 50px;
     padding:10px 0px;
-    color:rgb(170, 200, 255);
+    color:black;
     top:100px;
+    text-shadow: -1px 0 mediumorchid, 0 1px mediumpurple, 1px 0 mediumslateblue, 0 -1px mediumvioletred;
+
     /* color:cornflowerblue; */
 }
 hr{
@@ -51,8 +53,8 @@ hr{
     padding:20px 50px;
     position: relative;
     /* border: 1px solid cornflowerblue; */
-    background-color: rgba(122, 162, 236, 0.781);
-    /* background-image: url(../images/pic2.jpg); */
+    /* background-color: rgba(122, 162, 236, 0.521); */
+    background-image: url(../images/pic2.jpg);
     border-radius: 10%;
 
 }
@@ -96,8 +98,8 @@ table{
 
 body{
     /* position: relative; */
-    background-color: rgb(131, 110, 252);
-    /* background-image: url("../images/.png"); */
+    /* background-color: rgb(131, 110, 252); */
+    background-image: url("../images/bg.png");
     background-size:100px;  
 }
 #edit{
@@ -126,8 +128,8 @@ body{
     margin:0 100px;
     font-size:5em;
     font-weight:bold;
-    color:rgb(170, 200, 255);
-    /* text-shadow: -1px 0 gold, 0 1px #f00, 1px 0 #f00, 0 -1px #f00; */
+    color:black;
+    text-shadow: -1px 0 gold, 0 1px #f00, 1px 0 #f00, 0 -1px #f00;
 }
 
 input{

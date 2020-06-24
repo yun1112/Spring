@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery examples</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var items = $("li");
+            var len = items.length;
+            $("input[type='button']").on("click", function () {
+                $("#length").text(len);
+
+                $("li:has(span)").text("this is the element has span");
+            });
+
+            $("button").on("click", function () {
+                $(":checked").next().text("this is the checked element");
+            });
+            $("#btn").on("click", function () {
+                var newText = $("#h1").html();
+                $("#newText").html(newText);
+            });
+
+            $("#btn2").on("click", function () {
+                $("#list").find("li").eq(1).html("you selected the second item");
+                $("#list").find("li").eq(1).end().eq(0).html("you also selected the first item");
+            });
+
+            $("#getter").on("click", function () {
+                var size = "the width is " + $("#box").width() + "px, the height is " + $("#box")
+                    .height() + "px<br>"
+                $("#txt").html(size);
+            });
+
+            $("#setter").on("click", function () {
+                var w = $("#box").width();
+                var h = $("#box").height();
+                $("#box").width(w / 2).height(h / 2);
+                var size = "the width is " + $("#box").width() + "px, the height is " + $("#box")
+                    .height() + "px<br>"
+                $("#txt").html(size);
+            });
+
+            $("#btn3").on("click", function () {
+                // var imgSrc=$("img").attr("src");
+                $("img").attr("src", "../images/pic2.jpg");
+            });
+
+
+            $("#btn4").on("click", function () {
+                var r = Math.round(Math.random() * 255);
+                var g = Math.round(Math.random() * 255);
+                var b = Math.round(Math.random() * 255);
+
+                var randRGB = "rgb(" + r + "," + g + "," + b + ")";
+                // alert(randRGB);
+                var style = "color:" + "'" + randRGB + "'";
+                // alert(style);
+
+                $("#list2").append("<li style='color:'>newly appended item</li>");
+                // $("#list2").append("<li style="+style+"'>newly appended item</li>");
+                // alert("<li style="+style+">newly appended item</li>");  
+                $("#list2").prepend("<li>appending the first item");
+            });
+
+            $("#wrap1").on("click", function () {
+                $(".c1").attr("style", "border:1px solid black;");
+                // var w=$(".c1").wrap('<div style="border:1px solid green;"></div>');
+                // var w=$(".c1").wrapAll('<div style="border:1px solid green;"></div>');
+                var w = $(".c1").wrapInner('<div style="border:1px solid green;"></div>');
+            });
+            $("#btn5").on("click", function () {
+                $("#list3").find("li").eq(0).clone().appendTo("#list3");
+            });
+
+            $("#btn6").on("click", function () {
+                $("#list4").find("li").eq(0).replaceAll("li");
+            });
+            $("#btn7").on("click", function () {
+                $(".class1").remove(".second");
+            });
+
+            var data;
+            $("#delete").on("click", function () {
+                data = $(".content").detach();
+            });
+
+            $("#restoration").on("click", function () {
+                $("#container2").append(data);
+            });
+            $("#empty").on("click", function () {
+                $("#container2").empty();
+            });
+
+            $("#ancestor").on("click",function(){
+                $("span").unwrap();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>saving the selected element</h1>
+    <ul>
+        <li>the first item</li>
+        <li>the second item <span>has span</span></li>
+        <li>the third item</li>
+    </ul>
+    <input type="button" value="the length of the element you selected">
+    <p id="length"></p>
+
+    <h1>selecting form element</h1>
+    <form>
+        <input type="checkbox" name="chk" value="html"><span
+            style="background-color:cornflowerblue;border-bottom:3px solid mediumorchid;">HTML</span><br>
+        <input type="checkbox" name="chk" value="css"><span
+            style="background-color:cornflowerblue;border-bottom:3px solid mediumorchid;">CSS</span><br>
+        <input type="checkbox" name="chk" value="javascript"><span
+            style="background-color:cornflowerblue;border-bottom:3px solid mediumorchid;">JavaScript</span><br>
+        <input type="checkbox" name="chk" value="jquery"><span
+            style="background-color:cornflowerblue;border-bottom:3px solid mediumorchid;">jQuery</span><br>
+    </form>
+    <button>filtering</button>
+    <button id="btn">click</button>
+    <p id="newText"></p>
+    <h1 id="h1">h1.html()</h1>
+    <button id="btn2">method chaning</button>
+    <ul id="list">
+        <li>the first item</li>
+        <li>the second item <span>has span</span></li>
+        <li>the third item</li>
+    </ul>
+    <hr>
+    <h1>width() and height()</h1>
+    <p>if you click the buttons below, it can brings you the size of the div element or make you set the size</p>
+    <button id="getter">bringing the size</button><button id="setter">making the size smaller</button><br><br>
+    <div id="box" style="width:300px;height:200px;background-color: cornflowerblue;"></div>
+    <p id="txt"></p>
+
+    <h1>attr()</h1>
+    <button id="btn3">click</button>
+    <img src="../images/pic.jpg" style="width: 300px">
+    <hr>
+
+    <h1>append()</h1>
+    <button id="btn4">click</button>
+    <ul id="list2">
+        <li>the first item</li>
+        <li>the second item <span>has span</span></li>
+        <li>the third item</li>
+    </ul>
+
+
+    <hr>
+    <h1 id="wrap1">wrap()</h1>
+    <div class="c1">first content</div>
+    <div class="c1">second content</div>
+
+    <hr>
+    <ul id="list3">
+        <li class="class1">the first item</li>
+        <li class="second class1">the second item</li>
+        <li class="third class1">the third item</li>
+    </ul>
+    <button id="btn5">clone items</button>
+    <hr>
+    <ul id="list4">
+        <li>the first item</li>
+        <li>the second item</li>
+        <li>the third item</li>
+    </ul>
+    <button id="btn6">replace all items</button>
+    <button id="btn7">remove items</button>
+
+    <hr>
+    <div style="border:1px solid blue;" id="container2">
+        <div>the first item</li>
+            <div class="content">the second item</li>
+                <div class="content">the third item</li>
+                </div>
+            </div><br>
+            <button id="delete">delete all items</button>
+            <button id="restoration">restore all items</button>
+            <button id="empty">delete all descendent items</button>
+    <div style="border:1px solid blue;" id="container3">
+        <div style="border:1px solid red;">the <span>first</span> item</li>
+        <div style="border:1px solid red;" class="content">the <span>second</span> item</li>
+        <div style="border:1px solid red" class="content">the <span>third</span> item</li>
+        </div>
+    </div><br>
+    <button id="ancestor">delete ancestor item</button>
+    <hr>
+    <h1>parent()</h1>
+    
+</body>
+
+</html>

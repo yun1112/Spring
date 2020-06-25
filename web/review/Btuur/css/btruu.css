@@ -43,6 +43,7 @@
 }
 #content::-webkit-scrollbar-thumb {
   background-color: rgba(160, 183, 224, 0.952);
+  /* border-radius: 10px; */
 }
 #content::-webkit-scrollbar-track {
   background-color: rgba(199, 200, 202, 0.541);

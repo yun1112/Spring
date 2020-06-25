@@ -74,6 +74,12 @@
 
         function checkAll() {
             var chkBtn = document.getElementById('chkBtn').checked;
+            var id='chk';
+            for(var i=1;i<7;i++){
+                id+=i;
+                // alert(id);
+                // document.getElementById(id).checked=true;
+            }
             var allChkBtn = document.getElementsByClassName('checkItems');
             if (chkBtn) {
                 // alert('zz');
@@ -117,12 +123,15 @@
 
 <body>
     <div id="content">
+        <div id="title">
+            <p id="menu">Menu</p>
+        </div>
     <div id="goingToOrder">
         <table>
             <tr>
                 <td>
                     <div><img name="ice1" id="image1" src="images/1.1.png" style="width:20px">
-                    <input class="checkItems" id="chk" type="checkbox" onclick="chkClick('chk','image1','3500원')"></div>
+                    <input class="checkItems" id="chk1" type="checkbox" onclick="chkClick('chk1','image1','3500원')"></div>
                 </td>
                 <td>
                     <div><img name="ice2" id="image2" src="images/2.1.png" style="width:20px">
@@ -152,9 +161,11 @@
                 </td>
             </tr>
         </table>
-    <div>
-        <input id="chkBtn" class="checkItems" type="checkbox" onclick="checkAll()">check all the buttons</button>
-    </div>
+        <hr>
+        <div>
+            <input id="chkBtn" class="checkItems" type="checkbox" onclick="checkAll()">check all the buttons</button>
+        </div>
+        <hr>
     <!-- 구매한 아이템 -->
     <div id="resultAll">
     <div id="resultArea"></div>

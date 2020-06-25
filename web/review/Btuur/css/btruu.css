@@ -1,0 +1,60 @@
+﻿*{
+  margin:0px;
+  padding:0px;
+}
+
+/* body{
+  width:360px;
+  height:600px;
+
+  border:1px solid grey;
+} */
+#title{
+  position: relative;
+  height:50px;
+  /* top:10px; */
+  /* border:1px solid red; */
+  background-color: cornflowerblue;
+}
+#menu{
+  position: relative;
+  top:10px;
+  text-align: center;
+  color:white;
+  font-size:1.5em;
+}
+#content{
+  position: absolute;
+  margin:10px;
+  border-radius: 5%;
+  width:360px;
+  height:600px;
+
+  border:1px solid grey;
+  overflow-x:auto;
+  overflow-y:auto;
+  /* overflow:auto; */
+}
+#content::-webkit-scrollbar {
+  width: 10px;
+  
+  /* height:50px;
+  border-radius: 0 10% 0 0; */
+}
+#content::-webkit-scrollbar-thumb {
+  background-color: rgba(160, 183, 224, 0.952);
+}
+#content::-webkit-scrollbar-track {
+  background-color: rgba(199, 200, 202, 0.541);
+}
+/* #goingToOrder{
+  height:100px;
+  border:1px solid red;
+  overflow-x:auto;
+  overflow-y:auto;
+} */
+
+/* #resultAll{
+  overflow-x:auto;
+  overflow-y:auto;
+} */

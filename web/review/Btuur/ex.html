@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B-truu</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <!-- <script src="js/btruu.js"></script> -->
-    <!-- <link rel="stylesheet" href="css/btruu.css" type="text/css"> -->
+    <script src="js/ex_btruu.js"></script>
+    <link rel="stylesheet" href="css/btruu.css" type="text/css">
     <script>
         // localStorage.clear();
         var cart = [];
         var iceCream = []; //객체화해야됨
 
-        var Price=[0,3500,4000];
+        var Price=[0,3500,4000,3800,4200,4400,4100,5000];
         var chkOrNot = false;
         var includedOrNot = false;
         var idx = 0;
@@ -50,7 +50,7 @@
                 // alert(cart);
 
                 // alert('you added the item from "'+src+'"');
-            } else {
+            } else {//해당 체크박스만 해제하도록 해야됨
                 chkOrNot = !chkOrNot;
                 includedOrNot = !includedOrNot;
                 iceCream.pop(src);
@@ -94,7 +94,7 @@
                 htmlCode += v + i;
             }
             // for (let i = 1; i <= cart.length / 2; i++) {
-            for (var i = 1; i <= 2; i++) {//카트에 있는 항목 개수만큼 반복
+            for (var i = 1; i <= 7; i++) {//카트에 있는 항목 개수만큼 반복
                 price=Price[i];
                 // price=iceCream[i].@@@
                 htmlCode += '<img src="';
@@ -106,7 +106,7 @@
                 // console.log(document.getElementsgetElementByIdByName('"'+(name + i)+'"').src);
                 htmlCode += '">';
                 htmlCode+='<h4>'+name+i+'를 구매하셨습니다</h4>'
-                htmlCode+='<h4>해당 품목의 가격은 '+price+'원입니다</h4>';
+                htmlCode+='<h4>해당 품목 의 가격은 '+price+'원입니다</h4>';
             }
             // alert(htmlCode);
             document.getElementById('resultArea2').innerHTML += htmlCode;
@@ -116,23 +116,53 @@
 </head>
 
 <body>
-    <div>
-        <img name="ice1" id="image1" src="images/1.1.png" style="width:20px">
-        <input class="checkItems" id="chk" type="checkbox" onclick="chkClick('chk','image1','3500원')"></div>
-    <div>
-        <img name="ice2" id="image2" src="images/2.1.png" style="width:20px">
-        <input class="checkItems" id="chk2" type="checkbox" onclick="chkClick('chk2','image2','4000원')"></div>
-
+    <div id="content">
+    <div id="goingToOrder">
+        <table>
+            <tr>
+                <td>
+                    <div><img name="ice1" id="image1" src="images/1.1.png" style="width:20px">
+                    <input class="checkItems" id="chk" type="checkbox" onclick="chkClick('chk','image1','3500원')"></div>
+                </td>
+                <td>
+                    <div><img name="ice2" id="image2" src="images/2.1.png" style="width:20px">
+                        <input class="checkItems" id="chk2" type="checkbox" onclick="chkClick('chk2','image2','4000원')"></div>
+                </td>
+                <td>
+                    <div><img name="ice3" id="image3" src="images/1.2.png" style="width:20px">
+                        <input class="checkItems" id="chk3" type="checkbox" onclick="chkClick('chk3','image3','3800원')"></div>
+                </td>
+                <td>
+                    <div><img name="ice4" id="image4" src="images/1.3.png" style="width:20px">
+                        <input class="checkItems" id="chk4" type="checkbox" onclick="chkClick('chk4','image4','4200원')"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div><img name="ice5" id="image5" src="images/1.4.png" style="width:20px">
+                    <input class="checkItems" id="chk5" type="checkbox" onclick="chkClick('chk5','image6','3500원')"></div>
+                </td>
+                <td>
+                    <div><img name="ice6" id="image6" src="images/1.5.png" style="width:20px">
+                        <input class="checkItems" id="chk6" type="checkbox" onclick="chkClick('chk6','image6','4000원')"></div>
+                </td>
+                <td>
+                    <div><img name="ice7" id="image7" src="images/1.6.png" style="width:20px">
+                        <input class="checkItems" id="chk7" type="checkbox" onclick="chkClick('chk7','image7','3800원')"></div>
+                </td>
+            </tr>
+        </table>
     <div>
         <input id="chkBtn" class="checkItems" type="checkbox" onclick="checkAll()">check all the buttons</button>
     </div>
     <!-- 구매한 아이템 -->
+    <div id="resultAll">
     <div id="resultArea"></div>
     <button id="decision" type="button" onclick="printReceipt()">decide to order</button>
     <hr>
     <!-- 영수증 -->
-    <div id="resultArea2"></div>
+    <div id="resultArea2"></div></div></div>
 </body>
 
 </html>
- No newline at end of file
+ 

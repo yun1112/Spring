@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원관리 프로그램</title>
+<title>로그인</title>
 
 <link href="css/membermgr.css" rel="stylesheet">
 <script src="js/membermgr.js"></script>

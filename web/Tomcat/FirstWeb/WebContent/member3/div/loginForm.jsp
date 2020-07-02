@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<jsp:forward page="../../request/forward3.jsp"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,6 +10,9 @@
     <link
     href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
     rel="stylesheet">
+    
+    
+    
 <!-- <srcipt src="externalJS.js"></srcipt> -->
 <style>
     /*   #btn{

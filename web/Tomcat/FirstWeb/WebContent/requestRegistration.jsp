@@ -39,5 +39,6 @@
 </td>
 </tr>
 </table>
+<%-- <jsp:forward page="forward2.jsp"/> --%>
 </body>
 </html>

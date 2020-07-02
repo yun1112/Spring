@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%request.setAttribute("username","Scott"); 
+    
+    %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +42,6 @@ CSS3<input type="checkbox" name="like" value="CSS3"><br>
 <%@ include file="include/news2.jsp"%> 
 </div>
 --%>
-
+<%-- <jsp:forward page="request/forward.jsp"/> --%>
 </body>
 </html>

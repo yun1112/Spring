@@ -1,0 +1,168 @@
+<!DOCTYPE html><!-- 팝업창 대신에 div로 만들 것 -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pop up</title>
+        <link
+        href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
+        rel="stylesheet">
+        <!-- <script src="0615_ex01.html"></script> -->
+        <style>
+            
+           
+            .button {
+                background-color: cornflowerblue;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 5px 8px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 1em;
+                margin: 10px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                
+            }
+
+            .button2 {
+                background-color: cornflowerblue;
+                color: black;
+                /* border: 2px solid mediumblue; */
+                border:none;
+            }
+
+            .button2:hover {
+                background-color: white;
+                color: cornflowerblue;
+                /* border:2px solid mediumslateblue */
+                border:none;
+            }
+            table {
+                width: 100%;
+                border: 2px solid cornflowerblue;
+                border-collapse: collapse;
+                /* 테이블 테두리 한줄(테두리선 겹쳐서 표현) */
+                /* margin:0px; */
+                padding:20px 20px;
+            }
+            td,
+            tr {
+                border: 2px solid white;
+                font-size:16px;
+            }
+            
+            td{
+                padding:5px;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Yeon Sung', cursive;
+            }
+            body {
+                background-image:url("https://thumbnail.10x10.co.kr/webimage/image/basic600/262/B002626948.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false");
+                /* background-image:url("../html/pic2.jpg"); */
+                text-align: center;
+                line-height: normal;
+                /* background-color: mediumpurple; */
+                /* border: 2px solid mediumvioletred; */
+            }
+
+            hr {
+                border: 2px solid cornflowerblue;
+            }
+            #d{
+                padding:15px;
+            }
+            #editData{
+                font-size:1.5em;
+                float:left;
+            }
+           #close{
+               float:right;
+           }
+           #header{
+
+           }
+
+        </style>
+        <script>
+            // window.onload = function() {
+            // window.parent.postMessage({ hello: 'parent' }, '*');
+            // };
+            // window.addEventListener('message', function(e) {
+            //     console.log(e.data); // zerocho
+
+            //     var newWin=window.open()
+
+
+            //     document.getElementById('id').value=opener.document.getElementById('id').value;
+            //     document.getElementById('pwd').value=opener.document.getElementById('pwd').value;
+            //     document.getElementById('name').value=opener.document.getElementById('name').value;
+            // });
+
+
+            function editFunction(){
+                //입력받은 각 요소들
+                //String 형식으로 casting 해야됨
+
+                var id=document.querySelector('#id');/* String형식으로 정보 입력받음 */
+                var pwd=document.querySelector('#pwd');/* String형식으로 정보 입력받음 */
+                var name=document.querySelector('#name');/* String형식으로 정보 입력받음 */
+
+                var h1s=document.querySelectorAll('input');
+                console.log(h1s);
+                // console.log(h1s[0].value);
+                console.log('id: '+h1s[0].value);
+                console.log('password: '+h1s[1].value);
+                console.log('name: '+h1s[2].value);
+
+                // window.opener.document.getElementById('id').value=window.document.getElementById('id').value;
+                // window. opener.document.getElementById('pwd').value=window.document.getElementById('pwd').value;
+                // window.opener.document.getElementById('name').value=window.document.getElementById('name').value;
+                window.opener.document.reload();
+                // opener.location.reload();
+                // window.close();
+                window.self.close();//현재 팝업창 닫음
+                // window.location.reload();
+                //아이디 비밀번호 맞는 정보 찾아서 수정->데이터 변경 조건식 필요
+                //기본 브라우저 창에서 받았던 정보와 팝업창에 입력한 정보 비교
+            }
+
+        </script>
+    </head>
+    <body>
+        <!-- 수정 누르면 창뜸(아이디/비번/이름) -->
+        <!-- 우측 상단 닫기/하단 수정버튼 -->
+
+        <div id="d">
+            <div id="header">
+            <div id="editData"><h3>데이터 수정</h3></div>
+        <div id="close"><a onclick="window.close()">닫기</a></div></div><!-- 클릭하면 창 닫기 -->
+        <!-- 중간정렬 --><br><hr><br>
+        <table id="t">
+            <!-- 상하 중앙정렬 -->
+            <tr>
+                <td>아이디<br>(이메일)</td>
+                <td><input id="id" type="text"></td>
+            </tr>
+            <tr>
+                <td>비밀번호<br></td>
+                <td><input id="pwd" type="password"></td>
+            </tr>
+            <tr>
+                <td>이름<br></td>
+                <td><input id="name" type="text"></td>
+            </tr>
+        </table>
+        <br>
+        <hr>
+        <!-- <input id="btn" type="button" value="수정"> -->
+        <!-- <button onclick="editFunction()" class="button button2">수정</button> -->
+        <input onclick="editFunction()" id="enroll" class="button button2" type="submit" value="수정"">
+    </div>
+    </body>
+</html>

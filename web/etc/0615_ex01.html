@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
+            rel="stylesheet">
+            <link href="registerCss.css" rel="stylesheet">
+            <script src="registerJS.js"></script>
+        <!-- <srcipt src="externalJS.js"></srcipt> -->
+        <style>
+            /*   #btn{
+     background-color:black;
+     color:white;
+ } */
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Yeon Sung', cursive;
+            }
+            .button {
+                background-color: cornflowerblue;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 5px 8px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 1em;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+
+            .button2 {
+                background-color: cornflowerblue;
+                color: black;
+                /* border: 2px solid mediumblue; */
+                border:none;
+            }
+
+            .button2:hover {
+                background-color: white;
+                color: cornflowerblue;
+                /* border:2px solid mediumslateblue */
+                border:none;
+            }
+            #tb {
+                text-align: center;
+                width: 90%;
+                border: 1px solid black;
+                border-collapse: collapse;
+                font-size:1.1em;
+                /* 테이블 테두리 한줄(테두리선 겹쳐서 표현) */
+            }
+            #tb > tr,
+            #tt > td {
+                border: 1px solid black;
+            }
+
+            #tb2{
+                text-align:center;
+                font-size:1.1em;
+            }
+            #tb2>input{
+                margin: 100px 100px;
+                /* padding: 10px; */
+            }
+            
+            #menu{
+                font-size:1.5em;
+                font-weight: bold;
+            }
+            #d{
+                padding:30px;
+                position:relative;
+                /* background-color:white; */
+            }
+            #tdiv1{
+                /* left:100px; */
+                padding:0px 50px;
+                /* position:absolute; */
+            }
+            #tdiv2{
+                /* left:100px; */
+                padding:0px 50px;
+                /* position:absolute; */
+            }
+            #div1{
+                padding:0px 50px;
+            }
+            #div2{
+                padding:0px 50px;
+            }
+            body{
+                background-image:url("");
+            }
+            #mgr{
+                padding:10px;
+            }
+            #enroll{
+                padding:10px;
+                
+            }
+            input{
+                margin: 5px;
+            }
+        </style>
+
+        <script>
+            window.onload = function () {
+                var d = document.getElementById("del");
+                d.onclick = function () {
+                    confirm('삭제하시겠습니까?');
+                    d.onclick = null;
+                }
+            };
+
+            function popup() {
+                var url = "popup2.html";
+                var name = "pop up";
+                var option = "width=300, height=350, top=100, left=100,location=no";
+                var child=window.open(url, name, option);
+                // window.open(url, name, option);
+                child.moveTo(0,0);
+            }
+            var index=0;
+           
+            var information=new Array();
+            // var temporary=new Array();
+            var html='';
+            function enrollFunc(){
+                var temporary=new Array();
+                var id=document.querySelector('#id');/* String형식으로 정보 입력받음 */
+                var pwd=document.querySelector('#pwd');/* String형식으로 정보 입력받음 */
+                var name=document.querySelector('#name');/* String형식으로 정보 입력받음 */
+
+                var h1s=document.querySelectorAll('input');
+                console.log(h1s);
+                // console.log(h1s[0].value);
+                console.log('id: '+h1s[1].value);
+                console.log('password: '+h1s[2].value);
+                console.log('name: '+h1s[3].value);
+                // document.body.appendChild(id);
+                var infor='';
+                var table_tr = document.createElement('tr'); //<tr></tr>태그 생성
+                var table_td = document.createElement('td'); //<td></td>태그 생성
+                //Text Node 생성
+                /* infor += document.createTextNode(h1s[1].value);
+                infor += document.createTextNode(h1s[2].value);
+                infor += document.createTextNode(h1s[3].value);
+                infor+=document.createTextNode(++idx); */
+                // <h1>안녕하세요</h1>
+                // table_td.appendChild(infor); //<tr></tr>에 <td></td>추가
+                
+         
+                table_tr.appendChild(table_td); //<tr></tr>에 <td></td>추가
+                document.body.appendChild(table_tr); //body에 <tr><td></td></tr> 추가
+
+                // document.getElementById('result_id').setAttribute('a',h1s[1].value);
+                document.getElementById('result_id').innerHTML=h1s[1].value;
+                document.getElementById('result_pwd').innerHTML=h1s[2].value;
+                document.getElementById('result_name').innerHTML=h1s[3].value;
+                document.getElementById('idx').innerHTML=++index;
+
+                temporary.push(h1s[1].value);
+                temporary.push(h1s[2].value);
+                temporary.push(h1s[3].value);
+                information.push(temporary);
+                console.log(information);
+
+                localStorage.setItem("id",h1s[1].value);
+                localStorage.setItem("pwd",h1s[2].value);
+                localStorage.setItem("name",h1s[3].value);
+                // console.log('localStorage:'+localStorage);
+                var id=localStorage.getItem("id");
+                var pwd=localStorage.getItem("pwd");
+                var name=localStorage.getItem("name");
+                // alert(pwd);
+
+                
+
+                //그냥 받은 정보를 한번에 출력(x)->등록버튼 한 번 누를 때마다 한 줄씩 출력
+
+                //입력받은 정보를 이차원 배열 형식으로 저장해야됨
+
+                //입력값 유효성 검사 해야됨
+
+                /* body 두번째 테이블에 입력받은 정보들 appendChild로 추가*/
+                
+                // document.body.getElementById("result_id");
+            }
+
+            
+          /*   window.onload = function () {
+                //Tag Element 생성
+                var h1 = document.createElement('h1'); //<h1></h1>태그 생성
+                //Text Node 생성
+                var text = document.createTextNode('안녕하세요');
+                // <h1>안녕하세요</h1>
+                h1.appendChild(text); //<h1></h1>에 text추가
+                document.body.appendChild(h1); //body에 <h1>안녕하세요</h1> 추가
+
+                var img = document.createElement('img');
+                 img.src = "https://thumbnail.10x10.co.kr/webimage/image/basic600/262/B002626948.jpg?cmd=t" +
+                        "humb&w=500&h=500&fit=true&ws=false";
+                        img.alt='해당 이미지가 존재하지 않습니다'; 
+                        img.width=200;//javascript em/%단위 없음, px단위만 존재함
+                        img.height=100;
+                        img.setAttribute('src','https://thumbnail.10x10.co.kr/webimage/image/basic600/262/B002626948.jpg?cmd=t');
+                        img.setAttribute('data-role','test-Image');
+                        document.body.appendChild(img);
+            }; */
+        </script>
+    </head>
+    <body>
+        <div id="d">
+        <h1 id="mgr">Member Manager</h1><hr><br>
+
+        <div id="div1">
+        <p id="menu">회원등록</p><br>
+        <div id="tdiv1">
+        <table id="tb2">
+            <tr>
+                <td>아이디(이메일)</td>
+                <td>비밀번호</td>
+                <td>이름</td>
+                <td rowspan="2"><input onclick="enrollFunc()" id="enroll" class="button button2" type="submit" value="등록"></td>
+            </tr>
+            <tr><!-- 인풋객체 띄움 -->
+                <td><input id="id" type="text"></td>
+                <td><input id="pwd" type="password"></td>
+                <td><input id="name" type="text"></td>
+            </tr>
+        </table></div></div><br><hr>
+        <div id="div1"><br>
+        <p id="menu">회원리스트</p><br>
+        <div id="tdiv2">
+        <table id="tb">
+            <!-- 한줄 -->
+            <tr id="tt">
+                <td>index</td>
+                <td>아이디(이메일)</td>
+                <td>비밀번호</td>
+                <td>이름</td>
+                <td>관리</td>
+            </tr>
+            <tr id="tt">
+                <td id="idx"></td>
+                <!-- 인덱스수 -->
+                <td id="result_id"></td>
+                <!-- 입력한이메일 -->
+                <td id="result_pwd"></td>
+                <!-- 입력한비밀번호 -->
+                <td id="result_name"></td>
+                <!-- 입력한이름 -->
+                <td>
+                    <a id="edit" href="popup2.html" onclick="popup();return false;">수정     
+                    </a>
+                    <a id="del" href="#">삭제</a>
+                </td>
+                <!-- <td><a id="edit" href="popup.html"
+                onclick="window.open(this.href,'popup','width=300, height=300, top=100,left=100,
+                location=no');">수정 </a> -->
+                
+            </td>
+            <!-- <td><a id="edit" href="javascript:popup()" target="_blank">수정 </a><a
+            id="del" href="#">삭제</a></td>관리 -->
+        </tr>
+        <!-- 수정 누르면 창뜸(아이디/비번/이름) -->
+    </table></div></div>
+</div>
+    <!-- 삭제 누르면 확인/취소 promt창뜸 -->
+</body>
+</html>

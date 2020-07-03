@@ -1,0 +1,22 @@
+#container {
+    width: 100px;
+    height: 800px;
+    border: 1px solid black;
+}
+
+#div1 {
+    height: 650px;
+    overflow-y:auto;
+}
+
+#div2 {
+    height: 150px;
+}
+
+/* #src1 {
+    width: 50px;
+} */
+
+#id1,#name1 {
+    font-size: 0.5em;
+}

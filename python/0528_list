@@ -1,0 +1,115 @@
+#리스트
+family=['mother','father','gentleman','sexy lady']
+a=len(family)
+print(a,family[2])
+
+#리스트 저장값 삭제
+family.remove('gentleman')
+print(family[2])
+
+#list
+#리스트 안에는 어떠한 자료형도 포함시킬 수 있음
+a=[1,2,['life','is']]
+empty=list() #비어 있는 리스트
+
+#리스트의 인덱싱과 슬라이싱
+#리스트의 인덱싱
+a=range(1,4)
+for i in a:
+    print(i)
+a=[1,2,3,['a','b','c']]
+print('enter any letter')
+res=input()
+print(res)
+print('enter an index of the list you want to check')
+index=int(input())
+print(a[index])
+
+#리스트 a=[1,2,3,['a','b','c']]에 포함된
+#['a','b','c']리스트에서 'a'값을 인덱싱을 사용해 추출
+print(a[-1][0])
+
+#삼중 리스트에서 인덱싱하기
+a=[1,2,['a','b',['life','is']]]
+print(a[2][2][0])
+print('---------------------------')
+
+#리스트의 슬라이싱
+# cf)문자열 슬라이싱
+a="12345"
+a[0:2]
+print(a[0:2])
+print('---------------------------')
+a=range(1,6) #a=[1,2,3,4,5]
+for i in a:
+    print(i)
+print('---------------------------')
+b=a[0:2] #a[:2]
+c=a[2:]
+for i in b:
+    print(i)
+print('---------------------------')
+for i in c:
+    print(i)
+
+#중첩 리스트에서 슬라이싱하기
+a=[1,2,3,['a','b','c'],4,5]
+a[2:5] #a=[3,['a','b','c'],4
+a[3][:2] #a=['a','b']
+
+#리스트 연산하기
+#리스트 더하기 +
+a=[1,2,3]
+b=[4,5,6]
+print(a+b)
+
+#리스트 반복하기 *
+a=[1,2,3]
+print(a*3) #리스트 세 번 반복
+
+#리스트 길이구하기
+print(len(a))
+
+#리스트 연산할 때 유의해야 할 부분->숫자와 문자열 연산 오류(형변환 필수)
+a=[1,2,3]
+b=str(a[2])+"string" #숫자와 문자열 더하면 오류나므로 반드시 숫자를 문자열로 형변환해야함
+print(b)
+
+#리스트의 수정과 삭제
+#리스트에서 값 수정하기
+a[2]=4
+print(a)
+#del(): 리스트 요소 삭제
+# remove(), pop()
+del a[1]
+print(a)
+del a # del 객체: 객체 삭제
+print('---------------------------')
+
+# 슬라이싱 사용->리스트의 요소 어러 개 한꺼번에 삭제
+a=[1,2,3,4,5]
+print(a)
+del a[2:]
+print(a)
+
+#리스트 관련 함수
+#리스트에 요소 추가 append
+a.append(3)
+print(3)
+#어떠한 자료형도 추가 가능
+a.append([4,5])
+print(a)
+#리스트 정렬 sort
+a=[1,4,3,2]
+a.sort()
+print(a)
+#문자도 알파벳순으로 정렬 가능
+a=['a','c','b']
+a.sort()
+print(a)
+
+#리스트 뒤집기 reverse
+#현재 리스트 그대로 거꾸로 뒤집음(정렬x)
+a=['a','c','b']
+a.reverse()
+print(a)

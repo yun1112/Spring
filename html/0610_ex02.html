@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>css3 font property</title>
+</head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .font_big {
+        font-size: 1.5em;
+    }
+
+    .font_italic {
+        font-style: italic;
+    }
+
+    .font_bold {
+        font-weight: bold;
+    }
+
+    .font_center {
+        text-align: center;
+    }
+
+    .button {
+        border: 10px solid;
+        border-color: beige;
+        border-radius: 30px;
+        box-shadow: 5px 5px 5px #A9A9A9;
+        width: 100px;
+        height: px;
+        background-color: #FF6A00;
+        background-color: cornflowerblue;
+        border: 10px solid #FFFFFF;
+        text-align: center;
+        position: relative;
+    }
+
+
+
+    .button>a {
+        display: block;
+        line-height: 70px;
+    }
+
+    .font_new {
+        font-family: 'Pacifico', cursive;
+    }
+
+    .font_color {
+        color: crimson;
+    }
+
+    .div1 {
+        /*        background-color: antiquewhite;*/
+    }
+
+    table>tbody>tr>td {}
+
+    ul>li {}
+
+    #btn>a:link {
+        color: beige;
+    }
+
+    #btn>a:active {
+        color: darkred;
+    }
+
+    #btn>a:visited {}
+
+    #btn>a:hover {
+        color: deepskyblue;
+    }
+
+    /*--------------------------------------------------------------------------------------*/
+    div.fixed {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        border: 3px solid cornflowerblue;
+    }
+
+    div.relative {
+        position: relative;
+        left: 30px;
+        border: 3px solid mediumpurple;
+    }
+
+    div.absolute {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 200px;
+        height: 100px;
+        border: 3px solid cornflowerblue;
+    }
+
+    /*--------------------------------------------------------------------------------------*/
+    .container {
+        position: relative;
+    }
+
+    .topleft {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        font-size: 12px;
+        color: azure;
+    }
+
+    .center {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+    }
+    .bottomright{
+        position:absolute;
+        bottom:8px;
+        right:16px;
+        font-size:12px;
+        color:azure;
+    }
+
+    img {
+        width: 20%;
+        height: auto;
+        opacity: 0.5;
+    }
+
+    /*--------------------------------------------------------------------------------------*/
+    
+    
+</style>
+<hr>
+
+<body>
+<!--
+    <div class="container"><img src="pic2.jpg" alt="Cinque terre">
+        <div class="topleft">top left</div>
+        <div class="bottomright">bottom right</div>
+    </div>
+    
+    <div class="container"><img src="pic.jpg" alt="ex">
+        <div class="center">center</div>
+    </div>
+-->
+     
+
+<div class="button">
+        <a href="#" class="font_big font_italic font_bold font_center font_new">Click</a>
+    </div>
+    <span>
+        <div class="div1">
+            <ul>
+                <!--
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+                <li>d</li>
+                <li>e</li>
+                <li>f</li>
+-->
+            </ul>
+
+        </div>
+    </span>
+</body></html>

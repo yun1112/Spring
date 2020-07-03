@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSS 선택자 Selector</title>
+    <meta charset="utf-8">
+    <link>
+    <style>
+        * {
+            color: blueviolet;
+        }
+
+        /*        * 모든 텍스트 처리*/
+        h1 {
+            background-color: darkcyan;
+        }
+
+        p {
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        h1,
+        p {
+            border: 3px solid cornflowerblue;
+
+        }
+
+        body,
+        h1,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*        #아이디*/
+        #header {
+            background-color: cornflowerblue;
+            width: 300px;
+            /*
+            margin-top:50px;
+            margin-left:50px;
+            margin-bottom: 50px;
+*/
+            margin: 0 auto;
+            /*            margin:50px;*/
+        }
+
+        /*        margin: 다른 요소와의 간격, 
+        margin의 속성값 사방
+        margin-right, margin-left, margin-top, margin-bottom
+        margin auto: 자동 간격 조정
+        margin 0(상하) auto(좌우)
+        */
+        #aside {
+            background-color: deepskyblue;
+            width: 400px;
+            margin: 0 auto;
+            /*            margin-top:100px;*/
+        }
+
+        #content {
+            background-color: darkseagreen;
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        li {
+            color: cornflowerblue;
+        }
+
+        /*        클래스 선택자 .클래스명*/
+        .font_color {
+            background-color: aquamarine;
+            color: crimson;
+            font-size: 50px;
+            font-weight: lighter;
+        }
+
+        .font_bold {
+            font-weight: 900;
+            /*            font-size:30px;*/
+        }
+
+        li.font_size {
+            font-size: 200%;
+        }
+        
+        div.font_size{
+            font-size:150%;
+        }
+
+        /*        font-weight:lighter 얇은 글씨
+        폰트 기본 사이즈 16px
+        ex) 200%->32px 표현
+        
+        li.font_size 클래스 속성에 제약 걺(li태그의 클래스 속성만 선택)
+        */
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="font_color font_bold font_size">사과</li>
+        <!--        스타일 여러개 만들고 복합적으로 사용 가능(공백으로 구분)-->
+        <li class="font_bold">바나나</li>
+        <li class="font_bold font_size">오렌지</li>
+        <li class="font_color">감</li>
+    </ul>
+    <hr>
+    <div id="header" class="font_size">headerheaderheaderheaderheader<br>headerheaderheaderheaderheader<br>headerheaderheaderheaderheader</div>
+    <!--    클래스 속성 제약에 걸려서 li.font_size에 정의된 clas="font_size"로 폰트 사이즈 변경 못함-->
+    <div id="aside">aside</div>
+    <div id="content">content</div>
+
+    <h1>포스트 코로나…렌털업계, 어떻게 바뀔까</h1>
+    <p>
+        자가 관리형 제품 출시 러시…온라인·홈쇼핑 채널 다각화
+        (지디넷코리아=권혜미 기자)‘언택트(Untact, 비대면)’ 문화가 일상 속으로 들어오면서 방문 판매·관리 방식으로 영업하는 렌털 업계가 체질 개선에 나서고 있다.</p>
+
+    <p>코디 등 방문관리사 없이 사용자가 직접 관리 가능한 제품을 출시하는 한편, 기존 방문 판매와 함께 온라인과 홈쇼핑 등 유통 채널을 다각화한다.</p>
+    <p>■ ‘방문 관리사 없이 스스로 관리’…자가 관리형 제품 출시 러시</p>
+
+    <p>8일 업계에 따르면 방문관리사 대신 소비자 스스로 정수기·공기청정기 필터 등을 관리할 수 있게 하는 제품이 속속 등장하고 있다. 대개 일시불 방식으로 판매된다. 기존 렌털은 매월 사용료(관리 비용 포함)를 기본 3년 약정 납입하는 방식이다.</p>
+</body></html>
+
+
+<!--
+CSS선택자 우선순위
+1.*.css
+2.<style>~</style>
+3.stylesheet
+-->

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ex</title>
+    <script></script>
+    <style>
+        input {
+            height 30px;
+            margin: 10px;
+        }
+
+        input[type=text] {
+            background: crimson;
+
+        }
+
+        input[type=password] {
+            background: cornflowerblue;
+        }
+
+        /*input 태그 중에서 type속성값을 text로가지는 태그의 속성 지정*/
+        img[src$=png] {
+            border: 3px solid cyan;
+        }
+
+        img[alt] {
+            width: 100px;
+        }
+
+        img[src$=jpg] {
+            border: 3px solid crimson;
+        }
+
+        /*        img태그 중에서 src속성값이 jpg로끝나는 태그의 속성 지정*/
+        /*        a[href=]*/
+
+        /*        후손선택자:선택의 범위 제한
+        선택자 범위 안의 선택자
+        ex)div h1{
+        
+        }
+        
+        
+        */
+
+        #header h1,
+        #header h2 {
+            color: darkviolet;
+        }
+
+        form input {
+            width: 100%;
+        }
+
+        /*        자손선택자: 바로 하위의 태그 선택
+        선택자>선택자
+        ex)div>h1{
+            
+        }
+        선택자 중첩해서 사용 가능
+        */
+        #header>h1 {
+            background-color: darkgrey;
+        }
+
+        table>tbody>tr>td {
+            color: crimson;
+            font-weight: 900;
+            border-color: cornflowerblue;
+        }
+
+        /*        동위 선택자:같은 레벨(형제) 태그들을 기준으로 선택
+                        +: 바로 뒤의 요소 선택
+                        ~: 같은 레벨의 형제 태그들중 선택
+        */
+        h3+h4 {
+            color: darkseagreen;
+        }
+
+        h3~h4.aa {
+            background-color: darkcyan;
+        }
+
+        /*        반응 선택자
+        선택자:hover 마우스가 선택된 요소의 영역으로 들어갔을 때
+        선택자:active 마우스 커서는 선택된 요소 위에 존재하고 왼쪽버튼을 클릭한 상태
+        */
+        h3:hover {
+            color: red;
+            font-size: 32px;
+            background-color: aqua;
+        }
+
+        h3:active {
+            color: blue;
+            font-style: italic;
+        }
+
+        div {}
+
+        #myform input {
+            background-color: white;
+            width: 100px;
+        }
+
+        #myform input:disabled {
+            background-color: black;
+        }
+
+        #myform input:enabled {
+            background-color: azure;
+        }
+
+        #myform input[type=checkbox] {
+            width: 15px;
+            height: 15px;
+        }
+
+        #viewmenu+div {
+            display: none;
+        }
+
+        #viewmenu:checked+div {
+            display: block;
+        }
+
+        /*        block: div속성*/
+        #navigation {
+            overflow: hidden;
+        }
+
+        #navigation>li {
+            list-style: none;
+            float: left;
+            padding: 5px 15px;
+        }
+
+        #navigation>li:nth-child(2n+1) {
+            background-color: aqua;
+        }
+
+        #navigation>li:nth-child(2n) {
+            background-color: crimson;
+        }
+
+        #navigation>li:first-child {
+            /*            border: 5px solid black;*/
+            border-radius: 10px 0 0 10px;
+        }
+
+        #navigation>li:last-child {
+            /*            border: 5px solid blue;*/
+            border-radius: 0 10px 10px 0;
+        }
+
+
+        /*border-radius: 좌측 상단부터 시계방향으로 1 2 3 4(모서리)순*/
+        /*        overflow:hidden->float속성 범위 내에서만 사용함*/
+        /*      em: 배수
+        키워드: col, display,none,block,...*/
+        p::first-letter {
+            font-size: 3em;
+        }
+
+        p::first-line {
+            color: cornflowerblue;
+            font-weight: bold;
+        }
+
+        p::selection {
+            background-color: darkmagenta;
+            color: yellow;
+        }
+
+        a:link {
+            color: yellow;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            font-size: 150%;
+            color: blueviolet;
+        }
+        a:active{
+            color: yellow;
+        }
+        a:visited{
+            color:blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lorem ipsum dolor sit amet</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.<br>Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.Nunc nisl turpis, aliquet et gravida non, facilisis a sem.</p>
+
+    <hr>
+    <ul id="navigation">
+        <li><a href="ex.html">home</a></li>
+        <li><a href="http://daum.net">company</a></li>
+        <li><a href="#0">service</a></li>
+        <li><a href="#10">product</a></li>
+        <li><a href="#10">notice</a></li>
+        <li><a href="#10">contacus</a></li>
+        <li><a href="#10">eng</a></li>
+    </ul>
+    <hr>
+    <form id="myform">
+        <div>약관보기<input type="checkbox" id="viewmenu">
+            <div>
+                <h4>이용약관</h4>
+                <p>문제가 생기면 바로 강퇴됩니다</p>
+            </div>
+            <hr>
+        </div>
+        <div>약관동의<input type="checkbox" checked></div>
+        <div>마케팅동의<input type="checkbox" checked></div>
+        <div><input type="text"></div>
+        <div><input type="number" disabled></div>
+    </form>
+    <hr>
+    <h3>header-3</h3>
+    <h3>header-3</h3>
+    <h3>header-3</h3>
+    <h4 class="aa">header-4</h4>
+    <h4>header-4</h4>
+    <h4>header-4</h4>
+    <hr>
+    <!--   tbody: table태그 요소 선택할 때 주의-->
+    <table border="1">
+        <tr>
+            <td>아이디</td>
+            <td><input type="email"></td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="email"></td>
+        </tr>
+    </table>
+    <hr>
+    <div id="header">
+        <h1 class="title">title</h1>
+        <div id="nav">
+            <h1>navigation</h1>
+        </div>
+        <h1>etc</h1>
+    </div>
+    <h2>h2 tag</h2>
+
+    <div id="section">
+        <h1 class="title">title</h1>
+        <p>안녕하세요</p>
+    </div>
+    <hr>
+    <form><input type="text" /><br><input type="password" /></form><br>
+    <input type="text" /><br><input type="password" /><br>
+    <img src="folder/a.jpg " width="200"><br>
+    <img src="pic.jpg" width="200" height="250" /><br>
+    <img src="cat.png" width="200" /><br>
+    <div>
+        <h1>aa</h1>
+        <h2>aa</h2>
+        <ul>
+            <li>aaa</li>
+            <li>aaa</li>
+        </ul>
+    </div>
+</body></html>
+<!--조상선택자: 범위 지정
+후손선택자(모둔 하위 선택자)!=자손선택자(바로 한단계 아래 선택자)
+-->

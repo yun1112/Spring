@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<link href="../css/membermgr.css" rel="stylesheet">
 </head>
 <body>
+
 <%
 Cookie[] cookies=request.getCookies();
 if(cookies!=null){
@@ -17,6 +19,7 @@ if(cookies!=null){
 	}
 }
 %>
+<%@ include file="../div/header.jsp"%>
 <h1>Login</h1>
 <form action="sessionLoginPro.jsp" method="post">
 ID: <input type="text" name="id"><br>

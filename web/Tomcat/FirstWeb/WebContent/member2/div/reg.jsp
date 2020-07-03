@@ -43,6 +43,7 @@
 </head>
 
 <body>
+<%@ include file="div/header.jsp"%>
 <div id="reg">
 
 	<h2 class="title">회원가입</h2>

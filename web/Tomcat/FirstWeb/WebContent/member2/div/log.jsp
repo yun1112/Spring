@@ -20,7 +20,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>로그</h1>
+<h1>로그인</h1>
 
 <script src="logincheck.js"></script>
 </body>

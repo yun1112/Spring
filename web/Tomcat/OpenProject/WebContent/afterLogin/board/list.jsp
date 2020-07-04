@@ -14,13 +14,11 @@
 </head>
 <body>
 
-	<%@ include file="/include/header.jsp" %>
-
-	<div>
-		<h1>게시판</h1>
+<%@ include file="/afterLogin/include/header.jsp" %>
+	<div id="div1">
+		<h1>회원게시판</h1>
 	</div>
-
-	<%@ include file="/include/footer.jsp" %>
+<%@ include file="/afterLogin/include/footer.jsp" %>
 </body>
 </html>
 

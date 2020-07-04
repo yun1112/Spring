@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@ include file="/include/sessionCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +11,10 @@
 </head>
 <body>
 
+
 	<%@include file="/include/header.jsp"%>
 	<div id="div1">
-		<h1>로그인 페이지</h1>
+		<h1>마이페이지</h1>
 	</div>
 
 	<%@include file="/include/footer.jsp"%>

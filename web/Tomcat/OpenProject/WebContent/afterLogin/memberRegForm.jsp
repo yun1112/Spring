@@ -1,6 +1,6 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +10,8 @@
 
 </head>
 <body>
-
-	<%@include file="/include/header.jsp"%>
-	<div id="div1">
-		<h1>회원가입 페이지</h1>
-	</div>
-
-	<%@include file="/include/footer.jsp"%>
+<%@ include file="/afterLogin/include/header.jsp" %>
+<h1>이미 회원입니다</h1>
+<%@ include file="/afterLogin/include/footer.jsp" %>
 </body>
 </html>

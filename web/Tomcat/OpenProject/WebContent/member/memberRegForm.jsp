@@ -10,12 +10,6 @@
 
 </head>
 <body>
-
-	<%@include file="/include/header.jsp"%>
-	<div id="div1">
-		<h1>회원가입 페이지</h1>
-	</div>
-
-	<%@include file="/include/footer.jsp"%>
+	<%@include file="/member/registrationForm.jsp" %>
 </body>
 </html>

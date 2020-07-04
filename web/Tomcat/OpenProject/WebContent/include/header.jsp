@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+<%-- <%
 String referer = (String)request.getHeader("REFERER");
 if(referer.equals("http://localhost:8081/op/afterLogin/mypage.jsp")){
 	%><script>alert("로그인");</script><%
 }
-%>
+%> --%>
 <%-- <h1><%=referer %></h1><hr> --%>
 <h1 id="header">Open Project</h1>
 <%-- <%

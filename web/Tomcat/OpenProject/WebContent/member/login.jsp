@@ -15,30 +15,44 @@
 	
 	// 로그인 처리
 	boolean loginChk = false;
-	if(uid.equals(pw)){
+	
+/* 	if(uid.equals(pw)){
 		LoginInfo loginInfo = 
 				new LoginInfo(uid, pw, "test@gmail.com", "default.jpg");
 		
 		session.setAttribute("loginInfo", loginInfo);
 		
 		loginChk = true;
-	}
+	} */
+	
+	Cookie[] cookies=request.getCookies();
+	if(cookies!=null){
+		for(Cookie c:cookies){
+			%>
+			<script>
+			console.log("getName(): "+c.getName());
+			</script>
+			<%}
+		}
 	
 	System.out.println(loginChk);
 	
 	if(loginChk){
 		// 쿠키 설정에 사용한 변수
 		String cookieName = "uid";
+		String cookiePw = "pw";
 		String cookiepath = request.getContextPath();
 		
 		// 회원 아이디 쿠키 설정 
 		if(chk!=null){
 			
 			response.addCookie(CookieBox.createCookie(cookieName, uid, cookiepath, 60*60*24*365));
+			response.addCookie(CookieBox.createCookie(cookiePw, pw, cookiepath, 60*60*24*365));
 		
 		
 		} else {
 			response.addCookie(CookieBox.createCookie(cookieName, uid, cookiepath, 0));
+			response.addCookie(CookieBox.createCookie(cookiePw, pw, cookiepath, 0));
 		}
 		
 		// 로그인 이 필요했던 이전 페이지
@@ -54,6 +68,5 @@
 		</script>
 		<%
 	}
-	
 	
 %>

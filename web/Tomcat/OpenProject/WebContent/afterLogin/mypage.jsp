@@ -44,7 +44,8 @@
 			</tr>
 			<tr>
 				<td>사진</td>
-				<td><%= loginInfo.getPhoto() %></td>				
+			<%--  <td><img src=<%=request.getContextPath()%>/images/<%= loginInfo.getPhoto() %>"></td> --%>
+			<td><%@ include file="../uploadtest/example.jsp" %></td>
 			</tr>
 		</table>
 		

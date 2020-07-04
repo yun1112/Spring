@@ -5,11 +5,15 @@
 	CookieBox cookieBox = new CookieBox(request);
 	String cookieUid = cookieBox.getValue("uid");
 	
+	String cookiePw = cookieBox.getValue("pw");
+	
 	String uidValue = "";
+	String pwValue = "";
 	String checked = "";
 	
-	if(cookieUid!=null){
+	if((cookieUid!=null)&&(cookiePw!=null)){
 		uidValue = cookieUid;
+		pwValue=cookiePw;
 		checked = "checked";
 	}
 	
@@ -40,9 +44,9 @@
 		
 		<form action="login.jsp" method="post">
 		
-			<input type="text" name="redirecUri" 
+			<%-- <input type="text" name="redirecUri" 
 			
-			value="<%= request.getHeader("referer")%>" style=" width : 50% ;" >			
+			value="<%= request.getHeader("referer")%>" style=" width : 50% ;" >			 --%>
 			
 			
 			<table class="table">
@@ -52,7 +56,7 @@
 				</tr>
 				<tr>
 					<td> PW </td>
-					<td> <input type="password" name="pw"> </td>
+					<td> <input type="password" name="pw" value="<%= pwValue%>"> </td>
 				</tr>				
 				<tr>
 					<td></td>

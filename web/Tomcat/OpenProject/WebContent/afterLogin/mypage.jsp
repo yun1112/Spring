@@ -3,7 +3,10 @@
 
 <%@ include file="/include/sessionCheck.jsp" %>
 <%
+	session.getAttribute("loginInfo");
+
 	if(loginInfo!=null){%>
+	
 <!DOCTYPE html>
 <html lang="ko">
 <head>

@@ -36,7 +36,7 @@
 					<td>아이디</td>
 					<td> <%= uid%></td>
 				</tr>
-				<tr>
+				<tr>q
 					<td>비밀번호</td>
 					<td> <%= pw%> </td>
 				</tr>				

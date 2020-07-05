@@ -16,24 +16,14 @@
 	// 로그인 처리
 	boolean loginChk = false;
 	
-/* 	if(uid.equals(pw)){
+ 	if(uid.equals(pw)){
 		LoginInfo loginInfo = 
 				new LoginInfo(uid, pw, "test@gmail.com", "default.jpg");
 		
 		session.setAttribute("loginInfo", loginInfo);
 		
 		loginChk = true;
-	} */
-	
-	Cookie[] cookies=request.getCookies();
-	if(cookies!=null){
-		for(Cookie c:cookies){
-			%>
-			<script>
-			console.log("getName(): "+c.getName());
-			</script>
-			<%}
-		}
+	} 
 	
 	System.out.println(loginChk);
 	

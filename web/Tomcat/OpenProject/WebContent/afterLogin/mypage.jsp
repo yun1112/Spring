@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ include file="/include/sessionCheck.jsp" %>
 <%
 	if(loginInfo!=null){%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>마이 페이지</title>
@@ -18,7 +19,7 @@
 
 	<%@ include file="/afterLogin/include/header.jsp" %>
 
-	<div>
+	<div class="container">
 		<h1 class="subtitle">마이페이지</h1>
 		
 		<hr>

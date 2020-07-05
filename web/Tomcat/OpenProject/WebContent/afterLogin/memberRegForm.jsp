@@ -11,7 +11,9 @@
 </head>
 <body>
 <%@ include file="/afterLogin/include/header.jsp" %>
+<div class="container">
 <h1>이미 회원입니다</h1>
+</div>
 <%@ include file="/afterLogin/include/footer.jsp" %>
 </body>
 </html>

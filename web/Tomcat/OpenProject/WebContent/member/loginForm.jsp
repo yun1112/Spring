@@ -37,7 +37,7 @@
 
 	<%@ include file="/include/header.jsp" %>
 
-	<div>
+	<div class="container">
 		<h1 class="subtitle">로그인</h1>
 		
 		<hr>

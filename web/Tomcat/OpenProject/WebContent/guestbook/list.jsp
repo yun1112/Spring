@@ -11,10 +11,10 @@
 <body>
 
 	<%@include file="/include/header.jsp"%>
-	<div id="div1">
-		<h1>방명록(비회원) 페이지</h1>
+	<div class="container">
+		<h1>방명록(비회원) 페이지</h1><hr>
 	</div>
-
+	<%@include file="/bootstrap/ex/ex01.jsp" %>
 	<%@include file="/include/footer.jsp"%>
 </body>
 </html>

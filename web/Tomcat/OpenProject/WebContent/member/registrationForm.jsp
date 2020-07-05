@@ -28,7 +28,7 @@
 
 	<%@ include file="/include/header.jsp" %>
 
-	<div>
+	<div class="container">
 		<h1 class="subtitle">회원가입</h1>
 		
 		<hr>
@@ -46,7 +46,7 @@
 					<td> <input type="text" name="uid" value="<%= uidValue%>"> </td>
 				</tr>
 				<tr>
-					<td>비밀번</td>
+					<td>비밀번호</td>
 					<td> <input type="password" name="pw" value="<%= pwValue%>"> </td>
 				</tr>				
 				<tr>

@@ -16,7 +16,7 @@
 
 	<%@ include file="/include/header.jsp" %>
 
-	<div>
+	<div class="container">
 		<h1>게시판</h1>
 	</div>
 

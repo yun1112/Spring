@@ -12,7 +12,7 @@
 
 
 <%@ include file="/afterLogin/include/header.jsp" %>
-	<div id="div1">
+	<div class="container">
 		<h1>방명록(비회원) 페이지</h1>
 	</div>
 <%@ include file="/afterLogin/include/footer.jsp" %>

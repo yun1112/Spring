@@ -13,7 +13,7 @@
 
 
 	<%@include file="/include/header.jsp"%>
-	<div id="div1">
+	<div class="container">
 		<h1>마이페이지</h1>
 	</div>
 

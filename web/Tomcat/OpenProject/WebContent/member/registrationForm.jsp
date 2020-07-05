@@ -6,18 +6,21 @@
 	
 	String cookieUid = cookieBox.getValue("uid");
 	String cookiePw = cookieBox.getValue("pw");
+	String cookieUname = cookieBox.getValue("uname");
 
 	String cookieEmail = cookieBox.getValue("email");
 	String cookieImg = cookieBox.getValue("img");
 
 	String uidValue = "";
 	String pwValue = "";
+	String unameValue = "";
 	String emailValue = "";
 	String imgValue = "";
 	
-	if((cookieUid!=null)&&(cookiePw!=null)&&(cookieEmail!=null)&&(cookieImg!=null)){
+	if((cookieUid!=null)&&(cookiePw!=null)&&(cookieUname!=null)&&(cookieEmail!=null)&&(cookieImg!=null)){
 		uidValue = cookieUid;
 		pwValue=cookiePw;
+		unameValue=cookieUname;
 		emailValue=cookieEmail;
 		imgValue=cookieImg;
 	}
@@ -48,7 +51,11 @@
 				<tr>
 					<td>비밀번호</td>
 					<td> <input type="password" name="pw" value="<%= pwValue%>"> </td>
-				</tr>				
+				</tr>
+								<tr>
+					<td>이름</td>
+					<td> <input type="text" name="uname" value="<%= unameValue%>"> </td>
+				</tr>			
 				<tr>
 					<td>이메일</td>
 					<td> <input type="text" name="email" value="<%= emailValue%>"> </td>

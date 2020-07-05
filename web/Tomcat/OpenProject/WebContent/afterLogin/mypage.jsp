@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td></td>				
+				<td><%= loginInfo.getPw() %></td>				
 			</tr>
 			<tr>
 				<td>이메일</td>
@@ -48,7 +48,7 @@
 			</tr>
 			<tr>
 				<td>사진</td>
-			<%--  <td><img src=<%=request.getContextPath()%>/images/<%= loginInfo.getPhoto() %>"></td> --%>
+			<td><img id="img" style="width:50px" src="<%=request.getContextPath()%>/images/<%= loginInfo.getPhoto() %>"></td>
 			<td><%@ include file="../uploadtest/example.jsp" %></td>
 			</tr>
 		</table>

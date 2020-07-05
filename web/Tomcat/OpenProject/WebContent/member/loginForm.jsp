@@ -51,11 +51,11 @@
 			
 			<table class="table">
 				<tr>
-					<td> ID </td>
+					<td>아이디</td>
 					<td> <input type="text" name="uid" value="<%= uidValue%>"> </td>
 				</tr>
 				<tr>
-					<td> PW </td>
+					<td>비밀번호</td>
 					<td> <input type="password" name="pw" value="<%= pwValue%>"> </td>
 				</tr>				
 				<tr>

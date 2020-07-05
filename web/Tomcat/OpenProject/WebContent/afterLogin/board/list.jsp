@@ -18,6 +18,7 @@
 	<div id="div1">
 		<h1>회원게시판</h1>
 	</div>
+	<%@include file="/bootstrap/ex/ex02.jsp" %>	
 <%@ include file="/afterLogin/include/footer.jsp" %>
 </body>
 </html>

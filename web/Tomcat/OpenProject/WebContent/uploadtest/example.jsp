@@ -1,60 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div id="imgUpload">
-	<section id="wrapper">
 
-		<article>
-			<p id="status">ㅁㅁㅁㅁㅁ</p>
-			<p>
-				<input name="img" type="file">
-			</p>
-			<div style="border:1px solid #DDD;width: 90px;height:120px;" id="holder"></div>
-		</article>
-		<script>
-			var upload = document.getElementsByTagName('input')[0], holder = document
-					.getElementById('holder'), state = document
-					.getElementById('status');
-
-			if (typeof window.FileReader === 'undefined') {
-				state.className = '이미지 업로드 실패';
-			} else {
-				state.className = 'success';
-				state.innerHTML = '이미지를 업로드하세요';
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>썸네일</title>
+</head>
+<body>
+	<input type="file" id="image" accept="image/*"
+		onchange="setThumbnail(event)">
+	<div width size="50px" id="imageContainer"></div>
+	<script>
+		function setThumbnail(event) {
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				var img = document.createElement("img");
+				img.src = event.target.result;
+				//state.innerHTML+=document.getElementById('holder').style.height;
+				//state.innerHTML+=img.width;
+				var width=document.getElementById('img').style.width;
+				var height=document.getElementById('img').style.height;
+				// note: no onload required since we've got the dataurl...I think! :)
+				if (img.width > parseInt(width)) {
+					img.width = parseInt(width);
+					//state.innerHTML+='<br>'+img.width;
+				}
+				if (img.height > parseInt(height)) { // holder width
+					img.height = parseInt(height);
+				}
 				
-			}
-			
-
-			upload.onchange = function(e) {
-				e.preventDefault();
-
-				var file = upload.files[0], reader = new FileReader();
-				reader.onload = function(event) {
-					var img = new Image();
-					img.src = event.target.result;
-					//state.innerHTML+=document.getElementById('holder').style.height;
-					//state.innerHTML+=img.width;
-					var width=document.getElementById('holder').style.width;
-					var height=document.getElementById('holder').style.height;
-					// note: no onload required since we've got the dataurl...I think! :)
-					if (img.width > parseInt(width)) {
-						img.width = parseInt(width);
-						//state.innerHTML+='<br>'+img.width;
-					}
-					if (img.height > parseInt(height)) { // holder width
-						img.height = parseInt(height);
-					}
-					
-					
-					holder.innerHTML = '';
-					holder.appendChild(img);
-					//state.innerHTML+='파일url: '+img.src;
-				};
-				reader.readAsDataURL(file);
-				return false;
+				
+				img.setAttribute("src", event.target.result);
+				document.querySelector("div#imageContainer").appendChild(img);
+				
+				
 			};
-			/* state.innerHTML+=img.src; */
-		</script>
-		</section>
-		</div>
-		
+			reader.readAsDataURL(event.target.files[0]);
+		}
+	</script>
+	
+	
+	<div id="result"></div>
+</body>
+</html>
+

@@ -22,7 +22,10 @@
 
 */
 	LoginInfo loginInfo=(LoginInfo)session.getAttribute("loginInfo");
+	if(loginInfo==null){
+		session.setAttribute("loginInfo",new LoginInfo("qq","11","이름","aa","stitch.jpeg"));
 
+	}else{
 	String uid=(String)loginInfo.getUid();
 	String pw=(String)loginInfo.getPw();
 	String uname=(String)loginInfo.getUname();
@@ -70,5 +73,5 @@
 		</script>
 		<%
 	}
-	
+	}
 %>

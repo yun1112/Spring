@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#popup{
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-150px;
+	margin-top=-100px;
+	border:2px solid #ddd;
+	width:300px;
+	height:200px;
+}

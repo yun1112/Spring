@@ -10,8 +10,9 @@
 
     <!-- 부트스트랩 -->
 <!--     <link href="../css/bootstrap.min.css" rel="stylesheet">
- -->    <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+ -->    
+ 
+ <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
     <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
     <!--[if lt IE 9]>
@@ -24,11 +25,12 @@ String referer = (String)request.getHeader("REFERER");
 if(referer.equals("http://localhost:8081/op/afterLogin/mypage.jsp")){
 	%><script>alert("로그인");</script><%
 }
-%> --%>
-<%-- <h1><%=referer %></h1><hr> --%>
+%>
+<h1><%=referer %></h1><hr> --%>
 <body>
 <div id="container">
 <div id="header"><img style="width:50px;float:right" src="<%=request.getContextPath() %>/images/stitch.jpeg"><h1>Open Project</h1></div>
+
 <%-- <%
 	boolean loginOrNot=false;
 	if(referer.equals("http://localhost:8081/op/mypage/mypage.jsp")){
@@ -42,8 +44,8 @@ if(referer.equals("http://localhost:8081/op/afterLogin/mypage.jsp")){
 	}
 %> --%>
 <ul id="navigation">
-	<li><a href="<%=request.getContextPath() %>/member/memberRegForm.jsp">회원가입</a></li>
-	<li><a href="<%=request.getContextPath() %>/member/loginForm.jsp">로그인</a></li>
+	<li><a href="<%=request.getContextPath() %>/afterLogin/memberRegForm.jsp">회원가입</a></li>
+	<li><a href="<%=request.getContextPath() %>/member/logout.jsp">로그아웃</a></li>
 <%-- 	<%
 	if(loginOrNot){
 		%>
@@ -56,9 +58,9 @@ if(referer.equals("http://localhost:8081/op/afterLogin/mypage.jsp")){
 	}
 	%> --%>
 	
-	<li><a href="<%=request.getContextPath() %>/member/mypage.jsp">마이페이지</a></li>
-	<li><a href="<%=request.getContextPath() %>/guestbook/list.jsp">방명록(비회원)</a></li>
-	<li><a href="<%=request.getContextPath() %>/board/list.jsp">방명록(회원제)</a></li>
+	<li><a href="<%=request.getContextPath() %>/afterLogin/mypage.jsp">마이페이지</a></li>
+	<li><a href="<%=request.getContextPath() %>/afterLogin/guestbook/list.jsp">방명록(비회원)</a></li>
+	<li><a href="<%=request.getContextPath() %>/afterLogin/board/list.jsp">방명록(회원제)</a></li>
 </ul>
 </div>
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->

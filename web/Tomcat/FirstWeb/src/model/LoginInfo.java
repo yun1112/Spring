@@ -1,41 +1,48 @@
 package model;
 
 public class LoginInfo {
-	private String uid;// private type is necessary
-	private String name;
 
-	public LoginInfo() {// default constructor is necessary in beans classes
-		this.uid="cool";
-		this.name="son";
-	}
+	private String uid;
+	private String uname;
+	private String email;
+	private String photo;
 
-	public LoginInfo(String uid, String name) {//
-		super();
+	public LoginInfo(String uid, String uname, String email, String photo) {
 		this.uid = uid;
-		this.name = name;
+		this.uname = uname;
+		this.email = email;
+		this.photo = photo;
 	}
 
 	public String getUid() {
 		return uid;
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
+
+
+	public String getUname() {
+		return uname;
 	}
 
-	public String getName() {
-		return name;
+
+
+	public String getEmail() {
+		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+
+
+	public String getPhoto() {
+		return photo;
 	}
+
+
 
 	@Override
 	public String toString() {
-//		System.out.println(getName()+"\n"+getUid());
-		
-		return "id:"+getUid()+", name:"+getName();
+		return "LoginInfo [uid=" + uid + ", uname=" + uname + ", email=" + email + ", photo=" + photo + "]";
 	}
+
+	
 
 }

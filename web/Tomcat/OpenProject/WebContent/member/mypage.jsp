@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ include file="/include/sessionCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +11,12 @@
 </head>
 <body>
 
+
 	<%@include file="/include/header.jsp"%>
 	<div class="container">
-		<h1>방명록(비회원) 페이지</h1><hr>
+		<h1>마이페이지</h1>
 	</div>
-	<%@include file="/bootstrap/ex/ex01.jsp" %>
+
 	<%@include file="/include/footer.jsp"%>
 </body>
 </html>

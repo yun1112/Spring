@@ -1,5 +1,7 @@
 <%@page pageEncoding="utf-8" %>
 <%@page import="model.LoginInfo"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <%
 	LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
 	if(loginInfo==null){

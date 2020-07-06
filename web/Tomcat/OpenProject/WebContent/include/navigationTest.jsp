@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -10,7 +12,7 @@
 
     <!-- 부트스트랩 -->
 <!--     <link href="../css/bootstrap.min.css" rel="stylesheet">
- -->    <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ -->    <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- <nav class="navbar navbar-dark bg-dark">
  -->
  
@@ -22,8 +24,23 @@
  <div class="navbar-header"><a class="navbar-brand" href="#">Open Project</a></div>
  <div class="container">
  <ul class="nav navbar-nav">
- 	<li class="nav-item"><a class="nav-link active" href="<%=request.getContextPath() %>/member/memberRegForm.jsp">회원가입</a></li>
-	<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/member/loginForm.jsp">로그인</a></li>
+<%--  	<li class="nav-item"><a class="nav-link active" href="<%=request.getContextPath() %>/member/memberRegForm.jsp">회원가입</a></li>
+ --%> 	
+ 
+  <c:if test="${empty loginInfo}">
+ <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegForm.jsp">회원가입</a></li>
+</c:if>
+ <c:if test="${!empty loginInfo}">
+ <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegFormAfterLogin.jsp">회원가입</a></li>
+</c:if>
+
+
+ <c:if test="${empty loginInfo}">
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/loginForm.jsp">로그인</a></li>
+</c:if>
+ <c:if test="${!empty loginInfo}">
+<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.jsp">로그아웃</a></li>
+</c:if>
 <%-- 	<%
 	if(loginOrNot){
 		%>
@@ -35,10 +52,20 @@
 		<%
 	}
 	%> --%>
+	<c:if test="${!empty loginInfo}">
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/mypageAfterLogin.jsp">마이페이지</a></li>
+	</c:if>
+	<c:if test="${empty loginInfo}">
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage.jsp">마이페이지</a></li>
+	</c:if>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/guestbook/list.jsp">방명록(비회원)</a></li>
 	
-	<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/member/mypage.jsp">마이페이지</a></li>
-	<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/guestbook/list.jsp">방명록(비회원)</a></li>
-	<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/board/list.jsp">방명록(회원제)</a></li>
+	<c:if test="${!empty loginInfo}">
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/listAfterLogin.jsp">방명록(회원제)</a></li>
+	</c:if>
+	<c:if test="${empty loginInfo}">
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list.jsp">방명록(회원제)</a></li>
+	</c:if>
 </ul>
 
 

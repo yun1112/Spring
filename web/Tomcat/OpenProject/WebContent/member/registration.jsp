@@ -1,4 +1,3 @@
-  
 <%@page import="model.LoginInfo"%>
 <%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

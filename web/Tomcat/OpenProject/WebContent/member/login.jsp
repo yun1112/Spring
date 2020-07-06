@@ -3,6 +3,7 @@
 <%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 	
 <%
 	// 사용자 요청 정보를 받는다.
@@ -23,7 +24,7 @@
 */
 	LoginInfo loginInfo=(LoginInfo)session.getAttribute("loginInfo");
 	if(loginInfo==null){
-		session.setAttribute("loginInfo",new LoginInfo("qq","11","이름","aa","stitch.jpeg"));
+		session.setAttribute("loginInfo",new LoginInfo("guest","1234","이름","aa","stitch.jpeg"));
 
 	}else{
 	String uid=(String)loginInfo.getUid();
@@ -62,7 +63,7 @@
 		
 		// 로그인 이 필요했던 이전 페이지
 		%>
-		<script>location.href="../afterLogin/mypage.jsp";</script>
+		<script>location.href="${pageContext.request.contextPath}/member/mypageAfterLogin.jsp";</script>
 		<%
 			
 	} else {

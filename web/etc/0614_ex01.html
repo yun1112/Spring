@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example</title>
+    <!-- <script src="externalJS.js"> -->
+    <script>
+
+        //익명함수
+       var f1=function(){
+           var output=prompt('숫자 입력');
+           alert(output);
+       };
+
+       //선언적 함수
+       function f2(){alert('선언적함수');}
+
+    //   f1();
+    //   f2();
+
+      /* arguments객체 */
+      function sumAll(){
+          var result=0;
+          for(var i=0;i<arguments.length;i++){
+              result+=arguments[i];
+          }
+        return result;          
+      }
+    //   alert(sumAll(1,2,3,4,5));
+
+
+    /* callback함수 */
+    function callTenTimes(callback){
+        for(var i=0;i<10;i++){
+            callback();
+        }
+    }
+
+    var callback=function(){
+        alert('함수');
+    }
+
+    // callTenTimes(callback);
+
+
+    // var intervalID=setInterval(function(){
+    //     // console.log(new Date());
+    //     // document.write(new Date());
+    //     document.body.innerHTML='<hr>'+new Date()+'<hr>';
+        
+    // },1000);
+
+    // setTimeout(function(){clearInterval(intervalID)},1000*3);
+
+   /*  var i=10;
+    var intervalID=setInterval(function(){console.log('It will be done after '+i+'seconds');i--;if(i==0)console.log('finished');},1000);
+    setTimeout(function(){clearInterval(intervalID);},1000*10);
+
+    //eval(string)
+    //executing string as a javascript code
+    var willEval='';
+    willEval+='var number=10;';
+    willEval+='alert(number);';
+    eval(willEval); 
+
+    var array=['a','b','c'];
+    // alert(array[0]);
+
+    var product={
+       productName:'7D dried mango',
+       type:'soaked in sugar',
+       ingredients:'mango,sugar,chemicals',
+       madeIn:'Philippines' 
+    };
+   
+   var p=product['productName'];
+   var p2=product.productName;
+   alert(p);
+   alert(p2);*/
+
+   var f=function(){
+    return document.getElementById("sentence").innerHTML="changed sentence after you click";
+    // return alert('z');
+   };
+
+
+var f2=function(){
+    return document.getElementById("p1").src="pic2.png";
+};
+
+var f3=function(){
+    return document.getElementById("sentence2").style.fontSize="35px";
+};
+
+var f4=function(){
+    document.getElementById("s1").style.color="cornflowerblue";
+};
+var f5=function(){
+    document.getElementById("s2").style.display="none";
+};
+
+var f6=function(){
+    document.getElementById("s3").style.display='block';
+};
+
+var ff=function(){
+    document.getElementById("b").innerHTML="zzzzz";//not working
+};
+var Person={name:'Kim',eat:function(food){alert(this.name+' is eating '+food)}};
+Person.eat('a piece of pizza with a cup of iced coke');
+
+var product={
+    name:'Miscrosoft Visual Studio 2012 Ultimate',
+    price:'15,000$',
+    language:'Korean',
+    supportOS:'Win 32/64bits',
+    subscription:true
+};
+var output='';
+for(var i in product){
+    output+='●'+i+':'+product[i]+'\n';
+}
+
+var student={};
+student.name='Yun';
+student.hobby='playing musical instruments';
+student.ability='programming';
+
+output+='------------------------------------------------------------\n';
+for(var i in student){
+    output+=i+': '+student[i]+'\n';
+}
+alert(output);
+
+
+output='';
+//making toString() method
+student.toString=function(){
+    for(var i in student){
+        if(i!='toString')
+        output+=i+'\t'+this[i]+'\n';
+    }
+    return output;
+};
+alert(student.toString());
+
+var students=[];
+var rand1=0;
+var rand2=0;
+var rand3=0;
+for(var i=0;i<10;i++){
+    rand1=parseInt(Math.random()*100+1);
+    rand2=parseInt(Math.random()*100+1);
+    rand3=parseInt(Math.random()*100+1);
+    students.push({
+        name:'a'+i,
+        kor:rand1,
+        math:rand2,
+        eng:rand3
+    });
+}
+output='';
+for(var i in students)
+    output+=i+': '+students[i].name+', '+students[i].kor+', '+students[i].math+', '+students[i].eng+'\n';
+alert(output);
+    </script>
+</head>
+<body>
+    <h2>what javascript can do</h2>
+    <p id="sentence">original sentence before you click</p>
+    
+    <!-- <button type="button" onclick='alert("a")'>click</button> -->
+    <button type="button" onclick='f()'>click</button>
+        <!-- onclick='document.getElementById("sentence").innerHTML="z"'>click</button> -->
+
+    <hr>
+    <img id="p1" src="pic1.png" style="width:100px">
+    <button type="button" onclick='f2()'>change the picture</button>
+       
+    <hr>
+    <p id="sentence2">sentence</p>
+    <button type="button" onclick="f3()">size up</button>
+
+    <hr>
+    <p id="s1">change the color of the sentence</p>
+    <button type="button" onclick='f4()'>click</button>
+
+    <hr>
+    <p id="s2">the senetence you want to hide from this browser</p>
+    <button type="button" onclick='f5()'>click</button>
+
+    <hr>
+    <p id="s3" style="display:none">the sentence you want to show</p>
+    <button type="button" onclick='f6()'>click</button>
+
+    <!-- <hr>
+    <p id="a"></p>
+    <button type="button" onclick='externalFunction()'>click</button> -->
+    <hr>
+    <h1 id="b"></h1>
+    <button type="button" onclick='ff()'>click</button>
+
+    <hr>
+</body>
+</html>

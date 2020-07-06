@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login form</title>
+        <meta charset="utf-8">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
+            rel="stylesheet">
+        <script></script>
+        <style>
+            * {
+                color:cornflowerblue;
+                font-family: 'Yeon Sung', cursive;
+            }
+            #title{
+                font-size:2.5em;
+                font-weight:bold;
+                margin: 10px 20px;
+            }
+            form{
+                font-size:1.2em;
+            }
+            #d{
+                margin:25px 50px;
+            }
+
+            .button {
+                background-color: cornflowerblue;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 5px 8px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 1em;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+
+            .button2 {
+                background-color: cornflowerblue;
+                color: black;
+                /* border: 2px solid mediumblue; */
+                border:none;
+            }
+
+            .button2:hover {
+                background-color: white;
+                color: cornflowerblue;
+                /* border:2px solid mediumslateblue */
+                border:none;
+            }
+            #tt{
+                /* position:relative; */
+            }
+           #tt>td{
+            /* margin:5px 125px; */
+            /* position:absolute; */
+           }
+           #submit{
+               margin:10px 0;
+               float:right;
+           }
+        </style>
+    </head>
+
+    <body>
+        <p id="title">회원 로그인</p>
+        <hr>
+        <form id="loginForm" action="" method="get">
+            <div id="d">
+            <table id="form">
+                <tr id="tt">
+                    <td>아이디(이메일)</td>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                <tr id="tt2">
+                    <td>비밀번호)</td>
+                    <td><input type="password" namd="pwd"></td>
+                </tr>
+               
+                <tr>
+                    <td></td>
+                    <td>
+                        <input id="submit" class="button button2" type="submit" value="등록"></td>
+                </tr>
+
+            </table></div>
+        </form>
+    </body>
+</html>

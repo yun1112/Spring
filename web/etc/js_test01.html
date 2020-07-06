@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript 기본 문법</title>
+        <!-- <script>
+            /* 데이터 출력
+        alert(): 문자열, 숫자, 함수, 객체, 배열(객체 내),
+        console.log(): 문자열, 숫자, 함수, 객체, 배열
+
+        #데이터
+        1. 문자
+            문자 표현-> ''또는 ""
+            alert('"String"');
+
+        2. 숫자
+            정수와 실수를 구분하지 않음
+            alert(5*2);
+            alert(3.14);
+
+        3. 연산자
+        1)산술연산자
+            +, -, *, /, %
+            우선순위는 () 최우선, 기본 순서와 동일
+
+            alert((10+1)*2);
+
+        4. bool: true/false
+                 0-> false, 1-> true
+                 if(bool)
+            alert(true);
+
+        2)비교연산자: > < >= <= == !=
+                    결과: bool
+
+
+            alert(5<9);
+
+        3)논리연산자: && || !
+            var num = 10;
+            alert(num > 5 && num <= 10);
+
+
+        #변수: 데이터 저장 목적
+            변수 선언 방법: var 변수명
+            var 변수명=데이터;
+
+
+            var num = 10;
+            var name = "king";
+            alert(num);
+            alert(name);
+
+            let: 지역변수로 사용
+            const: 상수 표현
+        */
+            /*  let age = 20;
+            {
+                let age = 10; // 지역변수
+            }
+            {
+                var check = true;
+                alert(check);
+            }
+            check = false;
+            {
+                let check = 10;
+                alert(check);
+            }
+            let age = 30;
+            for(var i=0; i<10; i++){
+                alert(i);
+            }
+            const pi = 3.14;
+            alert(pi);
+
+            #변수 초기화: 변수에 데이터 대입
+            문자열, 숫자, bool, function 함수, object 객체, array 배열
+            함수: function 함수명(매개변수){실행코드}
+            익명함수: function(매개변수){실행코드} -> 변수에 대입할 때 사용
+            객체: {}
+            배열: [], 다른 타입의 데이터도 저장 가능(Python과 유사)
+
+            */
+            /* // alert(num1); num1 + 1; 변수선언이 안 된 경우: undefined 오류 발생
+            var number;
+            //    alert(number);//초기화를 안 한 경우    alert(number+1);//NaN(Not a Number)오류 발생
+            var stringVar = '문자열';
+            var numberVar = 273;
+            var booleanVar = false;
+            var functionVar = function () {alert('function')}; //변수명이 함수명, 익명함수
+            var objectVar={};
+            // var arrayVar=[1,2,3,4,5,'string'];
+
+            alert(stringVar);
+            alert(numberVar);
+            alert(booleanVar);
+            functionVar();
+            alert(objectVar);
+            alert(arrayVar);
+
+            // alert(typeof(arrayVar));
+            if(typeof(arrayVar)=='undefined'){
+                alert('n');
+            }*/
+
+            // var a=""; a+="a"; alert(a); a+="b"; alert(a);
+            /* 복합 대입연산자: +=, *=, -=, /=, %=
+
+            var html_str = "";
+            html_str += "<div>\n";
+            html_str += "<h1>인사</h1>\n";
+            html_str += "<p>안녕하세요</p>\n";
+            html_str += "</div>";
+            alert(html_str);
+            document.write(html_str); //브라우저에 출력*/
+
+            /* HTML
+            document.body.innerHTML
+            innerHTML:속성/변수
+
+            window.onload=function(){}
+            window: 브라우저 자체를 의미
+            onload: 이벤트 속성, 화면 출력 후에 실행
+            document 바디 읽기 전에 실행
+            */
+            var html_value = document.body.innerHTML; //아직 브라우저가 바디태그 찾지 못했는데 먼저 실행부터 해서 에러발생
+            alert(html_value);
+
+            // document객체(바디 안 객체) innerHTML(string)바디 안의 html태그 가지고 있음
+        </script> -->
+
+        <script>
+            // var html_value = document.body.innerHTML; //아직 브라우저가 바디태그 찾지 못했는데 먼저 실행부터 해서 에러발생
+            //     // alert(html_value);
+            //     var list='';
+            //     list+='<ul>\n';
+            //     list+='<li>javascript</li>\n';
+            //     list+='<li>jquery</li>\n';
+            //     list+='</ul>';
+            //     alert(list);
+            //     document.body.innerHTML=list;
+            //     //원래 가지고 있던 바디 내부의 태그가 현재 스크립트 태그 내부의 태그로 대체됨(기존 바디 태그 삭제됨)
+            
+            // var html_value = document.body.innerHTML; //아직 브라우저가 바디태그 찾지 못했는데 먼저 실행부터 해서 에러발생
+               
+           /*  window.onload=function(){//onload: event handler(이벤트 처리함수)
+                var message=prompt('이름을 입력해주세요','디폴트값');
+
+                //a return type of the function called prompt() is string
+                var check=confirm('입력된 이름을 사용하시겠습니까?');
+                // alert(html_value);
+                var list='';
+                list+='<ul>\n';
+                if(check){
+                    list+='<li>'+message+'</li>\n';
+                }
+                list+='<li>javascript</li>\n';
+                list+='<li>jquery</li>\n';
+                list+='</ul>';
+                alert(list);
+                
+                document.body.innerHTML=list;
+                }; */
+            /*변수의 재선언: let,const형 변수 재선언 불가 
+            alert(), prompt()에 window 생략되어있음(window.alert)
+
+            var message=prompt('이름을 입력해주세요');
+            +연산의 경우에는 문자열 우선
+            alert('1'+2);//'1'+'2'=>'12'
+
+            +연산자가 아닌 다른 연산의 경우 숫자연산이 우선
+            alert(7*'5');//7*5=>35
+
+            alert(7*'n');//NaN(Not a Number) 에러 발생
+            
+            var n=prompt('숫자를 입력하세요');
+            // alert(typeof(n));
+
+            //형변환함수: 숫자로변환->Number()
+                        //정상적으로 변환되지 않으면 NaN 에러 발생
+            var userNumber= Number(n);
+            alert(typeof(userNumber));
+            // alert(typeof(Number(n)));
+            alert(userNumber+1);//NaN 에러 발생(정상적인 숫자로 변환되지 않음)
+            */
+           /* 
+           # Boolean(): 다섯 가지 경우를 제외하고는 무조건 true 반환
+            1. Boolean(0)
+            2. Boolean(NaN)
+            3. Boolean('')
+            4. Boolean(null)
+            5. Boolean(undefined)
+           
+
+           alert(Boolean(0));
+           alert(Boolean(NaN));
+           alert(Boolean(''));
+           alert(Boolean(null));
+           alert(Boolean(undefined));
+           
+           //Boolean값 안써도 자동적으로 논리값으로 변환(자동 형변환)
+           alert(!!0);//0->false
+           alert(!!NaN);//NaN->false
+           alert(!!'');//''->false
+           alert(!!null);//null->false
+           alert(!!undefined);//undefined->false*/
+
+       /*     var n=prompt('숫자를 입력하세요');
+            // alert(typeof(n));
+
+            //형변환함수: 숫자로변환->Number()
+                        //정상적으로 변환되지 않으면 NaN 에러 발생
+            var userNumber= Number(n);
+            // alert(typeof(Number(n)));
+           if(userNumber){
+            alert(userNumber+1);
+           }
+           alert(!!0);//0->false
+           alert(!!NaN);//NaN->false
+           alert(!!'');//''->false
+           alert(!!null);//null->false
+           alert(!!undefined);//undefined->false
+           자동형변환 케이스
+           alert(''==false);
+           alert(''==0);
+           alert(0==false);
+           alert('2'==2);
+           */
+
+           /* //일치연산자: ===, !==(자료형이 다른 것을 확실하게 구분 지음)
+           //타입과 데이터 일치여부 확인
+           alert(''===false);
+           alert(''===0);
+           alert(0===false);
+           alert('2'===2); 
+           
+          //날짜 시간을 정의하는 객체
+          var now=new Date();
+          alert(now.getHours());
+
+          //논리합 연산자
+          //ex) 불 표현식||불 표현식 거짓일 때 실행
+          var message=prompt('값을 입력하세요');
+          true||alert('논리값이 참입니다');
+          false||alert('논리값이 거짓입니다');//거짓일 때만 실행됨
+          //null, NaN, undefined, '', 0일 때 거짓
+         message||alert('!!!!!'); 
+         
+         반복문: for(초기식;조건식;증감식){}
+         배열의 요소를 일괄 참조 사용
+
+         배열:여러개의 변수를 묶음으로 처리
+         배열의 요소는 어떤 타입이어도 가능 (자바와 다름, 파이썬과 유사)
+         배열의 생성: [] 요소의 표현 ,
+         
+
+         var arr=[10,50,99,100];
+         for(var i=0;i<arr.length;i++)
+        //    alert(arr[i]);
+        var arr=[1,'string',true,function(){},{},[1,2]];
+        //    alert(arr);
+        for(var i in arr){
+            alert(arr[i]);
+        }*/
+        var rnum=Math.random()*100+1;//0~1랜덤 숫자
+        alert(parseInt(rnum));
+    </script>
+    </head>
+    <body>
+        <h1>자바스크립트 예제를 하고 있습니다</h1>
+        <p>재미있는 자바스크립트</p>
+    </body>
+</html>
+<!-- <script>
+        var html_value = document.body.innerHTML; //아직 브라우저가 바디태그 찾지 못했는데 먼저 실행부터 해서 에러발생
+            // alert(html_value);
+            var list='';
+            list+='<ul>\n';
+            list+='<li>javascript</li>\n';
+            list+='<li>jquery</li>\n';
+            list+='</ul>';
+            alert(list);
+            document.body.innerHTML=list;
+            //원래 가지고 있던 바디 내부의 태그가 현재 스크립트 태그 내부의 태그로 대체됨(기존 바디 태그 삭제됨)
+
+
+            바디 태그 내부의 문서객체 사용할 때는 window.onload 사용
+            (바디 태그 읽고 나서 window.onload 이용해서 함수 실행)
+
+
+        </script> -->
+<!-- 문자 사전순으로 비교연산자 사용해서 비교 가능 #변수: 데이터 저장,식별 목적 변수 선언: var 변수명 let: 지역변수 const:
+상수 #자료형 문자열, 숫자, 불리언, 함수, 객체, 배열 undefined형 자료형*: 선언되지 않거나 할당되지 않은 변수 var
+functionVar=function(){}; -> 변수명이 함수명이 됨 var objectVar={}; -> 중괄호로 객체 선언 -->
+
+<!-- script 태그 어디든 위치 가능 -->

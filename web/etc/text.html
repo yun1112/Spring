@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        function myFunction(){
+            document.getElementById("f1").innerHTML="paragraph changed";
+        }
+    </script>
+
+    <title>Test</title>
+</head>
+<body>
+    
+    <h1>javascript test</h1>
+    <p id="demo">before clicking</p>
+    <button type="button"
+     onclick='document.getElementById("demo").innerHTML="hello javascript"'>after clicking</button>
+<hr>
+
+     <button onclick="document.getElementById('myImage').src='../html/pic.jpg'">before clicking</button>
+    <img id="myImage" src="../html/pic.jpg" style="width:200px; height:100px" >
+
+    <button onclick="document.getElementById('myImage').src='../html/pic2.jpg'"
+    style="width:100px" >after clicking</button>    
+
+    <hr>
+    <p id="demo2">It's a example sentence</p>
+    <button type="button" onclick="document.getElementById('demo2').style.fontSize='35px'">click</button>
+
+    <hr>
+    <p id="demo3">exampe sentence2</p>
+    <button type="button" onclick="document.getElementById('demo3').
+    style.display='none'"">click</button>
+<hr>
+    <p id="demo4" style="display:none">example sentence3</p>
+    <button type="button" onclick="document.getElementById('demo4').
+    style.display='block'">click</button>
+
+    <hr>
+    <h2>javascript in body</h2>
+    <p id="d1"></p>
+    <script>
+        document.getElementById("d1").innerHTML="my first javascript";
+    </script>
+
+    <hr>
+    <h1>function in head</h1>
+    <p id="f1">a paragraph</p>
+    <button type="button" onclick="myFunction()">try it</button>
+    <hr>
+    <h1>function in body</h1>
+    <p id="f2">a paragraph</p>
+    <button type="button" onclick="myFunction2()">try it</button>
+    <script>function myFunction2(){
+        document.getElementById('f2').innerHTML="paragraph changed";
+    }</script>
+
+    <hr>
+    <h2>external javascript</h2>
+    <p id="f3">a paragrah before clicking</p>
+    <button type="button" onclick="myFunction3()">try it</button>
+    <p>my function3 is stored in an external file called "myScript.js"</p>
+    <script src="myScript.js"></script>
+
+    <hr>
+ 
+    <!-- =============================================================외부 참조 -->
+   <!-- 1.URL/경로 사용 -->
+   
+    <!-- <h2>external javascript</h2>
+    <p id="demo">a paragrah before clicking</p>
+    <button type="button" onclick="myFunction()">try it</button>
+    <p>my function is stored in an external file called "myScript.js"</p>
+    <script src="https://www.w3schools.com/js/myScript.js"></script>
+    <hr> -->
+
+    <!-- 2. 특정 폴더 경로 사용 -->
+    <h2>External javascirpt</h2>
+    <p id="f4">a paragraph before you click</p>
+    <button type="button" onclick="myFunction4()">try it</button>
+    <p>myFunctin is stored in an external file called "myScript.js"</p>
+    <script src="myScript2.js"></script>
+
+    <!--  같은 폴더 내 스크립트 사용-->
+
+    <hr>
+   <!--자바스크립트 출력
+    1. innerHTML: HTML요소로 씀
+        document.getElementById(id): HTML요소에 접근
+                                    id 속성은 HTML요소를 정의함,
+                                    innerHTMl 특성은 HTML content 정의함
+                                    -->
+                                    <p id="ex1"></p>
+                                    <script>
+                                    document.getElementById("ex1").innerHTML=5+6;
+                                    </script>
+    <!-- 
+    2. document.write(): HTML 출력으로 씀, 테스팅목적으로만 사용
+     *주의: HTML문서 불러온 다음에 document.write() 사용하면 모든 존재하는 HTMl삭제됨
+    -->
+    <script>document.write(1+1);</script>
+    <h1>document.write()</h1>
+    <p>my first paragraph</p>
+    <button type="button" onclick="document.write(1+1)">try it</button>
+    <!-- successfully transfered to the new page -->
+    <!-- 
+    3. window.alert(): 경고박스 씀
+     -->
+    <script>
+    window.alert(5+6+"alert");
+    </script>
+
+    <!-- 
+    4. console.log(): 브라우저 콘솔로 씀
+    -->
+
+    <!-- 자바스크립트에 출력 객체나 함수 없음
+        -> 브라우저에서 window.print() 사용해서 현재 윈도우의 콘텐츠를 출력 -->
+        <button onclick="window.print()">print this page</button>
+</body>
+</html>
+
+<!-- function head/body에 올 수 있음  + 외부 자바스크립트 파일
+body 하단부에 script 놓으면 디스플레이 속도 향상시켜줌
+
+
+# external javascript: <script> 태그 포함할 수 없음
+장점
+1.HTML/code 분리해줌
+2.HTML과 javascript 가독성/유지 쉽게해줌
+3.javascript 캐시파일 페이지 로드 속도 높여줌
+
+스크립트 파일 한페이지에 여러개 사용 가능(스크립트 태그 여러개 사용 가능)
+
+
+# 외부 참조
+1. URL주소 전체/ 현재 웹 페이지와 관련된 경로 사용
+2. 현재 웹 사이트에서 특정 폴더에 있는 스크립트 사용
+3.현제 페이지와 같은 폴더에 있는 스크립트 사용
+
+=============================================================================
+자바스크립트 출력
+1. innerHTML: HTML요소로 씀
+    document.getElementById(id): HTML요소에 접근
+                                id 속성은 HTML요소를 정의함,
+                                innerHTMl 특성은 HTML content 정의함
+
+    HTML요소의 innerHTML특성을 바꾸는건 HTML 일반적인 데이터 출력방식
+
+2. document.write(): HTML 출력으로 씀
+                    테스팅목적으로 사용
+        *주의: HTML문서 불러온 다음에 document.write() 사용하면 모든 존재하는 HTMl삭제됨
+
+
+3. window.alert(): 경고박스 씀
+    자바스크립트에서 윈도우 객체는 전역 범위 객체임 
+    즉, 변수,속성,함수 기본적으로 윈도우 객체에 속해 있음
+    window 키워드로 구체화 가능(선택)
+
+4. console.log(): 브라우저 콘솔로 씀
+                브라우저 화면으로 데이터 확인하기 위해 디버깅 목적으로 사용
+
+
+자바스크립트 출력 객체나 함수 없음
+-> 브라우저에서 window.print() 사용해서 현재 윈도우의 콘텐츠를 출력
+-->

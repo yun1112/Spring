@@ -1,0 +1,33 @@
+/* <div id="container">
+<div id="header"><h3>Title</h3></div>
+<div id="content">
+    <div id="div1"></div>
+    <div id="div1"></div> */
+#container {
+    width:200px;
+    height:300px;
+    border:1px solid black;
+    text-align: center;
+}
+
+#header {
+    border:1px solid red;
+}
+
+#content {
+    border:1px solid blue;
+
+}
+
+#div1 {
+    border:1px solid black;
+    margin:25px;
+}
+
+#menuTable{
+    border:1px solid grey;
+}
+
+#div1 {
+    border:1px solid black;
+}

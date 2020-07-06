@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pop up</title>
+        <link
+        href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
+        rel="stylesheet">
+        <style>
+/*         var html='';
+            html+="<style>body{font-family: 'Yeon Sung', cursive;color:cornflowerblue;}.button {background-color: cornflowerblue;border: none;color: white;padding: 16px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;transition-duration: 0.4s;cursor: pointer;} .button2 {background-color: cornflowerblue;color: black;border: 2px solid white;}.button2:hover {background-color: white;color: #008CBA; }hr{border: 3px solid cornflowerblue;}  </style>";
+            html+='<link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">';
+            html+="<h1>안녕하세요 from parent</h1><hr>";
+            html+="<img id='pic' src='https://thumbnail.10x10.co.kr/webimage/image/basic600/262/B002626948.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false'>";
+            html+='<br><hr>';
+            // html+='<input type="button" value="닫기" onclick="window.close()">';
+            html+='<button onclick="window.close()" class="button button2">닫기</button>';
+            */
+
+            .button {
+                background-color: #4CAF50;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+
+            .button2 {
+                background-color: #008CBA;
+                color: black;
+                border: 2px solid white;
+            }
+
+            .button2:hover {
+                background-color: white;
+                color: #008CBA;
+            }
+            table {
+                width: 100%;
+                border: 2px solid mediumvioletred;
+                border-collapse: collapse;
+                /* 테이블 테두리 한줄(테두리선 겹쳐서 표현) */
+            }
+            td,
+            tr {
+                border: 2px solid mediumvioletred;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Yeon Sung', cursive;
+            }
+            body {
+                text-align: center;
+                line-height: normal;
+                background-color: mediumpurple;
+                /* border: 2px solid mediumvioletred; */
+            }
+            #btn {
+                width: 50px;
+                height: 30px;
+                background-color: mediumslateblue;
+            }
+            hr {
+                border: 2px solid mediumvioletred;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 수정 누르면 창뜸(아이디/비번/이름) -->
+        <!-- 우측 상단 닫기/하단 수정버튼 -->
+        <h3>데이터 수정</h3><!-- 중간정렬 --><hr><br>
+        <table>
+            <!-- 상하 중앙정렬 -->
+            <tr>
+                <td>아이디<br>(이메일)</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>비밀번호<br></td>
+                <td><input type="password"></td>
+            </tr>
+            <tr>
+                <td>이름<br></td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+        <br>
+        <hr>
+        <!-- <input id="btn" type="button" value="수정"> -->
+        <button class="button button2">수정</button>
+    </body>
+</html>

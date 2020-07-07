@@ -2,7 +2,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    <!-- 
+    #jstl cookie: ${cookie.쿠키이름.value}
     
+    <c:choose>
+    <c:when test="${cookie.쿠키명.value eq 10001">
+        <input type="checkbox" disabled="true" />
+    </c:when>
+    <c:otherwise>
+        <input type="checkbox" />
+    </c:otherwise>
+	</c:choose>
+
+ -->
 <%
 	CookieBox cookieBox = new CookieBox(request);
 	

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8cc92d8c331989002c3a463f6eacf6a6f25f6ff9
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Emp"%>
 <%@page import="java.util.List"%>
@@ -35,7 +38,11 @@
 	// 4. ResultSet
 	// 5. close()
 	// 1. 데이터베이스 로드 
+<<<<<<< HEAD
 	Class.forName("oracle.jdbc.driver.OracleDriver");
+=======
+	//Class.forName("oracle.jdbc.driver.OracleDriver");
+>>>>>>> 8cc92d8c331989002c3a463f6eacf6a6f25f6ff9
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -105,6 +112,7 @@
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -112,5 +120,7 @@
 
 
 
+=======
+>>>>>>> 8cc92d8c331989002c3a463f6eacf6a6f25f6ff9
 </body>
 </html>

@@ -22,6 +22,14 @@
 	통화:<fmt:formatNumber value="${price }" type="currency"/>
 	<fmt:formatNumber value="${price }" type="currency" var="numberType"/>
 	${numberType }
+	<br>	
+	퍼센트:<fmt:formatNumber value="${price/30000 }" type="percent"/>
+	<fmt:formatNumber 
+	value="${price }" 
+	type="percent" 
+	groupingUsed="false"
+	
+	/>
 	
 	
  	<hr>

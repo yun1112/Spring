@@ -5,30 +5,29 @@
     
 <%
 	CookieBox cookieBox = new CookieBox(request);
-	
-	String cookieUid = cookieBox.getValue("uid");
-	String cookiePw = cookieBox.getValue("pw");
-	String cookieUname = cookieBox.getValue("uname");
 
-	String cookieEmail = cookieBox.getValue("email");
-	String cookieImg = cookieBox.getValue("img");
-
-	String uidValue = "";
-	String pwValue = "";
-	String unameValue = "";
-	String emailValue = "";
-	String imgValue = "";
-	
-	if((cookieUid!=null)&&(cookiePw!=null)&&(cookieUname!=null)&&(cookieEmail!=null)&&(cookieImg!=null)){
-		uidValue = cookieUid;
-		pwValue=cookiePw;
-		unameValue=cookieUname;
-		emailValue=cookieEmail;
-		imgValue=cookieImg;
-	}
-	
- 
 %>
+ 	
+ 	<c:set var="cookieBox" value="${cookie.cookieBox}"/>
+ 	<c:set var="cookiePw" value="${cookie.cookieBox.pw}"/>
+ 	<c:set var="cookieUname" value="${cookie.cookieBox.uname}"/>
+ 	<c:set var="cookieEmail" value="${cookie.cookieBox.email}"/>
+ 	<c:set var="cookieImg" value="${cookie.cookieBox.img}"/>
+ 	
+ 	<c:set var="uidValue=" value=""/>
+ 	<c:set var="pwValue=" value=""/>
+ 	<c:set var="unameValue=" value=""/>
+ 	<c:set var="emailValue=" value=""/>
+ 	<c:set var="imgValue=" value=""/>
+ 	
+ 	<c:if test="${!empty cookieUid} && ${!empty cookiePw} && ${!empty cookieUname} && ${!empty cookieEmail} && ${!empty cookieImg}">
+ 		<c:set var="uidValue" value="${cookieUid }"/>
+ 		<c:set var="pwValue" value="${cookiePw }"/>
+ 		<c:set var="unameValue" value="${cookieUname }"/>
+ 		<c:set var="emailValue" value="${cookieEmail }"/>
+ 		<c:set var="imgValue" value="${cookieImg }"/>
+ 	</c:if>
+ 	
 <!DOCTYPE html>
 <html>
 <head>

@@ -3,11 +3,11 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <%@ include file="/include/sessionCheck.jsp" %>
-<%
-	session.getAttribute("loginInfo");
 
-	if(loginInfo!=null){%>
 	
+<%-- ${sessionScope.loginInfo} --%>
+<c:if test="${!empty loginInfo}">
+
 	
 <!DOCTYPE html>
 <html lang="ko">
@@ -59,8 +59,8 @@
 	<%@ include file="/include/footer.jsp" %>
 </body>
 </html>
-<%} %>
 
 
-
+</c:if>
+	
 

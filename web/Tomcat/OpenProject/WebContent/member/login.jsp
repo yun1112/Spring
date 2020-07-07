@@ -1,4 +1,3 @@
-  
 <%@page import="model.LoginInfo"%>
 <%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -20,20 +19,16 @@
 	/* session.setAttribute("loginInfo",new LoginInfo("qq","11","이름","aa","stitch.jpeg")); */
 /* 	LoginInfo loginInfo=(LoginInfo)session.getAttribute("loginInfo");
 	로그아웃 시 세션 정보 삭제되기때문에 getUid()사용 시 널포인터 에러 발생
-
 */
 	LoginInfo loginInfo=(LoginInfo)session.getAttribute("loginInfo");
 	if(loginInfo==null){
 		session.setAttribute("loginInfo",new LoginInfo("guest","1234","이름","aa","stitch.jpeg"));
-
 	}else{
 	String uid=(String)loginInfo.getUid();
 	String pw=(String)loginInfo.getPw();
 	String uname=(String)loginInfo.getUname();
 	String email=(String)loginInfo.getEmail();
 	String img=(String)loginInfo.getPhoto();
-
-
  	if(inputUid.equals(uid)){
 		if(inputPw.equals(pw)){
 			%><script>alert('정상적으로 로그인되었습니다');</script><%

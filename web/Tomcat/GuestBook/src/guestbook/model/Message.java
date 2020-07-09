@@ -5,6 +5,7 @@ public class Message {
 	private String pw;
 	private String message;
 	private int mid;//Message 객체: 사용자 정보 받을 때, DB에 정보 줄 때 사용
+	
 	public Message() {
 	}
 	public Message(String uname, String pw, String message, int mid) {

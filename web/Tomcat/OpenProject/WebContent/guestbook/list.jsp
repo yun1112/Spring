@@ -16,6 +16,10 @@
 	<div class="container">
 		<h1>방명록(비회원) 페이지</h1><hr>
 	</div>
+	
+	
+	<%@ include file="list_view.jsp" %>
+	
 	<%@include file="/bootstrap/ex/ex01.jsp" %>
 	<%@include file="/include/footer.jsp"%>
 </body>

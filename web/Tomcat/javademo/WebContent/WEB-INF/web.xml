@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>javademo</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+  
+    <!-- 서블릿 등록  -->
+  <servlet>
+  	<!-- 서블릿 식별할수 있는 이름 -->
+  	<servlet-name>ServletResult</servlet-name>
+  	<!-- 서블릿의 클래스 이름 : FullName -->
+  	<servlet-class>servlet.ServletResult</servlet-class>
+  </servlet>
+  
+  <!-- 경로 멥핑 -->
+  <servlet-mapping>
+  	<!-- 요청에 샐행 할 서블릿 이름 등록 -->
+  	<servlet-name>ServletResult</servlet-name>
+  	<!-- http://localhost:8080/web/hello -->
+  	<url-pattern>/rs</url-pattern>
+  </servlet-mapping>
+  
+
+    <!-- 서블릿 등록  -->
+  <servlet>
+  	<!-- 서블릿 식별할수 있는 이름 -->
+  	<servlet-name>MysqlPstmt</servlet-name>
+  	<!-- 서블릿의 클래스 이름 : FullName -->
+  	<servlet-class>javademo.MysqlPstmt</servlet-class>
+  </servlet>
+  
+  <!-- 경로 멥핑 -->
+  <servlet-mapping>
+  	<!-- 요청에 샐행 할 서블릿 이름 등록 -->
+  	<servlet-name>MysqlPstmt</servlet-name>
+  	<!-- http://localhost:8080/web/hello -->
+  	<url-pattern>/pstmt</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
+
+

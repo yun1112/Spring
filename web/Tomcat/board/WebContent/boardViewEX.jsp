@@ -1,6 +1,10 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="board.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,31 +25,29 @@ if(request.getParameter("boardNo") == null) {
     Connection connection = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
+    
+    List<Board> boardList=new ArrayList<>();
+    
     try {
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(dbUrl, dbUser, dbPw);
-        String sql = "SELECT board_title, board_content, board_user, board_date FROM board WHERE board_no=?";
+        String sql = "SELECT board_title, board_content, board_user, board_date FROM board";
         statement = connection.prepareStatement(sql);
         statement.setInt(1, boardNo);
         resultSet = statement.executeQuery();
         if(resultSet.next()) {
-%>
-            <div>board_no :</div>
-            <div><%=boardNo%></div>
-            <div>board_title :</div>
-            <div><%=resultSet.getString("board_title")%></div>
-            <div>board_content :</div>
-            <div><%=resultSet.getString("board_content")%></div>
-            <div>board_user :</div>
-            <div><%=resultSet.getString("board_user")%></div>
-            <div>board_date :</div>
-            <div><%=resultSet.getString("board_date")%></div>
-            <div>
-                <a href="">수정</a>
-                <a href="">삭제</a>
-            </div>
-<%
+        	Board board=new Board(resultSet.getString("boardPw"),
+        			resultSet.getString("boardTitle"),
+        			resultSet.getString("boardContent"),
+        			resultSet.getString("boardUser"));
+        	boardList.add(board);
+
         }
+        
+		request.setAttribute("boardList",boardList);
+		
+		RequestDispatcher rd=request.getRequestDispatcher("/result.jsp");
+		rd.forward(request,response);
     } catch(Exception e) {
         e.printStackTrace();
         out.println("BOARD VIEW ERROR!");

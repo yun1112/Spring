@@ -25,7 +25,7 @@ public class MessageDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql ="insert into guestbook_message values (message_id_seq.nextVal, ?, ?, ?)";
+			String sql ="insert into guestbook_message values (message_id, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, message.getUname());
 			pstmt.setString(2, message.getPw());
@@ -54,17 +54,19 @@ public class MessageDao {
 		
 		try {
 			
-			String sql = "select message_id, guest_name, password, message " + 
-					"from( " + 
-					"    select rownum rnum, message_id, guest_name, password, message " + 
-					"    from (" + 
-					"            select * from guestbook_message order by guestbook_message.message_id desc " + 
-					"        ) where rownum <= ? " + 
-					" ) where rnum >= ? ";
+			String sql = "select message_id,guest_name,password,message " + 
+					"from guestbook_message order by guestbook_message.message_id desc;";
+//			String sql = "select message_id, guest_name, password, message " + 
+//					"from( " + 
+//					"    select rownum rnum, message_id, guest_name, password, message " + 
+//					"    from (" + 
+//					"            select * from guestbook_message order by guestbook_message.message_id desc " + 
+//					"        ) where rownum <= ? " + 
+//					" ) where rnum >= ? ";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, endRow);
-			pstmt.setInt(2, startRow);
+//			pstmt.setInt(1, endRow);
+//			pstmt.setInt(2, startRow);
 			
 			rs = pstmt.executeQuery();
 			

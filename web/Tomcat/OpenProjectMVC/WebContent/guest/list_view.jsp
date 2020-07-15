@@ -1,6 +1,23 @@
+<%@page import="guestbook.model.MessageListView"%>
+<%@page import="guestbook.service.GetMessageListService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+
+int pageNum = 1;   // list.jsp?page=9
+String pageNumber = request.getParameter("page");
+if(pageNumber != null) {
+	pageNum = Integer.parseInt(pageNumber);
+}
+
+GetMessageListService service = GetMessageListService.getInstance();
+
+// MessageListView
+MessageListView view = service.getMessageList(pageNum);
+
+request.setAttribute("listView", view);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +60,8 @@
 	<h3>방명록 글쓰기</h3>
 	<hr>
 	
-	<form action="/member/memberGuestProcess.do" method="post">
-<!-- 	<form action="messageWrite.jsp" method="post"> -->
+<!-- 	<form action="/member/memberGuestProcess.do" method="post">
+ --><form action="<%=request.getContextPath() %>/guest/messageWrite.jsp" method="post"> 
 		<table>
 			<tr>
 				<td><label for="uname">이름</label></td>
@@ -74,7 +91,6 @@
 	<%-- ${listView} --%>
 	
 	<c:if test="${not empty listView.messageList}">
-	
 	<c:forEach items="${listView.messageList}" var="message">
 	
 	<div class="msg_box">

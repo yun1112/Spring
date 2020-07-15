@@ -21,14 +21,14 @@
  
 <nav class="navbar navbar-inverse">
  <div class="container-fluid">
- <div class="navbar-header"><a class="navbar-brand" href="#">Open Project</a></div>
+ <div class="navbar-header"><a class="navbar-brand" href="${pageContext.request.contextPath}/index.do">Open Project</a></div>
  <div class="container">
  <ul class="nav navbar-nav">
 <%--  	<li class="nav-item"><a class="nav-link active" href="<%=request.getContextPath() %>/member/memberRegForm.jsp">회원가입</a></li>
  --%> 	
  
   <c:if test="${empty loginInfo}">
- <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegForm.jsp">회원가입</a></li>
+ <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegForm.do">회원가입</a></li>
 </c:if>
  <c:if test="${!empty loginInfo}">
  <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegFormAfterLogin.jsp">회원가입</a></li>
@@ -36,7 +36,7 @@
 
 
  <c:if test="${empty loginInfo}">
-	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/loginForm.jsp">로그인</a></li>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberLoginForm.do">로그인</a></li>
 </c:if>
  <c:if test="${!empty loginInfo}">
 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.jsp">로그아웃</a></li>
@@ -53,18 +53,18 @@
 	}
 	%> --%>
 	<c:if test="${!empty loginInfo}">
-	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/mypageAfterLogin.jsp">마이페이지</a></li>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberMyPage.do">마이페이지</a></li>
 	</c:if>
 	<c:if test="${empty loginInfo}">
-	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage.jsp">마이페이지</a></li>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberMyPage.do">마이페이지</a></li>
 	</c:if>
-	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/guestbook/list.jsp">방명록(비회원)</a></li>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberGuest.do">방명록(비회원)</a></li>
 	
 	<c:if test="${!empty loginInfo}">
-	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/listAfterLogin.jsp">방명록(회원제)</a></li>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberList.do">방명록(회원제)</a></li>
 	</c:if>
 	<c:if test="${empty loginInfo}">
-	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list.jsp">방명록(회원제)</a></li>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberList.do">방명록(회원제)</a></li>
 	</c:if>
 </ul>
 

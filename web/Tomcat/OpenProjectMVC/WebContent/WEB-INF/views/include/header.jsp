@@ -28,13 +28,12 @@ if(referer.equals("http://localhost:8081/op/afterLogin/mypage.jsp")){
 <div id="container">
 <div class="page-header" id="header"><img style="width:50px;float:right" src="${pageContext.request.contextPath}/images/stitch.jpeg"><h1>Open Project</h1></div>
 
-
-	<%@include file="/include/navigationTest.jsp" %>
+	<%@include file="/WEB-INF/views/include/navigationTest.jsp" %>
 	<%-- ${pageContext.request.contextPath }와 request.getContextPath()동일 --%>
 
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="/../bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

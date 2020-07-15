@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.Service;
 
-public class MemberRegService implements Service {
+public class MemberListPrintServiceImpl implements Service {
 
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
-		return "/WEB-INF/views/member/regForm.jsp";
+		return "/WEB-INF/views/member/memberList.jsp";
 	}
 
 }

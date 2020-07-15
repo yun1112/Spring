@@ -7,17 +7,17 @@ public class NullServiceImpl implements Service {
 
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
-		
-		//viewPage
-		String viewPage="/WEB-INF/views/null.jsp";
-		
-		//응답 데이터 처리
-		//Date now=new Date();
-		
-		//request 속성에 저장
-		//request.setAttribute("result",now);
-		
+		// viewpage
+		String viewPage = "/WEB-INF/views/null.jsp";
 		return viewPage;
 	}
 
 }
+
+
+
+
+
+
+
+

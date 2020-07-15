@@ -84,7 +84,7 @@ public class MemberRegServiceImpl implements Service {
 	
 						// 시스템의 실제(절대) 경로
 						String realPath = request.getSession().getServletContext().getRealPath(uri);
-						// System.out.println(realPath);
+						 System.out.println(realPath);
 	
 						String newFileName = System.nanoTime() + "_" + item.getName();
 	

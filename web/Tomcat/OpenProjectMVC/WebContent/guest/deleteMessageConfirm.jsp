@@ -24,7 +24,8 @@
 </script>
 </head>
 <body>
-
+		<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<div class="container">
 	<h3>메시지를 삭제하고자 하시면 비밀번호를 입력해 주세요.</h3>
 	<form 
 			id="delForm" 
@@ -37,7 +38,8 @@
 	</form>
 
 
-
+		<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+</div>
 
 
 

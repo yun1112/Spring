@@ -66,6 +66,7 @@
 	<c:if test="${empty loginInfo}">
 	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberList.do">방명록(회원제)</a></li>
 	</c:if>
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/memberListPrint.do">회원목록</a></li>
 </ul>
 
 

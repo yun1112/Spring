@@ -20,6 +20,25 @@ public class MemberDao {
 		return dao;
 	}
 	
+	public String selectMember(Connection conn,String uname) {
+		String name=null;
+		
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where uname=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, uname);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return name;
+	}
+	
 	public int selectById(Connection conn, String id) throws SQLException {
 		int resultCnt=0;
 		

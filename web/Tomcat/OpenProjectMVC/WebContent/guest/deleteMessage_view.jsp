@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+			<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<div class="container">
 	<c:if test="${resultCode == 1}">
 	
 	<h1>메시지가 삭제되었습니다.</h1>
@@ -27,10 +28,12 @@
 	
 	</c:if>
 	
-	<a href="list.jsp">리스트 보기</a>
-
-
-
+<form action="<%=request.getContextPath() %>/guest/list_view.jsp" method="post"> 
+<!-- 	<a href="list_view.jsp">목록 보기</a>
+ -->	<input type="submit" value="목록 보기">
+	</form>
+			<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+	</div>
 
 
 

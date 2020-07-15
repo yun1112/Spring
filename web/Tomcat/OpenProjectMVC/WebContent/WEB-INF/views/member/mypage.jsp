@@ -1,8 +1,14 @@
+<%@page import="member.model.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-	
-<!DOCTYPE html>
+	<%
+	/* request.setAttribute("member", member);
+	request.setAttribute("result", resultCnt); */
+	Member member=(Member) request.getAttribute("member");
+	%>
+<!-- 	<script>alert(${member});</script>
+ --><!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">

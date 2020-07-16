@@ -1,0 +1,53 @@
+#Command Propertise
+#uri=Class Full Name
+#/=service.IndexServiceImpl index.html
+/index.do=service.IndexServiceImpl
+/=service.IndexServiceImpl
+# 회원 가입 페이지
+/member/memberRegForm.do=member.service.MemberRegFormServiceImpl
+#회원 가입 처리
+/member/memberReg.do=member.service.MemberRegServiceImpl
+#회원가입시 아이디체크 (ajax3.html 참고)
+/member/idCheck.do=member.service.IdCheckServiceImpl
+#---------------------------------------------------------------------
+
+# 로그인 페이지
+/member/memberLoginForm.do=member.service.MemberLoginFormServiceImpl
+/member/memberLogin.do=member.service.MemberLoginServiceImpl
+
+
+# 마이 페이지@@@@@
+/member/memberMyPage.do=member.service.MemberMyPageServiceImpl
+#회원 가입 처리
+/member/memberLogin.do=member.service.MemberLoginServiceImpl
+
+# 방명록(비회원)@@@@@@
+/member/memberGuest.do=member.service.MemberGuestServiceImpl
+/member/memberGuestProcess.do=member.service.MemberGuestProcessServiceImpl
+/member/memberGuestFinish.do=member.service.MemberGuestFinishServiceImpl
+# 방명록(비회원)@@@@@@
+/member/memberGuestList.do=member.service.MemberGuestListServiceImpl
+#회원 가입 처리
+/member/memberLogin.do=member.service.MemberLoginServiceImpl
+
+# 방명록(회원)
+/member/memberList.do=member.service.MemberListServiceImpl
+#회원 가입 처리
+/member/memberLogin.do=member.service.MemberLoginServiceImpl
+
+
+#---------------------------------------------------------------------
+#회원 리스트 출력
+/member/memberListPrint.do=member.service.MemberListPrintServiceImpl
+
+
+
+
+
+
+
+
+
+
+
+

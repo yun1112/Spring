@@ -13,10 +13,10 @@
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<div class="container">
+	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
-		<h1>INDEX!</h1>
+		<h1>INDEX</h1>
 	<hr>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<hr>

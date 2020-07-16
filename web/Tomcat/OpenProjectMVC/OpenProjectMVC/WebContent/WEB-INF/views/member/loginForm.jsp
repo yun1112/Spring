@@ -5,8 +5,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
-<%
-	CookieBox cookieBox = new CookieBox(request);%>
 	<%
 
 int pageNum = 1;   // list.jsp?page=9
@@ -21,35 +19,15 @@ GetMemberMessageListService service = GetMemberMessageListService.getInstance();
 MemberMessageListView view = service.getMessageList(pageNum);
 
 request.setAttribute("listView", view);
-%>
-	
-	
-	<!-- String cookieUid = cookieBox.getValue("uid");
-	
-	String cookiePw = cookieBox.getValue("pw");
-	
-	String uidValue = "";
-	String pwValue = "";
-	String checked = "";
-	
-	if((cookieUid!=null)&&(cookiePw!=null)){
-		uidValue = cookieUid;
-		pwValue=cookiePw;
-		checked = "checked";
-	} -->
-	
- 
-<c:set var="cookieBox" value="${cookie.CookieBox }"/>
-<c:set var="cookiePw" value=""/>
-<c:set var="uidValue" value=""/>
-<c:set var="pwValue" value=""/>
-<c:set var="checked" value=""/>
 
-<c:if test="${!empty cookieUid} && ${!empty cookie}">
-	<c:set var="uidValue" value="cookieUid"/>
-	<c:set var="pwValue" value="cookiePw"/>
-	<c:set var="checked" value="checked"/>
-</c:if>
+String uid=request.getParameter("uid");
+String pw=request.getParameter("pw");
+
+request.setAttribute("uid",uid);
+request.setAttribute("pw",pw);
+
+
+%>
 
 <!DOCTYPE html>
 <html>
@@ -64,19 +42,15 @@ request.setAttribute("listView", view);
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 	<div class="container">
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 		<h1 class="subtitle">로그인</h1>
 		
 		<hr>
 		
 		<form action="memberLogin.do" method="post">
 		
-			<%-- <input type="text" name="redirecUri" 
-			
-			value="<%= request.getHeader("referer")%>" style=" width : 50% ;" >			 --%>
-			
 			
 			<table class="table">
 				<tr>
@@ -98,11 +72,11 @@ request.setAttribute("listView", view);
 		
 		</form>
 	
-	</div>
+	
 	
 	<%-- ${listView} --%>
 	
-	<%-- <c:if test="${not empty listView.messageList}">
+	<c:if test="${not empty listView.messageList}">
 	<c:forEach items="${listView.messageList}" var="message">
 	
 	<div class="msg_box">
@@ -111,8 +85,8 @@ request.setAttribute("listView", view);
 		비밀번호 : ${message.upw} <br>
 		이름 : ${message.uname} <br>
 		사진(임시, 경로) : ${message.uphoto}<br>
-		<a href="deleteMessageConfirm.jsp?mid=${message.mid}">삭제</a>
-	</div>	
+<%-- 		<a href="deleteMessageConfirm.jsp?mid=${message.mid}">삭제</a>
+ --%>	</div>	
 	
 	</c:forEach>
 	
@@ -122,14 +96,18 @@ request.setAttribute("listView", view);
 	
 	<div class="paging">
 	<c:forEach begin="1" end="${listView.pageTotalCount}" var="num">
-	<a href="list.jsp?page=${num}" ${listView.currentPageNumber eq num? 'class="currentPage"':''}>[ ${num} ]</a> 
+	<c:if test="${uidValue==message.uid}">
+	
+<!-- 	<script>alert('zz');</script>
+ -->	</c:if>
+	<a href="memberPage2.jsp?page=${num}" ${listView.currentPageNumber eq num? 'class="currentPage"':''}>[ ${num} ]</a> 
 	</c:forEach>
 	</div>
 	
 	</c:if>	
 	
-	 --%>
-
+	
+</div>
 	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

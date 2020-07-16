@@ -11,9 +11,6 @@ select rownum rnum,guest_name from guestbook_message;
 desc guestbook_message;
 
 
-create table project.guestbook_message(
-
-);
 
 select rownum, message_id, message from (select * from guestbook_message order by message_id);
 select rownum, message_id, guest_name,password, message from (select * from guestbook_message order by message_id desc);

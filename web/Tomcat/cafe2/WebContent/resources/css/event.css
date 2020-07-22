@@ -1,0 +1,40 @@
+ .bigtitle{
+ 	border: solid 4px;
+ }
+ .smalltitle1{
+ 	border: solid 3px;
+ 	color: #a1886f;
+ }
+ .event_image_main{
+ 	height:200px;
+ 	width:400px;
+ }
+  .liner-first {
+   list-style:none;
+  }
+.content-first{
+	width:"30%";
+	float: left;
+}
+.content-second{
+	width:"68%";
+	float: left;
+} 
+ .sub-liner{
+   list-style:none;
+   hegiht:5px;
+}
+ .write-btn{
+ 	clear: both;
+ }
+ .dash{
+ 	border:1px dashed #BFBFBF;
+ }
+ .font-color{
+ 	color:#685845;
+ 	font-weight: bold;
+ }
+ .divide-line{
+ 	border: solid 1px;
+ 	color: #a1886f;
+ }

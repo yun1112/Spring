@@ -1,0 +1,26 @@
+ .bigtitle{
+ 	border: solid 4px;
+ }
+.player{
+	width:100%;
+	height:520px;
+	border-bottom:2px solid black;
+}
+#movie11{
+	font-size:large;
+}
+#movie22{
+	font-size:large;
+}
+#movie33{
+	font-size:large;
+}
+#movie44{
+	font-size:large;
+}
+.sub-liner{
+	list-style:none;
+}
+#main_body{
+	height:800px;
+}

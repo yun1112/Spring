@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+
+div.sitemapTop {
+	width: 940px; }
+div.sitemapTop div.smBox { 
+	width: 201px; float: left; margin-right: 20px; padding-bottom: 50px;}
+div.sitemapTop, div.smBox div.mgr0 { 
+	margin-right: 0; }
+div.sitemapTop, div.smBox, div.last { 
+	height: 530px; }
+div.sitemapTop div.smBox h4 { 
+	padding: 22px 0 0 15px; height: 33px; border-bottom: 2px solid #b79d86; }
+div.sitemapTop, div.smBox, h4 img { 
+	vertical-align: top; line-height: 100%; }
+div.sitemapTop, div.smBox, div.smBoxin { 
+	padding: 20px 0 0 15px; }
+div.sitemapTop, div.smBox, div.smBoxin, h5 { 
+	font-weight: bold; color: #633e10; font-family: dotum; font-size: 12px; margin-bottom: 15px; line-height: 100%; }
+div.sitemapTop, div.smBox, div.smBoxin, h5 a { 
+	font-weight: bold; color: #633e10; font-family: dotum; font-size: 12px; margin-bottom: 10px; text-decoration:none; }
+div.sitemapTop, div.smBox, div.smBoxin, ul { 
+	padding-bottom: 20px; }
+div.sitemapTop, div.smBox, div.smBoxin, ul, li {
+	background: url("../../images/ko/seoul/footer/bulSqr.gif") no-repeat 0 9px; margin-bottom: 10px; padding-left: 12px; line-height: 100%; list-style:none; }
+div.sitemapTop, div.smBox, div.smBoxin, ul, li.last {
+	margin-bottom: 0; }
+div.sitemapTop, div.smBox, div.smBoxin, ul, li a{ 
+	line-height: 21px; color: #876234; line-height: 100%;  text-decoration:none;}

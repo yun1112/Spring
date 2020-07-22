@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+.thumbs img {
+	width:211px; 
+    float:left;
+    border:1px solid #ccc;
+    padding:5px;
+    margin-bottom:3px;
+}
+.thumbs img:hover {
+    border-color: #f1e3c4;
+    border-width: 5px;
+}
+.carousel-inner {
+    border:solid 1px #ccc;
+    width:868px;
+    height:380px;
+    padding:5px;
+    margin-bottom:20px;
+}
+div.allcnt{
+}
+div .larea{
+	width: 50%;
+	height: 1005px;
+	margin-top: 40px;
+}
+div .rarea{
+	position: relative;
+	width: 30%;
+	left:535px;
+	bottom: 995px;
+}

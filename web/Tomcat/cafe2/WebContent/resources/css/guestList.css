@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+.containor{
+	font: Dotum,'돋움',sans-serif;
+	width: 900px; 
+	margin-top: 65px;
+}
+.groom{
+	margin:5px;
+	padding:15px;
+	width:445px;
+	height:410px;
+	float:left;
+}
+.groom img{
+	max-width: 450px;
+}
+.cntarea{
+	width: 417px;
+	height:150px;
+	margin-top: 10px;
+}
+.cntarea div{
+}
+.lcnt{
+	position: relative;
+	width: 200px;
+	height: 110px;
+}
+.rcnt{
+	left: 90px;
+}
+.gueOk{
+	float: left;
+	padding:20px 10px 20px 10px;
+	border-bottom:1px solid #000;
+}
+
+
+

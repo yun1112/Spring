@@ -1,0 +1,126 @@
+@CHARSET "UTF-8";
+
+.item2{
+	  
+      margin:10px;
+      padding:5px;
+      width:250px;
+      height:400px;
+      float:left;
+      border: none;
+   }
+.bar-img{
+	clear: both;
+}  
+/* 리스트 */
+
+#wrap{
+		overflow:hidden;  /* 데이터양이 초과하면 안보이게 */
+	}
+	
+.dining-main-style{
+	width:98%;
+	margin:0 auto;
+}
+
+.dining-main-style2{
+	width:60%;
+	margin:0 auto;
+}
+	
+/* 리스트 */
+
+
+div.top2{
+   font: Dotum,'돋움',sans-serif;	
+   width:950px;
+}
+
+div.mid2{
+   font: Dotum,'돋움',sans-serif;
+   width:950px;
+   height: 550px;
+}
+
+div.low2{
+   font: Dotum,'돋움',sans-serif;
+   width:950px;
+   height: 550px;
+}
+.loow{
+	text-decoration: none;
+}
+
+div.detailbox{
+	font: Dotum, '돋움',sans-serif;
+	width:370px;
+	height:300px;
+	background-color:#faf7ed;
+	float:left;
+}
+
+div.detail_pic{
+	width:60%;
+	float:left;
+}
+
+.din-reservation{
+	width:98%;
+	margin:0 auto;
+	border-top:1px solid;
+	
+	border-bottom:1px solid;
+	border-collapse:collapse;
+}
+
+.din-reservation2{
+	width:98%;
+	margin:0 auto;
+	border-top:1px solid;
+	text-align:center;
+	border-bottom:1px solid;
+	border-collapse:collapse;
+}
+.din-reservation2 th{
+	background-color:#faf9f4;
+}
+
+
+.din-write{
+	width:90%;
+	margin:0 auto;
+	border-top:1px solid;
+	border-bottom:1px solid;
+	border-collapse:collapse;
+}
+
+.din-reservation th{
+	background-color:#faf9f4;
+}
+
+.myButton2{
+	background-color:#7d5d3b;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #4d3534;
+}
+
+.myButton3{
+	background-color:#7d5d3b;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #4d3534;
+}
+
+
+

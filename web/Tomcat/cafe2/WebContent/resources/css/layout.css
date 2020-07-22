@@ -1,0 +1,247 @@
+@CHARSET "UTF-8";
+/*레이아웃*/
+html{
+   font-smoothing: antialiased;
+   font-family: Arial;
+}
+body{
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+.page-main-style{
+   margin:70px auto;
+   font-family:"돋움";
+   width:900px;
+}
+.align-right{
+   text-align:right;
+}
+
+.color{
+   color:#865009;
+}
+
+.align-center{
+   text-align:center;
+}
+.myButton1 {
+   background-color:#7d5d3b;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   text-decoration:none;
+   text-shadow:0px 1px 0px #4d3534;
+   height: 30px;
+}
+.myButton1:hover {
+   background-color:#634b30;
+}
+.myButton1:active {
+   position:relative;
+   top:1px;
+}
+/*******************메뉴바 시작***********************/
+/* 메뉴, body 퍼센트 */
+div#main_menu{
+   margin:40px;
+   float:left;
+   width:20%;
+}
+div#main_body{
+   float:left;
+   width:70%;
+   padding:5px;
+   height:100%;
+   margin-left: 40px;
+}
+
+/* 메뉴 ul */
+.leftMenu{
+   width:250px;
+   margin:30px auto;
+   margin-left:300px;
+   padding:0 5px 15px 5px;
+   background-color:#f1e3c4;
+   border:1px solid #cccac1;
+   list-style:none;
+   font-size:15px;
+}
+.leftMenu li{
+   padding:15px;
+   font-weight:bold;
+   color:#432c10;
+}
+.leftMenu li a{
+   font-weight:bold;
+   color:#432c10;
+   text-decoration:none;
+}
+
+/* 메뉴의 하위 메뉴 ul */
+.MenuDown{
+   margin:10px 0 0 0;
+   padding:0;
+   border-top:1px dotted #cccac1;
+   list-style:none;
+   font-weight:none;
+}
+.MenuDown li{
+   padding:5px;
+}
+.MenuDown li a{
+   font-weight:normal;
+}
+/*******************메뉴바 끝***********************/
+html{
+   margin-top:-13px;
+}
+body{
+   font-family:"맑은 고딕";
+   margin:0;
+}
+/* 회원 메뉴 */
+ul.menu{
+   list-style:none;
+   font-size:small;
+}
+ul.menu li{
+   float:right;
+   margin-top:20px;
+   margin-right:25px;
+   border-left:1px solid #d2c4a5;
+   padding-left:25px;
+}
+ul.menu li a{
+   color:#865009;
+   text-decoration:none;
+}
+
+/*화면 상단 css*/
+.totalhead{
+   width:1920px;
+   height:150px;
+   background-color:#f1e3c4;
+   font-size:13pt;
+}
+/* 상위메뉴 div */
+.bottom-1{
+   width:1920px;
+   height:52px;
+   background-color:#81725f;
+   text-align:center;
+   font-size:medium;
+}
+/* 상위메뉴 ul */
+.bottom-menu{
+   list-style:none;
+   margin-top:0px;
+   padding:14px 0px;
+}
+
+.bottom-menu .m1{
+   display:inline;
+   border-left:1px solid #f1e3c4;
+}
+.bottom-menu a{
+   color:#e5dbc5;
+   text-decoration:none;
+   font-size:medium;
+   padding:17px 45px;
+}
+.bottom-menu a:hover{
+   color:#fffaea;
+   font-weight:bold;
+   text-decoration:none;
+}
+/* 마우스 올렸을 때 하위메뉴 표시 */
+.bottom-menu li:hover ul{
+   display:block;
+}
+
+/* 하위메뉴 */
+.bottomDown{
+   margin:16px 0px;
+   width:1920px;
+   height:32px;
+   background-color:#685845;
+   padding:4px 0 0 135px;
+   text-align:left;
+   position:absolute;
+   display:none;
+}
+
+.bottomDown li{
+   display:inline;
+}
+
+.bottomDown li a{
+   color:#e5dbc5;
+   font-size:small;
+   border-left:1px solid #f1e3c4;
+   text-decoration:none;
+   padding:0 20px;
+}
+.bottomDown li a:hover{
+   color:#fffaea;
+   font-weight:bold;
+}
+
+/* 로고이미지 */
+.main-logo{
+   margin-top:15px;
+   position: absolute;
+   left:40%; 
+}
+
+/* 화면 하단부분 div */
+.bottom{
+   overflow:auto;
+   width:1920px;
+   height:150px;
+   background-color:#f1ebd6;
+   padding:0 20px;
+}
+/* 하단 메뉴 ul */
+.ulBotton{
+   list-style:none;
+   font-size:small;
+   padding:30px 0 0 30px;
+}
+.ulBotton li{
+   display:inline;
+   margin-top:20px;
+   margin-right:25px;
+   border-left:1px solid #d2c4a5;
+   padding-left:25px;
+}
+.ulBotton li a{
+   color:#000;
+   text-decoration:none;
+}
+/* 맨아래 ul */
+.ulBotton2{
+   list-style:none;
+   font-size:small;
+   padding-left:350px;
+}
+.ulBotton2 li{
+   display:inline;
+   margin-top:20px;
+   margin-right:25px;
+   border-left:1px solid #d2c4a5;
+   padding-left:25px;
+}
+.ulBotton2 li:FIRST-CHILD{
+	border-left:none;
+}
+.ulBotton2 li a{
+   color:#918f8f;
+   text-decoration:none;
+}
+
+.ulBotton3{
+   font-size:small;
+   text-align:center;
+   color:#918f8f;
+}

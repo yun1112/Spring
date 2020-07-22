@@ -1,0 +1,473 @@
+@CHARSET "UTF-8";
+
+
+div.res_wrap{
+   width:100%;
+   position: relative;   
+   background:#f1f1f1;
+   padding:50px 25px;
+   margin:70px 0 30px 0;
+   text-align:center;
+   
+   
+   
+}
+/* 캘린더 */
+div.res_wrap .res_person{
+   display:inline;
+   margin-right:45px;
+   height:auto;
+   font-size:20px;   
+   
+}
+/* 캘린더 날짜 선택 */
+.check_css{
+   border:1px solid #f1f1f1;
+   font-size:20px;
+   height:25px;
+   text-align:center;
+}
+
+/* 성인, 어린이, 유아 인원체크 */
+.rsv_num{
+   /* background:#f1f1f1; */
+   height:25px;
+   font-size:20px;
+   text-align:center;
+   border:1px solid #f1f1f1;
+}
+.rsv_num_button{
+   height:30px;
+   width:30px;
+   font-size:20px;
+   background-color:#ffffff;
+   border:1px solid #f1f1f1;
+   color:#000000;
+   text-decoration:none;
+}
+/* 검색 버튼 */
+.search_list{
+   height:50px;
+   width:150px;
+   background-color:#4d170f;
+   border:1px solid #241d13;
+   color:#ffffff;
+   font-weight:bold;
+   text-decoration:none;
+   font-size:20px;
+   
+   
+}
+
+.list_explain{
+   font-size:20px;
+
+}
+
+.surface{
+   text-align:center;
+   margin:30px 10px;
+   padding:20px 10px;
+}
+
+/* 예약가능한 객실 리스트 */
+.res_list_table{
+   text-align:center;
+   width:100%;
+   height:50px;
+   font-size:20px;
+}
+
+.res_td1{
+   display:none;
+}
+.res_td2{
+   font-size:20px;
+   height:50px;
+}
+
+
+/* 예약하기 버튼 */
+.res_ser{
+   font-size:15px;
+   height:30px;
+   background-color:#4d170f;
+   border:1px solid #241d13;
+   color:#ffffff;
+   font-weight:bold;
+   text-decoration:none;
+}
+
+.res_title{
+   font-size:20px;
+   height:50px;
+}
+
+.res_sel{
+   font-size:20px;
+   height:50px;
+}
+
+.radio_type{
+   font-size:20px;
+   height:30px;
+   width:100px;
+   
+}
+.radio_font{
+   font-size:20px;
+}
+
+.res_btn{
+   height:40px;
+   width:100px;
+   font-size:20px;
+   margin:30px 20px;
+   background-color:#4d170f;
+   border:1px solid #241d13;
+   color:#ffffff;
+   font-weight:bold;
+   text-decoration:none;
+}
+
+/* step2 페이지 */
+.step2_all{
+   width:1700px;
+   margin:0 auto;
+   margin-left:200px;
+   color:#664040;   
+}
+
+.step_title{
+   color:#664040;
+}
+ul{
+   list-style:none;
+}
+.step_left{
+   float:left;
+   width:60%;
+   margin:20px;
+   padding:20px;
+   }
+.step_right{
+   float:left;
+   width:30%;
+   margin:50px 0 50px 0;
+   padding:50px 0 50px 0;
+   
+   
+}
+
+.step_right ul li{
+   padding-bottom:10px;
+}
+
+.step_right2{
+   
+   border-top:5px solid #f1f1f1;
+   border-right:2px solid #f1f1f1;
+   border-left:2px solid #f1f1f1;
+   border-bottom:2px solid #f1f1f1;
+   width:340px;
+   margin:10px;
+   padding:10px;
+}
+/* 예약 초기화 버튼 */
+.init_reservation_btn{
+   height:40px;
+   background-color:#4d170f;
+   border:1px solid #241d13;
+   color:#ffffff;
+   font-weight:bold;
+   text-decoration:none;
+   float:right;
+   
+}
+
+.step2_optionTop h4{
+   margin:10px;
+   padding:10px;
+   background:#f1f1f1;
+}
+.step2_optionTop span{
+   margin:15px;
+   padding:15px;
+   padding-bottom:10px;
+}
+
+.step2_optionBottom{
+   font-size:20px;
+}
+.step2_optionBottom ul li{
+   padding-bottom:10px;
+}
+
+.op_checkbox{
+   height:20px;   
+}
+
+.step2_explain ul{
+   background:#f1f1f1;
+   margin:10px 10 10px 10;
+   padding:10px 10 10px 10;
+   
+}
+
+.note_first{
+   float:left;
+   width:50%;
+   margin-left:-50px;
+   padding-bottom:10px;
+}
+
+.note_last{
+   float:left;
+   width:50%;
+   padding-bottom:10px;
+}
+
+.step_back{
+   float:left;
+}
+.rsv_success{
+   float:right;
+}
+/* 회원 or 비회원 정보 입력부분 */
+.step2_info{
+   
+   margin-bottom:100px;
+   padding-bottom:50px;
+}
+
+.check_info{
+   float:right;
+}
+
+
+.step2_info_guest{
+   background:#f1f1f1;
+   margin:10px;
+   padding:10px;
+}
+.check_person_pay_info ul li{
+   padding-bottom:10px;
+}
+
+.guest_info{
+   float:left;
+   width:46%;
+   font-size:20px;
+}
+
+.payment_info{
+   float:left;
+   width:46%;
+   
+   border-left:5px solid #f1f1f1;
+   
+}
+
+/* 정보입력 */
+
+.lastname_info{
+   clear:left;
+   margin:0 0 0 170px;
+   height:25px;
+}
+
+.firstname_info{
+   clear:left;
+   margin:0 0 0 150px;
+   height:25px;
+}
+
+.email_info{
+   clear:left;
+   margin:0 0 0 122px;
+   height:25px;
+}
+
+.home_info{
+   clear:left;
+   margin:0 0 0 71px;
+   height:25px;
+}
+
+.phone_info{
+   clear:left;
+   margin:0 0 0 30px;
+   height:25px;
+}
+
+/* 결제정보 */
+.pay_font{
+   font-size:20px;
+}
+.pay_bank{
+   height:30px;
+}
+.pay_card_numinfo{
+   height:25px;
+}
+.pay_card_month{
+   height:30px;
+   clear:left;
+   margin:0 0 0 26px;
+}
+
+.pay_card_years{
+   height:30px;
+   clear:left;
+}
+.pay_que{
+   
+   font-weight:bold;
+   color:#664040;
+   width:100%;
+   margin:0 0 0 10px;
+   padding:0 0 0 10px;
+   font-size:small;
+}
+
+/* 개인정보 수집이용 동의 */
+.info_agree{
+   height:30px;
+   margin:30px;
+   padding:30px;
+   width:100%;
+   
+}
+.info_explain{
+   float:left;
+   margin:10px;
+   padding:10px;
+   width:90%;
+   color:#664040;
+   border-bottom:2px solid #f1f1f1;
+}
+
+
+.info_agree_text1{
+   float:left;
+   margin:20px 5px;
+   padding:20px 5px;
+   width:45%;
+}
+.info_agree_text1 textarea{
+   
+}
+
+
+.info_agree_text2{
+   float:left;
+   margin:20px 5px;
+   padding:20px 5px;
+   width:45%;
+}
+
+.info_agree_text2 textarea{
+   
+}
+
+.trans_btn{
+   margin:10px;
+   padding:10px;
+}
+/* 뒤로가기 버튼, 예약신청 버튼 */
+.back_btn{
+   font-size:15px;
+   height:50px;
+   width:100px;
+   background-color:#4d170f;
+   border:1px solid #241d13;
+   color:#ffffff;
+   font-weight:bold;
+   text-decoration:none;
+}
+
+.front_btn{
+   font-size:15px;
+   height:50px;
+   width:100px;
+   background-color:#4d170f;
+   border:1px solid #241d13;
+   color:#ffffff;
+   font-weight:bold;
+   text-decoration:none;
+}
+
+/* 예약 현황판 */
+
+.room_res_info{
+   border-top:5px solid #f1f1f1;
+   font-weight:bold;
+   
+}
+
+.res_discount{
+   border-top:5px solid #f1f1f1;
+   font-weight:bold;
+}
+
+.total_room_price{
+   border-top:5px solid #f1f1f1;
+   font-weight:bold;
+   
+}
+
+
+/* 객실 리스트 */
+.list {
+   display:none;
+   text-align:center;
+   border:1px solid #000;
+}
+
+.room_list{
+   text-align:center;
+   
+}
+
+
+
+/* 예약 완료창 */
+.reservation_result{
+   color:#664040;
+   width:1900px;
+   text-align:center;
+   padding:50px;
+   
+}
+.reservation_result2{
+   margin:0 auto;
+   height:auto;
+   width:35%;
+   border:5px solid #f1f1f1;
+   padding:50px;
+   
+}
+
+.result_cover{
+   padding-top:30px;
+   margin:0 auto;
+}
+
+.result_back_btn{
+   height:40px;
+   background-color:#4d170f;
+   border:1px solid #241d13;
+   color:#ffffff;
+   font-weight:bold;
+   text-decoration:none;
+}
+
+
+
+
+
+
+
+
+
+

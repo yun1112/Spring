@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+.containor{
+	font: Dotum,'돋움',sans-serif;
+	width: 900px; 
+	margin-top: 65px;
+}
+img.ui-datepicker-trigger{
+	position: relative;
+	width: 22px;
+	top: 6px;
+	margin-left: 15px;
+}
+.dateRes{
+	border: 1px solid #e3d6c6;
+	
+}
+.dateRForm{
+	padding: 19px 190px 9px 35px;
+	max-width: 900px;
+	max-height: 150px;
+}
+.dateResUp{
+	width: 670px;
+	height: 41px;
+	margin-left: 17px;
+}
+div.dateResDown{
+	width: 670px;
+	height: 41px;
+	margin-top: 0px;
+}
+.dateHr{
+	border: 0;
+	height: 1px;
+	background: #eceae1;
+}
+ul.dateul{
+	list-style: none;
+}
+ul.dateul li{
+	float: left;
+}
+.cbox{
+	border: 2px solid #e3d6c6;
+	max-width: 122px;
+	position: relative;
+	left: 3px;
+	margin-left: 10px;
+	background: #f1e3c4;
+	color: #814900;
+	padding-bottom: 5px;
+	padding-right: 5px;
+}
+.dateFil{
+	width:122px;
+	height: 20px;
+}
+.dateResUp select{
+	width:110px;
+	height: 27px;
+}
+div.maincnt{
+	float: left;
+	width:100%;
+}
+div.lcnt{
+	line-height: 30px;
+}
+div.schZone{
+	float: right;
+}
+.schZone img{
+	position:relative;
+	left: 150px;
+	bottom: 25px;
+	max-width: 110px;
+	max-height: 34px;
+}
+div .chupack{
+	width: 32%;
+	height: 347px;
+	padding: 5px;
+	margin-bottom: 40px;
+	float: left;
+	border-bottom: 1px solid #000;
+}
+.chupack img{
+	max-width: 270px;
+}
+.cntPack img{
+	max-width: 270px;
+	max-height: 231px;
+}
+.cntPack{
+	float: left;
+	width:896px;
+	height:300px;
+	max-height: 231px;
+	padding:30px 10px 30px 10px;
+	border-bottom:1px solid #000;
+}
+.cntPack:LAST-CHILD{
+	border-bottom:none;
+}
+div.photo{
+	width: 35%;
+	float: left;
+}
+div.rcnt{
+	width: 55%;
+	float: left;
+	margin-left: 10px;
+}
+.rcnt img{
+	position:relative;
+	width: 106px;
+	height: 34px;
+	left: 372px;
+	bottom: 50px;
+}
+.rcnt ul{
+	line-height: 30px;
+}
+.lineup div{
+	padding-bottom: 0px;
+}
+.liner{
+	list-style:none;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+
+
+

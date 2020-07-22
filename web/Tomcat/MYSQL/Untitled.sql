@@ -43,6 +43,53 @@ where rnum>=7
 ;
 
 
+SELECT A.TABLE_NAME AS "테이블명",
+       A.COLUMN_NAME AS "컬럼명",
+       A.DATA_TYPE AS "데이터타입",
+       A.DATA_LENGTH AS "길이",
+       A.NULLABLE AS "Null 여부",
+       B.COMMENTS AS "Comments"
+FROM   dba_tab_columns A,
+       all_col_comments B
+WHERE  A.OWNER = B.OWNER
+AND    A.TABLE_NAME = B.TABLE_NAME
+AND    A.COLUMN_NAME = B.COLUMN_NAME
+AND    A.OWNER = 'LOTOSDEV'
+ORDER BY A.TABLE_NAME
 
-insert into guestbook_message values(message_id_seq.nextVal,"테스터01","1111","글쓰기 테스트);
+
+
+
+CREATE TABLE project.MemberBoard (
+	idx INT NOT NULL auto_increment PRIMARY KEY ,
+	userid varchar(200) NOT NULL,
+	userpw varchar(200) NOT NULL,
+    usernickname varchar(20) NOT NULL,
+    contactnumber varchar(20) NOT NULL,
+    address vachar(200) NOT NULL,
+    member
+    
+    
+	regdate DATETIME DEFAULT NOW() NOT NULL,
+	title varchar(200) NOT NULL,
+	content varchar(10000) NOT NULL,
+	viewcount INT NOT NULL DEFAULT 0,
+	filecontentaddr varchar(2000) NULL
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci
+AUTO_INCREMENT=1;
+
+
+
+
+
+
+
+
+
+
+
+
 

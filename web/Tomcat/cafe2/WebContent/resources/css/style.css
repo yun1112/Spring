@@ -1,0 +1,112 @@
+@CHARSET "UTF-8";
+
+/*목록*/
+table{
+   width: 100%;
+}
+h2{
+   color: #5d5d5d;
+   font-weight: bold;
+   line-height: 0.5;
+}
+td, th{
+   border-bottom:1px solid;
+   border-bottom-color: #eceae1;
+   padding:10px;
+   text-align: left;
+}
+th{
+   background-color:#faf9f4;
+   color: #666666;
+   width: 20%;
+}
+em{
+   letter-spacing: 0.5em;
+}
+input{
+   height: 22px;
+}
+/*등록,수정폼*/
+
+.item{
+   margin:5px;
+   padding:5px;
+   width:200px;
+   height:300px;
+   float:left;
+   border: none;
+}
+
+/*웨딩 타이틀*/
+
+div.wedtitle{
+   width:300px;
+}
+
+/* 리스트 */
+div.top{
+   width:950px;
+}
+
+
+
+div.mid{
+   width:950px;
+   height: 300px;
+}
+
+div.mid2{
+   width:950px;
+   height: 250px;
+}
+
+div.low{
+   width:950px;
+   height: 350px;
+}
+
+div.llow{
+   width:950px;
+   height: 350px;
+}
+
+
+/* 상세 페이지!!!!!*/
+.thumbs img {
+   width:211px; 
+    float:left;
+    border:1px solid #ccc;
+    padding:5px;
+    margin-bottom:3px;
+}
+.thumbs img:hover {
+    border-color: #f1e3c4;
+    border-width: 5px;
+}
+.carousel-inner {
+    border:solid 1px #ccc;
+    width:868px;
+    height:380px;
+    padding:5px;
+    margin-bottom:20px;
+}
+div.allcnt{
+   float: left;
+}
+.larea{
+   position:relative;
+   top: 45px;
+   max-width: 535px;
+   height: auto;
+}
+.rarea{
+   position: absolute;
+   top: 779px;
+   right: 830px;
+   max-width: 331px;
+   height: auto;
+}
+div.viewtop{
+   width:950px;
+   height: auto;
+}

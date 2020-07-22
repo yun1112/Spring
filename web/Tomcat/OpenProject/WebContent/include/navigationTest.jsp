@@ -19,16 +19,16 @@
  </head>
  <body>
  
-<nav class="navbar navbar-inverse">
- <div class="container-fluid">
- <div class="navbar-header"><a class="navbar-brand" href="#">Open Project</a></div>
- <div class="container">
- <ul class="nav navbar-nav">
+<nav class="navbar navbar-inverse bg-secondary">
+ <div class="container-fluid bg-secondary">
+ <div class="navbar-header bg-secondary"><a class="navbar-brand" href="#">Open Project</a></div>
+ <div class="container bg-secondary">
+ <ul class="nav navbar-nav bg-secondary">
 <%--  	<li class="nav-item"><a class="nav-link active" href="<%=request.getContextPath() %>/member/memberRegForm.jsp">회원가입</a></li>
  --%> 	
  
   <c:if test="${empty loginInfo}">
- <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegForm.jsp">회원가입</a></li>
+ <li class="nav-item .bg-secondary"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegForm.jsp">회원가입</a></li>
 </c:if>
  <c:if test="${!empty loginInfo}">
  <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/member/memberRegFormAfterLogin.jsp">회원가입</a></li>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Kakao JavaScript SDK</title>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+</head>
+
+<body>
+
+    <a id="custom-login-btn" href="javascript:loginWithKakao()">
+        <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
+    </a>
+
+
+    <a href="javascript:infoWithKakao()">view</a>
+    <a href="javascript:statusWithKakao()">Status</a>
+    <button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
+    <button class="api-btn" onclick="unlinkApp()">앱 탈퇴하기</button>
+
+    <script type="text/javascript">
+        // 웹 플랫폼 도메인 등 초기화한 앱의 설정이 그대로 적용됩니다.
+        // 초기화한 앱에 현재 도메인이 등록되지 않은 경우 에러가 발생합니다.
+        Kakao.init('99700abe71de0064c0d0c5702931b834');
+
+        //<![CDATA[
+        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        function unlinkApp() {
+            Kakao.API.request({
+                url: '/v1/user/unlink',
+                success: function(res) {
+                    alert('success: ' + JSON.stringify(res))
+                },
+                fail: function(err) {
+                    alert('fail: ' + JSON.stringify(err))
+                },
+            })
+        }
+
+        function loginWithKakao() {
+            // 로그인 창을 띄웁니다.
+            Kakao.Auth.login({
+                success: function(authObj) {
+                    alert(JSON.stringify(authObj));
+
+                    //Kakao.Auth.setAccessToken(authObj.access_token);
+
+                    startWithKakao();
+
+
+                },
+                fail: function(err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        };
+
+
+        function infoWithKakao() {
+            Kakao.API.request({
+                url: '/v2/user/me',
+                success: function(res) {
+                    alert(JSON.stringify(res));
+
+                    alert(res.kakao_account.email);
+
+                },
+                fail: function(error) {
+                    alert(JSON.stringify(error));
+                }
+            });
+        }
+
+        function statusWithKakao() {
+            Kakao.Auth.getStatusInfo(function(statusObj) {
+                alert(JSON.stringify(statusObj));
+            });
+        };
+
+
+
+        function startWithKakao() {
+            Kakao.Auth.getStatusInfo(function(statusObj) {
+                if (statusObj.status == 'connected') {
+                    console.log('connection OK');
+                } else {
+                    $('#custom-login-btn').css('display', 'inline');
+                }
+            });
+        };
+
+
+        function kakaoLogout() {
+            if (!Kakao.Auth.getAccessToken()) {
+                alert('Not logged in.')
+                return
+            }
+            Kakao.Auth.logout(function() {
+                alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+            })
+        }
+    </script>
+</body></html>

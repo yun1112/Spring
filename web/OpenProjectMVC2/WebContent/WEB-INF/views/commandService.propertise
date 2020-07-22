@@ -1,0 +1,78 @@
+#Command Propertise
+#uri=Class Full Name
+#/=service.IndexServiceImpl index.html
+/index.do=service.IndexServiceImpl
+/=service.IndexServiceImpl
+# 회원 가입 페이지
+/member/memberRegForm.do=member.service.MemberRegFormServiceImpl
+# 회원 가입 처리
+/member/memberReg.do=member.service.MemberRegServiceImpl
+# 회원 가입시 아이디 체크
+/member/idCheck.do=member.service.IdCheckServiceImpl
+# 회원 리스트 출력 
+/member/memberList.do=member.service.MemberListServiceImpl
+#회원 삭제
+/member/memberDelete.do=member.service.MemberDeleteServiceImpl
+#회원 수정 폼
+/member/memberEditForm.do=member.service.MemberEditFormServiceImpl
+#회원 수정 
+/member/memberEdit.do=member.service.MemberEditServiceImpl
+
+#----------------------------------------------------------------------------------------------
+#마이페이지
+/member/memberMypage.do=member.service.MemberMypageServiceImpl
+
+#비밀번호 변경
+/member/memberMypageEditPw.do=member.service.MemberMypageEditPwServiceImpl
+
+#사진수정
+/member/memberMypageEditPhoto.do=member.service.MemberMypageEditPhotoServiceImpl
+#사진수정
+/member/memberMypageEditPhoto.do=member.service.MemberMypageEditPhotoServiceImpl
+
+#방명록(비회원)XXXXXXXXXXX
+/guestbook/guestBoard.do=member.service.GuestBoardServiceImpl
+
+#방명록(회원)XXXXXXXXXXXXX
+/board/memberBoard.do=member.service.MemberBoardServiceImpl
+
+
+#로그인
+/member/memberLogin.do=member.service.MemberLoginServiceImpl
+#----------------------------------------------------------------------------------------------07/20추가
+#로그인 완료
+/member/memberLoginSuccess.do=member.service.MemberLoginSuccessServiceImpl
+
+#로그아웃
+/member/memberLogout.do=member.service.MemberLogoutServiceImpl
+
+#판매게시판
+/board/sellerBoard.do=member.service.SellerBoardServiceImpl
+#판매글 작성완료
+/board/sellerBoardSuccess.do=member.service.SellerBoardSeccessServiceImpl
+
+#구매게시판
+/board/buyerBoardForm.do=member.service.BuyerBoardFormServiceImpl
+/board/buyerBoard.do=member.service.BuyerBoardServiceImpl
+#구매글 작성완료
+
+#구매게시판
+/board/buyerBoardForm.do=member.service.BuyerBoardFormServiceImpl
+/board/buyerBoard.do=member.service.BuyerBoardServiceImpl
+#----------------------------------------------------------------------------------------------07/22추가
+#게시글확인
+/board/buyerBoardContent.do=member.service.BuyerBoardContentServiceImpl
+#게시글삭제
+/board/deletBoardContent.do=member.service.DeleteBoardContentServiceImpl
+/board/deletBoardContent.do=member.service.DeleteBoardContentServiceImpl
+#게시글수정
+/board/editBoardContent.do=member.service.EditBoardContentServiceImpl
+#----------------------------------------------------------------------------------------------07/21추가
+#임시
+/board/temp.do=member.service.TempImpl
+/board/tempService.do=member.service.TempServiceImpl
+#----------------------------------------------------------------------------------------------07/22추가
+#회원 정보 수정 폼
+/member/editInfoForm.do=member.service.MemberEditInfoFormServiceImpl
+#회원 정보 수정 
+/member/editInfo.do=member.service.MemberEditInfoServiceImpl

@@ -12,13 +12,14 @@ import board.model.Board;
 import jdbc.ConnectionProvider;
 import service.Service;
 
-public class EditBoardContentServiceImpl implements Service {
+public class EditSuccessServiceImpl implements Service {
 
 	BoardDao dao;
 
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
-
+System.out.println("수정");
+System.out.println("되는지 확인");
 		int resultCnt = 0;
 
 		// 데이터 베이스에 수정 데이터 변수
@@ -27,42 +28,34 @@ public class EditBoardContentServiceImpl implements Service {
 		String uname = null;
 
 		Connection conn = null;
-		
-		List<Board> listAll=null;
-//		List<Board> listAll=(List)request.getAttribute("listAll");
+		List<Board> listAll=(List)request.getAttribute("listAll");
+		System.out.println("수정할 리스트 확인:"+listAll);
+		System.out.println("--------------------");
 
 		try {
 
 			// 데이터 베이스 저장
 			Board board=new Board();
 			
-			//int idx=(int)request.getAttribute("idx");
-			int idx=Integer.parseInt(request.getParameter("idx"));
+			int idx=(int)request.getAttribute("idx");
 			
 			conn = ConnectionProvider.getConnection();
 			
 			dao = BoardDao.getInstance();
 			
-			listAll=dao.selectAllList(conn);
-			System.out.println("listAll 확인:"+listAll);
-			System.out.println("------------@@@--------");
 			
 			board=dao.selectByIdx(conn, idx);
-			System.out.println("@@@@@@@@@@@@@@@@@@@board확인:"+board);
+			System.out.println("board확인:"+board);
 			System.out.println("--------------------");
 			System.out.println("idx확인:"+idx);
 			System.out.println("--------------------");
 
-			request.setAttribute("listAll",listAll);
+			System.out.println("board 업데이트 전:"+board);
+			dao.BoardUpdate(conn, idx, board);
+			System.out.println("board 업데이트 후:"+board);
+			System.out.println("--------------------");
 			request.setAttribute("board",board);
-			
-//			resultCnt = dao.BoardUpdate(conn, idx,board);
-//			System.out.println("BoardUpdate확인:"+board);
-//			System.out.println("--------------------");
 
-			request.setAttribute("idx",idx);
-			//request.setAttribute("result", resultCnt);
-			
 			
 
 		} catch (SQLException e) {
@@ -84,7 +77,7 @@ public class EditBoardContentServiceImpl implements Service {
 
 		}
 
-		return "/editPage.jsp";
+		return "/editSuccess.jsp";
 	}
 
 }

@@ -59,6 +59,7 @@ MemberDao dao;
 		List<Board> listAll=new ArrayList<>();
 		Board board=new Board();
 		Connection conn;
+		String msg=null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			//dao.insertBoard(conn, board);
@@ -68,20 +69,48 @@ MemberDao dao;
 			board=dao.selectByIdx(conn,idx);
 			System.out.println("선택된 board:"+board);
 			System.out.println("전체 리스트:"+listAll);
-			dao.BoardDelete(conn, idx);
+			
+			int resultCnt=dao.BoardDelete(conn, idx);
+			System.out.println("resultCnt@@@:"+resultCnt);
 			System.out.println("--------------------정상 삭제--------------------");
 			System.out.println("삭제 후 전체 리스트:"+listAll);
 			int cntAll=dao.selectTotalCount(conn);
 			request.setAttribute("cntAll",cntAll);
 			request.setAttribute("board",board);
 			
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+			//다시 리스트 불러옴
+			listAll=dao.selectAllList(conn);
+			System.out.println("listAll:"+listAll);
+
+
+			switch (resultCnt) {
+			case 0:
+				msg = "요청하신 게시물이 존재하지 않습니다.";
+			case 1:
+				msg = "정상적으로 삭제되었습니다.";
+			}
+			
+			System.out.println("msg:"+msg);
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		} catch (SQLException e) {
+			System.out.println("SQL 오류");
+			e.printStackTrace();
+		} catch (NumberFormatException ex) {
+			System.out.println("숫자 형식이 아닌 데이터 요청입니다.");
+			msg = "잘못된 요청입니다. 정상적인 경로를 이용해주세요.";
+		} finally {
 		}
-		
 		request.setAttribute("board",board);
 		System.out.println("board:"+board);
-		
+		request.setAttribute("msg",msg);
 		// view 로 전달할 결과 데이터
 //		MemberListView listView = null;
 //		
@@ -146,7 +175,9 @@ MemberDao dao;
 //		
 //		request.setAttribute("listView", listView);
 //		return "/buyContent.jsp";//@@@@@@@@@@@@@@@@@@@@@@@임시
-		return "/ex.jsp";//@@@@@@@@@@@@@@@@@@@@@@@임시
+		
+		return "/delete.jsp";//@@@@@@@@@@@@@@@@@@@@@@@임시
+//		return "/buy.jsp";//@@@@@@@@@@@@@@@@@@@@@@@임시
 	}
 
 }

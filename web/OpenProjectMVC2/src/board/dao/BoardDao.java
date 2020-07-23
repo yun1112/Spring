@@ -195,6 +195,29 @@ public class BoardDao {
 		
 		return result;
 	}
+	
+	public int BoardUpdate(Connection conn,int idx, Board board) throws SQLException {
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql="update project.board set title=?, content=? where idx=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,board.getTitle());
+			pstmt.setString(2,board.getContent());
+			pstmt.setInt(3,board.getIdx());
+			
+			result=pstmt.executeUpdate();
+		} finally {
+			if(pstmt!=null)
+				pstmt.close();
+		}
+		
+		if(result!=0){
+			System.out.println("수정 완료");
+		}
+		return result;
+	}
 
 	public Board selectByIdx(Connection conn, int idx) throws SQLException {
 

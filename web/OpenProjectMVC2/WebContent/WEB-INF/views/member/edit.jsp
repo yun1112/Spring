@@ -5,11 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
-
-
-	<%@ include file="/WEB-INF/views/include/header.jsp" %>
-
+<title>회원 수정</title>
 	<div>
 		<h1 class="subtitle">회원 수정</h1>
 		<hr>

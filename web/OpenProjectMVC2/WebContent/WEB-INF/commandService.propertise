@@ -65,8 +65,14 @@
 #게시글삭제
 /board/deletBoardContent.do=member.service.DeleteBoardContentServiceImpl
 /board/deletBoardContent.do=member.service.DeleteBoardContentServiceImpl
+#----------------------------------------------------------------------------------------------07/20추가
 #게시글수정
 /board/editBoardContent.do=member.service.EditBoardContentServiceImpl
+
+#01 수정하기 버튼클릭했을 때 -> 실행안됨@@@@@@@@@@@@@@@@@@@@@@@
+/board/editBoardSuccessContent.do=member.service.EditBoardSuccessContentServiceImpl
+#02
+/board/editSuccess.do=member.service.EditSuccessServiceImpl
 #----------------------------------------------------------------------------------------------07/21추가
 #임시
 /board/temp.do=member.service.TempImpl

@@ -23,19 +23,18 @@ public class MemberEditInfoFormServiceImpl implements Service {
 		
 		Connection conn;
 		Member member = null;
-		
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		System.out.println("@@@idx확인:"+idx);
 		try {
 			conn = ConnectionProvider.getConnection();
 			dao = MemberDao.getInstance();
 			
-			int idx = Integer.parseInt(request.getParameter("idx"));
-			String uid=(String)request.getParameter("uid");
-			String upw=(String)request.getParameter("upw");
-			String photo=(String)request.getParameter("photo");
+			member=dao.selectByIdx(conn, idx);
+			System.out.println("수정할member:"+member);
+			
+			
 			
 			member = dao.selectByIdx(conn, idx);
-			System.out.println("수정할 멤버정보:"+member);
-			
 		} catch (NumberFormatException e) {
 			System.out.println("숫자 변경이 불가능한 문자열로 입력!!");
 		} catch (SQLException e) {

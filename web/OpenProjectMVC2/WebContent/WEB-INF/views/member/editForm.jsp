@@ -1,7 +1,12 @@
 
+<%@page import="member.model.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%
+Member member=(Member)request.getAttribute("member");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,21 +41,22 @@ private String userId;
 	<div>
 		<h1 class="subtitle">회원 정보 수정</h1>
 		<hr>
+		<h2>${member.userID}</h2>
 		<!-- 이 페이지는 데이터 베이스에 저장된 데이터를 value 값에 세팅해야합니다. -->
 		<form id="editForm" action="editInfoForm.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="idx" value="${member.idx}">
 			<table>
 				<tr>
-					<td>아이디(email) </td>
-					<td> <input type="email" name="uid" id="uid" value="${member.userId}" readonly  >아이디는 수정이 불가합니다.</td>
+					<td>아이디 ${member.userId} </td>
+					<td> <%-- <input type="email" name="uid" id="uid" value="${member.userId}" readonly  > --%>아이디는 수정이 불가합니다.</td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td> <input type="password" name="upw" required> </td>
+					<td> <input type="password" name="upw" required value="${member.userPw}"> </td>
 				</tr>
 				<tr>
-					<td>이름</td>
-					<td> <input type="text" name="uname" value="${member.userName}" required> </td>
+					<td>이름 ${member.userName}</td>
+					<td> <%-- <input type="text" name="uname" value="${member.userName}" required>  --%></td>
 				</tr>
 				<tr>
 					<td>사진</td>

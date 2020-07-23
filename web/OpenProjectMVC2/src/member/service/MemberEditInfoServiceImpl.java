@@ -31,15 +31,27 @@ MemberDao dao;
 		
 		// 파일 업로드 - 사진
 		// 사용자 데이터를 받기 - uid, upw, uname, uphoto
-
+//		Member member=(Member)request.getAttribute("member");
+//		System.out.println("member정보확인:"+member);
 		int resultCnt = 0;
 		
 		// 데이터 베이스에 수정 데이터 변수
 		int idx = 0;
+	
+		//-------------------------------------추가
+		String uid=null;
+		//-------------------------------------
+		
 		String upw = null;
 		String uname = null;
 		String oldFile = null;
 		String uphoto = null;
+		
+		//-------------------------------------추가
+		String nickname=null;
+		String email=null;
+		String contactNumber=null;
+		String address=(String)request.getParameter("address");
 		
 		Connection conn = null;
 
@@ -70,6 +82,8 @@ MemberDao dao;
 						
 						if(paramName.equals("idx")){
 							idx = Integer.parseInt(paramValue);
+						} else if(paramName.equals("uid")) {
+							uid = paramValue;
 						} else if(paramName.equals("upw")) {
 							upw = paramValue;
 						} else if(paramName.equals("uname")) {
@@ -77,6 +91,14 @@ MemberDao dao;
 						} else if(paramName.equals("oldFile")) {
 							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
 							oldFile = paramValue;
+						}else if(paramName.equals("nickname")) {
+							nickname = paramValue;
+						}else if(paramName.equals("email")) {
+							email = paramValue;
+						}else if(paramName.equals("contactNumber")) {
+							contactNumber = paramValue;
+						}else if(paramName.equals("address")) {
+							address = paramValue;
 						}
 						
 					} else { // type=file
@@ -136,9 +158,19 @@ MemberDao dao;
 				// 데이터 베이스 저장 
 				Member member = new Member();
 				member.setIdx(idx);
+				
+				
+				//-------------------------------------추가
+				member.setUserPw(uid);
+				//-------------------------------------
 				member.setUserPw(upw);
 				member.setUserName(uname);
 				member.setPhoto(uphoto);
+				//-------------------------------------추가
+				member.setPhoto(nickname);
+				member.setPhoto(email);
+				member.setPhoto(contactNumber);
+				member.setPhoto(address);
 				
 				conn = ConnectionProvider.getConnection();
 				
@@ -177,7 +209,8 @@ MemberDao dao;
 			
 		}
 		
-		return "/WEB-INF/views/member/edit.jsp";
+		return "/edit.jsp";
+//		return "/WEB-INF/views/member/edit.jsp";
 	}
 
 }

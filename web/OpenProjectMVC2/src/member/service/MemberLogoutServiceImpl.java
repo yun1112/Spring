@@ -15,8 +15,9 @@ MemberDao dao;
 			HttpServletRequest request, 
 			HttpServletResponse response) {
 		
-		
-		return "logout.jsp";
+		// 현재 세션을 소멸시킵니다.
+		request.getSession().invalidate();
+		return "/logout.jsp";
 	}
 
 }

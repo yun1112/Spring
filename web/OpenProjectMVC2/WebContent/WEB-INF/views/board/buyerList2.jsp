@@ -110,7 +110,7 @@ request.setAttribute("listAll", listAll);
               <td>${board.userId}</td>
               <td>${board.title}</td>
               <td>${board.content}</td>
-              <td><a href="javascript:memberDel(${board.idx})">삭제</a></td>
+              <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
             <tr>
           </c:forEach>
         </tbody>

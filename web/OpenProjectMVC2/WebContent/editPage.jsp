@@ -58,8 +58,7 @@ Copyright &copy;<script type="937e342de99a9ff8a5348d28-text/javascript">document
 
 <div id="content" class="p-4 p-md-5 pt-5">
 <h2 class="mb-4">Sidebar #02</h2>
-<%--      <%@ include file="/WEB-INF/views/member/editForm.jsp" %> --%>
-     <%@ include file="/WEB-INF/views/member/edit.jsp" %>
+     <%@ include file="/WEB-INF/views/member/editPageForm.jsp" %>
         
         
 </script>

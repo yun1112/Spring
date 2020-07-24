@@ -67,6 +67,8 @@ public class EditBoardSuccessContentServiceImpl implements Service {
 							idx = Integer.parseInt(paramValue);
 						} else if (paramName.equals("title")) {
 							title = paramValue;
+						}else if (paramName.equals("uid")) {
+							uid = paramValue;
 						} else if (paramName.equals("content")) {
 							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
 							content = paramValue;
@@ -117,10 +119,12 @@ public class EditBoardSuccessContentServiceImpl implements Service {
 				// 데이터 베이스 저장
 				Board board = new Board();
 				board.setIdx(idx);
+				board.setUserId(uid);
 				board.setTitle(title);
 				board.setContent(content);
 				
 				
+				System.out.println("수정 후 uid:"+uid);
 				System.out.println("수정 후 title:"+title);
 				System.out.println("수정 후 content:"+content);
 				System.out.println("수정 후 board:"+board);

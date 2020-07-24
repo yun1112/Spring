@@ -37,6 +37,11 @@
 		<form id="editForm" action="memberEdit.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="idx" value="${member.idx}">
 			<table>
+			
+		<!-- 	member.setUserNickname(nickname);
+				member.setContactNumber(contactNumber);
+				member.setAddress(address); -->
+			
 				<tr>
 					<td>아이디(email) </td>
 					<td> <input type="email" name="uid" id="uid" value="${member.userId}" readonly  >아이디는 수정이 불가합니다.</td>
@@ -48,13 +53,22 @@
 				<tr>
 					<td>이름</td>
 					<td> <input type="text" name="uname" value="${member.userName}" required> </td>
+				</tr><tr>
+					<td>닉네임</td>
+					<td> <input type="text" name="nickname" value="${member.userNickname}" required> </td>
+				</tr><tr>
+					<td>연락처</td>
+					<td> <input type="text" name="contactNumber" value="${member.contactNumber}" required> </td>
+				</tr><tr>
+					<td>주소</td>
+					<td> <input type="text" name="address" value="${member.address}" required> </td>
 				</tr>
 				<tr>
 					<td>사진</td>
 					<td><input type="file" name="photo">
 						<br>
 						현재 파일 : ${member.photo}
-						<input type="hidden" name="oldFile" value="${member.photo}" >
+						<input type="hidden" name="oldFile" style="width:30px" value="${member.photo}" >
 					 </td>
 				</tr>
 				<tr>

@@ -46,7 +46,7 @@
 					<td>사진</td>
 					<td><input type="file" name="photo">
 						<br>
-						현재 파일 : ${member.uphoto}
+						현재 파일 : <img src="<%=request.getContextPath()%>/${member.uphoto}">
 						<input type="hidden" name="oldFile" value="${member.uphoto}" >
 					 </td>
 				</tr>

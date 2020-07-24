@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import jdbc.ConnectionProvider;
 import member.dao.MemberDao;
 import member.model.Member;
-import member.model.MemberListView;
 import service.Service;
 
 public class MemberMypageServiceImpl implements Service {
@@ -24,8 +23,8 @@ public class MemberMypageServiceImpl implements Service {
 
 		// ---------------------------------------------------------------------------확인
 		// 아이디 비밀번호 체크
-		MemberListView listView = (MemberListView) request.getAttribute("listView");
-		System.out.println("전체회원정보확인:" + listView);
+//		MemberListView listView = (MemberListView) request.getAttribute("listView");
+//		System.out.println("전체회원정보확인:" + listView);
 		List<Member> list = null;
 		MemberDao dao = MemberDao.getInstance();
 		Connection conn;

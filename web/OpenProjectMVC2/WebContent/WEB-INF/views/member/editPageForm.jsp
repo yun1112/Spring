@@ -76,7 +76,7 @@ List<Board> listAll=(List)request.getAttribute("listAll");
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea col="20" row="20" name="content" id="content" required>${board.content}</textarea></td>
+					<td><textarea col="10" row="10" name="content" id="content" required>${board.content}</textarea></td>
 				</tr>
 				<tr>
 					<td></td>

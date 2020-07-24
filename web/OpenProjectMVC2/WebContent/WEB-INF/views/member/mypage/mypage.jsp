@@ -18,6 +18,10 @@ Member member = (Member) request.getAttribute("member");
 List<Member> list = (List) request.getAttribute("list");
 
 request.setAttribute("member", member);
+
+LoginInfo info=(LoginInfo)request.getAttribute("info");
+/* LoginInfo info=(LoginInfo)session.getAttribute("info"); */
+request.setAttribute("info",info);
 //request.setAttribute("listView", listView);
 %>
 <!DOCTYPE html>
@@ -33,111 +37,77 @@ request.setAttribute("member", member);
 
 		<h1>반갑습니다 ${info.uid} 회원님</h1>
 		<hr>
-		<a href="editInfo.do">aa</a>
-		<hr>
-		<%-- ${list} --%>
-		<hr>
 		<c:if test="${not empty list }">
 			<c:forEach items="${list}" var="member">
 				<c:if test="${member.userId==info.uid}">
-					<%-- 						<c:if test="${member.userId==info.uid && member.userPw==info.upw}"> --%>
-
-
-
-					<%-- <form id="regForm" action="editInfoForm.do" method="post"
-					enctype="multipart/form-data">
-					<input type="hidden" id="idx" name="idx" value="${member.idx}">
-					<table>
-						<tr>
-							<td>아이디<input type="hidden" id="uid" name="uid"
-								value="${member.userId}"></td>
-							<td>${member.userId }</td>
-						</tr>
-						<tr>
-							<td>비밀번호<input type="hidden" id="upw" name="upw"
-								value="${member.userPw}"></td>
-							<td>${member.userPw }</td>
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td>${member.userName }</td>
-						</tr>
-						<tr>
-							<td>닉네임</td><td>${member.userNickname }</td>
-							</tr>
-							<tr>
-							<td>이메일</td><td>${member.email }</td>
-							</tr>
-							<tr>
-							<td>연락처</td><td>${member.contactNumber }</td>
-							</tr>
-							<tr>
-							<td>주소</td><td>${member.address }</td>
-							</tr>
-						<tr>
-							<td>사진</td>
-							<td><input type="file" name="photo"> <br> 현재 파일
-								: ${member.photo} <input type="hidden" name="oldFile"
-								value="${member.photo}"></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="수정"></td>
-							<td></td>
-						</tr>
-					</table>
-				</form> --%>
-
-					<hr>
 
 					<form id="regForm" action="editInfo.do" method="post"
 						enctype="multipart/form-data">
 						<input type="hidden" id="idx" name="idx" value="${member.idx}">
 						<table>
 							<tr>
-								<td>아이디<input type="text" id="uid" name="uid"
+								<td>아이디</td>
+								<td><input type="text" id="uid" name="uid"
 									value="${member.userId}"></td>
-								<td>${member.userId }</td>
 							</tr>
 							<tr>
-								<td>비밀번호<input type="password" id="upw" name="upw"
+								<td>비밀번호</td>
+								<td><input type="password" id="upw" name="upw"
 									value="${member.userPw}"></td>
-								<td>${member.userPw }</td>
 							</tr>
 							<tr>
-								<td>이름<input type="text" id="uname" name="uname"
+								<td>이름</td>
+								<td><input type="text" id="uname" name="uname"
 									value="${member.userName}"></td>
-								<td>${member.userName }</td>
 							</tr>
 							<tr>
-								<td>닉네임<input type="text" id="nickname" name="nickname"
+								<td>닉네임</td>
+								<td><input type="text" id="nickname" name="nickname"
 									value="${member.userNickname}"></td>
-								<td>${member.userNickname }</td>
 							</tr>
-							<%-- 		<tr>
-							<td>이메일<input type="email" id="email" name="email" 
-							value="${member.email}"></td>
-							<td>${member.email }</td>
-						</tr> --%>
 							<tr>
-								<td>연락처<input type="text" id="contactNumber"
+								<td>이메일</td>
+								<td><input type="text" id="email" name="email"
+									value="${member.email}"></td>
+							</tr>
+							
+							<tr>
+								<td>연락처</td>
+								<td><input type="text" id="contactNumber"
 									name="contactNumber" value="${member.email}"></td>
-								<td>${member.contactNumber}</td>
 							</tr>
 							<tr>
-								<td>주소<input type="text" id="address" name="address"
+								<td>주소</td>
+								<td><input type="text" id="address" name="address"
 									value="${member.address}"></td>
-								<td>${member.address}</td>
 							</tr>
 							<tr>
 								<td>사진</td>
-								<td><input type="file" name="photo">현재 파일 : <img
-									src="<%=request.getContextPath()%>/${member.photo}"> <input
-									type="hidden" name="oldFile" value="${member.photo}"></td>
+								<td><input type="file" name="photo"></td>
+								</tr>
+								<tr>
+								<td>현재 파일</td>
+								<td><img
+									src="<%=request.getContextPath()%>/${member.photo}"> </td>
 							</tr>
+							<tr>		
+									<td><input
+									type="hidden" name="oldFile" style="width:20px" value="${member.photo}"></td>
+							</tr>
+
+
+							<tr>
+								<td><img alt="프사 " style="width:20px" src="<c:url value="${member.photo}"/>">
+								</td>
+								<%-- <td><a href="memberEditForm.do?idx=${member.idx}">수정</a> <a
+									href="javascript:memberDel(${member.idx})">삭제</a></td> --%>
+							</tr>
+
+
 							<tr>
 								<td><input type="submit" value="수정"></td>
 								<td></td>
-							</tr>
+							</tr> 
 						</table>
 					</form>
 				</c:if>
@@ -148,8 +118,8 @@ request.setAttribute("member", member);
 	</c:if>
 
 	<c:if test="${empty info}">
-	<script>
-	alert('로그인 하세요');
-	location.href='${pageContext.request.contextPath}';
-</script>
+		<script>
+			alert('로그인 하세요');
+			location.href = '${pageContext.request.contextPath}';
+		</script>
 	</c:if>

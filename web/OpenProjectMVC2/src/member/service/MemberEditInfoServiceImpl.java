@@ -28,39 +28,35 @@ MemberDao dao;
 	public String getViewPage(
 			HttpServletRequest request, 
 			HttpServletResponse response) {
-		
-		// 파일 업로드 - 사진
-		// 사용자 데이터를 받기 - uid, upw, uname, uphoto
-//		Member member=(Member)request.getAttribute("member");
-//		System.out.println("member정보확인:"+member);
-		int resultCnt = 0;
+
+int resultCnt = 0;
 		
 		// 데이터 베이스에 수정 데이터 변수
+System.out.println("idx확인@");
+	System.out.println(request.getParameter("idx"));
+	System.out.println(request.getAttribute("idx"));
 		int idx = 0;
-	
-		//-------------------------------------추가
+//		int idx = Integer.parseInt(request.getParameter("idx"));
 		String uid=null;
-		//-------------------------------------
-		
 		String upw = null;
 		String uname = null;
+		String nickname=null;
+ 		String email=null;
+		String contactNumber=null;
+		String address=null;
 		String oldFile = null;
 		String uphoto = null;
+		//nickname contactNumber address
 		
-		//-------------------------------------추가
-		String nickname=null;
-		String email=null;
-		String contactNumber=null;
-		String address=(String)request.getParameter("address");
 		
 		Connection conn = null;
-
+System.out.println("수정");
 		try {
 			
 			boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 	
 			if (isMultipart) {
-	
+				
 				DiskFileItemFactory factory = new DiskFileItemFactory();
 				ServletFileUpload upload = new ServletFileUpload(factory);
 	
@@ -71,7 +67,7 @@ MemberDao dao;
 				while (ite.hasNext()) {
 	
 					FileItem item = ite.next();
-	
+
 					// isFormField() : text value를 가지는 input 확인
 					if (item.isFormField()) { // type=file 이외의 input
 						// 파라미터 이름
@@ -82,16 +78,13 @@ MemberDao dao;
 						
 						if(paramName.equals("idx")){
 							idx = Integer.parseInt(paramValue);
-						} else if(paramName.equals("uid")) {
-							uid = paramValue;
 						} else if(paramName.equals("upw")) {
 							upw = paramValue;
+						}else if(paramName.equals("uid")) {
+							uid = paramValue;
 						} else if(paramName.equals("uname")) {
 							uname = paramValue;
-						} else if(paramName.equals("oldFile")) {
-							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
-							oldFile = paramValue;
-						}else if(paramName.equals("nickname")) {
+						} else if(paramName.equals("nickname")) {
 							nickname = paramValue;
 						}else if(paramName.equals("email")) {
 							email = paramValue;
@@ -99,7 +92,10 @@ MemberDao dao;
 							contactNumber = paramValue;
 						}else if(paramName.equals("address")) {
 							address = paramValue;
-						}
+						} else if(paramName.equals("oldFile")) {
+							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
+							oldFile = paramValue;
+						}  
 						
 					} else { // type=file
 						
@@ -144,44 +140,48 @@ MemberDao dao;
 				} else {
 					uphoto = oldFile;
 				}
+//				int idx = 0;
+//				String uid=null;
 				
-//				private String userId;
-//				private String userPw;
-//				private String userName;
-//				private String userNickname;
-//				private String email;
-//				private String contactNumber;
-//				private String address;
-//				private String photo;
+//				String upw = null;
+//				String uname = null;
 				
+//				String nickname=null;
+//		 		String email=null;
+//				String contactNumber=null;
+//				String address=null;
 				
+//				String oldFile = null;
+//				String uphoto = null;
+				
+//				//nickname contactNumber address
+
 				// 데이터 베이스 저장 
 				Member member = new Member();
 				member.setIdx(idx);
-				
-				
-				//-------------------------------------추가
-				member.setUserPw(uid);
-				//-------------------------------------
+				member.setUserId(uid);
 				member.setUserPw(upw);
 				member.setUserName(uname);
 				member.setPhoto(uphoto);
-				//-------------------------------------추가
-				member.setPhoto(nickname);
-				member.setPhoto(email);
-				member.setPhoto(contactNumber);
-				member.setPhoto(address);
+				member.setEmail(email);
+				
+				member.setUserNickname(nickname);
+				member.setContactNumber(contactNumber);
+				member.setAddress(address);
+				
+				
+				System.out.println("수정된member확인:"+member);
 				
 				conn = ConnectionProvider.getConnection();
 				
 				dao = MemberDao.getInstance() ;
 				
-				resultCnt = dao.editMember(conn, member);
+				resultCnt = dao.editMember(conn, member,idx);
 				
 				request.setAttribute("member", member);
 				request.setAttribute("result", resultCnt);
 				
-				
+//				<c:if test="${result gt 0 && member ne null}">
 	
 			}
 		} catch (FileUploadException e) {

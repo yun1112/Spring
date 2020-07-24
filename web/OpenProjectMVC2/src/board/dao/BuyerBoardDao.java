@@ -45,6 +45,7 @@ public class BuyerBoardDao {
 
 		return resultCnt;
 	}
+	
 
 	public int selectById(Connection conn, String id) throws SQLException {
 		

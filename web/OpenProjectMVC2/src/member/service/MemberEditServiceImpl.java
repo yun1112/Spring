@@ -36,10 +36,17 @@ MemberDao dao;
 		
 		// 데이터 베이스에 수정 데이터 변수
 		int idx = 0;
+		String uid=null;
 		String upw = null;
 		String uname = null;
+		String nickname=null;
+ 		String email=null;
+		String contactNumber=null;
+		String address=null;
 		String oldFile = null;
 		String uphoto = null;
+		//nickname contactNumber address
+		
 		
 		Connection conn = null;
 
@@ -59,7 +66,7 @@ MemberDao dao;
 				while (ite.hasNext()) {
 	
 					FileItem item = ite.next();
-	
+
 					// isFormField() : text value를 가지는 input 확인
 					if (item.isFormField()) { // type=file 이외의 input
 						// 파라미터 이름
@@ -68,16 +75,28 @@ MemberDao dao;
 						String paramValue = item.getString("utf-8");
 						//System.out.println(paramName + " = " + paramValue);
 						
-						if(paramName.equals("idx")){
-							idx = Integer.parseInt(paramValue);
-						} else if(paramName.equals("upw")) {
+//						if(paramName.equals("idx")){
+//							idx = Integer.parseInt(paramValue);
+//						} 
+						
+						if(paramName.equals("upw")) {
 							upw = paramValue;
+						}else if(paramName.equals("uid")) {
+							uid = paramValue;
 						} else if(paramName.equals("uname")) {
 							uname = paramValue;
+						} else if(paramName.equals("nickname")) {
+							nickname = paramValue;
+						}else if(paramName.equals("email")) {
+							email = paramValue;
+						}else if(paramName.equals("contactNumber")) {
+							contactNumber = paramValue;
+						}else if(paramName.equals("address")) {
+							address = paramValue;
 						} else if(paramName.equals("oldFile")) {
 							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
 							oldFile = paramValue;
-						}
+						}  
 						
 					} else { // type=file
 						
@@ -122,20 +141,42 @@ MemberDao dao;
 				} else {
 					uphoto = oldFile;
 				}
+//				int idx = 0;
+//				String uid=null;
 				
+//				String upw = null;
+//				String uname = null;
 				
+//				String nickname=null;
+//		 		String email=null;
+//				String contactNumber=null;
+//				String address=null;
+				
+//				String oldFile = null;
+//				String uphoto = null;
+				
+//				//nickname contactNumber address
+
 				// 데이터 베이스 저장 
 				Member member = new Member();
 				member.setIdx(idx);
+				member.setUserId(uid);
 				member.setUserPw(upw);
 				member.setUserName(uname);
 				member.setPhoto(uphoto);
+				member.setEmail(email);
+				
+				member.setUserNickname(nickname);
+				member.setContactNumber(contactNumber);
+				member.setAddress(address);
+				
+				System.out.println("수정된member확인:"+member);
 				
 				conn = ConnectionProvider.getConnection();
 				
 				dao = MemberDao.getInstance() ;
 				
-				resultCnt = dao.editMember(conn, member);
+				resultCnt = dao.editMember(conn, member,idx);
 				
 				request.setAttribute("member", member);
 				request.setAttribute("result", resultCnt);

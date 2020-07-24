@@ -43,7 +43,7 @@ request.setAttribute("list", list);
 	<div>
 		<h1 class="subtitle">글</h1>
 		<hr>
-		<form id="regForm" action="buyerBoard.do" method="post">
+		<form id="regForm" action="buyerBoardForm.do" method="post">
 			<!-- 		<form id="regForm" action="buyerBoard.do" method="post" enctype="multipart/form-data"> -->
 			<table>
 

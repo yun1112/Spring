@@ -118,7 +118,9 @@ public class MemberDao {
 //		private String contactNumber;
 //		private String address;
 //		private String photo;
-		//String sql = "INSERT INTO project.member1 (user_id,user_pw,user_name,user_nickname,email,contact_number,address,photo ) VALUES (?,?,?,?,?,?,?,?)";
+		// String sql = "INSERT INTO project.member1
+		// (user_id,user_pw,user_name,user_nickname,email,contact_number,address,photo )
+		// VALUES (?,?,?,?,?,?,?,?)";
 
 		while (rs.next()) {
 			Member member = new Member(rs.getInt("idx"), rs.getString("user_id"), rs.getString("user_pw"),
@@ -231,21 +233,25 @@ public class MemberDao {
 		return member;
 	}
 
-	public int editMember(Connection conn, Member member) throws SQLException {
-
-		int result = 0;
+	public int editMember(Connection conn, Member member,int idx) throws SQLException {
 
 		PreparedStatement pstmt = null;
+		int rs = 0;
 
-		String sql = "update project.member1 set " + " user_pw=?, user_name=?, photo=? " + " where idx=?";
 		try {
+			String sql = "update project.member1 set user_id=?, user_pw=?, user_name=?, user_nickname=?, email=?,contact_number=?,address=?, photo=?  where idx=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getUserPw());
-			pstmt.setString(2, member.getUserName());
-			pstmt.setString(3, member.getPhoto());
-			pstmt.setInt(4, member.getIdx());
+			pstmt.setString(1, member.getUserId());
+			pstmt.setString(2, member.getUserPw());
+			pstmt.setString(3, member.getUserName());
+			pstmt.setString(4, member.getUserNickname());
+			pstmt.setString(5, member.getEmail());
+			pstmt.setString(6, member.getContactNumber());
+			pstmt.setString(7, member.getAddress());
+			pstmt.setString(8, member.getPhoto());
+			pstmt.setInt(9, idx);
 
-			result = pstmt.executeUpdate();
+			rs = pstmt.executeUpdate();
 
 		} finally {
 			if (pstmt != null) {
@@ -253,7 +259,7 @@ public class MemberDao {
 			}
 		}
 
-		return result;
+		return rs;
 	}
 
 }

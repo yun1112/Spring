@@ -97,8 +97,8 @@ request.setAttribute("listAll", listAll);
         <thead>
           <tr>
             <th width="10%">idx</th>
-            <th width="50%">userId</th>
-            <th width="10%">title</th>
+            <th width="10%">userId</th>
+            <th width="50%">title</th>
             <th width="15%">date</th>
             <th width="10%">delete</th>
           </tr>
@@ -108,17 +108,20 @@ request.setAttribute("listAll", listAll);
             <tr>
               <td>${board.idx}</td>
               <td>${board.userId}</td>
-              <td>${board.title}</td>
+              <td><a href="boardContentDetails.do?idx=${board.idx}">${board.title}</a></td>
               <td>${board.content}</td>
               <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
             <tr>
           </c:forEach>
         </tbody>
       </table>
-       <hr>
+          <span><button style="float:right" onclick="moveToBoard()">글쓰기</button></span>
+          <span><button style="float:left">검색</button><input type="text"></<span>
+          
+	       
        	<script>
        	function moveToBoard(){
-       		location.href='';
+       		location.href='temp.do';
        	}
 		function memberDel(idx) {
 			if (confirm('선택한 게시글을 삭제하시겠습니까?')) {

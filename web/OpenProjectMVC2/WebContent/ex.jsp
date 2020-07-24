@@ -59,6 +59,33 @@ Copyright &copy;<script type="937e342de99a9ff8a5348d28-text/javascript">document
 <div id="content" class="p-4 p-md-5 pt-5">
 <h2 class="mb-4">임시</h2>
         
+        <h1>전달 확인</h1>
+       <!--  kakaoNickname="+kakaoNickname+"&kakaoEail="+kakaoEmail) -->
+       <%--  <%
+        String kakaoNickname=request.getParameter("kakaoNickname");
+        String kakaoEmail=request.getParameter("kakaoEmail");
+        %>
+        <h1>전달 확인</h1>
+        ${kakaoNickname}<br>
+        ${kakaoEmail}<hr> --%>
+        <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var patId = getParameterByName('kakaoNickname'); 
+        alert(patId);
+        var link = document.location.href;
+        alert("link:"+link);
+        console.log(link);
+        var para = document.location.href.split("?");
+        alert("para:"+para);
+        console.log(para);
+        </script>
+        <input type="button" onclick="urlArgs()" value="클릭">
         <a id="kakao-login-btn"></a>
         <a href="http://developers.kakao.com/logout"></a>
         <script type='text/javascript'>

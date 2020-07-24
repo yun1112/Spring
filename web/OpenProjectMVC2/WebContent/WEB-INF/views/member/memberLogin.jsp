@@ -50,6 +50,7 @@
             Kakao.Auth.getStatusInfo(function(statusObj) {
                 if (statusObj.status == 'connected') {
                     console.log('connection OK');
+                   	alert(JSON.stringify(statusObj));
                 } else {
                     $('#custom-login-btn').css('display', 'inline');
                 }

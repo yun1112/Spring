@@ -57,6 +57,7 @@ Copyright &copy;<script type="937e342de99a9ff8a5348d28-text/javascript">document
 <h2 class="mb-4">Sidebar #02</h2>
 
 	<%@ include file="/WEB-INF/views/member/memberLogin.jsp" %>
+	<hr>
 	<%@ include file="/kakaoLogin.jsp" %>
 
 

@@ -2,7 +2,12 @@
 	pageEncoding="UTF-8"%>
 <html lang="ko">
 <meta charset="utf-8">
+<!-- ---------------------------------------------------------------------------------------------------------07/24 추가-->
+ <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- ---------------------------------------------------------------------------------------------------------07/24 추가-->
+<script>
 
+</script>
 <style>
 	.check_ok {
 		color : blue;

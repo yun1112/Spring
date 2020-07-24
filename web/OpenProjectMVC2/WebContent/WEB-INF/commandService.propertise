@@ -54,6 +54,12 @@
 #구매게시판
 /board/buyerBoardForm.do=member.service.BuyerBoardFormServiceImpl
 /board/buyerBoard.do=member.service.BuyerBoardServiceImpl
+
+#----------------------------------------------------------------------------------------------07/24추가
+#페이징 추가
+/board/buyerBoard2.do=member.service.BuyerBoardServiceImpl2
+#----------------------------------------------------------------------------------------------
+
 #구매글 작성완료
 
 #구매게시판

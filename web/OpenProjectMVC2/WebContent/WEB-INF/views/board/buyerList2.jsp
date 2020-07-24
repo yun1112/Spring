@@ -1,3 +1,4 @@
+<%@page import="board.model.BoardListView"%>
 <%@page import="board.model.Board"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,6 +7,7 @@
 <%
 	List<Board> listAll = (List) request.getAttribute("listAll");
 request.setAttribute("listAll", listAll);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -100,7 +102,7 @@ request.setAttribute("listAll", listAll);
             <th width="10%">userId</th>
             <th width="50%">title</th>
             <th width="15%">date</th>
-            <th width="10%">delete</th>
+            <th width="10%">etc</th>
           </tr>
         </thead>
         <tbody>
@@ -115,10 +117,74 @@ request.setAttribute("listAll", listAll);
           </c:forEach>
         </tbody>
       </table>
+      
+      <!-- public BoardListView(
+			int BoardTotalCount, 
+			int currentPageNumber, 
+			List<Board> BoardList,
+			int BoardCountPerpage, 
+			int startRow, 
+			int endRow) { -->
+     <!-- -----------------------------------------------------------------------------------------------07/24 추가 -->
+  <%--    <hr> <div class="paging">
+					<c:forEach begin="1" end="${listView.totalCnt}" var="i">
+
+						<a
+							class="paging_num ${i == listView.startPage ? 'now_page' : ''}"
+							href="buyerBoard.do?page=${i}">${i}</a>
+							href="memberList.do?page=${i}">${i}</a>
+
+					</c:forEach>
+				</div> --%>
+     <!-- -----------------------------------------------------------------------------------------------07/24 추가 -->
+     
+      
+      
           <span><button style="float:right" onclick="moveToBoard()">글쓰기</button></span>
           <span><button style="float:left">검색</button><input type="text"></<span>
-          
-	       
+          <span>
+          <c:forEach begin="1" end="${listAll.size()/5+1}" var="i">
+          <a href="buyerBoard.do?page=${i}">${i} </a>
+          </c:forEach>
+          </span>
+	       <hr>
+     <div>
+     <table>
+     <hr>
+     <h1>확인</h1>
+     <hr>
+     <%
+     BoardListView listView=(BoardListView)request.getAttribute("listView");
+     %>
+     ${listView}<hr>
+     <c:if test="${not empty listView}">
+     	<table>
+     	 <tr>
+            <th width="10%">idx</th>
+            <th width="10%">userId</th>
+            <th width="50%">title</th>
+            <th width="15%">date</th>
+            <th width="10%">etc</th>
+          </tr>
+     	<c:forEach var="board" items="${listView.boardList}" varStatus="status">
+      	 <tr>
+              <td>${board.idx}</td>
+              <td>${board.userId}</td>
+              <td><a href="boardContentDetails.do?idx=${board.idx}">${board.title}</a></td>
+              <td>${board.content}</td>
+              <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
+            <tr>
+     	</c:forEach>
+     	</table>
+     </c:if>
+     <%-- <tr>
+     <c:forEach begin="1" end="${listAll.size}" var="i">
+     <td><a href="buyerBoard.do?page=${i}">${i}</a></td>
+      </c:forEach>
+     </tr>
+     </table>
+      </div>
+     <hr> --%>
        	<script>
        	function moveToBoard(){
        		location.href='temp.do';

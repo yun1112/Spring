@@ -15,7 +15,7 @@ import jdbc.ConnectionProvider;
 import member.dao.MemberDao;
 import service.Service;
 
-public class BuyerBoardServiceImpl implements Service {
+public class BuyerBoardServiceImpl2 implements Service {
 
 MemberDao dao;
 	
@@ -55,17 +55,10 @@ MemberDao dao;
 			final int BoardCountPerpage=5;//한 페이지에 표시할 게시물 수
 			
 //			int startRow=currentPageNumber*BoardTotalCount-1;//시작 행
-			int startRow=1;
-			
-			if(currentPageNumber>1) {
-				startRow=BoardTotalCount/currentPageNumber+1;
-			}
-			
-			
-			
+			int startRow=BoardTotalCount/currentPageNumber+1;
 			System.out.println("페이지 시작행:"+startRow);
 			
-			List<Board> BoardList=dao.selectList(conn, startRow, BoardCountPerpage);//한 페이지 게시물 가져옴
+			List<Board> BoardList=dao.selectList(conn, startRow, BoardTotalCount);//한 페이지 게시물 가져옴
 			BoardListView listView=new BoardListView(BoardTotalCount, currentPageNumber, BoardList, BoardCountPerpage, startRow, startRow+BoardCountPerpage);
 			
 			

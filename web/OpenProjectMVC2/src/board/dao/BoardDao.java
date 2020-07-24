@@ -186,6 +186,7 @@ public class BoardDao {
 				Board.setTitle(rs.getString("title"));
 				Board.setItemCategory(rs.getString("item_category"));
 				Board.setContent(rs.getString("content"));
+				Board.setContent(rs.getString("reg_date"));
 				Board.setViewCount(rs.getString("view_count"));
 				Board.setFileContentAddr(rs.getString("file_content_addr"));
 

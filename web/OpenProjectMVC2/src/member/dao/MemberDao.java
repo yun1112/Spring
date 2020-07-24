@@ -105,7 +105,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Member> memberList = new ArrayList<Member>();
-		String sql = "select * from project.member1";
+		String sql = "select * from project.member1 order by idx desc";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 

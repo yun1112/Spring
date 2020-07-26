@@ -186,7 +186,7 @@ public class BoardDao {
 				Board.setTitle(rs.getString("title"));
 				Board.setItemCategory(rs.getString("item_category"));
 				Board.setContent(rs.getString("content"));
-				Board.setContent(rs.getString("reg_date"));
+				Board.setRegDate(rs.getString("reg_date"));
 				Board.setViewCount(rs.getString("view_count"));
 				Board.setFileContentAddr(rs.getString("file_content_addr"));
 
@@ -224,7 +224,7 @@ public class BoardDao {
 				Board.setTitle(rs.getString("title"));
 				Board.setItemCategory(rs.getString("item_category"));
 				Board.setContent(rs.getString("content"));
-				Board.setContent(rs.getString("reg_date"));
+				Board.setRegDate(rs.getString("reg_date"));
 				System.out.println("reg_date:" + rs.getString("reg_date"));
 
 				Board.setViewCount(rs.getString("view_count"));
@@ -312,6 +312,7 @@ public class BoardDao {
 				board.setTitle(rs.getString("title"));
 				board.setItemCategory(rs.getString("item_category"));
 				board.setContent(rs.getString("content"));
+				board.setRegDate(rs.getString("reg_date"));
 				board.setViewCount(rs.getString("view_count"));
 				board.setFileContentAddr(rs.getString("file_content_addr"));
 			}

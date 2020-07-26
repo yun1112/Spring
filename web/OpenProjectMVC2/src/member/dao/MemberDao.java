@@ -76,6 +76,7 @@ public class MemberDao {
 
 		return resultCnt;
 	}
+	
 
 	public int selectTotalCount(Connection conn) throws SQLException {
 		int resultCnt = 0;
@@ -232,6 +233,41 @@ public class MemberDao {
 
 		return member;
 	}
+	public Member selectMemberById(Connection conn, String id) throws SQLException {
+		
+		Member member = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs;
+		
+		try {
+			String sql = "select * from project.member1 where user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				member = new Member();
+				member.setIdx(rs.getInt("idx"));
+				member.setUserId(rs.getString("user_id"));
+				member.setUserPw(rs.getString("user_pw"));
+				member.setUserName(rs.getString("user_name"));
+				member.setUserNickname(rs.getString("user_nickname"));
+				member.setEmail(rs.getString("email"));
+				member.setContactNumber(rs.getString("contact_number"));
+				member.setAddress(rs.getString("address"));
+				member.setPhoto(rs.getString("photo"));
+			}
+			
+		} finally {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+		
+		return member;
+	}
 
 	public int editMember(Connection conn, Member member,int idx) throws SQLException {
 
@@ -239,17 +275,16 @@ public class MemberDao {
 		int rs = 0;
 
 		try {
-			String sql = "update project.member1 set user_id=?, user_pw=?, user_name=?, user_nickname=?, email=?,contact_number=?,address=?, photo=?  where idx=?";
+			String sql = "update project.member1 set user_pw=?, user_name=?, user_nickname=?, email=?,contact_number=?,address=?, photo=?  where idx=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getUserId());
-			pstmt.setString(2, member.getUserPw());
-			pstmt.setString(3, member.getUserName());
-			pstmt.setString(4, member.getUserNickname());
-			pstmt.setString(5, member.getEmail());
-			pstmt.setString(6, member.getContactNumber());
-			pstmt.setString(7, member.getAddress());
-			pstmt.setString(8, member.getPhoto());
-			pstmt.setInt(9, idx);
+			pstmt.setString(1, member.getUserPw());
+			pstmt.setString(2, member.getUserName());
+			pstmt.setString(3, member.getUserNickname());
+			pstmt.setString(4, member.getEmail());
+			pstmt.setString(5, member.getContactNumber());
+			pstmt.setString(6, member.getAddress());
+			pstmt.setString(7, member.getPhoto());
+			pstmt.setInt(8, idx);
 
 			rs = pstmt.executeUpdate();
 
@@ -259,6 +294,27 @@ public class MemberDao {
 			}
 		}
 
+		return rs;
+	}
+	public int editNickname(Connection conn, String nickname, int idx) throws SQLException {
+		
+		PreparedStatement pstmt = null;
+		int rs = 0;
+		
+		try {
+			String sql = "update project.member1 set user_nickname=? where idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			pstmt.setInt(2, idx);
+			
+			rs = pstmt.executeUpdate();
+			
+		} finally {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+		
 		return rs;
 	}
 

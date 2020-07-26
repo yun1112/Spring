@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<title>Sidebar 02</title>
+<title>회원리스트</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">-->
@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/sidebar-02/css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
 <style>
-*{
+*, h1{
 font-family: 'Gaegu', cursive;
 }
 </style>
@@ -27,7 +27,7 @@ font-family: 'Gaegu', cursive;
 </button>
 </div>
 <div class="p-4 pt-5">
-<h1><a href="index.html" class="logo">임시</a></h1>
+<h1><a href="index.html" class="logo">회원리스트</a></h1>
 
 
 
@@ -55,8 +55,8 @@ Copyright &copy;<script type="937e342de99a9ff8a5348d28-text/javascript">document
 </nav>
 
 <div id="content" class="p-4 p-md-5 pt-5">
-<h2 class="mb-4">Sidebar #02</h2>
-
+<!-- <h2 class="mb-4">회원리스트</h2>
+ -->
      <%@ include file="/WEB-INF/views/member/memberList.jsp" %>
 
 

@@ -1,6 +1,10 @@
+<%@page import="login.LoginInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+LoginInfo info=(LoginInfo)session.getAttribute("info");
+%>
 <!doctype html>
 <html lang="ko">
 <html>
@@ -18,7 +22,7 @@
 
         // @breif 카카오 로그인 버튼을 생성합니다.
         Kakao.Auth.createLoginButton({
-              container : "#kakao-login-btn"
+              container : "#kakao-login-btn",size:"small"
             , success : function( authObj ) {
 
                 // console.log( authObj );
@@ -29,9 +33,7 @@
 
                         // console.log( res );
 						//location.href("index.jsp");
-						
 						<%-- location.href='<%=request.getContextPath()%>/'; --%>
-						
                         // @breif 아이디
                         document.getElementById( "kakaoIdentity" ).innerHTML = res.id;
 						alert("id:"+res.id);
@@ -44,12 +46,14 @@
                         document.getElementById( "kakaoNickName" ).innerHTML = res.properties.nickname;
                         
                         
+                        var id = res.id;    //카카오톡 닉네임을 변수에 저장
                         var kakaoNickname = res.properties.nickname;    //카카오톡 닉네임을 변수에 저장
-                        var kakaoEmail = res.properties.kaccount_email;    //카카오톡 이메일을 변수에 저장함
+                        //var kakaoEmail = res.properties.kaccount_email;    //카카오톡 이메일을 변수에 저장함
+               			alert("id:"+id);//확인됨
                			alert("kakanoNickname:"+kakaoNickname);//확인됨
                         
                         //카카오톡의 닉네임과,mail을 url에 담아 같이 페이지를 이동한다.
-                        window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/OpenProjectMVC2/?kakaoNickname="+kakaoNickname+"&kakaoEmail="+kakaoEmail);
+                         window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/OpenProjectMVC2/member/memberRegForm.do?kakaoNickname="+kakaoNickname+"&id="+id);
 /*                         http://localhost:8080/OpenProjectMVC2/member/memberLogin.do
  *///
 //                        // @breif 프로필 이미지
@@ -71,9 +75,9 @@
 </script>
 </head>
 <body>
-    <div>카카오 아이디 : <span id="kakaoIdentity"></span></div>
-    <div>닉네임 : <span id="kakaoNickName"></span></div>
-    <div>속성 : <span id="properties2"></span></div>
+    <div style="display:none">카카오 아이디 : <span id="kakaoIdentity"></span></div>
+    <div style="display:none">닉네임 : <span id="kakaoNickName"></span></div>
+    <div style="display:none">속성 : <span id="properties2"></span></div>
 <!--
     <div>프로필 이미지 : <img id="kakaoProfileImg" src=""/></div>
     <div>썸네일 이미지 : <img id="kakaoThumbnailImg" src=""/></div>

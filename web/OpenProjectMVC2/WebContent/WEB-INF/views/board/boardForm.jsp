@@ -16,8 +16,31 @@ request.setAttribute("list", list);
 %>
 <html lang="ko">
 <meta charset="utf-8">
-
 <style>
+ td>img {
+	width: 50px;
+	height: 50px;
+	}
+
+    #contentForm {
+      width: 40%;
+      margin: 0 auto;
+      padding-top: 12%;
+    }
+ 
+    .table > thead > tr > th, .table > tbody > tr > th {
+      background-color: #e6ecff;
+      text-align: center;
+    }
+	.check_ok {
+		color : blue;
+	}
+	.check_not {
+		color : red;
+	}
+	#idchk {
+		display: none;
+	}
 .check_ok {
 	color: blue;
 }
@@ -45,25 +68,26 @@ request.setAttribute("list", list);
 		<hr>
 		<form id="regForm" action="buyerBoardForm.do" method="post">
 			<!-- 		<form id="regForm" action="buyerBoard.do" method="post" enctype="multipart/form-data"> -->
-			<table>
-
+        <div class="input-group input-group-sm" role="group" aria-label="...">
+        <table class="table table-striped table-bordered">
 				<tr>
-					<th>아이디</th>
-					<td>${info.uid}<input type="hidden" name="uid"
+					<th width="20%">아이디</th>
+					<td width="80%">${info.uid}<input type="hidden" name="uid"
 						value="${info.uid}">
 					</td>
 				</tr>
 				<tr>
-					<td>제목</td>
-					<td><input type="text" name="title" required></td>
-				</tr>
+				 <th style="padding-top: 15px">제목</th>
+              <td><input type="text" name="title" value="${board.title}"
+                    class="form-control" aria-describedby="basic-addon1" required></td>
+            </tr>
 				<tr>
-					<td>내용</td>
-					<td><textarea name="content" col="20" row="20" required></textarea></td>
+					   <th width="20%">내용</th>
+              <td width="80%"><textarea name="content" col="20" row="20" required></textarea></td>
 				</tr>
-				<tr>
-					<td><a href="/board/buyerBoardForm.do">게시물확인</a></td>
-
+				<tr><td></td>
+<!-- 					<td><a href="/board/buyerBoardForm.do">게시물확인</a></td>
+ -->
 					<td><input type="submit" name="작성"> <input
 						type="reset"></td>
 				</tr>

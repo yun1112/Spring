@@ -83,7 +83,7 @@ MemberDao dao;
 							upw = paramValue;
 						}else if(paramName.equals("uid")) {
 							uid = paramValue;
-						} else if(paramName.equals("uname")) {
+						}else if(paramName.equals("uname")) {
 							uname = paramValue;
 						} else if(paramName.equals("nickname")) {
 							nickname = paramValue;
@@ -156,12 +156,21 @@ MemberDao dao;
 //				String uphoto = null;
 				
 //				//nickname contactNumber address
-
-				// 데이터 베이스 저장 
+				//String msg="";
+				
 				Member member = new Member();
+
+//				if(upwChk.equals(upw)) {
+//					member.setUserPw(upwChk);
+//					msg="비밀번호를 정상적으로 변경했습니다";
+//					
+//				}else {
+//					msg="비밀번호를 다시 확인해주세요";
+//				}
+				// 데이터 베이스 저장 
 				member.setIdx(idx);
-				member.setUserId(uid);
 				member.setUserPw(upw);
+				member.setUserId(uid);
 				member.setUserName(uname);
 				member.setPhoto(uphoto);
 				member.setEmail(email);
@@ -180,7 +189,6 @@ MemberDao dao;
 				
 				request.setAttribute("member", member);
 				request.setAttribute("result", resultCnt);
-				
 				
 	
 			}

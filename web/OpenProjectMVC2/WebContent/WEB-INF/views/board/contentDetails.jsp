@@ -16,15 +16,81 @@ Board board=(Board)request.getAttribute("board");
 <title>게시판</title>
 
 
-<style>
-td>img {
+
+<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  td>img {
 	width: 50px;
 	height: 50px;
-}
-</style>
+	}
+
+    #contentForm {
+      width: 40%;
+      margin: 0 auto;
+      padding-top: 12%;
+    }
+ 
+    .table > thead > tr > th, .table > tbody > tr > th {
+      background-color: #e6ecff;
+      text-align: center;
+    }
+  </style>
+
+
+
 </head>
 <body>
+	<c:if test="${not empty content}">
 
+<form action="/bbs/update.bbs" method="post">
+    <div id="contentForm">
+        <input type="hidden" name="pageNum" value="${pageNum}">
+        <input type="hidden" name="articleNumber" value="${article.articleNumber}">
+         
+        <div class="input-group input-group-sm" role="group" aria-label="...">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th width="20%">글번호</th>
+              <td width="80%">${board.idx}</td>
+            </tr>
+            <tr>
+              <th width="20%">글쓴이</th>
+              <td width="80%">${board.userId}</td>
+            </tr>
+            <tr>
+              <th style="padding-top: 15px">제목</th>
+              <td><input type="text" name="title" value="${board.title}"
+                    class="form-control" aria-describedby="basic-addon1"></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th width="20%">내용</th>
+              <td width="80%">
+                <textarea class="form-control" rows="50" name="content" readonly>${board.content}</textarea>
+              </td>
+            </tr>
+            <!-- <tr>
+              <th style="padding-top: 15px">첨부파일</th>
+              <td><input type="file" class="btn btn-default" name="fileName"></td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+      <%-- <div class="btn-group btn-group-sm" role="group" aria-label="...">
+        <input type="submit" class="btn btn-default" value="수정하기">
+        <input type="button" class="btn btn-default" value="취소" onclick="document.location.href='/bbs/content.bbs?articleNumber=${articleNumber}&pageNum=${pageNum}'">
+      </div> --%>
+      <div class="btn-group btn-group-sm" role="group" aria-label="...">
+       <a href="editBoardContent.do?idx=${board.idx}">수정</a>
+       <a href="javascript:memberDel(${board.idx})">삭제</a>
+      </div>
+    </div>
+  </form>
+</c:if>
+
+<hr>
 	<!-- private int idx;
 	private String userId;
 	private String title;
@@ -42,9 +108,11 @@ td>img {
              
    
        
-<h1>내용확인</h1>
 		<hr>
-	<c:if test="${not empty content}">
+	<c:if test="${empty content}">
+작성된 게시글이 없습니다
+</c:if>
+<%-- 
 <table border="1">
 <tr>
 <td>번호</td>
@@ -59,14 +127,13 @@ td>img {
 <td><textarea col="50" rows="10">${content}</textarea></td>
 </tr>
 <tr>
- <td><a href="boardContentDetails.do?idx=${board.idx}">${board.title}</a></td>
  <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
 </tr>
 </table>
 	</c:if>
 	<c:if test="${empty content}">
 작성된 게시글이 없습니다
-</c:if>
+</c:if> --%>
 
     	<script>
        	function moveToBoard(){

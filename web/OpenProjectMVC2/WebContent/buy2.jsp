@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<title>Sidebar 02</title>
+<title>게시판</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">-->
@@ -29,11 +29,7 @@ font-family: 'Gaegu', cursive;
 <h1><a href="index.html" class="logo">임시</a></h1>
 
 
-
-
 	<%@ include file="/sideMenuBar.jsp" %>
-
-
 
 
 <div class="mb-5">
@@ -54,7 +50,7 @@ Copyright &copy;<script type="937e342de99a9ff8a5348d28-text/javascript">document
 </nav>
 
 <div id="content" class="p-4 p-md-5 pt-5">
-<h2 class="mb-4">Sidebar #02</h2>
+<h2 class="mb-4">게시판</h2>
 
 	<%@ include file="/WEB-INF/views/board/buyerList2.jsp" %>
 

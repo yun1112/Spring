@@ -33,8 +33,6 @@ int resultCnt = 0;
 		
 		// 데이터 베이스에 수정 데이터 변수
 System.out.println("idx확인@");
-	System.out.println(request.getParameter("idx"));
-	System.out.println(request.getAttribute("idx"));
 		int idx = 0;
 //		int idx = Integer.parseInt(request.getParameter("idx"));
 		String uid=null;
@@ -43,14 +41,18 @@ System.out.println("idx확인@");
 		String nickname=null;
  		String email=null;
 		String contactNumber=null;
-		String address=null;
 		String oldFile = null;
 		String uphoto = null;
+		
+		String postcode = null;
+		String address=null;
+		String detailAddress = null;
+		String extraAddress = null;
 		//nickname contactNumber address
 		
+		String addr=null;
 		
 		Connection conn = null;
-System.out.println("수정");
 		try {
 			
 			boolean isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -88,14 +90,26 @@ System.out.println("수정");
 							nickname = paramValue;
 						}else if(paramName.equals("email")) {
 							email = paramValue;
-						}else if(paramName.equals("contactNumber")) {
+						}else if(paramName.equals("contact")) {
 							contactNumber = paramValue;
 						}else if(paramName.equals("address")) {
 							address = paramValue;
 						} else if(paramName.equals("oldFile")) {
 							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
 							oldFile = paramValue;
-						}  
+						}   else if(paramName.equals("postcode")) {
+							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
+							postcode = paramValue;
+						}  else if(paramName.equals("address")) {
+							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
+							address = paramValue;
+						}  else if(paramName.equals("detailAddress")) {
+							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
+							detailAddress = paramValue;
+						}  else if(paramName.equals("extraAddress")) {
+							// 이전 파일은 새로운 파일이 없을때 업데이트가 되도록합니다.
+							extraAddress = paramValue;
+						} 
 						
 					} else { // type=file
 						
@@ -167,7 +181,11 @@ System.out.println("수정");
 				
 				member.setUserNickname(nickname);
 				member.setContactNumber(contactNumber);
-				member.setAddress(address);
+				
+				
+				
+				addr=postcode+","+address+","+detailAddress+","+extraAddress;
+				member.setAddress(addr);
 				
 				
 				System.out.println("수정된member확인:"+member);

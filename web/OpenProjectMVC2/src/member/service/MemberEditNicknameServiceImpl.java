@@ -10,13 +10,12 @@ import jdbc.ConnectionProvider;
 import member.dao.MemberDao;
 import service.Service;
 
-public class MemberDeleteServiceImpl implements Service {
+public class MemberEditNicknameServiceImpl implements Service {
 
 	MemberDao dao;
 
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
-	
 		
 		String msg = "";
 
@@ -25,17 +24,18 @@ public class MemberDeleteServiceImpl implements Service {
 		try {
 
 			int idx = Integer.parseInt(request.getParameter("idx"));
-
+			String nickname=(String)request.getParameter("nickname");
 			conn = ConnectionProvider.getConnection();
 			dao = MemberDao.getInstance();
 
-			int resultCnt = dao.memberDelete(conn, idx);
+			int resultCnt = dao.editNickname(conn, nickname, idx);
 
 			switch (resultCnt) {
 			case 0:
-				msg = "요청하신 게시물이 존재하지 않습니다.";
+				msg = "회원정보가 존재하지 않습니다.";
 			case 1:
-				msg = "정상적으로 삭제되었습니다.";
+				request.getSession().invalidate();
+				msg = "정상적으로 탈퇴했습니다.";
 			}
 
 		} catch (SQLException e) {
@@ -49,7 +49,6 @@ public class MemberDeleteServiceImpl implements Service {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -57,7 +56,7 @@ public class MemberDeleteServiceImpl implements Service {
 		
 		request.setAttribute("msg", msg);
 
-		return "/WEB-INF/views/member/memberDelete.jsp";
+		return "/editSuccess.jsp";
 	}
 
 }

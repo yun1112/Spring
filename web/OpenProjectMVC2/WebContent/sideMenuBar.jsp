@@ -15,10 +15,11 @@
 <li>
 <a href="${pageContext.request.contextPath}/">홈</a>
 </li>
-
+<c:if test="${empty info}">
 <li>
 <a href="${pageContext.request.contextPath}/member/memberRegForm.do">회원가입</a>
 </li>
+</c:if>
 <li>
 <a href="<%=request.getContextPath() %>/member/memberList.do">회원리스트</a>
 <%-- <a href="<c:url value="/member/memberList.do"/>">List</a> --%>
@@ -32,7 +33,9 @@
 	</c:if>
 </li>
 <li>
+	<c:if test="${!empty info}">
 <a href="<%=request.getContextPath() %>/member/memberMypage.do"/>마이페이지</a>
+	</c:if>
 </li>
 </li>
 <li>

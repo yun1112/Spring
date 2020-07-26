@@ -41,8 +41,16 @@ MemberDao dao;
 		String nickname = null;
 		String email = null;
 		String contact = null;
-		String address = null;
+//		String address = null;
 		String photo = null;
+		
+		String postcode= null;
+		String address= null;
+		String detailAddress= null;
+		String extraAddress= null;
+		
+		
+		
 		
 		Connection conn = null;
 
@@ -83,10 +91,16 @@ MemberDao dao;
 							email = paramValue;
 						}else if(paramName.equals("contact")) {
 							contact = paramValue;
-						}else if(paramName.equals("address")) {
-							address = paramValue;
 						}else if(paramName.equals("photo")) {
 							photo = paramValue;
+						}else if(paramName.equals("postcode")) {
+							postcode = paramValue;
+						}else if(paramName.equals("address")) {
+							address = paramValue;
+						}else if(paramName.equals("detailAddress")) {
+							detailAddress = paramValue;
+						}else if(paramName.equals("extraAddress")) {
+							extraAddress = paramValue;
 						}
 						
 					} else { // type=file
@@ -113,6 +127,13 @@ MemberDao dao;
 	
 				}
 				
+				System.out.println("address확인:"+postcode);
+				System.out.println("address확인:"+address);
+				System.out.println("address확인:"+detailAddress);
+				System.out.println("address확인:"+extraAddress);
+				
+				address=postcode+','+address+','+detailAddress+','+extraAddress;
+				
 				// 데이터 베이스 저장 
 				Member member = new Member();
 				member.setUserId(uid);
@@ -131,7 +152,7 @@ MemberDao dao;
 				resultCnt = dao.insertMember(conn, member);
 				
 				
-				System.out.println("데이터베이스입력정보확인:"+member);
+				System.out.println("@@@@@회원가입@@@@@데이터베이스입력정보확인:"+member);
 				request.setAttribute("member", member);
 				request.setAttribute("result", resultCnt);
 				

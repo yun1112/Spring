@@ -20,7 +20,7 @@ request.setAttribute("listAll", listAll);
     #container {
       width: 70%;
       margin: 0 auto;     /* 가로로 중앙에 배치 */
-      padding-top: 10%;   /* 테두리와 내용 사이의 패딩 여백 */
+      padding-top: 5%;   /* 테두리와 내용 사이의 패딩 여백 */
     }
      
     #list {
@@ -74,6 +74,13 @@ request.setAttribute("listAll", listAll);
   </style>
 </head>
 <body>
+<c:if test="${empty info}">
+<script>
+alert('로그인 하세요');
+location.href='<%=request.getContextPath()%>/member/memberLogin.do';
+
+</script>
+</c:if>
   <div id="container">
     <div align="right">
       <!-- Login 검증 -->
@@ -95,28 +102,6 @@ request.setAttribute("listAll", listAll);
     </div> --%>
      
     <div>
-      <table class="table table-striped table-bordered table-hover">
-        <thead>
-          <tr>
-            <th width="10%">idx</th>
-            <th width="10%">userId</th>
-            <th width="50%">title</th>
-            <th width="15%">date</th>
-            <th width="10%">etc</th>
-          </tr>
-        </thead>
-        <tbody>
-          <c:forEach var="board" items="${listAll}" varStatus="status">
-            <tr>
-              <td>${board.idx}</td>
-              <td>${board.userId}</td>
-              <td><a href="boardContentDetails.do?idx=${board.idx}">${board.title}</a></td>
-              <td>${board.content}</td>
-              <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
-            <tr>
-          </c:forEach>
-        </tbody>
-      </table>
       
       <!-- public BoardListView(
 			int BoardTotalCount, 
@@ -140,25 +125,18 @@ request.setAttribute("listAll", listAll);
      
       
       
-          <span><button style="float:right" onclick="moveToBoard()">글쓰기</button></span>
-          <span><button style="float:left">검색</button><input type="text"></<span>
-          <span>
-          <c:forEach begin="1" end="${listAll.size()/5+1}" var="i">
-          <a href="buyerBoard.do?page=${i}">${i} </a>
-          </c:forEach>
-          </span>
-	       <hr>
+        
      <div>
      <table>
-     <hr>
-     <h1>확인</h1>
-     <hr>
+     <!-- <h1>확인</h1> -->
      <%
      BoardListView listView=(BoardListView)request.getAttribute("listView");
      %>
-     ${listView}<hr>
+     <%-- ${listView}<hr> --%>
      <c:if test="${not empty listView}">
-     	<table>
+      <table class="table table-striped table-bordered table-hover">
+              <thead>
+      
      	 <tr>
             <th width="10%">idx</th>
             <th width="10%">userId</th>
@@ -166,17 +144,29 @@ request.setAttribute("listAll", listAll);
             <th width="15%">date</th>
             <th width="10%">etc</th>
           </tr>
+          </thead>
+         <tbody>
+ 
      	<c:forEach var="board" items="${listView.boardList}" varStatus="status">
       	 <tr>
               <td>${board.idx}</td>
               <td>${board.userId}</td>
               <td><a href="boardContentDetails.do?idx=${board.idx}">${board.title}</a></td>
-              <td>${board.content}</td>
+              <td>${board.regDate}</td>
               <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
             <tr>
      	</c:forEach>
+     	</tbody>
      	</table>
      </c:if>
+       <span><button style="float:right" onclick="moveToBoard()">글쓰기</button></span>
+          <span><button style="float:left">검색</button><input type="text"></<span>
+          <span>
+          <c:forEach begin="1" end="${listAll.size()/5+1}" var="i">
+          <a href="buyerBoard.do?page=${i}">${i} </a>
+          </c:forEach>
+          </span>
+	       <hr>
      <%-- <tr>
      <c:forEach begin="1" end="${listAll.size}" var="i">
      <td><a href="buyerBoard.do?page=${i}">${i}</a></td>

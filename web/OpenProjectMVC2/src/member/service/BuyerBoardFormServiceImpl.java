@@ -98,7 +98,7 @@ BoardDao dao;
 			e1.printStackTrace();
 		}
 		
-		return "/ex.jsp";
+		return "/writeSuccess.jsp";
 	}
 
 }

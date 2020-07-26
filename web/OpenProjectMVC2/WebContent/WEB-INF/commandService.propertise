@@ -21,6 +21,8 @@
 #----------------------------------------------------------------------------------------------
 #마이페이지
 /member/memberMypage.do=member.service.MemberMypageServiceImpl
+/member/memberMypage2.do=member.service.MemberMypageServiceImpl2
+/member/memberMypage3.do=member.service.MemberMypageServiceImpl3
 
 #비밀번호 변경
 /member/memberMypageEditPw.do=member.service.MemberMypageEditPwServiceImpl
@@ -93,3 +95,6 @@
 /member/editInfoForm.do=member.service.MemberEditInfoFormServiceImpl
 #회원 정보 수정 
 /member/editInfo.do=member.service.MemberEditInfoServiceImpl
+/member/deleteMember.do=member.service.DeleteMemberServiceImpl
+/member/editInfo.do=member.service.MemberEditInfoServiceImpl
+/member/editNickname.do=member.service.MemberEditNicknameServiceImpl

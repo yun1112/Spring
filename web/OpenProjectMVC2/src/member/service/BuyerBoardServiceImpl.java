@@ -38,7 +38,6 @@ MemberDao dao;
 			request.setAttribute("cntAll",cntAll);
 			
 			request.setAttribute("listAll",listAll);
-			System.out.println("listAll:"+listAll);
 			
 			//-------------------------------------------------------------------------------------07/24 추가
 			

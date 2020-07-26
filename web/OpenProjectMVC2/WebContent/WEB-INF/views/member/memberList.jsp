@@ -85,7 +85,7 @@ td>img {
 	<c:if test="${empty info}">
 		<script>
 			alert('로그인 하세요');
-			location.href = '${pageContext.request.contextPath}';
+			location.href = '${pageContext.request.contextPath}/login.jsp';
 		</script>
 
 	</c:if>

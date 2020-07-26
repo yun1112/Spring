@@ -54,7 +54,7 @@ Copyright &copy;<script type="937e342de99a9ff8a5348d28-text/javascript">document
 </nav>
 
 <div id="content" class="p-4 p-md-5 pt-5">
-<h2 class="mb-4">Sidebar #02</h2>
+<h2 class="mb-4">게시판</h2>
 
 	<%@ include file="/WEB-INF/views/board/buyerList2.jsp" %>
 

@@ -25,7 +25,11 @@ MemberDao dao;
 		String uid=request.getParameter("uid");
 		String upw=request.getParameter("upw");
 		
-		
+		Member kakaoMember=(Member)request.getAttribute("member");
+		if(kakaoMember!=null) {
+			uid=kakaoMember.getUserId();
+			upw=kakaoMember.getUserPw();
+		}
 		
 		String result="/loginFail.jsp";
 		
@@ -59,6 +63,7 @@ MemberDao dao;
 						
 						LoginInfo info=new LoginInfo(uid,upw);
 						request.setAttribute("info", info);
+						System.out.println("로그인info:"+info);
 						
 						loginCheck=true;
 						

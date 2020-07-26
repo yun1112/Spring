@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="<%=request.getContextPath() %>/sidebar-02/css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
 <style>
-*{
+*,h2{
 font-family: 'Gaegu', cursive;
 }
 </style>
@@ -54,10 +54,9 @@ Copyright &copy;<script type="937e342de99a9ff8a5348d28-text/javascript">document
 </nav>
 
 <div id="content" class="p-4 p-md-5 pt-5">
-<h2 class="mb-4">Sidebar #02</h2>
 
-	<%@ include file="/WEB-INF/views/board/sellerList.jsp" %>
-
+<h2 class="mb-4">게시글 작성 완료</h2>
+<h3><b style="color:blue">${info.uid}</b>님의 게시글이 정상적으로 등록되었습니다.</h3>
 
 </div>
 </div>

@@ -32,7 +32,7 @@ public class BuyerBoardDao {
 			pstmt.setString(2, board.getTitle());
 			pstmt.setString(3, board.getItemCategory());
 			pstmt.setString(4, board.getContent());
-			pstmt.setString(5, board.getViewCount());
+			pstmt.setInt(5, board.getViewCount());
 			pstmt.setString(6, board.getFileContentAddr());
 
 			resultCnt = pstmt.executeUpdate();
@@ -122,7 +122,7 @@ public class BuyerBoardDao {
 				Board.setTitle(rs.getString("title"));
 				Board.setItemCategory(rs.getString("item_category"));
 				Board.setContent(rs.getString("content"));
-				Board.setViewCount(rs.getString("view_count"));
+				Board.setViewCount(rs.getInt("view_count"));
 				Board.setFileContentAddr(rs.getString("file_content_addr"));
 				
 				BoardList.add(Board);
@@ -160,7 +160,7 @@ public class BuyerBoardDao {
 				Board.setContent(rs.getString("content"));
 				Board.setContent(rs.getString("reg_date"));
 				System.out.println("reg_date:"+rs.getString("reg_date"));
-				Board.setViewCount(rs.getString("view_count"));
+				Board.setViewCount(rs.getInt("view_count"));
 				Board.setFileContentAddr(rs.getString("file_content_addr"));
 				
 				BoardList.add(Board);
@@ -223,7 +223,7 @@ public class BuyerBoardDao {
 				Board.setTitle(rs.getString("title"));
 				Board.setItemCategory(rs.getString("item_category"));
 				Board.setContent(rs.getString("content"));
-				Board.setViewCount(rs.getString("view_count"));
+				Board.setViewCount(rs.getInt("view_count"));
 				Board.setFileContentAddr(rs.getString("file_content_addr"));
 			}
 			

@@ -14,6 +14,22 @@
 
 </script>
 <style>
+  td>img {
+	width: 50px;
+	height: 50px;
+	}
+
+    #contentForm {
+      width: 60%;
+      margin: 0 auto;
+      padding-top: 2%;
+    }
+ 
+    .table > thead > tr > th, .table > tbody > tr > th {
+      background-color: #e6ecff;
+      text-align: center;
+    }
+    
 	.check_ok {
 		color : blue;
 	}
@@ -77,10 +93,13 @@
     }
 </script>
 
+<form id="regForm" action="memberReg.do" method="post" enctype="multipart/form-data">
     <div class="container">
-			<table>
-					<td>아이디</td>
-					<td>
+        <div id="contentForm">
+        <div class="input-group input-group-sm" role="group" aria-label="...">
+        <table class="table table-striped table-bordered">
+					<th width="30%">아이디</th>
+					<td width="70%">
 					<c:if test="${not empty id}">
 					<input type="text" name="uid" id="uid" value="${id}" readonly>
 					</c:if>
@@ -92,16 +111,16 @@
 					 </td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
-					<td> <input type="password" name="upw" required> </td>
+					<th width="30%">비밀번호</th>
+					<td width="70%"> <input type="password" name="upw" required> </td>
 				</tr>
 				<tr>
-					<td>이름</td>
-					<td> <input type="text" name="uname" required> </td>
+					<th width="30%">이름</th>
+					<td width="70%"> <input type="text" name="uname" required> </td>
 				</tr>
 				<tr>
-					<td>닉네임</td>
-					<td>
+					<th width="30%">닉네임</th>
+					<td width="70%">
 					<c:if test="${not empty kakaoNickname}">
 					<input type="text" name="nickname" id="nickname" value="${kakaoNickname}" readonly>
 					</c:if>
@@ -111,17 +130,17 @@
 					</td>
 				</tr>
 				<tr>
-					<td>이메일</td>
-					<td> <input type="email" name="email" required> </td>
+					<th width="30%">이메일</th>
+					<td width="70%"> <input type="email" name="email" required> </td>
 				</tr>
 				<tr>
-					<td>연락처</td>
-					<td> <input type="text" name="contact" required> </td>
+					<th width="30%">연락처</th>
+					<td width="70%"> <input type="text" name="contact" required> </td>
 				</tr>
 				<hr>
-				<tr><td>주소</td>
-				<td><hr>
-		<form id="regForm" action="memberReg.do" method="post" enctype="multipart/form-data">
+				<tr><th width="30%">주소</th>
+				<td width="70%"><hr>
+		
 		<input type="text" name="postcode" id="postcode" placeholder="우편번호">
 <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="address" id="address" placeholder="주소"><br>
@@ -132,8 +151,8 @@
 					<td> <input type="text" name="address" required> </td>
 				</tr> -->
 				<tr>
-					<td>사진</td>
-					<td> <input type="file" name="photo"> </td>
+					<th width="30%">사진</th>
+					<td width="70%"> <input type="file" name="photo"> </td>
 				</tr>
 				<tr>
 					<td></td>
@@ -143,8 +162,10 @@
 					</td>
 				</tr>
 			</table>
+			</div>
+			</div>
+			</div>
 		</form>
-	</div>
 </c:if>
 
 <script>

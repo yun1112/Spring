@@ -23,9 +23,9 @@ request.setAttribute("list", list);
 	}
 
     #contentForm {
-      width: 40%;
+      width: 70%;
       margin: 0 auto;
-      padding-top: 12%;
+      padding-top: 2%;
     }
  
     .table > thead > tr > th, .table > tbody > tr > th {
@@ -83,13 +83,13 @@ request.setAttribute("list", list);
             </tr>
 				<tr>
 					   <th width="20%">내용</th>
-              <td width="80%"><textarea name="content" col="20" row="20" required></textarea></td>
+              <td width="80%"><textarea name="content" rows="20" required></textarea></td>
 				</tr>
 				<tr><td></td>
 <!-- 					<td><a href="/board/buyerBoardForm.do">게시물확인</a></td>
  -->
-					<td><input type="submit" name="작성"> <input
-						type="reset"></td>
+					<td><input  class="btn btn-outline-primary" type="submit" name="작성"> <input
+						type="reset" class="btn btn-outline-primary"></td>
 				</tr>
 			</table>
 		</form>

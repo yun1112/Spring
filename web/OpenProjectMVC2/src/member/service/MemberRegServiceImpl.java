@@ -131,6 +131,8 @@ MemberDao dao;
 				System.out.println("address확인:"+address);
 				System.out.println("address확인:"+detailAddress);
 				System.out.println("address확인:"+extraAddress);
+				System.out.println("uid확인:"+uid);
+				System.out.println("upw확인:"+upw);
 				
 				address=postcode+','+address+','+detailAddress+','+extraAddress;
 				

@@ -38,6 +38,34 @@ LoginInfo info=(LoginInfo)session.getAttribute("info");
 *,.greeting,h3{
 font-family: 'Gaegu', cursive;
 }
+form{
+	padding:2% 10%;
+}
+
+input{
+margin:0.5%;
+}
+input[type="text"],input[type="password"],input[type="email"]{
+width:30%;
+}
+input[type="text"]>.addr{
+width:50%;
+}
+ td>img {
+	width: 50px;
+	height: 50px;
+	}
+
+    #contentForm {
+      width: 50%;
+      margin: 0 auto;
+      padding-top: 2%;
+    }
+ 
+    .table > thead > tr > th, .table > tbody > tr > th {
+      background-color: #e6ecff;
+      text-align: center;
+    }
 </style>
 </head>
 <body>
@@ -110,15 +138,16 @@ ${member}<hr>${info}<hr> --%>
 					<form id="regForm" action="editInfo.do" method="post"
 						enctype="multipart/form-data">
 						<input type="hidden" id="idx" name="idx" value="${member.idx}">
-						<table>
+						 <div class="input-group input-group-sm" role="group" aria-label="...">
+        <table class="table table-striped table-bordered">
 							<tr>
-								<td>아이디</td>
-								<td><input type="text" id="uid" name="uid"
+								<th width="20%">아이디</th>
+								<td width="80%"><input type="text" id="uid" name="uid"
 									value="${member.userId}" readonly></td>
 							</tr>
 							<tr>
-								<td>비밀번호</td>
-								<td><input type="password" id="upw" name="upw"
+								<th width="20%">비밀번호</th>
+								<td width="80%"><input type="password" id="upw" name="upw"
 									value="${member.userPw}">
 									<!-- <input type="submit" value="수정"> -->
 									</td>
@@ -129,56 +158,56 @@ ${member}<hr>${info}<hr> --%>
 									value="${member.userPw}"><input type="submit" value="수정"></td>
 							</tr> --%>
 							<tr>
-								<td>이름</td>
-								<td><input type="text" id="uname" name="uname"
+								<th width="20%">이름</th>
+								<td width="80%"><input type="text" id="uname" name="uname"
 									value="${member.userName}"><!-- <input type="submit" value="수정"> --></td>
 							</tr>
 							<tr>
-								<td>닉네임</td>
-								<td><input type="text" id="nickname" name="nickname"
+								<th width="20%">닉네임</th>
+								<td width="80%"><input type="text" id="nickname" name="nickname"
 									value="${member.userNickname}"><!-- <input type="submit" value="수정"> --></td>
 							</tr>
 							<tr>
-								<td>이메일</td>
-								<td><input type="email" id="email" name="email"
+								<th width="20%">이메일</th>
+								<td width="80%"><input type="email" id="email" name="email"
 									value="${member.email}"><!-- <input type="submit" value="수정"> --></td>
 							</tr>
 							
 							<tr>
-								<td>연락처</td>
-								<td><input type="text" id="contact"
+								<th width="20%">연락처</th>
+								<td width="80%"><input type="text" id="contact"
 									name="contact" value="${member.contactNumber}"><!-- <input type="submit" value="수정"> --></td>
 							</tr>
 							
-							<tr><td>주소</td>
-							<td><hr><c:if test="${not empty postcode}">
-		<input type="text" name="postcode" id="postcode" value="${postcode}">
+							<tr><th width="20%">주소</th>
+							<td width="80%"><hr><c:if test="${not empty postcode}">
+		<input style="width:35%" class="addr" type="text" name="postcode" id="postcode" value="${postcode}">
 </c:if>
 <c:if test="${empty postcode}">
-		<input type="text" name="postcode" id="postcode" placeholder="우편번호">
+		<input style="width:35%" class="addr" type="text" name="postcode" id="postcode" placeholder="우편번호">
 </c:if>
 <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 
 
 <c:if test="${not empty address}">
-<input type="text" name="address" id="address" value="${address}"><br>
+<input style="width:35%" class="addr" type="text" name="address" id="address" value="${address}"><br>
 </c:if>
 <c:if test="${empty address}">
-<input type="text" name="address" id="address" placeholder="주소"><br>
+<input style="width:35%" class="addr" type="text" name="address" id="address" placeholder="주소"><br>
 </c:if>
 
 <c:if test="${not empty detailAddress}">
-<input type="text" name="detailAddress" id="detailAddress" value="${detailAddress}"><br>
+<input style="width:35%" class="addr" type="text" name="detailAddress" id="detailAddress" value="${detailAddress}"><br>
 </c:if>
 <c:if test="${empty detailAddress}">
-<input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소"><br>
+<input style="width:35%" class="addr" type="text" name="detailAddress" id="detailAddress" placeholder="상세주소"><br>
 </c:if>
 
 <c:if test="${not empty extraAddress}">
-<input type="text" name="extraAddress" id="extraAddress" value="${extraAddress}">
+<input style="width:35%" class="addr" type="text" name="extraAddress" id="extraAddress" value="${extraAddress}">
 </c:if>
 <c:if test="${empty extraAddress}">
-<input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
+<input style="width:35%" class="addr" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
 </c:if><hr></td>
 							</tr><hr>
 							
@@ -188,18 +217,16 @@ ${member}<hr>${info}<hr> --%>
 									value="${member.address}"><input type="submit" value="수정"></td>
 							</tr> --%>
 							<tr>
-								<td>사진</td>
-								<td><img alt="프사 " style="width:10%" src="<c:url value="${member.photo}"/>"><input type="file" name="photo"></td>
+								<th width="20%">사진</th>
+								<td width="80%"><img alt="프사 " style="width:10%" src="<c:url value="${member.photo}"/>"><input type="file" name="photo"></td>
 								</tr>
 								<%-- <tr>
 								<td>현재 파일</td>
 								<td><img
 									src="<%=request.getContextPath()%>/${member.photo}"> </td>
 							</tr> --%>
-							<tr>		
-									<td><input
-									type="hidden" name="oldFile" style="width:20px" value="${member.photo}"></td>
-							</tr>
+									<input
+									type="hidden" name="oldFile" style="width:20px" value="${member.photo}">
 
 
 							<%-- 	<tr>
@@ -212,9 +239,14 @@ ${member}<hr>${info}<hr> --%>
 								<td>
 <!-- 								<input type="submit" value="수정">
  -->								</td>
-								<td><input style="float:right" type="button" value="탈퇴" onclick="memberDel(${member.idx})"><input style="float:right" type="submit" value="수정"></td>
+								<td>
+								<input  class="btn btn-outline-primary" style="float:right" type="button" value="탈퇴" onclick="memberDel(${member.idx})">
+								<input  class="btn btn-outline-primary" style="float:right" type="submit" value="수정">
+								
+								</td>
 							</tr> 
 						</table>
+						</div>
 					</form>
 				</c:if>
 			</c:forEach>

@@ -20,14 +20,15 @@ public class BoardContentDetailServiceImpl implements Service {
 		System.out.println("idx전달 확인:"+idx);
 		Board board=null;
 		String content=null;
-		
+		int viewCount;
 		Connection conn;
 		try {
 			conn = ConnectionProvider.getConnection();
 			dao=BoardDao.getInstance();
 			
 			board=dao.selectByIdx(conn, idx);
-			
+			viewCount=dao.BoardCountUpdate(conn, board, idx);
+			System.out.println("viewCount:"+viewCount);
 			content=dao.selectContentById(conn, idx);
 		} catch (SQLException e) {
 			e.printStackTrace();

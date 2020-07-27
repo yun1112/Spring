@@ -17,6 +17,22 @@ Member member=(Member)request.getAttribute("member");
 
 
 <style>
+td>img {
+	width: 50px;
+	height: 50px;
+	}
+
+    #contentForm {
+      width: 60%;
+      margin: 0 auto;
+      padding-top: 2%;
+    }
+ 
+    .table > thead > tr > th, .table > tbody > tr > th {
+      background-color: #e6ecff;
+      text-align: center;
+    }
+    
 	.check_ok {
 		color : blue;
 	}
@@ -45,22 +61,23 @@ private String userId;
 		<!-- 이 페이지는 데이터 베이스에 저장된 데이터를 value 값에 세팅해야합니다. -->
 		<form id="editForm" action="editInfoForm.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="idx" value="${member.idx}">
-			<table>
+			<div class="input-group input-group-sm" role="group" aria-label="...">
+        <table class="table table-striped table-bordered">
 				<tr>
-					<td>아이디 ${member.userId} </td>
-					<td> <%-- <input type="email" name="uid" id="uid" value="${member.userId}" readonly  > --%>아이디는 수정이 불가합니다.</td>
+					<th width="20%">아이디 ${member.userId} </th>
+					<td width="80%"> <%-- <input type="email" name="uid" id="uid" value="${member.userId}" readonly  > --%>아이디는 수정이 불가합니다.</td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
-					<td> <input type="password" name="upw" required value="${member.userPw}"> </td>
+					<th width="20%">비밀번호</th>
+					<td width="80%"> <input type="password" name="upw" required value="${member.userPw}"> </td>
 				</tr>
 				<tr>
-					<td>이름 ${member.userName}</td>
-					<td> <%-- <input type="text" name="uname" value="${member.userName}" required>  --%></td>
+					<th width="20%">이름 ${member.userName}</th>
+					<td width="80%"> <%-- <input type="text" name="uname" value="${member.userName}" required>  --%></td>
 				</tr>
 				<tr>
-					<td>사진</td>
-					<td><input type="file" name="photo">
+					<th width="20%">사진</th>
+					<td width="80%"><input type="file" name="photo">
 						<br>
 						현재 파일 : ${member.photo}
 						<input type="hidden" name="oldFile" value="${member.photo}" >

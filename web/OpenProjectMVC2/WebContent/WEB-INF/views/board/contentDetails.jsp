@@ -25,9 +25,9 @@ Board board=(Board)request.getAttribute("board");
 	}
 
     #contentForm {
-      width: 40%;
+      width: 70%;
       margin: 0 auto;
-      padding-top: 12%;
+      padding-top: 2%;
     }
  
     .table > thead > tr > th, .table > tbody > tr > th {
@@ -42,7 +42,7 @@ Board board=(Board)request.getAttribute("board");
 <body>
 	<c:if test="${not empty content}">
 
-<form action="/bbs/update.bbs" method="post">
+<form action="#" method="post">
     <div id="contentForm">
         <input type="hidden" name="pageNum" value="${pageNum}">
         <input type="hidden" name="articleNumber" value="${article.articleNumber}">
@@ -61,14 +61,14 @@ Board board=(Board)request.getAttribute("board");
             <tr>
               <th style="padding-top: 15px">제목</th>
               <td><input type="text" name="title" value="${board.title}"
-                    class="form-control" aria-describedby="basic-addon1"></td>
+                    class="form-control" aria-describedby="basic-addon1" readonly></td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th width="20%">내용</th>
               <td width="80%">
-                <textarea class="form-control" rows="50" name="content" readonly>${board.content}</textarea>
+                <textarea class="form-control" rows="100" name="content" readonly>${board.content}</textarea>
               </td>
             </tr>
             <!-- <tr>
@@ -83,14 +83,13 @@ Board board=(Board)request.getAttribute("board");
         <input type="button" class="btn btn-default" value="취소" onclick="document.location.href='/bbs/content.bbs?articleNumber=${articleNumber}&pageNum=${pageNum}'">
       </div> --%>
       <div class="btn-group btn-group-sm" role="group" aria-label="...">
-       <a href="editBoardContent.do?idx=${board.idx}">수정</a>
-       <a href="javascript:memberDel(${board.idx})">삭제</a>
+       <a  class="btn btn-outline-primary" href="editBoardContent.do?idx=${board.idx}">수정</a>
+       <a  class="btn btn-outline-primary" href="javascript:memberDel(${board.idx})">삭제</a>
       </div>
     </div>
   </form>
 </c:if>
 
-<hr>
 	<!-- private int idx;
 	private String userId;
 	private String title;
@@ -108,7 +107,6 @@ Board board=(Board)request.getAttribute("board");
              
    
        
-		<hr>
 	<c:if test="${empty content}">
 작성된 게시글이 없습니다
 </c:if>

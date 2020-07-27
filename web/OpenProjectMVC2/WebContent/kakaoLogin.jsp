@@ -36,10 +36,10 @@ LoginInfo info=(LoginInfo)session.getAttribute("info");
 						<%-- location.href='<%=request.getContextPath()%>/'; --%>
                         // @breif 아이디
                         document.getElementById( "kakaoIdentity" ).innerHTML = res.id;
-						alert("id:"+res.id);
-					/* 	alert("properties:"+properties);
+/* 						alert("id:"+res.id);
+ */					/* 	alert("properties:"+properties);
                         document.getElementById( "properties" ).innerHTML = res.properties; */
-						alert(JSON.stringify(res.properties));
+						//alert(JSON.stringify(res.properties));
                         document.getElementById( "properties2" ).innerHTML = JSON.stringify(res.properties);
 						
                         // @breif 닉네임
@@ -49,8 +49,8 @@ LoginInfo info=(LoginInfo)session.getAttribute("info");
                         var id = res.id;    //카카오톡 닉네임을 변수에 저장
                         var kakaoNickname = res.properties.nickname;    //카카오톡 닉네임을 변수에 저장
                         //var kakaoEmail = res.properties.kaccount_email;    //카카오톡 이메일을 변수에 저장함
-               			alert("id:"+id);//확인됨
-               			alert("kakanoNickname:"+kakaoNickname);//확인됨
+               		/* 	alert("id:"+id);//확인됨
+               			alert("kakanoNickname:"+kakaoNickname);//확인됨 */
                         
                         //카카오톡의 닉네임과,mail을 url에 담아 같이 페이지를 이동한다.
                          window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/OpenProjectMVC2/member/memberRegForm.do?kakaoNickname="+kakaoNickname+"&id="+id);
@@ -63,12 +63,14 @@ LoginInfo info=(LoginInfo)session.getAttribute("info");
 //                        document.getElementById( "kakaoThumbnailImg" ).src = res.properties.thumbnail_image;
 
                     }, fail : function( error ) {
-                        alert( JSON.stringify( error ) );
+                        /* alert( JSON.stringify( error ) ); */
+                        alert('잘못된 접근입니다');
                     }
                 });
             }
             , fail : function( error ) {
-                alert( JSON.stringify( error ));
+                /* alert( JSON.stringify( error )); */
+                alert('잘못된 접근입니다');
             }
         });
     });

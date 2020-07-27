@@ -7,7 +7,7 @@ public class Board {
 	private String itemCategory;
 	private String content;
 	private String regDate;
-	private String viewCount;
+	private int viewCount;
 	private String fileContentAddr;
 	
 	public String getRegDate() {
@@ -47,10 +47,10 @@ public class Board {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getViewCount() {
+	public int getViewCount() {
 		return viewCount;
 	}
-	public void setViewCount(String viewCount) {
+	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
 	public String getFileContentAddr() {
@@ -65,7 +65,7 @@ public class Board {
 				+ ", content=" + content + ", regDate=" + regDate + ", viewCount=" + viewCount + ", fileContentAddr="
 				+ fileContentAddr + "]";
 	}
-	public Board(int idx, String userId, String title, String itemCategory, String content, String viewCount,
+	public Board(int idx, String userId, String title, String itemCategory, String content, int viewCount,
 			String fileContentAddr, String regDate) {
 		super();
 		this.idx = idx;

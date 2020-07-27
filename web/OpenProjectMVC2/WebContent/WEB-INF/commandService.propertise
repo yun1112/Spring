@@ -81,6 +81,7 @@
 #----------------------------------------------------------------------------------------------07/20추가
 #게시글수정
 /board/editBoardContent.do=member.service.EditBoardContentServiceImpl
+/board/editBoardContent2.do=member.service.EditBoardContentServiceImpl2
 
 #01 수정하기 버튼클릭했을 때 -> 실행안됨@@@@@@@@@@@@@@@@@@@@@@@
 /board/editBoardSuccessContent.do=member.service.EditBoardSuccessContentServiceImpl

@@ -144,7 +144,7 @@ public class MemberDao {
 
 		List<Member> memberList = new ArrayList<Member>();
 
-		String sql = "select * from project.member1 order by user_name limit ?, ?";
+		String sql = "select * from project.member1 order by reg_date desc limit ?, ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);

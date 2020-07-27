@@ -132,7 +132,7 @@ public class EditBoardSuccessContentServiceImpl implements Service {
 
 				dao = BoardDao.getInstance();
 
-				resultCnt = dao.BoardUpdate(conn, idx, board);
+				resultCnt = dao.BoardUpdate(conn, title, content, idx, board);
 				
 				request.setAttribute("Board", board);
 				request.setAttribute("result", resultCnt);

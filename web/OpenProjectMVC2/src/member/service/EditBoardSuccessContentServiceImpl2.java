@@ -62,7 +62,7 @@ System.out.println("수정");
 			System.out.println("--------------------");
 
 			System.out.println("board 업데이트 전:"+board);
-			dao.BoardUpdate(conn, idx, board);
+			dao.BoardUpdate(conn, title, content, idx, board);
 			System.out.println("board 업데이트 후:"+board);
 			System.out.println("--------------------");
 			request.setAttribute("board",board);

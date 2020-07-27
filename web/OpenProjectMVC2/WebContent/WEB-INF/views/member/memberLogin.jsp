@@ -3,7 +3,25 @@
 <html lang="ko">
 <meta charset="utf-8">
 
+<style>
+.btn{
 
+}
+
+/* tr{
+ margin:10px;
+} */
+/* tr.space {
+  border-bottom: 10px solid #fff;
+} */
+form{
+	padding:2% 10%;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+</style>
 	<%
 		if (session.getAttribute("uid") == null) { //세션이 설정되지 않을 경우
 	
@@ -20,7 +38,7 @@
 	</tr>
 	<tr>
 	<td></td>
-	<td><input type="submit" value="로그인"><input type="reset" value="초기화"></td>
+	<td><input class="btn btn-outline-primary" type="submit" value="로그인"><input class="btn btn-outline-primary" type="reset" value="초기화"></td>
 	</tr>
 	
 	</table>
@@ -33,7 +51,7 @@
             // 로그인 창을 띄웁니다.
             Kakao.Auth.login({
                 success: function(authObj) {
-                    alert(JSON.stringify(authObj));
+                    //alert(JSON.stringify(authObj));
 
                     //Kakao.Auth.setAccessToken(authObj.access_token);
 
@@ -42,7 +60,8 @@
 
                 },
                 fail: function(err) {
-                    alert(JSON.stringify(err));
+                    alert('잘못된 접근입니다');
+/*                     alert(JSON.stringify(err)); */
                 }
             });
         };
@@ -50,7 +69,8 @@
             Kakao.Auth.getStatusInfo(function(statusObj) {
                 if (statusObj.status == 'connected') {
                     console.log('connection OK');
-                   	alert(JSON.stringify(statusObj));
+                   	//alert(JSON.stringify(statusObj));
+                    alert('잘못된 접근입니다');
                 } else {
                     $('#custom-login-btn').css('display', 'inline');
                 }

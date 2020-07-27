@@ -30,12 +30,12 @@ request.setAttribute("listAll",listAll);
 	height: 50px;
 	}
 
-    #contentForm {
-      width: 40%;
+     #contentForm {
+      width: 70%;
       margin: 0 auto;
-      padding-top: 12%;
+      padding-top: 2%;
     }
- 
+    
     .table > thead > tr > th, .table > tbody > tr > th {
       background-color: #e6ecff;
       text-align: center;
@@ -69,8 +69,8 @@ List<Board> listAll=(List)request.getAttribute("listAll");
 	
 	-->
 	
-<!-- 	<form action="/bbs/update.bbs" method="post">
- -->    <div id="contentForm">
+	<form action="editBoardContent2.do" method="post">
+    <div id="contentForm">
         <input type="hidden" name="pageNum" value="${pageNum}">
         <input type="hidden" name="articleNumber" value="${article.articleNumber}">
          
@@ -78,16 +78,16 @@ List<Board> listAll=(List)request.getAttribute("listAll");
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
-              <th width="20%">글번호</th>
+              <th width="20%">글번호</th><input type="hidden" id="idx" name="idx" value="${board.idx}">
               <td width="80%">${board.idx}</td>
             </tr>
             <tr>
-              <th width="20%">글쓴이</th>
+              <th width="20%">글쓴이</th><input type="hidden" id="userId" name="userId" value="${board.userId}">
               <td width="80%">${board.userId}</td>
             </tr>
             <tr>
               <th style="padding-top: 15px">제목</th>
-              <td><input type="text" name="title" value="${board.title}"
+              <td><input type="text" name="title" id="title" value="${board.title}"
                     class="form-control" aria-describedby="basic-addon1"></td>
             </tr>
           </thead>
@@ -95,10 +95,12 @@ List<Board> listAll=(List)request.getAttribute("listAll");
             <tr>
               <th width="20%">내용</th>
               <td width="80%">
-                <textarea class="form-control" rows="20" name="content" readonly>${board.content}</textarea>
+                <textarea class="form-control" rows="10" id="content" name="content">${board.content}</textarea>
               </td>
-            </tr>
-                          <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
+         <%--    </tr>
+                          <td>
+                          <a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a>
+                          </td> --%>
             
             <!-- <tr>
               <th style="padding-top: 15px">첨부파일</th>
@@ -106,18 +108,21 @@ List<Board> listAll=(List)request.getAttribute("listAll");
             </tr> -->
           </tbody>
         </table>
+        <input class="btn btn-outline-primary" type="submit" value="수정">
+        <input class="btn btn-outline-primary" type="reset" value="초기화">
+                          <%-- <a href="editBoardContent2.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a> --%>
       </div>
       <%-- <div class="btn-group btn-group-sm" role="group" aria-label="...">
         <input type="submit" class="btn btn-default" value="수정하기">
         <input type="button" class="btn btn-default" value="취소" onclick="document.location.href='/bbs/content.bbs?articleNumber=${articleNumber}&pageNum=${pageNum}'">
       </div> --%>
-      <div class="btn-group btn-group-sm" role="group" aria-label="...">
+      <!-- <div class="btn-group btn-group-sm" role="group" aria-label="...">
        <input type="submit" value="수정">
 	   <input type="reset">
-      </div>
+      </div> -->
     </div>
-<!--   </form>
- -->
+   </form>
+ 
        	<script>
        	function moveToBoard(){
        		location.href='temp.do';

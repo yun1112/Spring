@@ -34,7 +34,7 @@ public class BoardDao {
 			pstmt.setString(2, board.getTitle());
 			pstmt.setString(3, board.getItemCategory());
 			pstmt.setString(4, board.getContent());
-			pstmt.setString(5, board.getViewCount());
+			pstmt.setInt(5, board.getViewCount());
 			pstmt.setString(6, board.getFileContentAddr());
 
 			resultCnt = pstmt.executeUpdate();
@@ -94,7 +94,7 @@ public class BoardDao {
 				board.setTitle(rs.getString("title"));
 				board.setItemCategory(rs.getString("item_category"));
 				board.setContent(rs.getString("content"));
-				board.setViewCount(rs.getString("view_count"));
+				board.setViewCount(rs.getInt("view_count"));
 				board.setFileContentAddr(rs.getString("file_content_addr"));
 			}
 		} catch (SQLException e) {
@@ -169,7 +169,7 @@ public class BoardDao {
 
 		List<Board> BoardList = new ArrayList<Board>();
 
-		String sql = "select * from project.board order by idx limit ?, ?";
+		String sql = "select * from project.board order by reg_date desc limit ?, ?";
 //		String sql = "select * from project.board order by user_name limit ?, ?";
 
 		try {
@@ -187,7 +187,7 @@ public class BoardDao {
 				Board.setItemCategory(rs.getString("item_category"));
 				Board.setContent(rs.getString("content"));
 				Board.setRegDate(rs.getString("reg_date"));
-				Board.setViewCount(rs.getString("view_count"));
+				Board.setViewCount(rs.getInt("view_count"));
 				Board.setFileContentAddr(rs.getString("file_content_addr"));
 
 				BoardList.add(Board);
@@ -225,9 +225,9 @@ public class BoardDao {
 				Board.setItemCategory(rs.getString("item_category"));
 				Board.setContent(rs.getString("content"));
 				Board.setRegDate(rs.getString("reg_date"));
-				System.out.println("reg_date:" + rs.getString("reg_date"));
+//				System.out.println("reg_date:" + rs.getString("reg_date"));
 
-				Board.setViewCount(rs.getString("view_count"));
+				Board.setViewCount(rs.getInt("view_count"));
 				Board.setFileContentAddr(rs.getString("file_content_addr"));
 
 				BoardList.add(Board);
@@ -263,7 +263,7 @@ public class BoardDao {
 		return result;
 	}
 
-	public int BoardUpdate(Connection conn, int idx, Board board) throws SQLException {
+	public int BoardUpdate(Connection conn, String title, String content, int idx, Board board) throws SQLException {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = "update project.board set title=?, content=? where idx=?";
@@ -280,6 +280,28 @@ public class BoardDao {
 				pstmt.close();
 		}
 
+		if (result != 0) {
+			System.out.println("수정 완료");
+		}
+		return result;
+	}
+	public int BoardCountUpdate(Connection conn,Board board, int idx) throws SQLException {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = "update project.board set view_count=? where idx=?";
+		int viewCount=board.getViewCount();
+		board.setViewCount(++viewCount);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board.getViewCount());
+			pstmt.setInt(2, board.getIdx());
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+		
 		if (result != 0) {
 			System.out.println("수정 완료");
 		}
@@ -313,7 +335,7 @@ public class BoardDao {
 				board.setItemCategory(rs.getString("item_category"));
 				board.setContent(rs.getString("content"));
 				board.setRegDate(rs.getString("reg_date"));
-				board.setViewCount(rs.getString("view_count"));
+				board.setViewCount(rs.getInt("view_count"));
 				board.setFileContentAddr(rs.getString("file_content_addr"));
 			}
 

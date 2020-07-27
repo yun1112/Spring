@@ -18,7 +18,7 @@ request.setAttribute("listAll", listAll);
   <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <style>
     #container {
-      width: 70%;
+      width: 80%;
       margin: 0 auto;     /* 가로로 중앙에 배치 */
       padding-top: 5%;   /* 테두리와 내용 사이의 패딩 여백 */
     }
@@ -138,11 +138,12 @@ location.href='<%=request.getContextPath()%>/member/memberLogin.do';
               <thead>
       
      	 <tr>
-            <th width="10%">idx</th>
-            <th width="10%">userId</th>
-            <th width="50%">title</th>
-            <th width="15%">date</th>
-            <th width="10%">etc</th>
+            <th width="10%">글번호</th>
+            <th width="10%">아이디</th>
+            <th width="50%">제목</th>
+            <th width="15%">작성일자</th>
+            <th width="10%">조회수</th>
+            <th width="10%">기타</th>
           </tr>
           </thead>
          <tbody>
@@ -153,20 +154,27 @@ location.href='<%=request.getContextPath()%>/member/memberLogin.do';
               <td>${board.userId}</td>
               <td><a href="boardContentDetails.do?idx=${board.idx}">${board.title}</a></td>
               <td>${board.regDate}</td>
+              <td>${board.viewCount}</td>
               <td><a href="editBoardContent.do?idx=${board.idx}">수정</a> <a href="javascript:memberDel(${board.idx})">삭제</a></td>
             <tr>
      	</c:forEach>
      	</tbody>
      	</table>
      </c:if>
-       <span><button style="float:right" onclick="moveToBoard()">글쓰기</button></span>
-          <span><button style="float:left">검색</button><input type="text"></<span>
+     <div>
+       <span><button class="btn btn-outline-primary" style="float:right" onclick="moveToBoard()">글쓰기</button></span>
+          <div><button class="btn btn-outline-primary" style="float:left">검색</button><input type="text"></div>
+          
+          
           <span>
+          <ul style="text-align:center;margin:2% 30%;" class="pagination">
           <c:forEach begin="1" end="${listAll.size()/5+1}" var="i">
-          <a href="buyerBoard.do?page=${i}">${i} </a>
+          <li><a href="buyerBoard.do?page=${i}">${i} </a></li>
           </c:forEach>
+          </ul>
           </span>
-	       <hr>
+          </div>
+          
      <%-- <tr>
      <c:forEach begin="1" end="${listAll.size}" var="i">
      <td><a href="buyerBoard.do?page=${i}">${i}</a></td>

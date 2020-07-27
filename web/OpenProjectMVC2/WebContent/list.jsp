@@ -27,7 +27,7 @@ font-family: 'Gaegu', cursive;
 </button>
 </div>
 <div class="p-4 pt-5">
-<h1><a href="index.html" class="logo">회원리스트</a></h1>
+<h1><a href="${pageContext.request.contextPath}/" class="logo">임시</a></h1>
 
 
 

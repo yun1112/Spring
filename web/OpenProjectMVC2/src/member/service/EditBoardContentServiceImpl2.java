@@ -2,7 +2,6 @@ package member.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,26 +17,28 @@ public class EditBoardContentServiceImpl2 implements Service {
 
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
-
+		
+		int idx=Integer.parseInt(request.getParameter("idx"));
+		String userId=request.getParameter("userId");
+		String title=request.getParameter("title");
+		String content=request.getParameter("content");
+		
+		System.out.println("idx:"+idx);
+		System.out.println("userId:"+userId);
+		System.out.println("title:"+title);
+		System.out.println("content:"+content);
+		
 		int resultCnt = 0;
 
 		// 데이터 베이스에 수정 데이터 변수
 //		int idx = 0;
-		String upw = null;
-		String uname = null;
-
 		Connection conn = null;
 		
-		List<Board> listAll=(List)request.getAttribute("listAll");
-		System.out.println("수정할 리스트 확인:"+listAll);
-		System.out.println("--------------------");
 
 		try {
 
 			// 데이터 베이스 저장
 			Board board=new Board();
-			
-			int idx=(int)request.getAttribute("idx");
 			
 			conn = ConnectionProvider.getConnection();
 			
@@ -46,19 +47,16 @@ public class EditBoardContentServiceImpl2 implements Service {
 			
 			board=dao.selectByIdx(conn, idx);
 			System.out.println("board확인:"+board);
-			System.out.println("--------------------");
-			System.out.println("idx확인:"+idx);
-			board.setIdx(idx);
-			System.out.println("idx확인:"+idx);
-			System.out.println("--------------------");
 
+			board.setTitle(title);
+			board.setContent(content);
+			resultCnt = dao.BoardUpdate(conn, title, content, idx, board);
+			
 			request.setAttribute("board",board);
 			
-			resultCnt = dao.BoardUpdate(conn, idx,board);
 			System.out.println("BoardUpdate확인:"+board);
 			System.out.println("--------------------");
 
-			request.setAttribute("board", board);
 			request.setAttribute("result", resultCnt);
 			
 
@@ -81,7 +79,7 @@ public class EditBoardContentServiceImpl2 implements Service {
 
 		}
 
-		return "/index.jsp";
+		return "/editSuccess.jsp";
 	}
 
 }
